@@ -4,7 +4,7 @@ The `Backups` pane on your database's management page displays a list of the
 backups taken of your database; each backup is either a `hot` backup (fast,
 short-term storage) or a `durable` backup (longer-term, resilient storage).
 
-![The Backups pane](../../images/managed_backups.png)
+![The Backups pane](../../images/managed_backups_page.png)
 
 Each backup entry displays:
 
