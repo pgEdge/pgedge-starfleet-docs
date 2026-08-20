@@ -14,14 +14,6 @@ Each backup entry displays:
 * How long ago the backup was taken.
 
 Select the `Restore` button, to the right of a backup, to restore your
-database to that backup.
+database to the selected backup.
 
-Select `View all` (in the upper-right corner of the pane), or select
-`Backups` (below the database name) from the navigation pane, to open the
-full `Backups` page, which lists every backup taken of your database with the
-same details shown in the pane.
 
-!!! note
-
-    A screenshot of the full `Backups` page for the current console design is
-    needed here.
