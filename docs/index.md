@@ -1,11 +1,11 @@
 # pgEdge Starfleet - a PostgreSQL Database made Easy
 
-pgEdge Starfleet offers a single node PostgreSQL, deployable
-across multiple cloud regions or data centers.
+pgEdge Starfleet deploys a single node PostgreSQL database in multiple cloud regions or 
+data centers.
 
 ## Fully distributed PostgreSQL Made Easy
 
-pgEdge Starfleet combines powerful features to make creating a PostgreSQL
+pgEdge Starfleet combines powerful features that make creating a PostgreSQL
 database simple.
 
 - Easy Deployment: Creation and deployment of a Postgres database is a breeze; 
@@ -13,7 +13,7 @@ database simple.
   database in the cloud.
 
 - Control and Monitoring: Manage and monitor your database from a web
-  dashboard, or alternatively via API and command line interface.
+  console, or alternatively via API and command line interface.
 
 - Configuration, Management, and Security: pgEdge Starfleet saves you time configuring
   and managing infrastructure. pgEdge Starfleet regularly backs up your data
