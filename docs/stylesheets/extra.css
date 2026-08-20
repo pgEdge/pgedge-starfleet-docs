@@ -1,0 +1,651 @@
+#logo_light_mode {
+    display: var(--md-footer-logo-light-mode);
+}
+
+#logo_dark_mode {
+    display: var(--md-footer-logo-dark-mode);
+}
+
+[data-md-color-scheme="default"] {
+    --md-footer-logo-dark-mode: none;
+    --md-footer-logo-light-mode: block;
+}
+
+[data-md-color-scheme="slate"] {
+    --md-footer-logo-dark-mode: block;
+    --md-footer-logo-light-mode: none;
+}
+
+/* Fix all containers - remove transforms/filters that break position:fixed */
+.md-container,
+.md-header,
+.md-header__inner,
+.md-main {
+    overflow: visible !important;
+    contain: none !important;
+    transform: none !important;
+    filter: none !important;
+    perspective: none !important;
+    will-change: auto !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.md-header[data-md-state="shadow"] {
+    transform: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: 0 0 0.2rem rgba(0,0,0,.1), 0 0.2rem 0.4rem rgba(0,0,0,.2);
+}
+
+.md-tabs {
+    overflow: visible !important;
+    contain: none !important;
+    transform: none !important;
+    filter: none !important;
+    perspective: none !important;
+    will-change: auto !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.md-tabs__inner {
+    overflow: visible !important;
+    transform: none !important;
+    contain: none !important;
+}
+
+.md-tabs__list {
+    overflow: visible !important;
+    transform: none !important;
+    contain: none !important;
+}
+
+.md-tabs__item {
+    overflow: visible !important;
+    transform: none !important;
+    contain: none !important;
+}
+
+/* Dropdown menu in tabs */
+.md-tabs__dropdown {
+    position: static !important;
+    contain: none !important;
+}
+
+.md-tabs__dropdown-toggle {
+    display: flex;
+    align-items: baseline;
+    gap: 0.15rem;
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 400;
+    white-space: nowrap;
+    /* Match .md-tabs__link exactly */
+    padding: 0;
+    margin-top: 0.85rem;
+    opacity: 0.7;
+    transition: opacity 250ms;
+}
+
+.md-tabs__dropdown-toggle:hover,
+.md-tabs__dropdown-toggle:focus {
+    opacity: 1;
+    outline: none;
+}
+
+.md-tabs__dropdown-icon {
+    width: 0.7rem;
+    height: 0.7rem;
+    flex-shrink: 0;
+    pointer-events: none;
+    align-self: center;
+    margin-top: 0.1rem;
+}
+
+/* Dropdown menu - styled as panel extending from tabs bar */
+.md-tabs__dropdown-menu {
+    display: none;
+    min-width: 200px;
+    max-height: 70vh;
+    overflow-y: auto;
+    list-style: none;
+    margin: 0;
+    padding: 0.4rem 0;
+    border-radius: 0 0 0.2rem 0.2rem;
+}
+
+/* Light mode dropdown styling */
+[data-md-color-scheme="default"] .md-tabs__dropdown-menu {
+    background: var(--md-primary-fg-color);
+    border: none;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode dropdown styling */
+[data-md-color-scheme="slate"] .md-tabs__dropdown-menu {
+    background: var(--md-primary-fg-color);
+    border: none;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.3);
+}
+
+
+.md-tabs__dropdown-item {
+    margin: 0;
+    padding: 0;
+}
+
+.md-tabs__dropdown-link {
+    display: block;
+    padding: 0.4rem 1rem;
+    text-decoration: none;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    transition: background-color 200ms, opacity 200ms;
+}
+
+/* Light mode link styling */
+[data-md-color-scheme="default"] .md-tabs__dropdown-link {
+    color: var(--md-default-fg-color);
+    opacity: 0.7;
+}
+
+[data-md-color-scheme="default"] .md-tabs__dropdown-link:hover {
+    opacity: 1;
+}
+
+/* Dark mode link styling */
+[data-md-color-scheme="slate"] .md-tabs__dropdown-link {
+    color: var(--md-primary-bg-color);
+    opacity: 0.7;
+}
+
+[data-md-color-scheme="slate"] .md-tabs__dropdown-link:hover {
+    opacity: 1;
+}
+
+/* Dropdown sub-headings - non-clickable labels */
+.md-tabs__dropdown-heading {
+    padding: 0.5rem 1rem 0.2rem;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    list-style: none;
+    pointer-events: none;
+}
+
+.md-tabs__dropdown-heading:first-child {
+    padding-top: 0.2rem;
+}
+
+[data-md-color-scheme="default"] .md-tabs__dropdown-heading {
+    color: var(--md-default-fg-color);
+    opacity: 0.5;
+}
+
+[data-md-color-scheme="slate"] .md-tabs__dropdown-heading {
+    color: var(--md-primary-bg-color);
+    opacity: 0.5;
+}
+
+/* Dropdown horizontal rule dividers */
+.md-tabs__dropdown-divider {
+    margin: 0.3rem 1rem;
+    border: 0;
+    height: 1px;
+    list-style: none;
+}
+
+[data-md-color-scheme="default"] .md-tabs__dropdown-divider {
+    background: var(--md-default-fg-color);
+    opacity: 0.15;
+}
+
+[data-md-color-scheme="slate"] .md-tabs__dropdown-divider {
+    background: var(--md-primary-bg-color);
+    opacity: 0.2;
+}
+
+/* ==========================================================================
+   Version Selector Styles
+   ========================================================================== */
+
+.md-version-selector {
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-version-selector__inner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.md-version-selector__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--md-default-fg-color--light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.md-version-selector__dropdown {
+    position: relative;
+}
+
+.md-version-selector__toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.35rem 0.75rem;
+    background: var(--md-code-bg-color);
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 0.25rem;
+    color: var(--md-default-fg-color);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 200ms, background-color 200ms;
+}
+
+.md-version-selector__toggle:hover,
+.md-version-selector__toggle:focus {
+    border-color: var(--md-accent-fg-color);
+    outline: none;
+}
+
+.md-version-selector.is-open .md-version-selector__toggle {
+    border-color: var(--md-accent-fg-color);
+    background: var(--md-accent-fg-color--transparent);
+}
+
+.md-version-selector__current {
+    white-space: nowrap;
+}
+
+.md-version-selector__icon {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    transition: transform 200ms;
+}
+
+.md-version-selector.is-open .md-version-selector__icon {
+    transform: rotate(180deg);
+}
+
+.md-version-selector__menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    width: max-content;
+    min-width: 180px;
+    max-height: 300px;
+    overflow-y: auto;
+    margin: 0.25rem 0 0 0;
+    padding: 0.25rem 0;
+    list-style: none;
+    background: var(--md-default-bg-color);
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.md-version-selector__menu,
+.md-version-selector__menu li {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+[data-md-color-scheme="slate"] .md-version-selector__menu {
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+.md-version-selector__item {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.md-version-selector__item--divider {
+    height: 1px;
+    margin: 0.25rem 0.75rem;
+    padding: 0;
+    background: var(--md-default-fg-color--lightest);
+    list-style: none;
+}
+
+.md-version-selector__link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    color: var(--md-default-fg-color);
+    text-decoration: none;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    transition: background-color 200ms;
+}
+
+.md-version-selector__link:hover {
+    background: var(--md-accent-fg-color--transparent);
+}
+
+.md-version-selector__item--active .md-version-selector__link {
+    font-weight: 600;
+    color: var(--md-accent-fg-color);
+}
+
+.md-version-selector__badge {
+    display: inline-block;
+    flex-shrink: 0;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    color: var(--md-primary-bg-color);
+    background: var(--md-accent-fg-color);
+    border-radius: 0.2rem;
+}
+
+.md-version-selector__link--development {
+    font-style: italic;
+    color: var(--md-default-fg-color--light);
+}
+
+.md-version-selector__badge--dev {
+    background: var(--md-code-hl-special-color, #ff9100);
+    color: #fff;
+}
+
+/* ==========================================================================
+   Third-Party Documentation Notice
+   ========================================================================== */
+
+.md-third-party-notice {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    color: var(--md-default-fg-color--light);
+    background: var(--md-code-bg-color);
+    border-left: 3px solid var(--md-default-fg-color--lightest);
+    border-radius: 0.15rem;
+}
+
+.md-third-party-notice__icon {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   pgEdge Labs Notice
+   ========================================================================== */
+
+.md-labs-notice {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    color: var(--md-default-fg-color--light);
+    background: rgba(35, 139, 180, 0.08);
+    border-left: 3px solid #238BB4;
+    border-radius: 0.15rem;
+}
+
+.md-labs-notice__icon {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+[data-md-color-scheme="slate"] .md-labs-notice {
+    background: rgba(35, 139, 180, 0.15);
+}
+
+/* ==========================================================================
+   Discord Button Styles
+   ========================================================================== */
+
+/* Header source container - ensure horizontal layout and no clipping */
+.md-header__inner {
+    overflow: visible !important;
+}
+
+.md-header__source {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    overflow: visible !important;
+    max-width: none !important;
+    width: auto !important;
+    flex-shrink: 0 !important;
+}
+
+/* Ensure GitHub button doesn't get clipped */
+.md-header__source .md-source {
+    overflow: visible !important;
+    max-width: none !important;
+}
+
+.md-source__repository {
+    overflow: visible !important;
+    max-width: none !important;
+}
+
+.md-source__facts {
+    overflow: visible !important;
+}
+
+/* Discord button in header - icon only, positioned left of GitHub */
+.md-source--discord {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin-right: 0.2rem;
+    background-color: transparent;
+    transition: opacity 250ms;
+    flex-shrink: 0;
+}
+
+.md-source--discord:hover {
+    opacity: 0.7;
+}
+
+/* Discord icon styling - match GitHub icon size */
+.md-source--discord .md-source__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0.6rem;
+}
+
+.md-source--discord .md-source__icon svg {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Light mode - Discord button */
+[data-md-color-scheme="default"] .md-source--discord .md-source__icon svg {
+    fill: var(--md-default-fg-color);
+}
+
+/* Dark mode - Discord button */
+[data-md-color-scheme="slate"] .md-source--discord .md-source__icon svg {
+    fill: var(--md-primary-bg-color);
+}
+
+/* ==========================================================================
+   Pagefind Search Modal
+   ========================================================================== */
+
+/* Overlay backdrop */
+.pagefind-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 10vh;
+}
+
+.pagefind-modal--active {
+    display: flex;
+}
+
+/* Modal container - overflow:hidden enforces rounded corner clipping */
+.pagefind-modal-container {
+    position: relative;
+    background: var(--md-default-bg-color);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 44rem;
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    --pagefind-ui-scale: 0.9;
+    --pagefind-ui-primary: #4051b5;
+    --pagefind-ui-text: #333;
+    --pagefind-ui-background: #fff;
+    --pagefind-ui-border: #e0e0e0;
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 0.3rem;
+    --pagefind-ui-font: var(--md-text-font-family, inherit);
+}
+
+/* Header bar with close button - in document flow, not absolute */
+.pagefind-modal-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem 0.75rem 0;
+    flex-shrink: 0;
+}
+
+.pagefind-modal-close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--md-default-fg-color--light);
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagefind-modal-close:hover {
+    color: var(--md-default-fg-color);
+    background: var(--md-default-fg-color--lightest);
+}
+
+/* Scrollable search content area */
+#pagefind-container {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 0 1.5rem 1.5rem;
+}
+
+.pagefind-modal-error {
+    color: var(--md-default-fg-color--light);
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.8rem;
+}
+
+.pagefind-modal-error code {
+    background: var(--md-code-bg-color);
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.2rem;
+    font-size: 0.75rem;
+}
+
+/* Result message count */
+.pagefind-ui__drawer .pagefind-ui__message {
+    font-size: 0.75rem;
+    color: var(--md-default-fg-color--light);
+}
+
+/* Style result links to use theme accent */
+#pagefind-container .pagefind-ui__result-link {
+    color: var(--md-typeset-a-color, var(--md-primary-fg-color)) !important;
+}
+
+#pagefind-container .pagefind-ui__result-link:hover {
+    text-decoration: underline;
+}
+
+/* Product/version badge on search results.
+   Uses #pagefind-container prefix + !important to beat pagefind-ui.css
+   which loads dynamically after our stylesheet. */
+#pagefind-container .pagefind-result-context {
+    display: inline-block !important;
+    font-size: 0.65rem !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    padding: 0.15rem 0.45rem !important;
+    border-radius: 0.2rem !important;
+    margin-left: 0.5rem !important;
+    vertical-align: middle !important;
+    background: #4051b5 !important;
+    color: #fff !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+    letter-spacing: normal !important;
+}
+
+/* Dark mode */
+[data-md-color-scheme="slate"] .pagefind-modal-overlay {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+[data-md-color-scheme="slate"] .pagefind-modal-container {
+    --pagefind-ui-primary: #7b8cde;
+    --pagefind-ui-text: #ccc;
+    --pagefind-ui-background: #1e1e1e;
+    --pagefind-ui-border: #444;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+[data-md-color-scheme="slate"] #pagefind-container .pagefind-ui__result-link {
+    color: #7b8cde !important;
+}
+
+[data-md-color-scheme="slate"] #pagefind-container .pagefind-result-context {
+    background: #7b8cde !important;
+    color: #1e1e1e !important;
+}
+
+/* Let wide reference tables keep their natural column widths and
+   scroll horizontally instead of wrapping every cell's content. */
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th {
+    white-space: nowrap;
+}
+

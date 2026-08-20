@@ -1,0 +1,52 @@
+site_name: pgEdge Starfleet (Preview)
+use_directory_urls: false
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+
+theme:
+  name: material
+  favicon: img/favicon.ico
+  logo_dark_mode: 'img/logo-dark.png'
+  logo_light_mode: 'img/logo-light.png'
+
+  features:
+    - navigation.top
+    - toc.follow
+    - content.code.copy
+
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+nav:
+  - pgEdge Starfleet Managed Postgres:
+    - Overview: index.md
+  - Deploying a Managed Database: managed/creating_managed.md
+  - Using the Database Console:
+    - managed/using/index.md
+    - Services:
+      - managed/using/services/index.md
+      - MCP Server: managed/using/services/mcp.md
+      - RAG Server: managed/using/services/rag.md
+    - Metrics: managed/using/metrics.md
+    - Logs: managed/using/logs.md
+    - Backups: managed/using/backups.md
+  - Connecting to a pgEdge Starfleet Postgres Database: connecting.md
