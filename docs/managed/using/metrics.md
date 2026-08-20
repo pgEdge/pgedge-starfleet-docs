@@ -4,12 +4,6 @@ The `Metrics` pane on your database's management page displays live graphs of
 current database activity, including `Transactions` (transactions per second)
 and `Tuples returned` (rows returned per second).
 
-![The Metrics pane](../../images/managed_metrics.png)
-
-Select `Open metrics` (in the upper-right corner of the `Metrics` pane), or
-select `Metrics` (below the database name) from the navigation pane, to open
-the full `Metrics` page.
-
 ![The Metrics page](../../images/managed_metrics_all.png)
 
 The `Metrics` page displays detailed charts of your database's resource,
