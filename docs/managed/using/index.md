@@ -1,6 +1,6 @@
 # Using the Database Console
 
-When you create a pgEdge managed PostgreSQL database, the database name is
+When you create a pgEdge Starfleet PostgreSQL database, the database name is
 displayed in the tree control on the left side of the console when the
 deployment completes.
 
@@ -8,11 +8,6 @@ deployment completes.
 
 Select the database name to navigate to the database management page of the
 console.
-
-!!! hint
-
-    If you're using a free trial, you can use the link at the top of the
-    console to provide billing information for your database.
 
 
 ## The Database Header
@@ -74,8 +69,9 @@ For detailed information about:
 The `AI Services` pane displays icons you can use to deploy available services
 on your Postgres database, including an MCP server and a RAG server. Select
 `Enable MCP` or `Enable RAG` to add a service; once a service is deployed,
-select its `Details` button to view connection details and manage it. For
-detailed information about enabling, configuring, and connecting to these
+select its `Details` button to view connection details and manage it. 
+
+For detailed information about enabling, configuring, and connecting to these
 services, see [Services](services/index.md).
 
 
@@ -90,12 +86,6 @@ backup (longer-term, resilient storage).
 To review a complete list of available backups, select `View All` from the
 right side of the console, across from the `Backups` label.
 
-!!! hint
-
-    You can also access the `Backups` page for your database by selecting
-    `Backups` (below the database name) from the navigation pane on the left
-    side of the console.
-
 Each backup entry displays:
 
 * The backup ID.
@@ -105,8 +95,9 @@ Each backup entry displays:
 
 Select the `Restore` button, to the right of a backup to restore the selected
 backup; select `View all` (in the upper-right corner of the pane) to see the
-complete list of backups. For detailed information about the `Backups` page,
-see [Backups](backups.md).
+complete list of backups. 
+
+For detailed information about the `Backups` page, see [Backups](backups.md).
 
 
 ## The Metrics Pane
@@ -120,14 +111,7 @@ per second).
 Select `Open metrics` (in the upper-right corner of the `Metrics` pane) to see
 detailed metrics for your database.
 
-!!! hint
-
-    You can also access the `Metrics` page for your database by selecting
-    `Metrics` (below the database name) from the navigation pane on the left
-    side of the console.
-
-For detailed information about the `Metrics` page, see
-[Metrics](metrics.md).
+For detailed information about the `Metrics` page, see [Metrics](metrics.md).
 
 
 ## The Logs Pane
@@ -139,13 +123,6 @@ each entry shows the timestamp, log level (for example, `LOG`), and message.
 
 Select `View logs` (in the upper-right corner of the pane) to see the complete,
 searchable log for your database.
-
-!!! hint
-
-    You can also access the `Logs` page for your database by selecting
-    `Logs` (below the database name) from the navigation pane on the left
-    side of the console.
-
 
 For detailed information about the `Logs` page, see [Logs](logs.md).
 
@@ -177,7 +154,7 @@ change the size of your database.
 
 ### Details
 
-The `Details` pane displays identifying and configuration information for your
+The `Details` pane displays identifying and configuration information about your
 database.
 
 | Field | Description |
