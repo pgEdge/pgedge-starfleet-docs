@@ -4,14 +4,6 @@ The `Logs` pane on your database's management page displays the most recent
 entries from your database's log file; each entry shows the timestamp, log
 level (for example, `LOG`), and message.
 
-![The Logs pane](../../images/managed_logs.png)
-
-Select `View logs` (in the upper-right corner of the pane), or select `Logs`
-(below the database name) from the navigation pane, to open the full `Logs`
-page.
-
-![The Logs page](../../images/managed_logs_all.png)
-
 The `Logs` page displays the complete Postgres engine log for your database,
 live-updated as new entries are written.
 
@@ -24,3 +16,6 @@ live-updated as new entries are written.
 * Select `fatal` or `log` to filter entries by severity level.
 * Use the copy and download icons (in the upper-right corner of the log table)
   to copy or download the loaded log lines.
+
+![The Logs page](../../images/managed_logs_all.png)
+
