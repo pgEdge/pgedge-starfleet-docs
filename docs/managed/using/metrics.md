@@ -4,7 +4,7 @@ The `Metrics` pane on your database's management page displays live graphs of
 current database activity, including `Transactions` (transactions per second)
 and `Tuples returned` (rows returned per second).
 
-![The Metrics page](../../images/managed_metrics_all.png)
+![The Metrics page](../../images/sf_metrics_all.png)
 
 The `Metrics` page displays detailed charts of your database's resource,
 throughput, and storage activity. Select any chart to expand it for a closer
@@ -12,7 +12,7 @@ look.
 
 ## The Metrics Page Header
 
-![The Metrics page header](../../images/managed_metrics_header.png)
+![The Metrics page header](../../images/sf_metrics_header.png)
 
 The header displays the name and status of the current database, followed by
 controls for the charts displayed below:

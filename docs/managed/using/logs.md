@@ -17,5 +17,5 @@ live-updated as new entries are written.
 * Use the copy and download icons (in the upper-right corner of the log table)
   to copy or download the loaded log lines.
 
-![The Logs page](../../images/managed_logs_all.png)
+![The Logs page](../../images/sf_logs_all.png)
 

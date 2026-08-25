@@ -3,7 +3,7 @@
 The `AI Services` pane on your database's management page displays icons you
 can use to deploy available services on your database.
 
-![The AI Services pane](../../../images/managed_services.png)
+![The AI Services pane](../../../images/sf_services.png)
 
 Select `Enable MCP` to deploy the server; once the service is deployed, select
 the `Details` button to view details and manage it.
@@ -24,7 +24,7 @@ into actual operations against your database.
 To enable an MCP server, select `Enable MCP` on the `AI Services` pane of
 your database's management page.
 
-![Enabling the MCP server](../../../images/managed_enable_mcp.png)
+![Enabling the MCP server](../../../images/sf_enable_mcp.png)
 
 When the `Enable MCP server` popup opens, select the features you wish to
 enable:
@@ -43,7 +43,7 @@ enable:
 When you're finished, select the `Enable MCP server` button to deploy the MCP
 server.
 
-![The deployed service](../../../images/managed_enable_mcp_deployed.png)
+![The deployed service](../../../images/sf_enable_mcp_deployed.png)
 
 Once enabled, the MCP Server pane updates to display:
 
@@ -52,7 +52,7 @@ Once enabled, the MCP Server pane updates to display:
   information about connecting to MCP Clients.
 - A `Disable` button that you can use to stop the MCP server.
 
-![Disabling the MCP Server](../../../images/managed_mcp_confirm_disable.png)
+![Disabling the MCP Server](../../../images/sf_mcp_confirm_disable.png)
 
 Select the `Disable MCP Server` button to stop the MCP server.
 
