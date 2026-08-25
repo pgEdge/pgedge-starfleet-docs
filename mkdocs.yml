@@ -16,6 +16,7 @@ theme:
 
   features:
     - navigation.top
+    - navigation.indexes
     - toc.follow
     - content.code.copy
 
@@ -42,11 +43,11 @@ nav:
   - Deploying a Managed Database: managed/creating_managed.md
   - Using the Database Console:
     - managed/using/index.md
-    - Services:
-      - managed/using/services/index.md
+    - Serving up AI Content:
       - MCP Server: managed/using/services/mcp.md
       - RAG Server: managed/using/services/rag.md
-    - Metrics: managed/using/metrics.md
-    - Logs: managed/using/logs.md
-    - Backups: managed/using/backups.md
+    - Monitoring System Metrics: managed/using/metrics.md
+    - Reviewing the Log Files: managed/using/logs.md
+    - Restoring from Backup: managed/using/backups.md
+  - Accessing Management Options with the Actions Menu: managed/using/actions.md
   - Connecting to a pgEdge Starfleet Postgres Database: connecting.md

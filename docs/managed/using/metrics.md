@@ -1,4 +1,4 @@
-# Metrics
+# Monitoring System Metrics
 
 The `Metrics` pane on your database's management page displays live graphs of
 current database activity, including `Transactions` (transactions per second)
@@ -7,10 +7,30 @@ and `Tuples returned` (rows returned per second).
 ![The Metrics page](../../images/managed_metrics_all.png)
 
 The `Metrics` page displays detailed charts of your database's resource,
-throughput, and storage activity. Use the time-range buttons (`15m`, `1h`,
-`6h`, `24h`, `7d`, or `Custom`) at the top of the page to change the period
-displayed; toggle `Live` to enable or disable automatic updates. Select any
-chart to expand it for a closer look.
+throughput, and storage activity. Select any chart to expand it for a closer
+look.
+
+## The Metrics Page Header
+
+![The Metrics page header](../../images/managed_metrics_header.png)
+
+The header displays the name and status of the current database, followed by
+controls for the charts displayed below:
+
+* Use the time-range buttons (`15m`, `1h`, `6h`, `24h`, `7d`, or `Custom`) to
+  change the period displayed.
+* Use the row of tabs below the time-range buttons to display metrics for
+  `All` nodes in the database, or select an individual node's ID to display
+  metrics for that node only.
+* Toggle `Live` to enable or disable automatic updates; when `Live` is
+  enabled, the header displays how long ago the charts were last updated.
+  Select the refresh icon to update the charts immediately.
+
+Below the header, a row of tiles summarizes the current `CPU`, `Memory`,
+`Disk used`, `Active connections`, and `Transactions` values for the selected
+time range, each with a small trend graph. If the database was unreachable for
+any samples in the selected time range, a warning banner reports how many
+samples were affected and when the database was most recently unavailable.
 
 ## Resource Charts - Reference
 

@@ -1,5 +1,13 @@
 # RAG Server
 
+The `AI Services` pane on your database's management page displays icons you
+can use to deploy available services on your database.
+
+![The AI Services pane](../../../images/managed_services.png)
+
+Select `Enable RAG` to deploy the server; once the service is deployed, select
+the `Details` button to view details and manage it.
+
 The
 [pgEdge Postgres RAG server](https://docs.pgedge.com/pgedge-rag-server/v1-0-0/)
 is a simple API server used to perform Retrieval-Augmented Generation (RAG) of
