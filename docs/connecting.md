@@ -20,10 +20,31 @@ navigation panel or navigate to the database's main page in the console. Below
 the header of the database page, the console displays the `Connect` pane; the
 pane displays:
 
-* an `Admin` tab with credentials that you can use to connect to the database
-  as the `admin` user (a database superuser)
-* an `Application` tab with credentials that you can use to connect a client
-  application to your database.
+* an `Admin` tab with credentials for the `admin` user
+* an `Application` tab with credentials for the `app` user
+
+Each tab displays a `Connection string`, a ready-to-use `psql command`, and the
+`Database name`, `Domain`, `User`, and `Password` values used to build them.
+
+The two users have different permissions on the database:
+
+| Capability | `admin` | `app` |
+|------------|:-------:|:-----:|
+| Create tables/objects in `public` | No | Yes |
+| Read all data | Yes | Yes |
+| Insert, update, delete data | Yes | Yes |
+| Create databases | Yes | No |
+| Create roles | Yes | No |
+| View active sessions | Yes | No |
+| Terminate backends | Yes | No |
+| Run maintenance (vacuum, analyze) | Yes | No |
+| Manage subscriptions | Yes | No |
+
+!!! note
+
+    To create tables or other schema objects, connect using the `Application`
+    tab credentials (the `app` user). The `admin` user can read and write
+    existing data, but cannot create new objects.
 
 ![Connecting to your database](images/managed_connecting.png)
 
@@ -51,12 +72,21 @@ The connection string is made up of the following elements:
 * `sslmode=require` - a parameter that requires an SSL connection.
 
 Select the copy icon next to the connection string to copy it, then paste it
-directly into psql at the command line to connect. Below the connection string,
-the `User` and `Password` fields display the individual credentials used in the
-string; select the copy icon next to either field to copy just that value, or
-select the eye icon to reveal the password. Select `Rotate credentials` (in the
-upper-right corner of the pane) to generate a new password for the selected
-tab's user.
+directly into psql at the command line to connect.
+
+Alternatively, select the copy icon next to the `psql command` field to copy a
+ready-to-use command line, for example:
+
+`PGSSLMODE=require psql -U admin -h noticeably-guiding-kangaroo.use2.staging.pgedge.cloud -p 5432 -d acctg`
+
+Paste the copied command directly into your terminal to connect; the
+`PGSSLMODE=require` environment variable enforces the required SSL connection.
+
+Below the `psql command` field, the pane displays the `Database name`,
+`Domain`, `User`, and `Password` values individually; select the copy icon next
+to any field to copy just that value, or select the eye icon next to `Password`
+to reveal it. Select `Rotate credentials` (in the upper-right corner of the
+pane) to generate a new password for the selected tab's user.
 
 If you start psql with a graphical prompt or icon (rather than the command
 line) you can use the individual values from the connection string to
@@ -147,8 +177,10 @@ on the `Database` dialog:
 
 * Provide the name of your database in the `Maintenance database` field.
 
-* Replace the default `Username` with `admin` when connecting for the first
-  time.
+* Replace the default `Username` with `app` when connecting for the first
+  time; the `app` user owns the database and can create tables and other
+  objects. Use the `admin` user instead if you only need read/write access to
+  existing data.
 
 * Enter the password associated with the user in the `Password` field.
 

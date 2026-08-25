@@ -27,30 +27,53 @@ The database header displays:
 * The amount of storage allocated to the database.
 * The number of connections allocated for the database.
 
+
+## The Actions Context Menu
+
 The `Actions` drop-down (on the right-hand side of the header) offers
-management options for your database.
+management options for your database, including editing the display name,
+upgrading the size tier, and enabling deletion protection.
 
 ![The Actions menu](../../images/managed_actions_menu.png)
 
-To change the name of your database, select `Edit Display Name` from the
-`Actions` menu. When the `Change Display Name` popup opens, enter the new
-database name in the `Display Name` field and select `Apply`.
-
-![Changing the database name](../../images/managed_edit_display_name.png)
-
-The `Enable deletion protection` option in the `Actions` drop-down works like a
-toggle; select it once to enable protection, and a confirmation popup in the
-lower-right corner of the window confirms that protection is enabled. To
-disable deletion protection, select `Disable deletion protection` from the
-menu.
+For detailed information about options available through the `Actions` menu,
+see [Accessing Management Options with the Actions Menu](actions.md).
 
 
-## Connecting to your Database
+## The Connect Pane
 
 Below the header, the console displays the `Connect` pane; the pane includes an
-`Admin` tab with credentials that you can use to connect to the database as the
-`admin` user (a database superuser), and an `Application` tab with credentials
-that you can use to connect a client application to your database.
+`Admin` tab with credentials for the `admin` user, and an `Application` tab
+with credentials for the `app` user. Each tab displays:
+
+* A ready-to-use `Connection string`.
+* A ready-to-use `psql command`; the command opens a psql session for the
+  selected `User` (`Admin` or `Application`) when invoked on the command line
+  of a host with an installed psql client.
+* The `Database name` and `Domain` (host name) of the database.
+* The `User` connecting to the database; select `Rotate credentials` to
+  generate a new password for the user.
+* The `Password` for the user; select the eye icon to reveal it.
+
+Select the copy icon next to any field to copy its value.
+
+The two users have different permissions on the database:
+
+| Capability | `admin` | `app` |
+|------------|:-------:|:-----:|
+| Create tables/objects in `public` | No | Yes |
+| Read all data | Yes | Yes |
+| Insert, update, delete data | Yes | Yes |
+| Create databases | Yes | No |
+| Create roles | Yes | No |
+| View active sessions | Yes | No |
+| Terminate backends | Yes | No |
+| Run maintenance (vacuum, analyze) | Yes | No |
+| Manage subscriptions | Yes | No |
+
+To create tables or other schema objects, connect using the `Application`
+tab credentials (the `app` user); the `admin` user can read and write existing
+data, but cannot create new objects.
 
 ![Connecting to your database](../../images/managed_connecting.png)
 
@@ -72,7 +95,7 @@ on your Postgres database, including an MCP server and a RAG server. Select
 select its `Details` button to view connection details and manage it. 
 
 For detailed information about enabling, configuring, and connecting to these
-services, see [Services](services/index.md).
+services, see [MCP Server](services/mcp.md) or [RAG Server](services/rag.md).
 
 
 ## The Backups Pane
@@ -97,7 +120,8 @@ Select the `Restore` button, to the right of a backup to restore the selected
 backup; select `View all` (in the upper-right corner of the pane) to see the
 complete list of backups. 
 
-For detailed information about the `Backups` page, see [Backups](backups.md).
+For detailed information about the `Backups` page, see
+[Restoring from Backup](backups.md).
 
 
 ## The Metrics Pane
@@ -111,7 +135,8 @@ per second).
 Select `Open metrics` (in the upper-right corner of the `Metrics` pane) to see
 detailed metrics for your database.
 
-For detailed information about the `Metrics` page, see [Metrics](metrics.md).
+For detailed information about the `Metrics` page, see
+[Monitoring System Metrics](metrics.md).
 
 
 ## The Logs Pane
@@ -124,7 +149,8 @@ each entry shows the timestamp, log level (for example, `LOG`), and message.
 Select `View logs` (in the upper-right corner of the pane) to see the complete,
 searchable log for your database.
 
-For detailed information about the `Logs` page, see [Logs](logs.md).
+For detailed information about the `Logs` page, see
+[Reviewing the Log Files](logs.md).
 
 
 ## Read Replicas and Branching

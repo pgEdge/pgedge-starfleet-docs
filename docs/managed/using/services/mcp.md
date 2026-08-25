@@ -1,5 +1,13 @@
 # MCP Server
 
+The `AI Services` pane on your database's management page displays icons you
+can use to deploy available services on your database.
+
+![The AI Services pane](../../../images/managed_services.png)
+
+Select `Enable MCP` to deploy the server; once the service is deployed, select
+the `Details` button to view details and manage it.
+
 The
 [pgEdge Postgres MCP server](https://docs.pgedge.com/pgedge-postgres-mcp-server/v1-0-0/)
 acts as a gateway to your Postgres database; the server translates requests

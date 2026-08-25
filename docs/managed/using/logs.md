@@ -1,4 +1,4 @@
-# Logs
+# Reviewing the Log Files
 
 The `Logs` pane on your database's management page displays the most recent
 entries from your database's log file; each entry shows the timestamp, log
