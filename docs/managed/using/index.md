@@ -4,7 +4,7 @@ When you create a pgEdge Starfleet PostgreSQL database, the database name is
 displayed in the tree control on the left side of the console when the
 deployment completes.
 
-![Displaying the currently deployed databases](../../images/managed_tree_control.png)
+![Displaying the currently deployed databases](../../images/sf_tree_control.png)
 
 Select the database name to navigate to the database management page of the
 console.
@@ -12,7 +12,7 @@ console.
 
 ## The Database Header
 
-![Database Header](../../images/managed_database_header.png)
+![Database Header](../../images/sf_database_header.png)
 
 The database header displays:
 
@@ -34,7 +34,7 @@ The `Actions` drop-down (on the right-hand side of the header) offers
 management options for your database, including editing the display name,
 upgrading the size tier, and enabling deletion protection.
 
-![The Actions menu](../../images/managed_actions_menu.png)
+![The Actions menu](../../images/sf_actions_menu.png)
 
 For detailed information about options available through the `Actions` menu,
 see [Accessing Management Options with the Actions Menu](actions.md).
@@ -75,7 +75,7 @@ To create tables or other schema objects, connect using the `Application`
 tab credentials (the `app` user); the `admin` user can read and write existing
 data, but cannot create new objects.
 
-![Connecting to your database](../../images/managed_connecting.png)
+![Connecting to your database](../../images/sf_connecting.png)
 
 For detailed information about:
 
@@ -87,7 +87,7 @@ For detailed information about:
 
 ## The AI Services Pane
 
-![The AI Services pane](../../images/managed_services.png)
+![The AI Services pane](../../images/sf_services.png)
 
 The `AI Services` pane displays icons you can use to deploy available services
 on your Postgres database, including an MCP server and a RAG server. Select
@@ -104,7 +104,7 @@ The `Backups` pane displays a list of the backups taken of your database; each
 backup is either a `hot` backup (fast, short-term storage) or a `durable`
 backup (longer-term, resilient storage).
 
-![The Backups pane](../../images/managed_backups.png)
+![The Backups pane](../../images/sf_backups.png)
 
 To review a complete list of available backups, select `View All` from the
 right side of the console, across from the `Backups` label.
@@ -130,7 +130,7 @@ The `Metrics` pane displays live graphs of current database activity, including
 `Transactions` (transactions per second) and `Tuples returned` (rows returned
 per second).
 
-![The Metrics pane](../../images/managed_metrics.png)
+![The Metrics pane](../../images/sf_metrics.png)
 
 Select `Open metrics` (in the upper-right corner of the `Metrics` pane) to see
 detailed metrics for your database.
@@ -144,7 +144,7 @@ For detailed information about the `Metrics` page, see
 The `Logs` pane displays the most recent entries from your database's log file;
 each entry shows the timestamp, log level (for example, `LOG`), and message.
 
-![The Logs pane](../../images/managed_logs.png)
+![The Logs pane](../../images/sf_logs.png)
 
 Select `View logs` (in the upper-right corner of the pane) to see the complete,
 searchable log for your database.
@@ -157,7 +157,7 @@ For detailed information about the `Logs` page, see
 
 The `Primary` badge identifies the current database as a primary node.
 
-![Read replicas and branching](../../images/managed_read_replicas_branching.png)
+![Read replicas and branching](../../images/sf_read_replicas_branching.png)
 
 The `Read replicas & branching` pane previews upcoming functionality for
 scaling read traffic with read replicas and spinning up copy-on-write branches
@@ -170,7 +170,7 @@ disabled until it becomes available.
 The `Plan & billing` and `Details` panes display the size tier, billing status,
 and configuration of your database.
 
-![Summary panes](../../images/managed_summary.png)
+![Summary panes](../../images/sf_summary.png)
 
 ### Plan and Billing
 

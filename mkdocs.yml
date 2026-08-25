@@ -51,3 +51,4 @@ nav:
     - Restoring from Backup: managed/using/backups.md
   - Accessing Management Options with the Actions Menu: managed/using/actions.md
   - Connecting to a pgEdge Starfleet Postgres Database: connecting.md
+  - Loading Data into Your pgEdge Starfleet Database: loading_data.md

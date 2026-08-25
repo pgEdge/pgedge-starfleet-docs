@@ -3,7 +3,7 @@
 The `AI Services` pane on your database's management page displays icons you
 can use to deploy available services on your database.
 
-![The AI Services pane](../../../images/managed_services.png)
+![The AI Services pane](../../../images/sf_services.png)
 
 Select `Enable RAG` to deploy the server; once the service is deployed, select
 the `Details` button to view details and manage it.
@@ -17,11 +17,11 @@ patterns.
 
 ## Enabling the RAG Server
 
-![Enabling the RAG server](../../../images/managed_enable_rag_icon.png)
+![Enabling the RAG server](../../../images/sf_enable_rag_icon.png)
 
 To enable a RAG server, select the `Enable RAG` icon in the RAG Server pane.
 
-![Provide details about the RAG server](../../../images/managed_rag_details.png)
+![Provide details about the RAG server](../../../images/sf_rag_details.png)
 
 When the `Enable RAG server` popup opens, provide details about the RAG server
 deployment:
@@ -54,7 +54,7 @@ deployment:
 Select `+Add Pipeline` to expand the dialog and define one or more pipelines
 that will be used by the RAG server.
 
-![Provide details about the RAG server](../../../images/managed_rag_pipeline.png)
+![Provide details about the RAG server](../../../images/sf_rag_pipeline.png)
 
 For each pipeline, provide:
 
@@ -73,7 +73,7 @@ override specific fields while still inheriting the others. Use the `Override
 Default Values` toggle to expand the dialog and provide the pipeline-specific
 values you want to override:
 
-![The Override Default Values dialog](../../../images/managed_rag_override.png)
+![The Override Default Values dialog](../../../images/sf_rag_override.png)
 
 Provide the following details:
 
@@ -98,7 +98,7 @@ Provide the following details:
 Use the `Advanced Settings` toggle to expand the dialog and configure hybrid
 search, vector weighting, and a custom system prompt for the pipeline:
 
-![The Advanced Settings dialog](../../../images/managed_rag_advanced.png)
+![The Advanced Settings dialog](../../../images/sf_rag_advanced.png)
 
 Provide the following details:
 
@@ -116,7 +116,7 @@ Provide the following details:
 When you're finished, select the `Enable RAG server` button to deploy the RAG
 server.
 
-![The deployed service](../../../images/managed_enable_rag_deployed.png)
+![The deployed service](../../../images/sf_enable_rag_deployed.png)
 
 Once enabled, the RAG Server pane updates to display:
 
@@ -131,12 +131,12 @@ Once enabled, the RAG Server pane updates to display:
     page; use the link to `Services` located under the database name in the
     navigation pane to access the page.
 
-![RAG Server information is now displayed on the Services dialog](../../../images/managed_rag_services.png)
+![RAG Server information is now displayed on the Services dialog](../../../images/sf_rag_services.png)
 
 You can disable the RAG server from either the Services page or the RAG Server
 pane by selecting the `Disable` button.
 
-![Disabling the RAG Server](../../../images/managed_rag_confirm_disable.png)
+![Disabling the RAG Server](../../../images/sf_rag_confirm_disable.png)
 
 Select the `Disable RAG Server` button to stop the RAG server.
 

@@ -11,7 +11,7 @@ Each backup entry displays:
 * The backup status (for example, `completed`).
 * How long ago the backup was taken.
 
-![The Backups page](../../images/managed_backups_page.png)
+![The Backups page](../../images/sf_backups_page.png)
 
 Select the `Restore` button, to the right of a backup, to restore your
 database to the selected backup. The `Restore from backup` popup opens,
@@ -21,7 +21,7 @@ that the database keeps its name and connection details, and is briefly
 unavailable while the restore runs. A snapshot of the current data is taken
 first, before the restore begins.
 
-![The Restore from backup popup](../../images/managed_backups_restore.png)
+![The Restore from backup popup](../../images/sf_backups_restore.png)
 
 Select `Restore` to confirm, or `Cancel` to close the popup without restoring
 the database. Once you confirm, a popup in the lower-right corner of the

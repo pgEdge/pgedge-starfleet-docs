@@ -46,7 +46,7 @@ The two users have different permissions on the database:
     tab credentials (the `app` user). The `admin` user can read and write
     existing data, but cannot create new objects.
 
-![Connecting to your database](images/managed_connecting.png)
+![Connecting to your database](images/sf_connecting.png)
 
 
 ### Using the psql Client
