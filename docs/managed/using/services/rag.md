@@ -142,6 +142,13 @@ Select the `Disable RAG Server` button to stop the RAG server.
 
 ## Using the RAG Server
 
+Once the RAG server is running, its pane displays the pipeline, embedding
+and completion model, and retrieval settings, along with a `Connect`
+section that provides the API base URL and a ready-to-use `curl` command
+for querying a pipeline:
+
+![The RAG Server pane showing connection details](../../../images/sf_rag_connect_details.png)
+
 After adding a RAG Server to your database, you can use the
 [pgEdge Docloader](https://docs.pgedge.com/pgedge-docloader/v1-0-0/)
 to load your documents into your database. The Docloader converts HTML,
@@ -168,3 +175,46 @@ the LLM to generate a grounded answer.
 
     The full API docs and an interactive demo are available at
     [docs.pgedge.com/pgedge-rag-server](https://docs.pgedge.com/pgedge-rag-server).
+
+## Example - Querying the RAG Server
+
+This example walks through querying a pipeline once documents have been
+loaded and the RAG server is running.
+
+1. In the console, go to the `AI Services` pane, then select `Details` on
+   your running RAG Server, or select `Services` in the navigation panel to
+   navigate to `Services`.
+
+2. Under the `Connect` section, note the API base URL and the pipeline
+   name; together they form the endpoint
+   `<api-base-url>/pipelines/<pipeline-name>/search`.
+
+3. Build a `curl` request to that endpoint, passing the question you want
+   answered in the `query` field:
+
+    ```bash
+    curl -X POST https://<your-rag-server-url>/v1/pipelines/<pipeline-name>/search \
+      -H "Content-Type: application/json" \
+      -d '{"query": "How do I configure replication?"}'
+    ```
+
+4. Replace `<your-rag-server-url>` and `<pipeline-name>` with the values
+   from step 2.
+
+5. Run the command. The RAG server returns a JSON response containing the
+   generated answer along with the source chunks it retrieved:
+
+    ```json
+    {
+      "answer": "To configure replication, ...",
+      "sources": [
+        {
+          "content": "Replication is configured by ...",
+          "score": 0.87
+        }
+      ]
+    }
+    ```
+
+6. Verify the response: confirm `answer` addresses your query, and that
+   `sources` references content you expect from your loaded documents.
