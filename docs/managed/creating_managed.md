@@ -4,7 +4,7 @@ After authenticating with pgEdge Starfleet, you're welcomed and presented with
 an easy-to-follow dialog that will walk you through creating your first
 database:
 
-![Welcome to pgEdge Starfleet](../images/cloud_welcome.png)
+![Welcome to pgEdge Starfleet](../images/sf_cloud_welcome.png)
 
 Select the `Create your first database` button to continue.
 
