@@ -55,41 +55,22 @@ The psql client is distributed with PostgreSQL, and is available for download
 at the Postgres website; for more information about psql, see the Postgres
 documentation at: [psql](https://www.postgresql.org/docs/18/app-psql.html)
 
-Each tab of the `Connect` pane (`Admin` or `Application`) displays a
-ready-to-use connection string, for example:
+If you have already installed a copy of psql, connection is simple; each tab
+of the `Connect` pane (`Admin` or `Application`) displays a ready-to-use psql
+connection string. For example:
 
-`postgresql://app@noticeably-guiding-kangaroo.use2.staging.pgedge.cloud:5432/acctg?sslmode=require`
+`PGSSLMODE=require PGPASSWORD=n7Im33AlyUIjh524d869vTU4 psql -U admin -h noticeably-guiding-kangaroo.use2.staging.pgedge.cloud -p 5432 -d acctg`
 
-The connection string is made up of the following elements:
+Select the copy icon next to the psql connection string to copy it, paste
+it directly into a terminal window, and press `Return` to connect.
 
-* `postgresql://` - the connection protocol.
-* `app` - the `User` connecting to the database (the `Admin` tab uses the
-  `admin` user instead).
-* `noticeably-guiding-kangaroo.use2.staging.pgedge.cloud` - the host name
-  (domain) of the database.
-* `5432` - the port used for PostgreSQL connections.
-* `acctg` - the name of the database to connect to.
-* `sslmode=require` - a parameter that requires an SSL connection.
+!!! hint
 
-Select the copy icon next to the connection string to copy it, then paste it
-directly into psql at the command line to connect.
-
-Alternatively, select the copy icon next to the `psql command` field to copy a
-ready-to-use command line, for example:
-
-`PGSSLMODE=require psql -U admin -h noticeably-guiding-kangaroo.use2.staging.pgedge.cloud -p 5432 -d acctg`
-
-Paste the copied command directly into your terminal to connect; the
-`PGSSLMODE=require` environment variable enforces the required SSL connection.
-
-Below the `psql command` field, the pane displays the `Database name`,
-`Domain`, `User`, and `Password` values individually; select the copy icon next
-to any field to copy just that value, or select the eye icon next to `Password`
-to reveal it. Select `Rotate credentials` (in the upper-right corner of the
-pane) to generate a new password for the selected tab's user.
+    The `PGSSLMODE=require` environment variable enforces the required SSL
+    connection.
 
 If you start psql with a graphical prompt or icon (rather than the command
-line) you can use the individual values from the connection string to
+line) you can use the individual values from the psql connection string to
 authenticate:
 
 * When prompted for a `Server [localhost]`, provide the host name from the
@@ -105,9 +86,6 @@ authenticate:
 * When prompted for the `Password`, provide the `Password` value from the
   `Connect` pane.
 
-Press `return` to connect to your database:
-
-![Connecting with psql](images/existing_psql.png)
 
 ### Installing psql and Connecting
 
@@ -126,11 +104,11 @@ psql that you've just installed is the first version in your PATH:
 
 `echo 'export PATH="/usr/local/opt/libpq/bin:$PATH"' >> ~/.zshrc`
 
-Then, to connect to a new pgEdge PostgreSQL database, use the copy button to
-the right of the connection string in the `Get Started` section to copy the
-connection string of your database; then paste the string in the `Terminal`.
+Then, to connect to a pgEdge Starfleet database, use the copy button to
+the right of the connection string in the `Connect` section to copy the
+psql connection string of your database; then paste the string in the `Terminal`.
 
-![Copying a Connection String](images/copy_conn_string.png)
+![Copying a Connection String](images/sf_copy_conn_string.png)
 
 Press `Return` to connect to the server with the psql client.
 
@@ -161,11 +139,11 @@ To use the pgAdmin client to manage your pgEdge Starfleet database and the
 objects that reside on it, right-click on the `Servers` node in the pgAdmin
 client, and select `Register`, then `Server` from the context menu.
 
-![Accessing pgAdmin](images/pgadmin_register_server.png)
+![Accessing pgAdmin](images/sf_pgadmin_register_server.png)
 
 The `Register - Server` dialog opens:
 
-![The pgAdmin Register - Server dialog](images/pgadmin_connection.png)
+![The pgAdmin Register - Server dialog](images/sf_pgadmin_connection.png)
 
 When prompted, provide authentication details on the pgAdmin `Connection` tab.
 To find connection information for your database, highlight the database name
@@ -184,7 +162,7 @@ on the `Database` dialog:
 
 * Enter the password associated with the user in the `Password` field.
 
-![The pgAdmin Parameters tab](images/pgadmin_register_parameters.png)
+![The pgAdmin Parameters tab](images/sf_pgadmin_register_parameters.png)
 
 Provide the following information on the `Parameters` tab:
 
@@ -199,7 +177,7 @@ connection preferences, and select `Save`. The connection to your database is
 added to the `Servers` node in the `Object Explorer` pane, and the pgAdmin
 `Dashboard` displays current database activities.
 
-![pgAdmin Connected](images/pgadmin_connected.png)
+![pgAdmin Connected](images/sf_pgadmin_connected.png)
 
 For detailed information about using pgAdmin, you can review the pgAdmin
 documentation at:

@@ -24,8 +24,17 @@ first, before the restore begins.
 ![The Restore from backup popup](../../images/sf_backups_restore.png)
 
 Select `Restore` to confirm, or `Cancel` to close the popup without restoring
-the database. Once you confirm, a popup in the lower-right corner of the
-window lets you know that the backup is restoring.
+the database. Once you confirm, a `Restore in progress` popup opens, showing a
+progress bar and a checklist of restore steps:
+
+* `Configuring System`
+* `Taking Pre-Restore Snapshot`
+* `Provisioning Restored Database`
+* `Waiting for Database`
+
+Each step is checked off as it completes:
+
+![The Restore in progress popup](../../images/sf_backup_restoring.png)
 
 
 
