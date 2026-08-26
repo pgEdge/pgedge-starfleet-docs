@@ -52,3 +52,8 @@ nav:
   - Accessing Management Options with the Actions Menu: managed/using/actions.md
   - Connecting to a pgEdge Starfleet Postgres Database: connecting.md
   - Loading Data into Your pgEdge Starfleet Database: loading_data.md
+  - Reviewing the Activity Log: activity_log.md
+  - Managing Account Settings: settings.md
+  - Managing Team Members: team_management.md
+  - Community: community.md
+  - Docs: docs_link.md
