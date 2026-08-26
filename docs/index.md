@@ -1,4 +1,4 @@
-# pgEdge Starfleet - Enterprise-grade AI-first PostgreSQL
+# pgEdge Starfleet - Enterprise-Grade AI-First PostgreSQL
 
 pgEdge Starfleet combines powerful features that make creating a PostgreSQL
 database simple.
