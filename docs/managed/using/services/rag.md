@@ -176,21 +176,66 @@ the LLM to generate a grounded answer.
     The full API docs and an interactive demo are available at
     [docs.pgedge.com/pgedge-rag-server](https://docs.pgedge.com/pgedge-rag-server).
 
-## Example - Querying the RAG Server
+## Example - Loading and Querying Your Documentation with the RAG Server
 
-This example walks through querying a pipeline once documents have been
-loaded and the RAG server is running.
+This example walks through loading a set of Markdown documentation into
+your pgEdge Starfleet database and querying it through the RAG server.
+The RAG server only generates embeddings for incoming queries; the
+`embedding` column on your table must be populated separately before the
+server can retrieve against it.
 
-1. In the console, go to the `AI Services` pane, then select `Details` on
-   your running RAG Server, or select `Services` in the navigation panel to
-   navigate to `Services`.
+1. Create a table to hold the documentation content, with a `pgvector`
+   column sized for your embedding model:
 
-2. Under the `Connect` section, note the API base URL and the pipeline
-   name; together they form the endpoint
-   `<api-base-url>/pipelines/<pipeline-name>/search`.
+    ```sql
+    CREATE EXTENSION IF NOT EXISTS vector;
 
-3. Build a `curl` request to that endpoint, passing the question you want
-   answered in the `query` field:
+    CREATE TABLE documents (
+        id SERIAL PRIMARY KEY,
+        title TEXT,
+        content TEXT NOT NULL,
+        filename TEXT UNIQUE NOT NULL,
+        embedding vector(1536),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE INDEX ON documents USING ivfflat (embedding vector_cosine_ops);
+    ```
+
+2. Use the [pgEdge Docloader](https://docs.pgedge.com/pgedge-docloader/v1-0-0/)
+   to load your documentation's Markdown files into the `documents`
+   table; point `--source` at the folder containing your docs (for
+   example, this project's own `docs` directory):
+
+    ```bash
+    pgedge-docloader \
+      --source ./docs \
+      --db-host <your-db-host> \
+      --db-name <your-db-name> \
+      --db-user <your-db-user> \
+      --db-table documents \
+      --col-doc-title title \
+      --col-doc-content content \
+      --col-file-name filename
+    ```
+
+3. Populate the `embedding` column for each row. The pgedge-postgres MCP
+   server's `generate_embedding` tool (available when `Generate
+   embeddings` is enabled) computes a vector for a piece of text; ask
+   Claude Code to generate and store an embedding for every row in
+   `documents` that doesn't have one yet.
+
+4. In the console, go to the `AI Services` pane, then select `Details` on
+   your running RAG Server, or select `Services` in the navigation panel
+   to navigate to `Services`. Under `Connect`, note the API base URL and
+   the pipeline name.
+
+5. If the pipeline isn't already configured to use this table, select
+   `Configure`, then set `Table Name` to `documents`, `Text Column` to
+   `content`, and `Vector Column` to `embedding` for the pipeline.
+
+6. Query the pipeline with a question that your documentation should
+   answer:
 
     ```bash
     curl -X POST https://<your-rag-server-url>/v1/pipelines/<pipeline-name>/search \
@@ -198,23 +243,6 @@ loaded and the RAG server is running.
       -d '{"query": "How do I configure replication?"}'
     ```
 
-4. Replace `<your-rag-server-url>` and `<pipeline-name>` with the values
-   from step 2.
-
-5. Run the command. The RAG server returns a JSON response containing the
-   generated answer along with the source chunks it retrieved:
-
-    ```json
-    {
-      "answer": "To configure replication, ...",
-      "sources": [
-        {
-          "content": "Replication is configured by ...",
-          "score": 0.87
-        }
-      ]
-    }
-    ```
-
-6. Verify the response: confirm `answer` addresses your query, and that
-   `sources` references content you expect from your loaded documents.
+7. Verify the response: the RAG server returns a JSON payload with a
+   generated `answer` and the `sources` it retrieved, which should
+   reference content from the documentation you loaded in step 2.

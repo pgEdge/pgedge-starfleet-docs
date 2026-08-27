@@ -1,4 +1,4 @@
-# Connecting to pgEdge Distributed PostgreSQL (pgEdge Starfleet)
+# Connecting to a pgEdge Starfleet Database
 
 Any client that can negotiate a connection using libpq can connect to the
 PostgreSQL database (port `5432`) on pgEdge Starfleet; this applies to custom

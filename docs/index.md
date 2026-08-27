@@ -1,31 +1,84 @@
-# pgEdge Starfleet - a PostgreSQL Database made Easy
+# pgEdge Starfleet - Cloud-hosted Enterprise Postgres for Agentic AI
 
-pgEdge Starfleet deploys a single node PostgreSQL database in multiple cloud regions or 
-data centers.
+Wiring together a database, an MCP server, and a vector store by hand
+slows down every agentic AI project. pgEdge Starfleet is the first 100%
+Postgres cloud database built for agentic AI: deploy on pgEdge-hosted
+cloud infrastructure or in your own tightly controlled cloud, and get
+fast database branching and scalability from the start.
 
-## Fully distributed PostgreSQL Made Easy
+!!! note
 
-pgEdge Starfleet combines powerful features that make creating a PostgreSQL
-database simple.
+    pgEdge Starfleet meets the security, compliance, high availability,
+    governance, data sovereignty, deployment flexibility, and global
+    scale requirements developers need.
 
-- Easy Deployment: Creation and deployment of a Postgres database is a breeze; 
-  simply answer a few questions, and then press a button to deploy your
-  database in the cloud.
+When you're ready to move from development to production, pgEdge
+Starfleet provides a supported path from pgEdge-hosted cloud to BYO
+cloud, on-premises, or even air-gapped infrastructure, so you keep the
+deployment flexibility, security, compliance, and reliability you need,
+without replatforming.
 
-- Control and Monitoring: Manage and monitor your database from a web
-  console, or alternatively via API and command line interface.
 
-- Configuration, Management, and Security: pgEdge Starfleet saves you time configuring
-  and managing infrastructure. pgEdge Starfleet regularly backs up your data
-  and continually monitors it. pgEdge Starfleet also has a
-  host of security features to make sure only you and your client applications
-  access your databases.
+## What Sets pgEdge Starfleet Apart
 
-- 100% Pure PostgreSQL: Compatible with the PostgreSQL ecosystem, tools, and
-  extensions such as PostGIS, PGVector, pgCat, pgBackrest, and 20+ more.
+pgEdge Starfleet stands apart in the following ways:
 
-- Edge Platform Integration: pgEdge Starfleet is especially well suited for use with
-  edge development platforms and software such as Cloudflare Workers,
-  Terraform, Vercel, and Fastly.
-  
-  
+- **Comprehensive agentic AI tooling**: pgEdge Starfleet includes the
+  Agentic AI Toolkit for Postgres.
+
+    - The MCP server supports both development and production use, and
+      connects directly to Claude Code, Claude Cowork, Cursor, Replit,
+      and other agentic tooling.
+
+    - The RAG server builds retrieval-augmented generation and chatbot
+      applications entirely from data in Postgres, with the pgEdge
+      Vectorizer extension keeping vector embeddings updated
+      automatically as content changes.
+
+- **True copy-on-write database branching**: pgEdge Starfleet supports
+  copy-on-write branching for parallel agentic experiments and for
+  separate development, testing, and staging databases, without replacing the
+  Postgres storage layer with a proprietary alternative.
+
+- **Smooth developer experience**: pgEdge Starfleet offers a free trial
+  with no credit card, deploys and connects a database in under two minutes,
+  and adds MCP and RAG servers and PostgREST access as needed, with flat,
+  predictable pricing.
+
+- **Control, monitoring, and management**: pgEdge Starfleet can be
+  managed and monitored from a web console, an API, or the command
+  line, and it handles regular backups and continuous monitoring for
+  you.
+
+- **Flexible deployment options**: pgEdge Starfleet starts on
+  pgEdge-hosted infrastructure, then deploys to the pgEdge cloud, your
+  own cloud, or on-premises infrastructure, including air-gapped
+  environments, using curated, validated platform binaries for pgEdge
+  Enterprise Postgres.
+
+- **Secure by default**: Database infrastructure is not open to the internet
+  by default; IP allowlisting restricts access, and the integrated MCP server
+  enforces security and governance guardrails, including truly read-only
+  connections.
+
+- **Global scalability**: pgEdge Starfleet starts with a single Postgres
+  instance, scales through progressively larger compute sizes, and
+  grows to a multi-region cluster for high availability and zero downtime.
+
+- **100 percent open-source Postgres**: pgEdge Starfleet is built on
+  pgEdge Enterprise Postgres, itself 100 percent standard community
+  Postgres; all pgEdge and third-party extensions are open source under
+  the PostgreSQL license or an OSI-approved equivalent.
+
+- **PostgreSQL ecosystem compatibility**: pgEdge Starfleet is compatible
+  with the PostgreSQL ecosystem, tools, and extensions, such as
+  PostGIS, pgvector, pgCat, and pgBackRest.
+
+- **Edge platform integration**: pgEdge Starfleet is well suited for use
+  with edge development platforms and software such as Cloudflare
+  Workers, Terraform, Vercel, and Fastly.
+
+- **Support from Postgres community contributors**: The pgEdge team
+  includes a Postgres core team member, significant contributors,
+  authors of popular Postgres books, and members of regional Postgres
+  community boards in North America and Europe.
