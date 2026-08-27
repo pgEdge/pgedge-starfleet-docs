@@ -1,12 +1,4 @@
-# pgEdge Starfleet - Cloud-hosted Enterprise Postgres for Agentic AI
-
-Wiring together a database, an MCP server, and a vector store by hand
-slows down every agentic AI project. pgEdge Starfleet is the first 100%
-Postgres cloud database built for agentic AI: deploy on pgEdge-hosted
-cloud infrastructure or in your own tightly controlled cloud, and get
-fast database branching and scalability from the start.
-
-!!! note
+# pgEdge Starfleet - Enterprise-Grade AI-First PostgreSQL
 
     pgEdge Starfleet meets the security, compliance, high availability,
     governance, data sovereignty, deployment flexibility, and global
