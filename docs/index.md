@@ -1,8 +1,12 @@
 # pgEdge Starfleet - Enterprise-Grade AI-First PostgreSQL
 
-    pgEdge Starfleet meets the security, compliance, high availability,
-    governance, data sovereignty, deployment flexibility, and global
-    scale requirements developers need.
+pgEdge Starfleet is a Postgres cloud platform that combines the smooth
+developer experience and AI native tooling developers love with the deployment
+flexibility, security and reliability the enterprise demands.
+    
+pgEdge Starfleet meets the security, compliance, high availability,
+governance, data sovereignty, deployment flexibility, and global
+scale requirements developers need.
 
 When you're ready to move from development to production, pgEdge
 Starfleet provides a supported path from pgEdge-hosted cloud to BYO
@@ -13,7 +17,7 @@ without replatforming.
 
 ## What Makes pgEdge Starfleet Different?
 
-pgEdge Starfleet stands apart from other distributions with:
+pgEdge Starfleet stands apart from other Postgres cloud services with:
 
 - **Comprehensive agentic AI tooling**: pgEdge Starfleet includes the
   Agentic AI Toolkit for Postgres.
