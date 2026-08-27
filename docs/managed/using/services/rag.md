@@ -62,10 +62,10 @@ For each pipeline, provide:
   and underscores are allowed.
 * The name of the table or view to use for the pipeline, in the `Table Name`
   field.
-* The name of the column containing the text content to be indexed and
-  searched, in the `Text Column` field.
+* The name of the column containing the text content that will be indexed and
+  searched in the `Text Column` field.
 * The name of the column containing the vector embeddings (using pgvector) for
-  that content, in the `Vector Column` field.
+  that content in the `Vector Column` field.
 
 When you set default values for the RAG server, individual pipelines can omit
 the corresponding fields and inherit those defaults; a pipeline can also
@@ -75,7 +75,7 @@ values you want to override:
 
 ![The Override Default Values dialog](../../../images/sf_rag_override.png)
 
-Provide the following details:
+Optionally, provide the following details:
 
 * The `Token Budget` field overrides the maximum number of context tokens
   allowed for the LLM for this pipeline.
@@ -152,13 +152,13 @@ for querying a pipeline:
 After adding a RAG Server to your database, you can use the
 [pgEdge Docloader](https://docs.pgedge.com/pgedge-docloader/v1-0-0/)
 to load your documents into your database. The Docloader converts HTML,
-Markdown, and reStructuredText into a `documents` table:
+Markdown, and reStructuredText into a searchable table form:
 
 ```bash
 pgedge-docloader --config docloader.yml
 ```
 
-Once data is loaded, you can query your pipeline via the REST API. For
+After loading the table, you can query your pipeline via the REST API. For
 example:
 
 ```bash
@@ -176,7 +176,8 @@ the LLM to generate a grounded answer.
     The full API docs and an interactive demo are available at
     [docs.pgedge.com/pgedge-rag-server](https://docs.pgedge.com/pgedge-rag-server).
 
-## Example - Loading and Querying Your Documentation with the RAG Server
+
+## Example - Building a Custom Knowledgebase with the RAG Server
 
 This example walks through loading a set of Markdown documentation into
 your pgEdge Starfleet database and querying it through the RAG server.
@@ -184,7 +185,18 @@ The RAG server only generates embeddings for incoming queries; the
 `embedding` column on your table must be populated separately before the
 server can retrieve against it.
 
-1. Create a table to hold the documentation content, with a `pgvector`
+1. Connect with `psql` as the `app` user, using the connection string
+   from the `Application` tab of your database's `Connect` pane (see
+   [Connecting with psql](../../../connecting.md#connecting-with-psql)):
+   the `app` user owns the database and can create tables, while the
+   `admin` user cannot. For example:
+
+    ```bash
+    PGSSLMODE=require PGPASSWORD=<your-app-password> psql -U app \
+      -h <your-db-host> -p 5432 -d <your-db-name>
+    ```
+
+2. Create a table to hold the documentation content, with a `pgvector`
    column sized for your embedding model:
 
     ```sql
@@ -202,39 +214,60 @@ server can retrieve against it.
     CREATE INDEX ON documents USING ivfflat (embedding vector_cosine_ops);
     ```
 
-2. Use the [pgEdge Docloader](https://docs.pgedge.com/pgedge-docloader/v1-0-0/)
+3. Use the [pgEdge Docloader](https://docs.pgedge.com/pgedge-docloader/v1-0-0/)
    to load your documentation's Markdown files into the `documents`
-   table; point `--source` at the folder containing your docs (for
-   example, this project's own `docs` directory):
+   table; point `--source` at the folder containing your docs. Reuse
+   the `Host`, `Database name`, and `User` values from the
+   `Application` tab:
 
     ```bash
+    export PGPASSWORD=<your-app-password>
     pgedge-docloader \
       --source ./docs \
       --db-host <your-db-host> \
       --db-name <your-db-name> \
-      --db-user <your-db-user> \
+      --db-user app \
+      --db-sslmode require \
       --db-table documents \
       --col-doc-title title \
       --col-doc-content content \
       --col-file-name filename
     ```
 
-3. Populate the `embedding` column for each row. The pgedge-postgres MCP
-   server's `generate_embedding` tool (available when `Generate
-   embeddings` is enabled) computes a vector for a piece of text; ask
-   Claude Code to generate and store an embedding for every row in
-   `documents` that doesn't have one yet.
+    !!! note
 
-4. In the console, go to the `AI Services` pane, then select `Details` on
-   your running RAG Server, or select `Services` in the navigation panel
-   to navigate to `Services`. Under `Connect`, note the API base URL and
-   the pipeline name.
+        `pgedge-docloader` is an open-source command-line tool; install it by
+        cloning and building the
+        [pgEdge Docloader](https://github.com/pgEdge/pgedge-docloader)
+        repository. You can download and install it with the following steps:
 
-5. If the pipeline isn't already configured to use this table, select
-   `Configure`, then set `Table Name` to `documents`, `Text Column` to
+        ```bash
+        git clone https://github.com/pgEdge/pgedge-docloader.git
+        cd pgedge-docloader
+        make build
+        make install
+        ```
+
+4. Populate the `embedding` column for each row. Before populating the column,
+   enable the MCP server with `Generate embeddings` and `Allow writes` enabled
+   (see [Enabling the MCP Server](mcp.md#enabling-the-mcp-server)). If you
+   enable an AI client (like Claude Code), you can ask the interface to:
+
+    - find the rows in `documents` where `embedding IS NULL`.
+    - call `generate_embedding` on each row's `content` to compute a
+      vector.
+    - `UPDATE` that row, storing the vector in its `embedding` column.
+
+5. Navigate to the RAG Server details page; in the console, go to the
+   `AI Services` pane and select `Details` on your running RAG Server, or
+   select `Services` from the navigation pane. Under `Connect`, note the API
+   base URL and the pipeline name.
+
+6. If the RAG Server's pipeline isn't already configured to use this table,
+   select `Configure`, then set `Table Name` to `documents`, `Text Column` to
    `content`, and `Vector Column` to `embedding` for the pipeline.
 
-6. Query the pipeline with a question that your documentation should
+7. Query the pipeline with a question that your documentation should
    answer:
 
     ```bash
@@ -243,6 +276,6 @@ server can retrieve against it.
       -d '{"query": "How do I configure replication?"}'
     ```
 
-7. Verify the response: the RAG server returns a JSON payload with a
+8. Verify the response: the RAG server returns a JSON payload with a
    generated `answer` and the `sources` it retrieved, which should
-   reference content from the documentation you loaded in step 2.
+   reference content from the documentation you loaded in step 3.
