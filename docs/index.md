@@ -3,16 +3,6 @@
 pgEdge Starfleet is a Postgres cloud platform that combines the smooth
 developer experience and AI native tooling developers love with the deployment
 flexibility, security and reliability the enterprise demands.
-    
-pgEdge Starfleet meets the security, compliance, high availability,
-governance, data sovereignty, deployment flexibility, and global
-scale requirements developers need.
-
-When you're ready to move from development to production, pgEdge
-Starfleet provides a supported path from pgEdge-hosted cloud to BYO
-cloud, on-premises, or even air-gapped infrastructure, so you keep the
-deployment flexibility, security, compliance, and reliability you need,
-without replatforming.
 
 
 ## What Makes pgEdge Starfleet Different?
