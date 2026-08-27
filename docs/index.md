@@ -19,9 +19,9 @@ deployment flexibility, security, compliance, and reliability you need,
 without replatforming.
 
 
-## What Sets pgEdge Starfleet Apart
+## What Makes pgEdge Starfleet Different?
 
-pgEdge Starfleet stands apart in the following ways:
+pgEdge Starfleet stands apart from other distributions with:
 
 - **Comprehensive agentic AI tooling**: pgEdge Starfleet includes the
   Agentic AI Toolkit for Postgres.
