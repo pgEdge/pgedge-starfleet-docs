@@ -50,7 +50,11 @@ nav:
     - Reviewing the Log Files: managed/using/logs.md
     - Restoring from Backup: managed/using/backups.md
   - Accessing Management Options with the Actions Menu: managed/using/actions.md
-  - Connecting to a pgEdge Starfleet Database: connecting.md
+  - Connecting to a pgEdge Starfleet Database:
+      - connecting/index.md
+      - Connecting with the AI DBA Workbench: connecting/workbench.md
+      - Connecting with psql: connecting/psql.md
+      - Connecting with pgAdmin: connecting/pgadmin.md
   - Loading Data into Your pgEdge Starfleet Database: loading_data.md
   - Reviewing the Activity Log: activity_log.md
   - Managing Account Settings: settings.md
