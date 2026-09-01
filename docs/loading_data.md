@@ -8,7 +8,7 @@ existing Postgres database, and loading documents for the RAG server.
 Creating new tables requires the `app` user (the `Application` tab
 credentials); either the `admin` or `app` user can insert data into tables
 that already exist. For details, see the permissions table in
-[Connecting with psql](connecting.md#connecting-with-psql).
+[Connecting with psql](connecting/psql.md).
 
 ## Loading CSV Data with `\copy`
 
@@ -27,7 +27,7 @@ For example, to load a CSV file named `customers.csv` (with a header row of
     ```bash
     PGSSLMODE=require psql -U app -h <your-domain> -p 5432 -d <your-database>
     ```
-   See [Connecting with psql](connecting.md#connecting-with-psql) for
+   See [Connecting with psql](connecting/psql.md) for
    directions about finding the ready-to-use `psql command` for your database.
 
 2. Create the target table on your database with a column for each data block
@@ -78,7 +78,8 @@ pg_restore --no-owner --role=app \
 ```
 
 `pg_dump` and `pg_restore` are ordinary Postgres clients, so the same
-connection requirements described in [Connecting](connecting.md) apply (SSL
+connection requirements described in
+[Connecting to a pgEdge Starfleet Database](connecting/index.md) apply (SSL
 required, GSS encoding disabled). The `--no-owner` flag skips restoring the
 original ownership of dumped objects, and `--role=app` assigns ownership of
 restored objects to `app` instead; the roles that existed on the source

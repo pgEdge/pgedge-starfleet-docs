@@ -80,7 +80,7 @@ data, but cannot create new objects.
 For detailed information about:
 
 * installing the psql client and connecting to the database, see
-  [Connecting](../../connecting.md).
+  [Connecting with psql](../../connecting/psql.md).
 * Postgres SQL commands, see the
   [Postgres documentation](https://www.postgresql.org/docs/18/sql-commands.html).
 
