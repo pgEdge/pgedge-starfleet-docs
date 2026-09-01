@@ -57,23 +57,34 @@ with credentials for the `app` user. Each tab displays:
 
 Select the copy icon next to any field to copy its value.
 
-The two users have different permissions on the database:
+The two users have different permissions on the database. Connect as `app`
+to create tables and load data, and as `admin` to install an allowlisted
+extension or for server-wide work. [Database Roles](../../roles.md) covers
+what each one can do.
+<!-- M:195-215 -->
 
-| Capability | `admin` | `app` |
-|------------|:-------:|:-----:|
-| Create tables/objects in `public` | No | Yes |
-| Read all data | Yes | Yes |
-| Insert, update, delete data | Yes | Yes |
-| Create databases | Yes | No |
-| Create roles | Yes | No |
-| View active sessions | Yes | No |
-| Terminate backends | Yes | No |
-| Run maintenance (vacuum, analyze) | Yes | No |
-| Manage subscriptions | Yes | No |
+### When the Connect Pane Shows a Message Instead
 
-To create tables or other schema objects, connect using the `Application`
-tab credentials (the `app` user); the `admin` user can read and write existing
-data, but cannot create new objects.
+The pane shows one of three messages in place of connection details:
+
+* `Couldn't load connection details. Please refresh and try again.` means
+  the pane could not read the per-role credentials. Refresh. A connection
+  string you already hold keeps working.
+  <!-- ui:src/components/databases/managed/details/ConnectCard.tsx -->
+* `Connection details are unavailable.` means the pane has the database but
+  not enough of it to build a connection string, because the host, port or
+  database name is missing. A `failed` database reads this way. Wait for the
+  database to reach `Available` and reload.
+  <!-- ui:src/components/databases/managed/details/ConnectCard.tsx -->
+* `This database is <status> and is not available to connect right now.`
+  names a status the pane treats as not connectable: `deleting`,
+  `suspending`, `suspended`, `resuming`, or any status the console does not
+  recognise. Read the status against
+  [Database Statuses](../../activity_log.md#database-statuses).
+  <!-- ui:src/components/databases/managed/details/ConnectCard.tsx -->
+  <!-- ui:src/utils/managedDatabase.ts managedConnectState -->
+
+A database that is still being created shows a provisioning message instead.
 
 ![Connecting to your database](../../images/sf_connecting.png)
 
@@ -176,7 +187,15 @@ and configuration of your database.
 
 The `Plan & billing` pane displays the current size tier of your database and
 the price you'll be billed after any free trial ends. Select `Upgrade size` to
-change the size of your database.
+change the size of your database. For what each size gives you, see
+[Database Sizes](../sizes.md).
+
+Two notifications can appear after you add a payment method.
+`Payment saved, but we could not refresh billing status.` means the card was
+saved and the console could not re-read the billing state afterwards, so
+reload the page. `Still unable to load billing status.` means a retry of that
+read failed again.
+<!-- ui:src/components/databases/managed/ManagedDatabaseDetails.tsx -->
 
 ### Details
 
@@ -191,6 +210,26 @@ database.
 | Storage | The amount of storage allocated to the database. |
 | Network | Whether the database is publicly or privately accessible, and whether TLS is enabled. |
 | Created | How long ago the database was created. |
+
+
+## When the Page Cannot Load
+
+Two messages replace the whole page:
+
+* `Couldn't load this database. Please try again shortly.` means the console
+  could not read the database record. The `Metrics`, `Logs` and `Backups`
+  pages read the same way. Reload the page. If it repeats, check the
+  Databases list, because a database that has been deleted reads this way
+  from a bookmarked URL.
+  <!-- ui:src/components/databases/managed/ManagedDatabaseDetails.tsx -->
+  <!-- ui:src/components/databases/managed/ManagedMetricsView.tsx -->
+  <!-- ui:src/components/databases/managed/ManagedLogsView.tsx -->
+  <!-- ui:src/components/databases/managed/ManagedBackupsView.tsx -->
+  <!-- M:572 -->
+* `Database not found` means the read succeeded and returned no record for
+  the database ID in the URL. Go back to the Databases list, and if you
+  expected the database to exist, check that you are in the right account.
+  <!-- ui:src/components/databases/managed/ManagedDatabaseDetails.tsx -->
 
 
 

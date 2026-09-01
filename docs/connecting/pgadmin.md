@@ -12,18 +12,23 @@ The `Register - Server` dialog opens:
 
 When prompted, provide authentication details on the pgAdmin `Connection` tab.
 To find connection information for your database, highlight the database name
-in the navigation panel, and review the `Connect to your database` pane shown
-on the `Database` dialog:
+in the navigation panel, and review the `Connect` pane shown on the `Database`
+page:
 
-* Provide the name shown in the `Domain` field that ends with `.pgedge.io` in
-  the `Host name/address` field.
+* Provide the value shown in the `Domain` field in the `Host name/address`
+  field.
+
+* Provide the port from the `Connection string` in the `Port` field.
+  <!-- ui:src/utils/managedDatabase.ts buildManagedConnectionString -->
 
 * Provide the name of your database in the `Maintenance database` field.
 
 * Replace the default `Username` with `app` when connecting for the first
-  time; the `app` user owns the database and can create tables and other
-  objects. Use the `admin` user instead if you only need read/write access to
-  existing data.
+  time. The `app` user owns the database, so the tables and other objects it
+  creates belong to the role your application connects as. Use the `admin`
+  user to install an allowlisted extension, or for the server-wide work
+  described in [Database Roles](../roles.md).
+  <!-- M:195-215 -->
 
 * Enter the password associated with the user in the `Password` field.
 

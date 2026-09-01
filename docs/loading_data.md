@@ -2,20 +2,21 @@
 
 A pgEdge Starfleet database is a standard PostgreSQL database, so you can load
 data into it with any tool that works with Postgres over a libpq connection.
-On this page, we'll discuss loading data with `psql`, restoring from an
+On this page, we discuss loading data with `psql`, restoring from an
 existing Postgres database, and loading documents for the RAG server.
 
-Creating new tables requires the `app` user (the `Application` tab
-credentials); either the `admin` or `app` user can insert data into tables
-that already exist. For details, see the permissions table in
-[Connecting with psql](connecting/psql.md).
+Load schema and data as the `app` user (the `Application` tab credentials),
+so that every object ends up owned by the role your application connects as.
+The `admin` user can insert data into tables that already exist. For what
+each role can do, see [Database Roles](roles.md).
+<!-- M:195-199 -->
 
 ## Loading CSV Data with `\copy`
 
 Because pgEdge Starfleet is a managed service, you don't have access to the
 database server's filesystem, so the server-side SQL `COPY ... FROM
-'/path/to/file'` command isn't available. You can use the psql's client-side
-`\copy` meta-command instead; it reads the file from your local machine and
+'/path/to/file'` command isn't available. You can use psql's client-side
+`\copy` meta-command instead. It reads the file from your local machine and
 streams the data to the server over your existing connection.
 
 For example, to load a CSV file named `customers.csv` (with a header row of
@@ -25,7 +26,7 @@ For example, to load a CSV file named `customers.csv` (with a header row of
    a new table:
 
     ```bash
-    PGSSLMODE=require psql -U app -h <your-domain> -p 5432 -d <your-database>
+    PGSSLMODE=require psql -U app -h <your-domain> -p <your-port> -d <your-database>
     ```
    See [Connecting with psql](connecting/psql.md) for
    directions about finding the ready-to-use `psql command` for your database.
@@ -55,42 +56,160 @@ For example, to load a CSV file named `customers.csv` (with a header row of
 
 If you're loading into a table that already exists, you can skip step 2 and
 connect as either `admin` or `app` in step 1. `\copy` accepts the same
-options as the SQL `COPY` command; for the full list, see the Postgres
+options as the SQL `COPY` command. For the full list, see the Postgres
 documentation for [COPY](https://www.postgresql.org/docs/current/sql-copy.html).
 
 ## Restoring from a pg_dump Backup
 
-If you're migrating data from an existing Postgres database, use `pg_dump` on
-the source database to create a dump file:
+Moving an existing schema and its data onto pgEdge Starfleet takes both of the
+database's built-in roles, in a fixed order, and one common `pg_restore` flag
+fails here in a way that looks like success.
+
+### What You Need
+
+* a database reporting `Available` in the console
+  <!-- M:551-554 -->
+* both the `Admin` tab and the `Application` tab of its `Connect` pane, which
+  give you two different users against the same host, port, and database
+  <!-- ui:src/components/databases/managed/details/ConnectCard.tsx -->
+* a dump of the source database, and `psql` and `pg_restore` from a PostgreSQL
+  client installation
+
+Copy the `psql command` from each tab rather than assembling one. It already
+carries the TLS setting as `PGSSLMODE=require`, and it fills the password in
+when you copy it.
+<!-- ui:src/utils/managedDatabase.ts buildManagedPsqlCommand -->
+Keep both out of your shell history and out of any file you commit.
+
+Create the dump on the source database with `pg_dump`:
 
 ```bash
 pg_dump --format=custom --file=mydata.dump "postgresql://user@oldhost:5432/olddb"
 ```
 
-Then use `pg_restore` to load it into your pgEdge Starfleet database. Because
-restoring a dump creates tables and other objects, connect as `app`, using the
-connection string from the `Application` tab of the `Connect` pane:
+### Why the Order Matters
 
-```bash
-pg_restore --no-owner --role=app \
-  -d "postgresql://app@<your-domain>:5432/<your-database>?sslmode=require" \
-  mydata.dump
-```
+The `app` user owns the database, and an object belongs to the role that
+created it, so a schema loaded as `admin` ends up owned by a role your
+application never connects as.
+<!-- M:195-199 -->
+<!-- measured 2026-09-01: datdba of antrolesprobe is app -->
+
+Extensions split by set. An extension on the pgEdge allowlist installs as
+`admin` only, and an extension Postgres itself marks trusted installs as
+`app`, which then owns it and can drop it later.
+<!-- M:201-215 -->
+A load that needs both kinds of extension therefore needs both connections, in
+this order:
+<!-- M:220-228 -->
+
+1. Connect with the `Admin` tab's details and install the allowlisted
+   extensions the dump depends on, such as `vector`.
+
+2. Connect with the `Application` tab's details and install the trusted
+   ones, such as `pgcrypto`.
+
+3. Still as `app`, load the schema.
+
+4. Still as `app`, load the data, in the passes described below.
+
+Loading a schema before the extensions it depends on exist fails on the first
+object that needs one.
+<!-- M:230-231 -->
+For which extension falls on which side, see
+[Installing Extensions](managed/using/extensions.md).
 
 `pg_dump` and `pg_restore` are ordinary Postgres clients, so the same
 connection requirements described in
-[Connecting to a pgEdge Starfleet Database](connecting/index.md) apply (SSL
-required, GSS encoding disabled). The `--no-owner` flag skips restoring the
-original ownership of dumped objects, and `--role=app` assigns ownership of
-restored objects to `app` instead; the roles that existed on the source
-database (other than `admin` and `app`) don't exist on your pgEdge Starfleet
-database.
+[Connecting to a pgEdge Starfleet Database](connecting/index.md) apply.
+
+### Restoring the Schema
+
+Because restoring a dump creates tables and other objects, connect as `app`,
+using the connection string from the `Application` tab of the `Connect` pane:
+
+```bash
+pg_restore --schema-only --no-owner --no-acl --role=app \
+  -d "postgresql://app@<your-domain>:<your-port>/<your-database>?sslmode=require" \
+  mydata.dump
+```
+
+The `--no-owner` flag skips restoring the original ownership of dumped objects,
+and `--role=app` assigns ownership of restored objects to `app` instead. The
+roles that existed on the source database (other than `admin` and `app`) don't
+exist on your pgEdge Starfleet database. The data passes below carry the same
+two flags.
+<!-- M:270-273 -->
+
+Load the schema on its own, as above, and the data in the separate passes
+below. A one-shot restore of schema and data together runs into the
+foreign-key problem described next.
+
+### Do Not Use `--disable-triggers`
+
+`pg_restore --disable-triggers` cannot work on pgEdge Starfleet.
+
+The flag emits `ALTER TABLE ... DISABLE TRIGGER ALL`, which is superuser-only,
+and so is the usual alternative, `SET session_replication_role = replica`.
+Neither role on the database is a Postgres superuser, so every disable
+statement and every re-enable statement errors, and foreign keys stay enforced
+for the whole load.
+<!-- M:250-254 --> <!-- M:135 -->
+
+`pg_restore` restores table data in the dump's table-of-contents order, not in
+the order of the `-t` flags. A child table can therefore be loaded before its
+parent, its `COPY` aborts on the foreign key, and `pg_restore` carries on with
+the rest.
+<!-- M:256-259 -->
+
+The result is exit 1, most tables populated, and one table silently empty.
+<!-- M:261-265 -->
+<!-- measured 2026-08-19: 115 MB custom format dump of four tables; a data
+only pass with disable triggers exited 1 with seven ignored errors and left
+the child table at 0 rows while the other three loaded -->
+
+### Load the Data Parent-first
+
+Run one `pg_restore` pass per level of the foreign-key graph, putting tables
+with no foreign key between them in the same pass, so every key is satisfied as
+its pass runs. `$APP_URL` holds the connection string from the `Application`
+tab, kept in an environment variable so the password stays out of the argument
+list:
+
+```bash
+pg_restore -d "$APP_URL" --data-only --no-owner --no-acl \
+    -t game_systems -t rulebook_sources dump.pgc
+pg_restore -d "$APP_URL" --data-only --no-owner --no-acl \
+    -t rulebook_sections dump.pgc
+```
+
+<!-- M:267-274 -->
+
+The alternative is to drop the foreign-key constraints as `app`, which owns
+them, load in one pass, and add them back afterwards.
+<!-- M:276-277 -->
+
+### Check the Row Counts Afterwards
+
+Either way, count rows against the source when the load finishes. A
+`pg_restore` that exits 1 has still written everything that did not error, so
+"mostly succeeded" is not a result to act on.
+<!-- M:277-279 -->
+
+Run the count as `app`, from the `psql command` on the `Application` tab:
+
+```sql
+SELECT count(*) FROM rulebook_sections;
+```
+
+Compare each table against the source. Neither the exit code nor the console
+status reports a table left at zero rows beside tables that loaded.
 
 ## Loading Documents for the RAG Server
 
 The methods above load structured, relational data into tables. If you're
 loading unstructured documents (HTML, Markdown, or reStructuredText) to use
-with a RAG server, use `pgedge-docloader` instead; see
+with a RAG server, use `pgedge-docloader` instead. See
 [Using the RAG Server](managed/using/services/rag.md#using-the-rag-server).
 Because the docloader creates a `documents` table, configure it with the
 `app` user's connection details, not `admin`.

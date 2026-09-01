@@ -137,8 +137,7 @@ connection.
     * `Host` is the `Domain` name from the `Connect` pane.
     * `Port` is the PostgreSQL listener port; enter `5432`.
     * `Username` is either `admin` or `app`; use the name that provides the
-      permissions required (see the capability table in
-      [Connecting with psql](psql.md)).
+      permissions required (see [Database Roles](../roles.md)).
     * `Password` is the corresponding `Password` value from the `Connect`
       pane.
     * `SSL Mode` must be set to `require`.

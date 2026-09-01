@@ -5,7 +5,7 @@ can use to deploy available services on your database.
 
 ![The AI Services pane](../../../images/sf_services.png)
 
-Select `Enable RAG` to deploy the server; once the service is deployed, select
+Select `Enable RAG` to deploy the server. Once the service is deployed, select
 the `Details` button to view details and manage it.
 
 The
@@ -20,6 +20,10 @@ patterns.
 ![Enabling the RAG server](../../../images/sf_enable_rag_icon.png)
 
 To enable a RAG server, select the `Enable RAG` icon in the RAG Server pane.
+The button is active only while the database status is `Available`. On a
+database in any other status, hovering it shows `Database not available`.
+<!-- ui:src/components/databases/managed/ManagedServicesView.tsx -->
+<!-- M:578 -->
 
 ![Provide details about the RAG server](../../../images/sf_rag_details.png)
 
@@ -27,48 +31,77 @@ When the `Enable RAG server` popup opens, provide details about the RAG server
 deployment:
 
 * The `Default Token Budget` field sets the maximum number of context tokens
-  allowed for the LLM (500 - 128,000); the default value is `1000`.
+  allowed for the LLM (500 - 128,000). The default value is `1000`.
 * The `Default Top N` field sets the maximum number of results to retrieve
-  before token-budget trimming; the default value is `10`.
+  before token-budget trimming. The default value is `10`.
 * The `Default Embedding LLM Provider` field selects the provider used for
-  query and document embeddings during retrieval; supported providers are
-  `OpenAI`, `Voyage AI`, and `Ollama`. (Anthropic does not provide an embedding
-  model, so it isn't available here.)
-* The `Default Embedding LLM Model` field selects the embedding model to use;
-  available models depend on the selected provider (for example,
+  query and document embeddings during retrieval. The console offers two
+  providers, `OpenAI` and `Voyage`. Self-hosted model serving has nowhere to
+  run on a pgEdge Starfleet database, so Ollama is not offered. (Anthropic
+  does not provide an embedding model, so it isn't available here.)
+  <!-- M:140-144 -->
+  <!-- ui:src/components/databases/databaseServices/rag/RagServiceForm/RagServiceForm.constants.ts -->
+* The `Default Embedding LLM Model` field selects the embedding model to use.
+  Available models depend on the selected provider (for example,
   `text-embedding-3-small` for OpenAI). This must match the model used to
   generate any pre-existing embeddings.
 * The `Default Embedding LLM API Key` field provides the API key required for
   the selected embedding provider.
 * The `Default Completion LLM Provider` field selects the provider used for
-  answer generation; supported providers are `OpenAI`, `Anthropic`, and
-  `Ollama`.
-* The `Default Completion LLM Model` field selects the completion model to use;
-  select a suggested model, or enter your own.
+  answer generation. The console offers two providers,
+  `Anthropic (Claude)` and `OpenAI`, and no other provider is accepted.
+  <!-- ui:src/components/databases/databaseServices/rag/RagServiceForm/RagServiceForm.constants.ts -->
+* The `Default Completion LLM Model` field selects the completion model to use.
+  Select a suggested model, or enter your own.
 * The `Default Completion LLM API Key` field provides the API key required for
   the selected completion LLM provider.
-* The `Add Pipelines` field defines one or more pipelines; each pipeline has
-  its own tables and can override the default values, and maps to
-  `/v1/pipelines/<name>/search`.
+* The `Add Pipelines` field defines one or more pipelines. Each pipeline has
+  its own tables and can override the default values, and is queried at
+  `/rag/v1/pipelines/<name>`.
+  <!-- M:434-438 -->
+
+When you select `OpenAI` for both the embedding provider and the completion
+provider, the two API key fields collapse into a single
+`Default OpenAI API Key` field, and the one value you enter is used for both.
+<!-- ui:src/components/databases/databaseServices/rag/RagServiceForm/RagDefaultsSection.tsx -->
+
+!!! note
+
+    Neither the console nor the platform checks an API key when you enable the
+    server. A server carrying a bad key still reaches `Running`, and the bad
+    key surfaces only when a pipeline query fails. Check the key before you
+    enable rather than reading the badge.
+    <!-- measured 2026-08-29: placeholder embedding key reached Running -->
 
 Select `+Add Pipeline` to expand the dialog and define one or more pipelines
-that will be used by the RAG server.
+used by the RAG server.
 
 ![Provide details about the RAG server](../../../images/sf_rag_pipeline.png)
 
 For each pipeline, provide:
 
-* A unique name in the `Name` field; only lowercase letters, digits, hyphens,
-  and underscores are allowed.
-* The name of the table or view to use for the pipeline, in the `Table Name`
-  field.
-* The name of the column containing the text content that will be indexed and
-  searched in the `Text Column` field.
+* A unique name in the `Name` field. Only lowercase letters, digits, hyphens,
+  and underscores are allowed. The console strips any other character as you
+  type.
+* At least one table, under `Add Tables`. A pipeline retrieves across every
+  table you add to it, and the `Add Table` button appends another. Each table
+  is its own collapsible block, and a block can be removed while more than one
+  remains.
+
+For each table in a pipeline, provide:
+
+* The name of the table or view to use, in the `Table Name` field. Qualify it
+  with its schema, for example `public.documents`.
+* The name of the column containing the text content to be indexed and
+  searched, in the `Text Column` field. A new table block starts at `content`.
 * The name of the column containing the vector embeddings (using pgvector) for
-  that content in the `Vector Column` field.
+  that content, in the `Vector Column` field. A new table block starts at
+  `embedding`.
+
+<!-- ui:src/components/databases/databaseServices/rag/RagServiceForm/RagPipelineTables.tsx -->
 
 When you set default values for the RAG server, individual pipelines can omit
-the corresponding fields and inherit those defaults; a pipeline can also
+the corresponding fields and inherit those defaults. A pipeline can also
 override specific fields while still inheriting the others. Use the `Override
 Default Values` toggle to expand the dialog and provide the pipeline-specific
 values you want to override:
@@ -82,14 +115,16 @@ Optionally, provide the following details:
 * The `Top N` field overrides the maximum number of results to retrieve before
   token-budget trimming for this pipeline.
 * The `Embedding LLM Provider` field overrides the provider used for query
-  and document embeddings during retrieval for this pipeline (`OpenAI`,
-  `Voyage AI`, or `Ollama`).
+  and document embeddings during retrieval for this pipeline (`OpenAI` or
+  `Voyage`).
+  <!-- ui:src/components/databases/databaseServices/rag/RagServiceForm/RagServiceForm.constants.ts -->
 * The `Embedding LLM Model` field overrides the embedding model to use for this
   pipeline.
 * The `Embedding LLM API Key` field overrides the API key used for the selected
   embedding provider for this pipeline.
 * The `Completion LLM Provider` field overrides the provider used for answer
-  generation for this pipeline (`OpenAI`, `Anthropic`, or `Ollama`).
+  generation for this pipeline (`Anthropic (Claude)` or `OpenAI`).
+  <!-- ui:src/components/databases/databaseServices/rag/RagServiceForm/RagServiceForm.constants.ts -->
 * The `Completion LLM Model` field overrides the completion model to use for
   this pipeline.
 * The `Completion LLM API Key` field overrides the API key used for the
@@ -103,13 +138,13 @@ search, vector weighting, and a custom system prompt for the pipeline:
 Provide the following details:
 
 * The `Hybrid Search` toggle combines vector similarity with BM25 full-text
-  search; when disabled, search uses pure vector similarity. Hybrid search is
+  search. When disabled, search uses pure vector similarity. Hybrid search is
   enabled by default.
 * The `Vector Weight` slider sets the balance between keyword and vector
   relevance, from `0.0` (pure keyword relevance) to `1.0` (pure vector
-  similarity); the default value is `0.5`.
+  similarity). The default value is `0.5`.
 * The `System Prompt` field provides custom instructions for answer
-  generation; leave it empty to use the server's built-in default prompt,
+  generation. Leave it empty to use the server's built-in default prompt,
   which instructs the model to answer questions based on the provided
   context.
 
@@ -118,17 +153,36 @@ server.
 
 ![The deployed service](../../../images/sf_enable_rag_deployed.png)
 
+Enabling, configuring or disabling the RAG server is a services write, so it
+requires the database to be `Available`, and it appears in the Activity Log as
+an `update-managed` task. Every services change shares that one task name, so
+the Activity Log cannot tell a RAG change from an MCP change.
+<!-- M:578 --> <!-- M:676-679 -->
+
 Once enabled, the RAG Server pane updates to display:
 
-- A green `Running` indicator to let you know the server is enabled.
+- A status badge. A `running` state reads `Running`. Every other state is
+  shown as the raw value the API sent, in lower case, such as `failed` or
+  `pending`.
 - A `Configure` button that opens the Configure RAG server dialog where you can
   modify the RAG server deployment.
 - A `Disable` button that you can use to stop the RAG server.
 
+`Running` means the deploy finished, not that the server answers. The `state`
+field reads `running` the moment the deploy completes, whatever the server
+itself is doing, so it is not a readiness signal. Its useful value is
+`failed`, which calls for action. A `Running` badge proves nothing on its
+own.
+<!-- M:758-777 -->
+
+The RAG server exposes no handshake, so query a pipeline to find out whether
+it is ready.
+<!-- M:753-754 -->
+
 !!! hint
 
     Detailed information about the RAG server is also added to the `Services`
-    page; use the link to `Services` located under the database name in the
+    page. Use the link to `Services` located under the database name in the
     navigation pane to access the page.
 
 ![RAG Server information is now displayed on the Services dialog](../../../images/sf_rag_services.png)
@@ -140,6 +194,23 @@ pane by selecting the `Disable` button.
 
 Select the `Disable RAG Server` button to stop the RAG server.
 
+## When the Services Page Shows an Error
+
+`Unable to load services` appears as a red panel on the `Services` page,
+with the body `We could not load this database. Refresh the page to try
+again.` Refresh. The RAG and MCP servers keep running while the console
+cannot read them, so this is a console read failure rather than an outage of
+the services themselves.
+<!-- ui:src/components/databases/managed/ManagedServicesView.tsx -->
+
+`Failed to update RAG server.` is a red notification meaning a services
+change was refused. It is the fallback text, shown when the API sends no
+message of its own. A services change needs the database `Available`, and
+every services change writes one `update-managed` task, so the Activity Log
+carries the attempt whether it succeeded or not.
+<!-- ui:src/hooks/useManagedRag.tsx -->
+<!-- M:578 --> <!-- M:678 -->
+
 ## Using the RAG Server
 
 Once the RAG server is running, its pane displays the pipeline, embedding
@@ -148,6 +219,13 @@ section that provides the API base URL and a ready-to-use `curl` command
 for querying a pipeline:
 
 ![The RAG Server pane showing connection details](../../../images/sf_rag_connect_details.png)
+
+The API base URL is your database's own domain with `/rag/v1` on the end, and
+a pipeline is one segment below it: a query is a `POST` to
+`https://<your-domain>/rag/v1/pipelines/<pipeline-name>` carrying a JSON body.
+A name the server does not know answers `404`.
+<!-- M:434-450 -->
+<!-- ui:src/utils/managedDatabase.ts getRagPipelineUrl -->
 
 After adding a RAG Server to your database, you can use the
 [pgEdge Docloader](https://docs.pgedge.com/pgedge-docloader/v1-0-0/)
@@ -162,7 +240,7 @@ After loading the table, you can query your pipeline via the REST API. For
 example:
 
 ```bash
-curl -X POST https://<your-rag-server-url>/v1/pipelines/my-docs/search \
+curl -X POST https://<your-domain>/rag/v1/pipelines/my-docs \
   -H "Content-Type: application/json" \
   -d '{"query": "How do I configure replication?"}'
 ```
@@ -181,7 +259,7 @@ the LLM to generate a grounded answer.
 
 This example walks through loading a set of Markdown documentation into
 your pgEdge Starfleet database and querying it through the RAG server.
-The RAG server only generates embeddings for incoming queries; the
+The RAG server only generates embeddings for incoming queries. The
 `embedding` column on your table must be populated separately before the
 server can retrieve against it.
 
@@ -193,7 +271,7 @@ server can retrieve against it.
 
     ```bash
     PGSSLMODE=require PGPASSWORD=<your-app-password> psql -U app \
-      -h <your-db-host> -p 5432 -d <your-db-name>
+      -h <your-domain> -p <your-port> -d <your-database>
     ```
 
 2. Create a table to hold the documentation content, with a `pgvector`
@@ -216,7 +294,7 @@ server can retrieve against it.
 
 3. Use the [pgEdge Docloader](https://docs.pgedge.com/pgedge-docloader/v1-0-0/)
    to load your documentation's Markdown files into the `documents`
-   table; point `--source` at the folder containing your docs. Reuse
+   table. Point `--source` at the folder containing your docs. Reuse
    the `Host`, `Database name`, and `User` values from the
    `Application` tab:
 
@@ -236,7 +314,7 @@ server can retrieve against it.
 
     !!! note
 
-        `pgedge-docloader` is an open-source command-line tool; install it by
+        `pgedge-docloader` is an open-source command-line tool. Install it by
         cloning and building the
         [pgEdge Docloader](https://github.com/pgEdge/pgedge-docloader)
         repository. You can download and install it with the following steps:
@@ -258,20 +336,21 @@ server can retrieve against it.
       vector.
     - `UPDATE` that row, storing the vector in its `embedding` column.
 
-5. Navigate to the RAG Server details page; in the console, go to the
+5. Navigate to the RAG Server details page. In the console, go to the
    `AI Services` pane and select `Details` on your running RAG Server, or
    select `Services` from the navigation pane. Under `Connect`, note the API
    base URL and the pipeline name.
 
 6. If the RAG Server's pipeline isn't already configured to use this table,
-   select `Configure`, then set `Table Name` to `documents`, `Text Column` to
-   `content`, and `Vector Column` to `embedding` for the pipeline.
+   select `Configure`, open the pipeline's table block under `Add Tables`,
+   then set `Table Name` to `public.documents`, `Text Column` to `content`,
+   and `Vector Column` to `embedding`.
 
 7. Query the pipeline with a question that your documentation should
    answer:
 
     ```bash
-    curl -X POST https://<your-rag-server-url>/v1/pipelines/<pipeline-name>/search \
+    curl -X POST https://<your-domain>/rag/v1/pipelines/<pipeline-name> \
       -H "Content-Type: application/json" \
       -d '{"query": "How do I configure replication?"}'
     ```
