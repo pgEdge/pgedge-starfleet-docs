@@ -25,22 +25,22 @@ Next, you'll select deployment features:
 
 - In the `SIZE` section, select the size of your resource bundle:
 
-    | Size | vCPU | RAM | Storage | Connections | Price |
-    |------|------|-----|---------|-------------|-------|
-    | Small | 1 vCPU | 2 GB RAM | 25 GB storage | 20 conns | Free trial, then $25/mo |
-    | Large | 2 vCPU | 8 GB RAM | 50 GB storage | 50 conns | $99/mo |
-    | XL | 4 vCPU | 16 GB RAM | 150 GB storage | 100 conns | $249/mo |
+ | Size | vCPU | RAM | Storage | Connections | Price |
+ |------|------|-----|---------|-------------|-------|
+ | Small | 1 vCPU | 2 GB RAM | 25 GB storage | 20 conns | Free trial, then $25/mo |
+ | Large | 2 vCPU | 8 GB RAM | 50 GB storage | 50 conns | $99/mo |
+ | XL | 4 vCPU | 16 GB RAM | 150 GB storage | 100 conns | $249/mo |
 
     For what each size gives you, see [Database Sizes](sizes.md).
 
 - The `ADD-ONS` section features a list of optional features for your database:
 
-    | Feature | Description | Price |
-    |---------|--------------|-------|
-    | Point-in-time recovery | Restores your database to any second within the past 7 days. | +$15/mo |
-    | Priority support | Provides a 1-hour response time through a dedicated support channel. | +$49/mo |
-    | Guaranteed resources | Reserves dedicated CPU and RAM for your database, so performance isn't affected by bursting contention from other workloads. | +$40/mo |
-    | Extended retention | Retains backups and metrics for 30 days. | +$10/mo |
+ | Feature | Description | Price |
+ |---------|--------------|-------|
+ | Point-in-time recovery | Restores your database to any second within the past 7 days. | +$15/mo |
+ | Priority support | Provides a 1-hour response time through a dedicated support channel. | +$49/mo |
+ | Guaranteed resources | Reserves dedicated CPU and RAM for your database, so performance isn't affected by bursting contention from other workloads. | +$40/mo |
+ | Extended retention | Retains backups and metrics for 30 days. | +$10/mo |
 
 Select the features that will be accessible to your database, and select
 `Create Database`.
@@ -65,18 +65,17 @@ The wizard shows one of these messages when a step fails:
   method on the account is required before a database can be created, so
   continuing past an unconfirmed billing status risks a refusal at the end of
   the wizard.
-  <!-- ui:src/components/databases/managed/createFlow/steps/SizeStep.tsx -->
-  <!-- M:196-197 -->
+
 * `Unable to start checkout. Please try again.` is the body of a red panel
   titled `Something went wrong`, with a `Back` button, meaning the payment
   step could not open a checkout session. Where the API sends a message of
   its own, that replaces the body text.
-  <!-- ui:src/components/databases/managed/createFlow/ManagedPaymentStep.tsx -->
+
 * `Confirmation failed` means the payment step could not confirm the card.
   The panel adds `We couldn't confirm your payment method.` and notes that the
   card may still have been saved, so check again in a moment before entering
   the card a second time.
-  <!-- ui:src/components/databases/managed/createFlow/ManagedPaymentStep.tsx -->
+
 * `Couldn't create your database` means the create request itself failed.
   The panel carries the reason underneath, plus `Try again` and `Back`.
-  <!-- ui:src/components/databases/managed/createFlow/steps/LaunchStep.tsx -->
+

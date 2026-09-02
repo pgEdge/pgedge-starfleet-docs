@@ -6,7 +6,6 @@ well. Connections are made over TLS with a password. The connection string the
 console hands you always carries `sslmode=require`, and Starfleet hosts serve
 TLS with a certificate that verifies, so `require` works from every client and
 a stricter mode is yours to add.
-<!-- M:1210-1213 -->
 
 The pgAdmin walkthrough also sets
 [gssencmode](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-GSSENCMODE)
@@ -32,11 +31,10 @@ the following commonly used clients:
 
 A database that is still being provisioned shows a provisioning message on
 the `Connect` pane instead of connection details.
-<!-- ui:src/components/databases/managed/details/ConnectCard.tsx -->
+
 `Available` is the status to wait for, and every readiness check should compare
 against it rather than against "not creating", because a database can report
 `failed` or `degraded` without passing through `creating` again.
-<!-- M:551-554 -->
 
 ## Next Steps
 

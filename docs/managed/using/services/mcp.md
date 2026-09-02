@@ -15,7 +15,6 @@ into actual operations against your database.
 
 The server connects to the database as the `app` role, so even a read-only
 server can read every table `app` can read.
-<!-- saas:internal/k8s/mcp.go -->
 
 !!! warning
 
@@ -29,7 +28,6 @@ To enable an MCP server, select `Enable MCP` on the `AI Services` pane of
 your database's management page. The button is active only while the database
 status is `Available`. On a database in any other status, hovering it shows
 `Database not available`.
-<!-- M:578 -->
 
 ![Enabling the MCP server](../../../images/sf_enable_mcp.png)
 
@@ -54,12 +52,10 @@ generates for you.
 pgEdge Starfleet accepts two embedding providers, `OpenAI` and `Voyage`.
 Self-hosted model serving has nowhere to run on a Starfleet database, so no
 other provider is accepted.
-<!-- M:140-144 -->
 
 The embedding API key is stored encrypted server-side. On a later edit, the
 stored key stays in place only while the provider you select still matches the
 one already stored. Switching provider asks for a new key.
-<!-- ui:src/components/databases/managed/details/ManagedMcpForm.tsx -->
 
 When you're finished, select the `Enable MCP server` button to deploy the MCP
 server.
@@ -70,7 +66,6 @@ Enabling, configuring or disabling any service is a services write, so it
 requires the database to be `Available`, and it appears in the Activity Log as
 an `update-managed` task. Every services change shares that one task name, so
 the Activity Log cannot tell an MCP change from a RAG change.
-<!-- M:578 --> <!-- M:676-679 -->
 
 Once enabled, the MCP Server pane updates to display:
 
@@ -87,25 +82,20 @@ Select the `Disable MCP Server` button to stop the MCP server. Removing the
 server does not change your client configuration, and every request from that
 client fails once the server is gone. A removed endpoint keeps answering for a
 few seconds before it stops. You can enable the server again later.
-<!-- M:752 -->
 
 ## Knowing When the Server Is Ready
 
 `Running` means the deploy finished, not that the server answers. The endpoint
 returns `503` for roughly fifteen to twenty seconds after the deploy
 completes.
-<!-- M:748-750 -->
-<!-- measured 2026-08-29: enable answered after about twenty seconds -->
 
 The `state` field is not a readiness signal at all. It reads `running` the
 moment the deploy completes, whatever the server itself is doing.
-<!-- M:758-761 -->
 
 Only `failed` is a reliable state. A `failed` badge calls for action, and the
 Activity Log carries the reason. A `Running` badge proves nothing on its own.
 Test readiness by connecting a client: point your editor at the endpoint, and
 if it reports the server as unavailable, wait a few seconds and reconnect.
-<!-- M:773-777 -->
 
 ## Reviewing MCP Server Details
 
@@ -133,7 +123,6 @@ once the server reports `Running`. It is the database's own domain with
 `/mcp/v1` on the end. Until then the panel reads "Connection details appear
 here once the MCP server is running." The endpoint carries no port in the
 ordinary case, because a Starfleet service is reached over HTTPS on port 443.
-<!-- ui:src/utils/managedDatabase.ts getMcpEndpointUrl -->
 
 ## Connecting a Client to the MCP Server
 
@@ -191,12 +180,10 @@ servers (like your pgEdge Starfleet MCP server) use `"type": "http"`.
 
 The panel carries a block for those four clients and no others, so there is no
 ready-made block for VS Code, or for any other client not named above.
-<!-- ui:src/components/databases/databaseServices/databaseServicesCards/DatabaseServiceCards.McpConnectPanel.tsx -->
 
 The server speaks streamable HTTP at the endpoint itself and authenticates on
 the `Authorization` header as a bearer token. Any client that takes a URL and
 a header can use the same two values the panel shows.
-<!-- ui:src/components/databases/databaseServices/databaseServicesCards/DatabaseServiceCards.McpConnectPanel.tsx -->
 
 ## When the Services Page Shows an Error
 
@@ -205,15 +192,12 @@ with the body `We could not load this database. Refresh the page to try
 again.` Refresh. The MCP and RAG servers keep running while the console
 cannot read them, so this is a console read failure rather than an outage of
 the services themselves.
-<!-- ui:src/components/databases/managed/ManagedServicesView.tsx -->
 
 `Failed to update MCP server.` is a red notification meaning a services
 change was refused. It is the fallback text, shown when the API sends no
 message of its own. A services change needs the database `Available`, and
 every services change writes one `update-managed` task, so the Activity Log
 carries the attempt whether it succeeded or not.
-<!-- ui:src/hooks/useManagedMcp.tsx -->
-<!-- M:578 --> <!-- M:678 -->
 
 ## Example - Connecting the MCP Server to Claude Code
 
@@ -276,7 +260,6 @@ carries the attempt whether it succeeded or not.
 
     If the client reports the server as unavailable, the deploy may have
     finished moments earlier. Wait a few seconds and reconnect.
-    <!-- M:748-750 -->
 
    The `/mcp` output shows `pgedge-postgres` as `connected`, along with the
    number of tools it exposes:
@@ -324,8 +307,7 @@ the `app` role therefore ends by restarting the database's MCP and RAG
 servers so they pick up the new password, which means a short gap in service.
 Your client configuration does not change, because the bearer token is the MCP
 server's own credential rather than the database password.
-<!-- M:706-709 -->
 
 The rotated password authenticates only once the database status returns to
 `Available`, and the old password may still work until then.
-<!-- M:1545-1566 -->
+

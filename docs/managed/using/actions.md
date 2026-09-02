@@ -67,24 +67,19 @@ as the fallback wording rather than the only wording.
 
 * `Could not resize the database.` means the resize was refused. A resize
   needs the database `Available`, and sizes only go up.
-  <!-- ui:src/components/databases/managed/ManagedUpgradeSize.tsx -->
-  <!-- M:578 -->
+
 * `Could not delete the database.` means the delete was refused. Deletion
   protection is the common cause, and the menu item reads
   `Delete database (protected)` until you turn it off. The other is a database created seconds ago or one still
   resizing, whose billing provision is unfinished. Wait and try again.
-  <!-- ui:src/components/databases/managed/ManagedDeleteConfirmation.tsx -->
-  <!-- M:711 -->
+
 * `Could not update the database.` means the display-name edit was refused.
   This edit takes no hold on the database and succeeds against a busy one, so
   a refusal here is not a busy database. Check the name length against the
   field's limit.
-  <!-- ui:src/components/databases/managed/ManagedChangeDisplayName.tsx -->
-  <!-- M:711 -->
+
 * `Could not update deletion protection.` means the switch was refused. This
   one also takes no hold on the database, so retrying is reasonable. It stays
   changeable on a `Failed` database, because a protected failure has to be
   removable.
-  <!-- ui:src/components/databases/managed/ManagedDeletionProtection.tsx -->
-  <!-- ui:src/components/databases/managed/ManagedDatabaseDetails.tsx -->
-  <!-- M:711 -->
+

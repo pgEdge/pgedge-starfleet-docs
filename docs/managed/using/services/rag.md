@@ -22,8 +22,6 @@ patterns.
 To enable a RAG server, select the `Enable RAG` icon in the RAG Server pane.
 The button is active only while the database status is `Available`. On a
 database in any other status, hovering it shows `Database not available`.
-<!-- ui:src/components/databases/managed/ManagedServicesView.tsx -->
-<!-- M:578 -->
 
 ![Provide details about the RAG server](../../../images/sf_rag_details.png)
 
@@ -39,8 +37,7 @@ deployment:
   providers, `OpenAI` and `Voyage`. Self-hosted model serving has nowhere to
   run on a pgEdge Starfleet database, so Ollama is not offered. (Anthropic
   does not provide an embedding model, so it isn't available here.)
-  <!-- M:140-144 -->
-  <!-- ui:src/components/databases/databaseServices/rag/RagServiceForm/RagServiceForm.constants.ts -->
+
 * The `Default Embedding LLM Model` field selects the embedding model to use.
   Available models depend on the selected provider (for example,
   `text-embedding-3-small` for OpenAI). This must match the model used to
@@ -50,7 +47,7 @@ deployment:
 * The `Default Completion LLM Provider` field selects the provider used for
   answer generation. The console offers two providers,
   `Anthropic (Claude)` and `OpenAI`, and no other provider is accepted.
-  <!-- ui:src/components/databases/databaseServices/rag/RagServiceForm/RagServiceForm.constants.ts -->
+
 * The `Default Completion LLM Model` field selects the completion model to use.
   Select a suggested model, or enter your own.
 * The `Default Completion LLM API Key` field provides the API key required for
@@ -58,12 +55,10 @@ deployment:
 * The `Add Pipelines` field defines one or more pipelines. Each pipeline has
   its own tables and can override the default values, and is queried at
   `/rag/v1/pipelines/<name>`.
-  <!-- M:434-438 -->
 
 When you select `OpenAI` for both the embedding provider and the completion
 provider, the two API key fields collapse into a single
 `Default OpenAI API Key` field, and the one value you enter is used for both.
-<!-- ui:src/components/databases/databaseServices/rag/RagServiceForm/RagDefaultsSection.tsx -->
 
 !!! note
 
@@ -71,7 +66,6 @@ provider, the two API key fields collapse into a single
     server. A server carrying a bad key still reaches `Running`, and the bad
     key surfaces only when a pipeline query fails. Check the key before you
     enable rather than reading the badge.
-    <!-- measured 2026-08-29: placeholder embedding key reached Running -->
 
 Select `+Add Pipeline` to expand the dialog and define one or more pipelines
 used by the RAG server.
@@ -98,8 +92,6 @@ For each table in a pipeline, provide:
   that content, in the `Vector Column` field. A new table block starts at
   `embedding`.
 
-<!-- ui:src/components/databases/databaseServices/rag/RagServiceForm/RagPipelineTables.tsx -->
-
 When you set default values for the RAG server, individual pipelines can omit
 the corresponding fields and inherit those defaults. A pipeline can also
 override specific fields while still inheriting the others. Use the `Override
@@ -117,14 +109,14 @@ Optionally, provide the following details:
 * The `Embedding LLM Provider` field overrides the provider used for query
   and document embeddings during retrieval for this pipeline (`OpenAI` or
   `Voyage`).
-  <!-- ui:src/components/databases/databaseServices/rag/RagServiceForm/RagServiceForm.constants.ts -->
+
 * The `Embedding LLM Model` field overrides the embedding model to use for this
   pipeline.
 * The `Embedding LLM API Key` field overrides the API key used for the selected
   embedding provider for this pipeline.
 * The `Completion LLM Provider` field overrides the provider used for answer
   generation for this pipeline (`Anthropic (Claude)` or `OpenAI`).
-  <!-- ui:src/components/databases/databaseServices/rag/RagServiceForm/RagServiceForm.constants.ts -->
+
 * The `Completion LLM Model` field overrides the completion model to use for
   this pipeline.
 * The `Completion LLM API Key` field overrides the API key used for the
@@ -157,7 +149,6 @@ Enabling, configuring or disabling the RAG server is a services write, so it
 requires the database to be `Available`, and it appears in the Activity Log as
 an `update-managed` task. Every services change shares that one task name, so
 the Activity Log cannot tell a RAG change from an MCP change.
-<!-- M:578 --> <!-- M:676-679 -->
 
 Once enabled, the RAG Server pane updates to display:
 
@@ -173,11 +164,9 @@ field reads `running` the moment the deploy completes, whatever the server
 itself is doing, so it is not a readiness signal. Its useful value is
 `failed`, which calls for action. A `Running` badge proves nothing on its
 own.
-<!-- M:758-777 -->
 
 The RAG server exposes no handshake, so query a pipeline to find out whether
 it is ready.
-<!-- M:753-754 -->
 
 !!! hint
 
@@ -201,15 +190,12 @@ with the body `We could not load this database. Refresh the page to try
 again.` Refresh. The RAG and MCP servers keep running while the console
 cannot read them, so this is a console read failure rather than an outage of
 the services themselves.
-<!-- ui:src/components/databases/managed/ManagedServicesView.tsx -->
 
 `Failed to update RAG server.` is a red notification meaning a services
 change was refused. It is the fallback text, shown when the API sends no
 message of its own. A services change needs the database `Available`, and
 every services change writes one `update-managed` task, so the Activity Log
 carries the attempt whether it succeeded or not.
-<!-- ui:src/hooks/useManagedRag.tsx -->
-<!-- M:578 --> <!-- M:678 -->
 
 ## Using the RAG Server
 
@@ -224,8 +210,6 @@ The API base URL is your database's own domain with `/rag/v1` on the end, and
 a pipeline is one segment below it: a query is a `POST` to
 `https://<your-domain>/rag/v1/pipelines/<pipeline-name>` carrying a JSON body.
 A name the server does not know answers `404`.
-<!-- M:434-450 -->
-<!-- ui:src/utils/managedDatabase.ts getRagPipelineUrl -->
 
 After adding a RAG Server to your database, you can use the
 [pgEdge Docloader](https://docs.pgedge.com/pgedge-docloader/v1-0-0/)
@@ -253,7 +237,6 @@ the LLM to generate a grounded answer.
 
     The full API docs and an interactive demo are available at
     [docs.pgedge.com/pgedge-rag-server](https://docs.pgedge.com/pgedge-rag-server).
-
 
 ## Example - Building a Custom Knowledgebase with the RAG Server
 

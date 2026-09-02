@@ -19,7 +19,6 @@ page:
   field.
 
 * Provide the port from the `Connection string` in the `Port` field.
-  <!-- ui:src/utils/managedDatabase.ts buildManagedConnectionString -->
 
 * Provide the name of your database in the `Maintenance database` field.
 
@@ -28,7 +27,6 @@ page:
   creates belong to the role your application connects as. Use the `admin`
   user to install an allowlisted extension, or for the server-wide work
   described in [Database Roles](../roles.md).
-  <!-- M:195-215 -->
 
 * Enter the password associated with the user in the `Password` field.
 

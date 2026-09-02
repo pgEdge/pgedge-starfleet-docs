@@ -9,31 +9,22 @@ pane carries one tab per built-in role:
 * an `Admin` tab with credentials for the `admin` user
 * an `Application` tab with credentials for the `app` user
 
-<!-- ui:src/hooks/useDatabaseCredentials.tsx -->
-<!-- ui:src/components/databases/managed/details/ConnectCard.tsx -->
-<!-- saas:internal/starfleet/api/managed_databases.go, user_type takes
-     application or admin -->
-
 Each tab displays a `Connection string`, a ready-to-use `psql command`, the
 `Database name`, `Domain`, `User`, and `Password` values used to build them,
 and a `Rotate credentials` button. The `Password` is masked until you select
 the reveal control beside it.
-<!-- ui:src/components/databases/managed/details/SecretField.tsx -->
 
 The `Connection string` and `psql command` blocks are shown on screen without
 the password in them. The copy button beside each block copies the same value
 with the password filled in, so the clipboard holds a live credential even
 though the screen shows none.
-<!-- ui:src/components/databases/managed/details/ConnectCard.tsx -->
 
 For what each role can do and which one to connect as, see
 [Database Roles](../roles.md). In short, connect as `app` to create tables
 and load data, and as `admin` to install an allowlisted extension or to do
 server-wide work such as watching sessions or creating roles.
-<!-- M:195-215 -->
 
 ![Connecting to your database](../images/sf_connecting.png)
-
 
 ## Using the psql Client
 
@@ -55,7 +46,6 @@ it directly into a terminal window, and press `Return` to connect.
     The `PGSSLMODE=require` environment variable is the shell-variable
     spelling of the `sslmode=require` setting the `Connection string` block
     carries in its URI. Both enforce the required TLS connection.
-    <!-- ui:src/utils/managedDatabase.ts buildManagedPsqlCommand -->
 
 If you start psql with a graphical prompt or icon (rather than the command
 line) you can use the individual values from the psql connection string to
@@ -70,7 +60,7 @@ authenticate:
 * When prompted for a `Port [5432]`, enter the port shown in the connection
   string and press `Return`. Read the port from the string rather than
   assuming the Postgres default.
-  <!-- ui:src/utils/managedDatabase.ts buildManagedConnectionString -->
+
 * When prompted for a `Username [postgres]`, provide the `User` value from the
   `Connect` pane, and press `Return`. In our example, the user is `admin`.
 * When prompted for the `Password`, provide the `Password` value from the
@@ -81,10 +71,8 @@ authenticate:
 The user and the password are percent-encoded inside the `Connection string`
 URI, so a password holding `@`, `:`, `/`, or `?` round-trips instead of
 parsing into something other than what was meant.
-<!-- M:1209-1210 -->
-<!-- ui:src/utils/managedDatabase.ts buildManagedConnectionString -->
+
 The `psql command` block shell-quotes the same values instead.
-<!-- ui:src/utils/managedDatabase.ts buildManagedPsqlCommand -->
 
 If you read the password out of the `Password` field and assemble a URI
 yourself, you have to encode it yourself. Copying the `Connection string`
@@ -99,7 +87,7 @@ text. Three habits leak it:
 
 * Do not echo the string into a terminal. Scrollback outlives the session, and
   shell history files outlive the terminal.
-  <!-- M:1220-1221 -->
+
 * Do not pass the password as a command-line argument. Argument lists are
   visible in `ps` on a shared host.
 * Do not let it reach a CI log. A job running under a shell trace writes the
