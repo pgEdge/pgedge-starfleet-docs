@@ -13,7 +13,7 @@ The `Connect` pane on your database's page carries the string. Use the
 an object belongs to the role that created it, so a framework connected as
 `app` owns every table its migrations create and can alter or drop them
 later.
-<!-- M:195-199 -->
+
 For the pane itself see [The Connect Pane](index.md#the-connect-pane), and
 for the full permission split see [Database Roles](../../roles.md).
 
@@ -27,13 +27,11 @@ Keep the whole string, query string included. The console always appends
 setting without saying so. Starfleet hosts serve TLS with a certificate that
 verifies, so `require` works from every client and a stricter mode is yours to
 add.
-<!-- M:1210-1213 -->
 
 The console hands you a URL, not discrete `PG*` values. A framework that
 wants separate host, port, user and password parameters needs the string
 split, and the `Connect` pane shows each part on its own row for that. The
 Django section below shows the split form.
-<!-- ui:src/components/databases/managed/details/ConnectCard.tsx -->
 
 ### Checking the String with psql
 
@@ -50,8 +48,6 @@ on its own configuration rather than on the database. See
 and on pgEdge Starfleet it works as `app`, which then owns the extension and
 can drop it in a later migration. `vector` is the other way round: only
 `admin` can install it.
-<!-- M:201-215 -->
-<!-- measured 2026-08-31 and 2026-09-01 on PostgreSQL 18.4 -->
 
 Neither role is a superuser. An extension Postgres marks trusted, such as
 `pgcrypto`, `citext` or `hstore`, installs as `app`. An extension on the
@@ -59,7 +55,6 @@ pgEdge allowlist, such as `vector`, `postgis` or `pg_cron`, installs as
 `admin` only, and `app` is refused with `Must be superuser to create this
 extension`. The full table, the refusal messages and the install order are in
 [Installing Extensions](extensions.md).
-<!-- M:201-215 -->
 
 A migration run with the `Application` tab's string installs `pgcrypto`
 without trouble, because that string is the `app` role. A migration that also
@@ -83,13 +78,12 @@ Set `DATABASE_URL` to the string the console gave you. Prisma's own default is
 `sslmode=prefer`, which accepts a plain-text connection when TLS is not
 available, so the `sslmode=require` on the end of the console's string is what
 holds the connection encrypted.
-<!-- vendor:https://www.prisma.io/docs/orm/overview/databases/postgresql -->
-The [Prisma Postgres connector reference][prisma-pg] lists the other arguments
-Prisma reads from the query string.
+
+The [Prisma PostgreSQL connector reference][prisma-pg] lists the other
+arguments Prisma reads from the query string.
 
 A Prisma migration that runs `CREATE EXTENSION pgcrypto` works against the
 `Application` tab's string. One that runs `CREATE EXTENSION vector` does not.
-<!-- M:228-231 -->
 
 ## Drizzle
 
@@ -119,7 +113,6 @@ migration tool, and both therefore connect as `app`. The
 [Drizzle Postgres guide][drizzle-pg] covers the driver alternatives. A Drizzle
 migration carrying `CREATE EXTENSION pgcrypto` works on that connection. An
 allowlisted extension has to be installed on the `Admin` tab first.
-<!-- M:228-231 -->
 
 ## Django
 
@@ -145,10 +138,9 @@ DATABASES = {
 Django's Postgres backend passes `OPTIONS` to the driver's connection
 constructor, which is why the TLS setting sits there rather than beside the
 host.
-<!-- vendor:https://docs.djangoproject.com/en/stable/ref/databases/ -->
+
 Keep it, because this is the split-parameter form of the `sslmode=require` the
 console appends.
-<!-- M:1210-1213 -->
 
 The alternative is dj-database-url, which parses a URI into the same
 dictionary and reads `DATABASE_URL` by default:
@@ -163,14 +155,13 @@ The [Django databases reference][django-db] covers what else the backend
 accepts. A Django migration whose operations include
 `CREATE EXTENSION pgcrypto` runs as `app` and succeeds. An allowlisted
 extension needs the `Admin` tab first.
-<!-- M:228-231 -->
 
 ## Ruby on Rails
 
 Active Record reads `DATABASE_URL` from the environment with no configuration
 at all, so that variable and an empty `config/database.yml` are enough to
 connect. A `url` key in the YAML takes precedence over the variable.
-<!-- vendor:https://guides.rubyonrails.org/configuring.html#configuring-a-database -->
+
 Reading the variable through ERB pins one environment to one connection
 without committing the string:
 
@@ -183,7 +174,6 @@ The [Rails configuration guide][rails-db] describes how the two sources are
 merged. A Rails migration that enables `pgcrypto` runs as `app` and succeeds.
 One that enables an allowlisted extension does not, so install that on the
 `Admin` tab before running `db:migrate`.
-<!-- M:228-231 -->
 
 ## SQLAlchemy and Alembic
 
@@ -198,7 +188,7 @@ engine = create_engine(os.environ["DATABASE_URL"])
 
 Alembic reads the URL from the `sqlalchemy.url` key of `alembic.ini`, a file
 most projects commit, and a live password does not belong in a committed file.
-<!-- vendor:https://alembic.sqlalchemy.org/en/latest/tutorial.html -->
+
 Set the value at run time from `env.py` instead:
 
 ```python
@@ -212,7 +202,6 @@ context.config.set_main_option(
 The [Alembic tutorial][alembic-tut] describes the rest of that file. An
 Alembic revision issuing `CREATE EXTENSION pgcrypto` runs as `app` and
 succeeds. An allowlisted extension needs the `Admin` tab first.
-<!-- M:228-231 -->
 
 ## After a Rotation
 
@@ -221,10 +210,9 @@ A string an application already holds stops working when someone selects
 password does not authenticate until the database returns to `Available`, and
 the old one may still work in that window, so switch the application over once
 the status reads `Available` rather than immediately.
-<!-- M:1545-1566 -->
+
 Rotating `app` also restarts the database's MCP and RAG servers, because each
 reads that password once at startup.
-<!-- M:706-709 -->
 
 ## Related Pages
 

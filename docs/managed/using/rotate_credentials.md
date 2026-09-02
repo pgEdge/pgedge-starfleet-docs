@@ -14,21 +14,14 @@ Rotation is not on the `Actions` menu. For the options that are, see
 The `Connect` pane on a database's overview page carries the connection
 string, the psql command, the database name, the domain, the user, and the
 password, with `Rotate credentials` underneath them.
-<!-- ui:src/components/databases/managed/details/ConnectCard.tsx -->
 
 The pane shows an `Admin` tab and an `Application` tab, one per built-in
 role. Rotating from a tab rotates the Postgres user named on it.
-<!-- ui:src/hooks/useDatabaseCredentials.tsx -->
-<!-- ui:src/components/databases/managed/details/ConnectCard.tsx -->
-<!-- saas:internal/starfleet/api/managed_databases.go, user_type takes
-     application or admin -->
 
 The button is disabled while the database is provisioning, and the console
 enables it on a database that is `Available` or `Degraded`. The API admits a
 rotation only from `Available`, so a `Degraded` database can offer the button
 and still refuse the write.
-<!-- ui:src/components/databases/managed/ManagedDatabaseDetails.tsx -->
-<!-- M:578-584 -->
 
 For where the `Connect` pane is, see
 [Connecting with psql](../../connecting/psql.md). For what each role is
@@ -39,78 +32,63 @@ for, see [Database Roles](../../roles.md).
 The button opens a `Rotate credentials` dialog naming the Postgres user, with
 `Rotate credentials` and `Cancel`. Rotating the `Application` role adds a note
 about the MCP and RAG servers restarting.
-<!-- ui:src/components/databases/managed/ManagedDatabaseDetails.tsx -->
 
 Confirming does three things:
 
 * The API accepts the change and starts the work. The database moves to
   `Modifying`.
-  <!-- M:626-628 -->
 
 * A `rotate-password-managed` task appears in the Activity Log for this
   database. The call returns no task ID, so find the task by pasting the
   database ID into the Activity Log's `Subject ID` filter. See
   [Reviewing the Activity Log](../../activity_log.md).
-  <!-- M:1576 -->
 
 * The console re-reads every per-role credential, so the `Connect` pane shows
   the new password rather than a stale one for any role.
-  <!-- ui:src/components/databases/managed/ManagedDatabaseDetails.tsx -->
 
 A success notification reads `Rotated the password for <user>.`
-<!-- ui:src/components/databases/managed/ManagedDatabaseDetails.tsx -->
 
 ## Wait for Available Before Switching Over
 
 The database reads `Modifying` for about ten seconds.
-<!-- M:626-628 -->
-<!-- measured 2026-08-19, polled every two seconds: modifying one -->
-<!-- second after the call, available again nine seconds later -->
 
 Until it is back to `Available`, two things are true at once:
 
 * The new password does not authenticate yet. The `Connect` pane hands it to
   you before the running database accepts it, so reading it back and
   connecting immediately fails.
-  <!-- M:1550-1556 -->
 
 * The old password may still work. The rotation is not proof the old one is
   dead. That outlives the task as well: a succeeded task says the new
   credential is live, never that the old one has stopped working.
-  <!-- M:1557-1561 -->
 
 Wait for `Available` before switching anything over. The status badge on the
 same page is the signal.
-<!-- M:1563 -->
 
 Rotation breaks any session still using the old password, so switch every
 client that holds the rotated role, not only the one you were testing with.
-<!-- M:1528 -->
 
 ## Rotating the Application Role Restarts MCP and RAG
 
 The MCP and RAG servers read the database's `app` password once, at startup, so
 a rotation of the `Application` role ends by restarting them. They are back on
 the new password by the time the database reads `Available` again.
-<!-- M:706-709 --> <!-- M:1563-1566 -->
+
 Expect a short gap in service on both, and no change to your MCP client
 configuration. See
 [MCP Server](services/mcp.md).
 
 Rotating the `Admin` role does not restart them, because both servers
 connect as `app`.
-<!-- M:706-707, saas:internal/k8s/mcp.go (user: app) -->
 
 ## Read the New Password Back
 
 The new password is not shown by the rotation itself.
-<!-- M:1531 -->
+
 Read it from the `Password` field on the `Connect` pane, which is masked with a
 reveal control and a copy button. The `Connection string` and `psql command`
 rows show the password masked and copy it filled in, so copying either gives
 you a working string without putting the secret on screen.
-<!-- ui:src/components/databases/managed/details/ConnectCard.tsx -->
-<!-- ui:src/components/databases/managed/details/SecretField.tsx -->
 
 Then update every place the old password is saved. That includes:
 
@@ -125,30 +103,25 @@ Then update every place the old password is saved. That includes:
 again.`, or the API's own message where it sends one. The API's rotation
 refusal reads `rotating a password requires the database to be available; it
 is busy with another operation`.
-<!-- ui:src/components/databases/managed/ManagedDatabaseDetails.tsx -->
-<!-- M:588-590 -->
+
 Waiting is the fix. A database already `Modifying` because of an earlier
 restore or resize refuses a rotation for the same reason.
-<!-- M:582-584 -->
 
 **An uncertain outcome.** If no notification arrives, do not press the button
 again. A rotation hands the new credential to the database before it waits for
 confirmation, and the database applies it independently, so a repeat risks
 replacing a credential that is already in place.
-<!-- M:685-690 -->
+
 Read the Activity Log instead. Find the `rotate-password-managed` task for this
 database and compare its `Updated at` against the current time rather than
 against its `Created at`. A rotation completes in seconds, so a task still
 running whose `Updated at` is minutes old has stopped progressing. A task whose
 `Created at` and `Updated at` are equal finished inside the API's one-second
 timestamp resolution and is healthy.
-<!-- M:691-699 -->
 
 **A failure.** A rotation that fails leaves the database `Degraded`, with the
 new credential recorded but not applied, and a `Degraded` database is refused
 another rotation until it is recovered.
-<!-- M:1568-1574 -->
-<!-- not measured: no failed rotation produced -->
 
 ## The API Client Secret
 
@@ -160,7 +133,6 @@ A client's secret is returned once, at creation, and cannot be fetched again.
 The creation dialog says so directly: "Please copy the authentication ID and
 secret below. You cannot retrieve the secret value again later." Both values
 carry copy buttons.
-<!-- ui:src/components/clients/client.create.tsx -->
 
 Rotating one is therefore replacement, not rotation, and the order matters,
 because the old credential is the working one until the new one has proven
