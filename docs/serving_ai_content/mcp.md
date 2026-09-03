@@ -1,4 +1,4 @@
-# MCP Server
+# Enabling and Using the MCP Server
 
 The `AI Services` pane on your database's management page displays icons you
 can use to deploy available services on your database.
@@ -283,7 +283,7 @@ The `Services` page displays a message when something goes wrong:
 
    ![Querying the employees table with psql as the app user](../images/sf_mcp_call_pg_psql.png)
 
-## Prompt Injection
+## Best Practices to Avoid Prompt Injection
 
 An agent that reads your data can be steered by the text in your data.
 Anything the agent reads is text arriving in its context, and text in a row
@@ -307,7 +307,7 @@ When using the MCP server:
   you authored carries less of this potential risk than data submitted by
   users.
 
-## Changing the app Password Restarts the Server
+## How Password Changes Affect the MCP Server
 
 The MCP server reads the database's `app` password once, at startup. Changing
 the `app` role therefore ends by restarting the database's MCP and RAG

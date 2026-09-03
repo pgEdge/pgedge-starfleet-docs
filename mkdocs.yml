@@ -52,7 +52,7 @@ nav:
     - Reviewing the Activity Log: using_console/activity_log.md
     - Accessing Management Options with the Actions Menu: using_console/actions.md
   - Serving up AI Content:
-    - MCP Server: serving_ai_content/mcp.md
+    - Enabling and Using the MCP Server: serving_ai_content/mcp.md
     - RAG Server: serving_ai_content/rag.md
   - Connecting to a pgEdge Starfleet Database:
     - connecting/index.md

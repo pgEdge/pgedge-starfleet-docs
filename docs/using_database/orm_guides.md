@@ -226,8 +226,8 @@ reads that password once at startup.
   extension and what the refusal message means.
 - [Restoring from Backup](../using_console/backups.md) covers restoring in place after a
   migration goes wrong.
-- [MCP Server](../serving_ai_content/mcp.md) covers the server that a rotation of `app`
-  restarts.
+- [Enabling and Using the MCP Server](../serving_ai_content/mcp.md) covers
+  the server that a rotation of `app` restarts.
 
 [prisma-pg]: https://www.prisma.io/docs/orm/overview/databases/postgresql
 [drizzle-pg]: https://orm.drizzle.team/docs/get-started-postgresql
