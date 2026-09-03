@@ -32,22 +32,22 @@ status is `Available`. On a database in any other status, hovering it shows
 ![Enabling the MCP server](../../../images/sf_enable_mcp.png)
 
 When the `Enable MCP server` popup opens, select the features you wish to
-enable. Both switches are optional and both start off, so submitting the form
-unchanged gives you a read-only server with a bearer token the platform
-generates for you.
+enable. Both settings are optional and are by default set to `off`, so submitting
+the form unchanged creates a read-only server with a platform-generated bearer
+token.
 
 - Enable `Generate embeddings` to expose the `generate_embedding` tool, which
-  lets the connected LLM request vector embeddings for text (for example, to
+  allows the connected LLM request vector embeddings for text (for example, to
   support semantic search over your database, via pgvector). It's optional,
   and requires you to select a provider and model and supply an API key for
   that provider.
 
 - Enable `Allow writes` to control whether the `query_database` tool can
   execute mutating SQL (INSERT/UPDATE/DELETE) in addition to read-only
-  queries. Leaving it off keeps the LLM strictly read-only against your
-  database (a much safer default). Turning it on lets the LLM modify or delete
-  rows, a higher-risk, explicit option. The switch is off by default and is
-  labelled in red.
+  queries. Leave `allow writes` off to keep the LLM strictly read-only against
+  your database (a much safer default). Enabling writes allows the LLM to modify
+  or delete rows, a higher-risk, explicit option. The setting is `off` by default
+  and is labeled in red.
 
 pgEdge Starfleet accepts two embedding providers, `OpenAI` and `Voyage`.
 Self-hosted model serving has nowhere to run on a Starfleet database, so no
