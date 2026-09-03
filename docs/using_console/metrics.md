@@ -5,7 +5,7 @@ graphs of current database activity, including `Transactions`
 (transactions per second) and `Tuples returned` (rows returned per
 second).
 
-![The Metrics page](../../images/sf_metrics_all.png)
+![The Metrics page](../images/sf_metrics_all.png)
 
 The `Metrics` page displays five headline tiles and nineteen charts,
 grouped into `Resources`, `Throughput`, and `Storage and WAL`. Select
@@ -13,7 +13,7 @@ any chart to expand it for a closer look.
 
 ## The Metrics Page Header
 
-![The Metrics page header](../../images/sf_metrics_header.png)
+![The Metrics page header](../images/sf_metrics_header.png)
 
 The header displays the name and status of the current database,
 followed by controls for the charts displayed below:
@@ -88,7 +88,7 @@ connection resources used by your database.
 
 Active, idle, and waiting are three separate charts of one number
 apiece, not slices of a total. Read them together against the
-connection limit the axis carries.
+connection limit the axis displays.
 
 ## Throughput Charts - Reference
 
@@ -179,13 +179,13 @@ one button per instance and the primary marked, and two lines on each
 chart with a legend. The instance still coming up reports blanks for a
 while, so its line starts sparse.
 
-Outside a resize or a restore, each chart carries a single line.
+Outside a resize or a restore, each chart displays a single line.
 
 ## When the Page Shows a Message Instead of Charts
 
 The page shows one of two messages in place of the charts:
 
-* `Couldn't load metrics` means the read failed, and the panel carries a
+* `Couldn't load metrics` means the read failed, and the panel displays a
   `Retry` button. Use it. If it keeps failing while the database is
   `Available`, the metrics store is the thing that is unwell rather than the
   database.
@@ -203,6 +203,6 @@ again shortly.` in place of the whole page instead.
 
 ## Related Pages
 
-* [Reviewing the Activity Log](../../activity_log.md) covers the resize
+* [Reviewing the Activity Log](activity_log.md) covers the resize
   and the restore that put two instances on the charts.
 * [Restoring from Backup](backups.md) covers the restore itself.

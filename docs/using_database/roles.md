@@ -4,7 +4,7 @@ Every pgEdge Starfleet database comes with two roles you can connect as,
 `admin` and `app`. Neither one is a Postgres superuser. They split the work by
 job rather than by seniority: `app` owns the database and everything your
 application builds in it, and `admin` holds the server-wide privileges an
-operator needs. The `Connect` pane on the database page carries a tab for
+operator needs. The `Connect` pane on the database page displays a tab for
 each role, with its own password.
 
 A Managed instance starts with one database, named by you when you create it
@@ -77,10 +77,10 @@ The following table compares the two roles:
 ## Where the Credentials Are
 
 The `Connect` pane on the database page shows an `Admin` tab and an
-`Application` tab. Each carries a connection string, a psql command and the
+`Application` tab. Each displays a connection string, a psql command and the
 password for its role, and a `Rotate credentials` button.
-[Connecting with psql](connecting/psql.md) covers reading them and handling
-the password, and [Rotating Database Credentials](managed/using/rotate_credentials.md)
+[Connecting with psql](../connecting/psql.md) covers reading them and handling
+the password, and [Rotating Database Credentials](../using_console/rotate_credentials.md)
 covers replacing one.
 
 The MCP and RAG servers connect to the database as `app`, so a server can
@@ -96,9 +96,9 @@ not step in. The MCP and RAG servers sit on the same permission boundary as
 
 ## Next Steps
 
-* [Installing Extensions](managed/using/extensions.md) covers which role
+* [Installing Extensions](extensions.md) covers which role
   installs which extension and what the refusal message means.
 * [Loading Data into Your pgEdge Starfleet Database](loading_data.md) covers
   the load order that uses both roles.
-* [Connecting to a pgEdge Starfleet Database](connecting/index.md) covers
+* [Connecting to a pgEdge Starfleet Database](../connecting/index.md) covers
   the clients and how each one takes the credentials.

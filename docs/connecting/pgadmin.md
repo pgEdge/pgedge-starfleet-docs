@@ -26,7 +26,7 @@ page:
   time. The `app` user owns the database, so the tables and other objects it
   creates belong to the role your application connects as. Use the `admin`
   user to install an allowlisted extension, or for the server-wide work
-  described in [Database Roles](../roles.md).
+  described in [Database Roles](../using_database/roles.md).
 
 * Enter the password associated with the user in the `Password` field.
 

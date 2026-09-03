@@ -11,7 +11,7 @@ Rotation is not on the `Actions` menu. For the options that are, see
 
 ## Rotating from the Connect Pane
 
-The `Connect` pane on a database's overview page carries the connection
+The `Connect` pane on a database's overview page displays the connection
 string, the psql command, the database name, the domain, the user, and the
 password, with `Rotate credentials` underneath them.
 
@@ -24,8 +24,8 @@ rotation only from `Available`, so a `Degraded` database can offer the button
 and still refuse the write.
 
 For where the `Connect` pane is, see
-[Connecting with psql](../../connecting/psql.md). For what each role is
-for, see [Database Roles](../../roles.md).
+[Connecting with psql](../connecting/psql.md). For what each role is
+for, see [Database Roles](../using_database/roles.md).
 
 ## What Happens When You Confirm
 
@@ -41,7 +41,7 @@ Confirming does three things:
 * A `rotate-password-managed` task appears in the Activity Log for this
   database. The call returns no task ID, so find the task by pasting the
   database ID into the Activity Log's `Subject ID` filter. See
-  [Reviewing the Activity Log](../../activity_log.md).
+  [Reviewing the Activity Log](activity_log.md).
 
 * The console re-reads every per-role credential, so the `Connect` pane shows
   the new password rather than a stale one for any role.
@@ -76,7 +76,7 @@ the new password by the time the database reads `Available` again.
 
 Expect a short gap in service on both, and no change to your MCP client
 configuration. See
-[MCP Server](services/mcp.md).
+[MCP Server](../serving_ai_content/mcp.md).
 
 Rotating the `Admin` role does not restart them, because both servers
 connect as `app`.
@@ -127,7 +127,7 @@ another rotation until it is recovered.
 
 The pgEdge Cloud API authenticates with an API client, managed on the
 `API Clients` tab under `Settings`. See
-[The API Clients Tab](../../settings.md#the-api-clients-tab).
+[The API Clients Tab](../settings.md#the-api-clients-tab).
 
 A client's secret is returned once, at creation, and cannot be fetched again.
 The creation dialog says so directly: "Please copy the authentication ID and
@@ -151,12 +151,12 @@ itself:
 
 ## Next Steps
 
-* [Database Roles](../../roles.md) covers the roles whose passwords these
-  are, and [Connecting with psql](../../connecting/psql.md) covers how to
+* [Database Roles](../using_database/roles.md) covers the roles whose passwords these
+  are, and [Connecting with psql](../connecting/psql.md) covers how to
   handle the password once you have it.
 
-* [MCP Server](services/mcp.md) covers the server a rotation of the
+* [MCP Server](../serving_ai_content/mcp.md) covers the server a rotation of the
   `Application` role restarts.
 
-* [Reviewing the Activity Log](../../activity_log.md) covers finding the
+* [Reviewing the Activity Log](activity_log.md) covers finding the
   `rotate-password-managed` task.

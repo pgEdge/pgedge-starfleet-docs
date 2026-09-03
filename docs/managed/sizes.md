@@ -1,11 +1,11 @@
-# Database Sizes
+# Selecting a Database Size
 
-A Managed database runs at one of three sizes. You choose the size when you
-create the database, and you can move it up to a larger one later. The size
-fixes the compute, memory, storage and connection limit the database runs
-under.
+A managed database runs at one of three sizes. You select the size when you
+create the database, and can move to a larger size as your needs change. The
+size sets the compute, memory, storage and connection limits the database
+adheres to.
 
-The following table shows what each size gives you:
+The following table shows what each size provides:
 
 | Size | vCPU | Memory | Storage | Connections |
 |-------|------|--------|---------|-------------|
@@ -14,37 +14,42 @@ The following table shows what each size gives you:
 | XL | 4 | 16 GB | 150 GB | 100 |
 
 `Connections` is the Postgres `max_connections` setting. Every client counts
-against it, including the MCP and RAG servers, which connect to the database
-as `app` when they are enabled.
+against the value, including the MCP and RAG servers, which connect to the
+database as `app` when enabled.
 
-`Storage` is the disk the database has. Used space counts against it, and the
-only way to grow it is a size upgrade.
+`Storage` is the disk space available to the database. Used space counts
+against this value; the only way to increase the disk space is a size
+upgrade.
 
-The price of each size is shown beside it on the size step of the create
-wizard and in the `Upgrade size` popup, and the `Plan & billing` pane on the
-database page shows the price of the size you are on.
+The price of each size is displayed on the size step of the creation
+wizard, in the `Upgrade size` popup, and on the `Plan & billing` pane of
+the database console.
 
 ## Reading the Current Size
 
-The database header carries a badge naming the size, and the `Plan & billing`
-pane names it beside its price. The `CPU`, `Memory`, `Storage` and `Conns`
-figures in the header are live readings against the size's limits, so
-`Storage` reads used against capacity and `Conns` reads active against the
-connection limit. The `Upgrade size` popup lists each size's figures.
+The database header displays a badge with the resource size, and the
+`Plan & billing` pane displays the size alongside the price. The `CPU`,
+`Memory`, `Storage` and `Conns` figures in the header are live readings of
+current usage against the size's limits: `CPU` and `Memory` compare the
+current load against their allotted capacity, `Storage` compares used
+space against capacity, and `Conns` compares active connections against
+the connection limit. The `Upgrade size` popup displays each size's
+allocated resources.
 
-## Changing Size
+## Changing the Allocated Size
 
-Sizes only go up. `Upgrade size` on the `Actions` menu moves the database to a
-larger size, and the database restarts while the new size is applied. It is
-offered only while the database is `Available`. See
-[Upgrading the Size Tier](using/actions.md#upgrading-the-size-tier).
+Sizes can only be increased. `Upgrade size` on the `Actions` menu moves
+the database to a larger size, and restarts the database when the new
+size is applied. This option is available only while the database status
+is `Available`. See
+[Upgrading the Size Tier](../using_console/actions.md#upgrading-the-size-tier).
 
 ## Next Steps
 
-* [Deploying a Managed Database](creating_managed.md) covers the create
-  wizard where the size is chosen.
-* [Accessing Management Options with the Actions Menu](using/actions.md)
-  covers the upgrade.
-* [Monitoring System Metrics](using/metrics.md) covers the `CPU`, `Memory`,
-  `Disk used` and `Active connections` charts that show how much of the size
-  is in use.
+* [Deploying a Managed Database](creating_managed.md) discusses using the
+  create wizard.
+* [Accessing Management Options with the Actions Menu](../using_console/actions.md)
+  discusses upgrading your resources.
+* [Monitoring System Metrics](../using_console/metrics.md) details the
+  `CPU`, `Memory`, `Disk used` and `Active connections` charts which show the
+  current resources in use.

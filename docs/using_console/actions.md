@@ -3,7 +3,7 @@
 The `Actions` drop-down, on the right-hand side of your database's management
 page header, offers management options for your database:
 
-![The Actions menu](../../images/sf_actions_menu.png)
+![The Actions menu](../images/sf_actions_menu.png)
 
 * `Edit display name` — set an optional display name for your database.
 * `Upgrade size` — change the size tier of your database.
@@ -17,7 +17,7 @@ page header, offers management options for your database:
 Select `Edit display name` from the `Actions` menu to open the
 `Edit display name` popup.
 
-![The Edit display name popup](../../images/sf_edit_display_name.png)
+![The Edit display name popup](../images/sf_edit_display_name.png)
 
 The `Display Name` is optional, and is used to distinguish between multiple
 databases that share the same database name in the console UI; it doesn't
@@ -32,7 +32,7 @@ Select `Upgrade size` from the `Actions` menu to change the size tier of your
 database. The `Upgrade size` popup opens, showing your database's current
 size and price, and the sizes you can upgrade to.
 
-![The Upgrade size popup](../../images/sf_actions_upgrade_size.png)
+![The Upgrade size popup](../images/sf_actions_upgrade_size.png)
 
 Select the size you want to upgrade to, then select `Upgrade size` to confirm,
 or `Cancel` to close the popup without upgrading. Sizes only go up — you can
@@ -40,7 +40,8 @@ upgrade again later, but a database can't be moved back to a smaller size.
 CPU, memory, and storage grow in place; the database restarts while the new
 size is applied, so expect a brief interruption.
 
-For what each size gives you, see [Database Sizes](../sizes.md).
+For what each size gives you, see
+[Selecting a Database Size](../managed/sizes.md).
 
 ## Enabling and Disabling Deletion Protection
 
