@@ -4,7 +4,7 @@ To locate database-specific psql connection properties for your pgEdge
 Starfleet PostgreSQL database, double-click a database name in the console
 navigation panel or navigate to the database's main page in the console. Below
 the header of the database page, the console displays the `Connect` pane. The
-pane carries one tab per built-in role:
+pane displays one tab per built-in role:
 
 * an `Admin` tab with credentials for the `admin` user
 * an `Application` tab with credentials for the `app` user
@@ -15,16 +15,23 @@ and a `Rotate credentials` button. The `Password` is masked until you select
 the reveal control beside it.
 
 The `Connection string` and `psql command` blocks are shown on screen without
-the password in them. The copy button beside each block copies the same value
-with the password filled in, so the clipboard holds a live credential even
-though the screen shows none.
+the password. The copy button beside each block copies the same value
+with the password included, so the clipboard holds a live credential even
+though the screen does not display it.
 
-For what each role can do and which one to connect as, see
-[Database Roles](../roles.md). In short, connect as `app` to create tables
-and load data, and as `admin` to install an allowlisted extension or to do
-server-wide work such as watching sessions or creating roles.
+For details about each role's capabilities and which role to use, see
+[Database Roles](../roles.md). 
+
+!!! hint
+
+    Connect as `app` to create tables and load data. 
+    
+    Connect as `admin` to install an allowlisted extension or
+    perform server-wide administration, such as monitoring sessions or
+    creating roles.
 
 ![Connecting to your database](../images/sf_connecting.png)
+
 
 ## Using the psql Client
 
@@ -58,45 +65,58 @@ authenticate:
   connection string (the value shown in the `Database name` field) and press
   `Return`.
 * When prompted for a `Port [5432]`, enter the port shown in the connection
-  string and press `Return`. Read the port from the string rather than
+  string and press `Return`. Use the port from the connection string rather than
   assuming the Postgres default.
-
 * When prompted for a `Username [postgres]`, provide the `User` value from the
   `Connect` pane, and press `Return`. In our example, the user is `admin`.
 * When prompted for the `Password`, provide the `Password` value from the
   `Connect` pane.
 
-## The Password Is Percent-encoded in the URI
+## Using Special Characters in URI Encoding
 
-The user and the password are percent-encoded inside the `Connection string`
-URI, so a password holding `@`, `:`, `/`, or `?` round-trips instead of
-parsing into something other than what was meant.
+In URI syntax, reserved characters are used as structural delimiters:
 
-The `psql command` block shell-quotes the same values instead.
+  - `@` separates the user (user:password) from the host.
+  - `:` separates the user from the password, and the host
+    from the port.
+  - `/` separates the host/port from the path (database name).
+  - `?` starts the query-string parameters.
+
+When Cloud encounters a password that contains special characters that are not
+encoded properly, the characters will cause a loop of round-trips instead of
+parsing into the correct connection string.
+
+Cloud expects percent-encoding, like that used in the `Connection string`
+URI; the `psql command` block is formatted to connect with the correct values.
 
 If you read the password out of the `Password` field and assemble a URI
-yourself, you have to encode it yourself. Copying the `Connection string`
-block does it for you. Copy the whole string, too: a URI trimmed back to its
-host and database drops `sslmode=require` without saying so.
+yourself, you must encode it yourself, using the correct grammar as noted in
+[RFC 3986](https://www.rfc-editor.org/rfc/rfc3986).
 
-## Handling the Password
+!!! hint
 
-The connection string on your clipboard, an env file built from it, and the
-`Password` field once revealed all hold a working database password in clear
-text. Three habits leak it:
+    Make sure you copy the whole string: a URI trimmed back to its host and
+    database could omit `sslmode=require`, preventing a connection.
 
-* Do not echo the string into a terminal. Scrollback outlives the session, and
-  shell history files outlive the terminal.
+### Managing a Password Safely
 
+The connection string on your clipboard, connection strings built from your
+password, and the `Password` field itself (when revealed) all contain a
+working database password in clear text. Observe password-handling best
+practices when using the password:
+
+* Do not echo the connection string in a terminal. Scrollback outlives the
+  session, and shell history files outlive the terminal.
 * Do not pass the password as a command-line argument. Argument lists are
   visible in `ps` on a shared host.
-* Do not let it reach a CI log. A job running under a shell trace writes the
-  password into build output that is usually retained far longer than the
-  credential is rotated.
+* Ensure that your password is not written to application/CI log files. A job
+  running under a shell trace writes the password into build output may be retained in an unsafe location.
 
-Feed the string to your application through a secrets mechanism rather than a
-shell variable you exported. To retire a password, see
-[Rotating Database Credentials](../managed/using/rotate_credentials.md).
+!!! hint
+
+    Feed the string to your application through a secrets mechanism rather
+    than a shell variable. To retire a password, see
+    [Rotating Database Credentials](../managed/using/rotate_credentials.md).
 
 ## Installing psql and Connecting
 
@@ -110,14 +130,14 @@ psql, open a `Terminal` window and enter:
 
 `brew install libpq`
 
-When `brew` completes, use the following command to make the version of
-psql that you've just installed the first version in your PATH:
+When `brew` completes, use the following command to ensure that the version of
+psql that you've just installed is the first version in your PATH:
 
 `echo 'export PATH="/usr/local/opt/libpq/bin:$PATH"' >> ~/.zshrc`
 
 Then, to connect to a pgEdge Starfleet database, use the copy button to
 the right of the connection string in the `Connect` section to copy the
-psql connection string of your database, and paste the string in the
+psql connection string of your database, and paste the string into the
 `Terminal`.
 
 ![Copying a Connection String](../images/sf_copy_conn_string.png)
@@ -127,7 +147,7 @@ Press `Return` to connect to the server with the psql client.
 ### On Linux
 
 On a Linux system, install the `postgresql` package with your platform-specific
-package manager. For example, on a Rocky Linux host, use `yum`:
+package manager; for example, on a Rocky Linux host, use `yum`:
 
 `yum install postgresql`
 
