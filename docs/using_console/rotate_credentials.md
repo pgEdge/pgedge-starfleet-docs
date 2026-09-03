@@ -76,7 +76,7 @@ the new password by the time the database reads `Available` again.
 
 Expect a short gap in service on both, and no change to your MCP client
 configuration. See
-[MCP Server](../serving_ai_content/mcp.md).
+[Enabling and Using the MCP Server](../serving_ai_content/mcp.md).
 
 Rotating the `Admin` role does not restart them, because both servers
 connect as `app`.
@@ -155,8 +155,8 @@ itself:
   are, and [Connecting with psql](../connecting/psql.md) covers how to
   handle the password once you have it.
 
-* [MCP Server](../serving_ai_content/mcp.md) covers the server a rotation of the
-  `Application` role restarts.
+* [Enabling and Using the MCP Server](../serving_ai_content/mcp.md) covers
+  the server a rotation of the `Application` role restarts.
 
 * [Reviewing the Activity Log](activity_log.md) covers finding the
   `rotate-password-managed` task.

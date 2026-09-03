@@ -98,8 +98,10 @@ on your Postgres database, including an MCP server and a RAG server. Select
 `Enable MCP` or `Enable RAG` to add a service; once a service is deployed,
 select its `Details` button to view connection details and manage it.
 
-For detailed information about enabling, configuring, and connecting to these
-services, see [MCP Server](../serving_ai_content/mcp.md) or [RAG Server](../serving_ai_content/rag.md).
+For detailed information about enabling, configuring, and connecting to
+these services, see
+[Enabling and Using the MCP Server](../serving_ai_content/mcp.md) or
+[RAG Server](../serving_ai_content/rag.md).
 
 ## The Backups Pane
 
