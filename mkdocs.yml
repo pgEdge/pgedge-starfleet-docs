@@ -41,6 +41,7 @@ nav:
   - pgEdge Starfleet Managed Postgres:
     - Overview: index.md
   - Deploying a Managed Database: managed/creating_managed.md
+  - Database Sizes: managed/sizes.md
   - Using the Database Console:
     - managed/using/index.md
     - Serving up AI Content:
@@ -49,12 +50,16 @@ nav:
     - Monitoring System Metrics: managed/using/metrics.md
     - Reviewing the Log Files: managed/using/logs.md
     - Restoring from Backup: managed/using/backups.md
+    - Installing Extensions: managed/using/extensions.md
+    - Rotating Database Credentials: managed/using/rotate_credentials.md
+    - ORM and Framework Guides: managed/using/orm_guides.md
   - Accessing Management Options with the Actions Menu: managed/using/actions.md
   - Connecting to a pgEdge Starfleet Database:
       - connecting/index.md
       - Connecting with the AI DBA Workbench: connecting/workbench.md
       - Connecting with psql: connecting/psql.md
       - Connecting with pgAdmin: connecting/pgadmin.md
+  - Database Roles: roles.md
   - Loading Data into Your pgEdge Starfleet Database: loading_data.md
   - Reviewing the Activity Log: activity_log.md
   - Managing Account Settings: settings.md

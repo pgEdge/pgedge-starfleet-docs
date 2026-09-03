@@ -9,7 +9,6 @@ deployment completes.
 Select the database name to navigate to the database management page of the
 console.
 
-
 ## The Database Header
 
 ![Database Header](../../images/sf_database_header.png)
@@ -27,7 +26,6 @@ The database header displays:
 * The amount of storage allocated to the database.
 * The number of connections allocated for the database.
 
-
 ## The Actions Context Menu
 
 The `Actions` drop-down (on the right-hand side of the header) offers
@@ -38,7 +36,6 @@ upgrading the size tier, and enabling deletion protection.
 
 For detailed information about options available through the `Actions` menu,
 see [Accessing Management Options with the Actions Menu](actions.md).
-
 
 ## The Connect Pane
 
@@ -57,23 +54,31 @@ with credentials for the `app` user. Each tab displays:
 
 Select the copy icon next to any field to copy its value.
 
-The two users have different permissions on the database:
+The two users have different permissions on the database. Connect as `app`
+to create tables and load data, and as `admin` to install an allowlisted
+extension or for server-wide work. [Database Roles](../../roles.md) covers
+what each one can do.
 
-| Capability | `admin` | `app` |
-|------------|:-------:|:-----:|
-| Create tables/objects in `public` | No | Yes |
-| Read all data | Yes | Yes |
-| Insert, update, delete data | Yes | Yes |
-| Create databases | Yes | No |
-| Create roles | Yes | No |
-| View active sessions | Yes | No |
-| Terminate backends | Yes | No |
-| Run maintenance (vacuum, analyze) | Yes | No |
-| Manage subscriptions | Yes | No |
+### When the Connect Pane Shows a Message Instead
 
-To create tables or other schema objects, connect using the `Application`
-tab credentials (the `app` user); the `admin` user can read and write existing
-data, but cannot create new objects.
+The pane shows one of three messages in place of connection details:
+
+* `Couldn't load connection details. Please refresh and try again.` means
+  the pane could not read the per-role credentials. Refresh. A connection
+  string you already hold keeps working.
+
+* `Connection details are unavailable.` means the pane has the database but
+  not enough of it to build a connection string, because the host, port or
+  database name is missing. A `failed` database reads this way. Wait for the
+  database to reach `Available` and reload.
+
+* `This database is <status> and is not available to connect right now.`
+  names a status the pane treats as not connectable: `deleting`,
+  `suspending`, `suspended`, `resuming`, or any status the console does not
+  recognise. Read the status against
+  [Database Statuses](../../activity_log.md#database-statuses).
+
+A database that is still being created shows a provisioning message instead.
 
 ![Connecting to your database](../../images/sf_connecting.png)
 
@@ -84,7 +89,6 @@ For detailed information about:
 * Postgres SQL commands, see the
   [Postgres documentation](https://www.postgresql.org/docs/18/sql-commands.html).
 
-
 ## The AI Services Pane
 
 ![The AI Services pane](../../images/sf_services.png)
@@ -92,11 +96,10 @@ For detailed information about:
 The `AI Services` pane displays icons you can use to deploy available services
 on your Postgres database, including an MCP server and a RAG server. Select
 `Enable MCP` or `Enable RAG` to add a service; once a service is deployed,
-select its `Details` button to view connection details and manage it. 
+select its `Details` button to view connection details and manage it.
 
 For detailed information about enabling, configuring, and connecting to these
 services, see [MCP Server](services/mcp.md) or [RAG Server](services/rag.md).
-
 
 ## The Backups Pane
 
@@ -118,11 +121,10 @@ Each backup entry displays:
 
 Select the `Restore` button, to the right of a backup to restore the selected
 backup; select `View all` (in the upper-right corner of the pane) to see the
-complete list of backups. 
+complete list of backups.
 
 For detailed information about the `Backups` page, see
 [Restoring from Backup](backups.md).
-
 
 ## The Metrics Pane
 
@@ -138,7 +140,6 @@ detailed metrics for your database.
 For detailed information about the `Metrics` page, see
 [Monitoring System Metrics](metrics.md).
 
-
 ## The Logs Pane
 
 The `Logs` pane displays the most recent entries from your database's log file;
@@ -152,7 +153,6 @@ searchable log for your database.
 For detailed information about the `Logs` page, see
 [Reviewing the Log Files](logs.md).
 
-
 ## Read Replicas and Branching
 
 The `Primary` badge identifies the current database as a primary node.
@@ -163,7 +163,6 @@ The `Read replicas & branching` pane previews upcoming functionality for
 scaling read traffic with read replicas and spinning up copy-on-write branches
 of your database. This functionality is still in development, and will remain
 disabled until it becomes available.
-
 
 ## Summary Panes
 
@@ -176,7 +175,14 @@ and configuration of your database.
 
 The `Plan & billing` pane displays the current size tier of your database and
 the price you'll be billed after any free trial ends. Select `Upgrade size` to
-change the size of your database.
+change the size of your database. For what each size gives you, see
+[Database Sizes](../sizes.md).
+
+Two notifications can appear after you add a payment method.
+`Payment saved, but we could not refresh billing status.` means the card was
+saved and the console could not re-read the billing state afterwards, so
+reload the page. `Still unable to load billing status.` means a retry of that
+read failed again.
 
 ### Details
 
@@ -192,9 +198,17 @@ database.
 | Network | Whether the database is publicly or privately accessible, and whether TLS is enabled. |
 | Created | How long ago the database was created. |
 
+## When the Page Cannot Load
 
+Two messages replace the whole page:
 
+* `Couldn't load this database. Please try again shortly.` means the console
+  could not read the database record. The `Metrics`, `Logs` and `Backups`
+  pages read the same way. Reload the page. If it repeats, check the
+  Databases list, because a database that has been deleted reads this way
+  from a bookmarked URL.
 
-
-
+* `Database not found` means the read succeeded and returned no record for
+  the database ID in the URL. Go back to the Databases list, and if you
+  expected the database to exist, check that you are in the right account.
 
