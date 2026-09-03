@@ -77,4 +77,4 @@ change your billing details.
 
 This account-level billing is separate from the size and price of an
 individual database; for details about a specific database's size tier and
-price, see [Plan and Billing](managed/using/index.md#plan-and-billing).
+price, see [Plan and Billing](using_console/index.md#plan-and-billing).

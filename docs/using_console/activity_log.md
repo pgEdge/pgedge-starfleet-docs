@@ -13,7 +13,7 @@ information about the task in progress. Each point on the task bar
 corresponds to an event detail. To close the task bar, select the `X`
 in its upper-right corner.
 
-![Reviewing the Activity Log](images/sf_activity_log.png)
+![Reviewing the Activity Log](../images/sf_activity_log.png)
 
 The Activity Log page displays the following columns:
 
@@ -77,7 +77,7 @@ read the steps, or read the `AI Services` pane.
 
 **`update-managed-size` is the resize**, not a generic size-related
 update. It is the task behind the `Upgrade size` action described in
-[Accessing Management Options with the Actions Menu](managed/using/actions.md#upgrading-the-size-tier).
+[Accessing Management Options with the Actions Menu](actions.md#upgrading-the-size-tier).
 
 **`backup-managed` can read `succeeded` while the backup is still
 pending.** The task claims to have taken the backup, and its steps read
@@ -176,7 +176,7 @@ A status or a task name outside the two lists above can appear.
 
 ## Related Pages
 
-* [Restoring from Backup](managed/using/backups.md) covers the restore
+* [Restoring from Backup](backups.md) covers the restore
   this glossary keeps pointing at.
-* [Accessing Management Options with the Actions Menu](managed/using/actions.md)
+* [Accessing Management Options with the Actions Menu](actions.md)
   covers the resize, the display-name edit, and deletion protection.

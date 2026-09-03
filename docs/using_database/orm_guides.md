@@ -8,14 +8,14 @@ and what happens when a generated migration runs `CREATE EXTENSION`.
 
 ## Getting the Connection String
 
-The `Connect` pane on your database's page carries the string. Use the
+The `Connect` pane on your database's page displays the string. Use the
 `Application` tab, which holds the `app` role. `app` owns the database, and
 an object belongs to the role that created it, so a framework connected as
 `app` owns every table its migrations create and can alter or drop them
 later.
 
-For the pane itself see [The Connect Pane](index.md#the-connect-pane), and
-for the full permission split see [Database Roles](../../roles.md).
+For the pane itself see [The Connect Pane](../using_console/index.md#the-connect-pane), and
+for the full permission split see [Database Roles](roles.md).
 
 Every recipe below reads that string from `DATABASE_URL`. Put it there through
 a secrets mechanism rather than a shell variable you exported, and single-quote
@@ -40,7 +40,7 @@ string before a framework is in the picture. A row back from
 `select version()` says the host resolves, the TLS handshake completes and the
 role authenticates. A framework that fails after that one succeeded is failing
 on its own configuration rather than on the database. See
-[Connecting with psql](../../connecting/psql.md).
+[Connecting with psql](../connecting/psql.md).
 
 ## Extensions in Migrations
 
@@ -216,17 +216,17 @@ reads that password once at startup.
 
 ## Related Pages
 
-- [Connecting to a pgEdge Starfleet Database](../../connecting/index.md)
+- [Connecting to a pgEdge Starfleet Database](../connecting/index.md)
   covers connecting with psql, pgAdmin and the AI DBA Workbench.
-- [Database Roles](../../roles.md) covers the two roles.
-- [Loading Data into Your pgEdge Starfleet Database](../../loading_data.md)
+- [Database Roles](roles.md) covers the two roles.
+- [Loading Data into Your pgEdge Starfleet Database](loading_data.md)
   covers the first data load, which usually happens before the first
   migration.
 - [Installing Extensions](extensions.md) covers which role installs which
   extension and what the refusal message means.
-- [Restoring from Backup](backups.md) covers restoring in place after a
+- [Restoring from Backup](../using_console/backups.md) covers restoring in place after a
   migration goes wrong.
-- [MCP Server](services/mcp.md) covers the server that a rotation of `app`
+- [MCP Server](../serving_ai_content/mcp.md) covers the server that a rotation of `app`
   restarts.
 
 [prisma-pg]: https://www.prisma.io/docs/orm/overview/databases/postgresql

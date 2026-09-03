@@ -1,19 +1,18 @@
 # Installing Extensions
 
-This page covers which PostgreSQL extensions a pgEdge Starfleet database
-carries, which of the database's built-in roles installs each one, and how to
-read the refusal when an install is rejected. It is for anyone whose schema,
-migration tool, or application depends on an extension.
+This page documents the PostgreSQL extensions available on a pgEdge
+Starfleet database, the built-in role required to install each extension,
+and the error returned when an installation is rejected. 
 
 ## Installing an Extension
 
 Extensions are installed with `CREATE EXTENSION` over a normal Postgres
 connection. There is nothing to click in the console: its part is handing you
-the right connection. The `Connect` pane on the database page carries a
+the right connection. The `Connect` pane on the database page displays a
 `psql command` for each role that already includes `PGSSLMODE=require` and
 fills the password in when you copy it.
 
-See [Connecting with psql](../../connecting/psql.md) for finding the pane
+See [Connecting with psql](../connecting/psql.md) for finding the pane
 and copying the command for either role.
 
 ## Which Role Installs Which Extension
@@ -29,7 +28,7 @@ extension needs depends on the extension:
 * An extension that Postgres itself marks trusted installs as either role,
   because `admin` is a member of `app`. The role that runs the install owns
   the extension afterwards. See
-  [Which Role Creates Objects](../../roles.md#which-role-creates-objects).
+  [Which Role Creates Objects](roles.md#which-role-creates-objects).
 
 ## The Extensions and How to Get Them
 
@@ -88,8 +87,8 @@ the wrong role does.
 
 ## Next Steps
 
-* [Database Roles](../../roles.md) covers what each of the two roles can do
+* [Database Roles](roles.md) covers what each of the two roles can do
   beyond installing extensions.
 
-* [Loading Data into Your pgEdge Starfleet Database](../../loading_data.md)
+* [Loading Data into Your pgEdge Starfleet Database](loading_data.md)
   covers the full load sequence and the `pg_restore` flag that half-succeeds.

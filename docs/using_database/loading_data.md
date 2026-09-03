@@ -27,7 +27,7 @@ For example, to load a CSV file named `customers.csv` (with a header row of
     ```bash
     PGSSLMODE=require psql -U app -h <your-domain> -p <your-port> -d <your-database>
     ```
-   See [Connecting with psql](connecting/psql.md) for
+   See [Connecting with psql](../connecting/psql.md) for
    directions about finding the ready-to-use `psql command` for your database.
 
 2. Create the target table on your database with a column for each data block
@@ -113,11 +113,11 @@ Loading a schema before the extensions it depends on exist fails on the first
 object that needs one.
 
 For which extension falls on which side, see
-[Installing Extensions](managed/using/extensions.md).
+[Installing Extensions](extensions.md).
 
 `pg_dump` and `pg_restore` are ordinary Postgres clients, so the same
 connection requirements described in
-[Connecting to a pgEdge Starfleet Database](connecting/index.md) apply.
+[Connecting to a pgEdge Starfleet Database](../connecting/index.md) apply.
 
 ### Restoring the Schema
 
@@ -195,6 +195,6 @@ status reports a table left at zero rows beside tables that loaded.
 The methods above load structured, relational data into tables. If you're
 loading unstructured documents (HTML, Markdown, or reStructuredText) to use
 with a RAG server, use `pgedge-docloader` instead. See
-[Using the RAG Server](managed/using/services/rag.md#using-the-rag-server).
+[Using the RAG Server](../serving_ai_content/rag.md#using-the-rag-server).
 Because the docloader creates a `documents` table, configure it with the
 `app` user's connection details, not `admin`.

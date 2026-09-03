@@ -20,7 +20,7 @@ with the password included, so the clipboard holds a live credential even
 though the screen does not display it.
 
 For details about each role's capabilities and which role to use, see
-[Database Roles](../roles.md). 
+[Database Roles](../using_database/roles.md). 
 
 !!! hint
 
@@ -71,52 +71,6 @@ authenticate:
   `Connect` pane, and press `Return`. In our example, the user is `admin`.
 * When prompted for the `Password`, provide the `Password` value from the
   `Connect` pane.
-
-## Using Special Characters in URI Encoding
-
-In URI syntax, reserved characters are used as structural delimiters:
-
-  - `@` separates the user (user:password) from the host.
-  - `:` separates the user from the password, and the host
-    from the port.
-  - `/` separates the host/port from the path (database name).
-  - `?` starts the query-string parameters.
-
-When Cloud encounters a password that contains special characters that are not
-encoded properly, the characters will cause a loop of round-trips instead of
-parsing into the correct connection string.
-
-Cloud expects percent-encoding, like that used in the `Connection string`
-URI; the `psql command` block is formatted to connect with the correct values.
-
-If you read the password out of the `Password` field and assemble a URI
-yourself, you must encode it yourself, using the correct grammar as noted in
-[RFC 3986](https://www.rfc-editor.org/rfc/rfc3986).
-
-!!! hint
-
-    Make sure you copy the whole string: a URI trimmed back to its host and
-    database could omit `sslmode=require`, preventing a connection.
-
-### Managing a Password Safely
-
-The connection string on your clipboard, connection strings built from your
-password, and the `Password` field itself (when revealed) all contain a
-working database password in clear text. Observe password-handling best
-practices when using the password:
-
-* Do not echo the connection string in a terminal. Scrollback outlives the
-  session, and shell history files outlive the terminal.
-* Do not pass the password as a command-line argument. Argument lists are
-  visible in `ps` on a shared host.
-* Ensure that your password is not written to application/CI log files. A job
-  running under a shell trace writes the password into build output may be retained in an unsafe location.
-
-!!! hint
-
-    Feed the string to your application through a secrets mechanism rather
-    than a shell variable. To retire a password, see
-    [Rotating Database Credentials](../managed/using/rotate_credentials.md).
 
 ## Installing psql and Connecting
 
