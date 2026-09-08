@@ -28,7 +28,7 @@ extension needs depends on the extension:
 * An extension that Postgres itself marks trusted installs as either role,
   because `admin` is a member of `app`. The role that runs the install owns
   the extension afterwards. See
-  [Which Role Creates Objects](roles.md#which-role-creates-objects).
+  [Determining Which Role Creates Objects](roles.md#determining-which-role-creates-objects).
 
 ## The Extensions and How to Get Them
 

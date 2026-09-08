@@ -43,7 +43,7 @@ nav:
   - Deploying a Managed Database:
     - managed/creating_managed.md
     - Selecting a Database Size: managed/sizes.md
-  - Using the Database Console:
+  - Using the pgEdge Starfleet Console:
     - using_console/index.md
     - Monitoring System Metrics: using_console/metrics.md
     - Reviewing the Log Files: using_console/logs.md

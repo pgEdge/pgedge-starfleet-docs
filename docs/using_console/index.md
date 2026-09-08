@@ -1,4 +1,4 @@
-# Using the Database Console
+# Using the pgEdge Starfleet Console
 
 When you create a pgEdge Starfleet PostgreSQL database, the database name is
 displayed in the tree control on the left side of the console when the
