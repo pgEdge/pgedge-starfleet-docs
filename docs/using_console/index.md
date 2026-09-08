@@ -101,7 +101,7 @@ select its `Details` button to view connection details and manage it.
 For detailed information about enabling, configuring, and connecting to
 these services, see
 [Enabling and Using the MCP Server](../serving_ai_content/mcp.md) or
-[RAG Server](../serving_ai_content/rag.md).
+[Enabling and Using the RAG Server](../serving_ai_content/rag.md).
 
 ## The Backups Pane
 

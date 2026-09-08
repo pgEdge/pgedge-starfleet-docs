@@ -53,7 +53,7 @@ nav:
     - Accessing Management Options with the Actions Menu: using_console/actions.md
   - Serving up AI Content:
     - Enabling and Using the MCP Server: serving_ai_content/mcp.md
-    - RAG Server: serving_ai_content/rag.md
+    - Enabling and Using the RAG Server: serving_ai_content/rag.md
   - Connecting to a pgEdge Starfleet Database:
     - connecting/index.md
     - Connecting with the AI DBA Workbench: connecting/workbench.md

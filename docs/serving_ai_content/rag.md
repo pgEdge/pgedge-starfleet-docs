@@ -1,4 +1,4 @@
-# RAG Server
+# Enabling and Using the RAG Server
 
 The `AI Services` pane on your database's management page displays icons you
 can use to deploy available services on your database.
@@ -33,11 +33,7 @@ deployment:
 * The `Default Top N` field sets the maximum number of results to retrieve
   before token-budget trimming. The default value is `10`.
 * The `Default Embedding LLM Provider` field selects the provider used for
-  query and document embeddings during retrieval. The console offers two
-  providers, `OpenAI` and `Voyage`. Self-hosted model serving has nowhere to
-  run on a pgEdge Starfleet database, so Ollama is not offered. (Anthropic
-  does not provide an embedding model, so it isn't available here.)
-
+  query and document embeddings during retrieval.
 * The `Default Embedding LLM Model` field selects the embedding model to use.
   Available models depend on the selected provider (for example,
   `text-embedding-3-small` for OpenAI). This must match the model used to
@@ -45,9 +41,7 @@ deployment:
 * The `Default Embedding LLM API Key` field provides the API key required for
   the selected embedding provider.
 * The `Default Completion LLM Provider` field selects the provider used for
-  answer generation. The console offers two providers,
-  `Anthropic (Claude)` and `OpenAI`, and no other provider is accepted.
-
+  answer generation.
 * The `Default Completion LLM Model` field selects the completion model to use.
   Select a suggested model, or enter your own.
 * The `Default Completion LLM API Key` field provides the API key required for
@@ -55,6 +49,14 @@ deployment:
 * The `Add Pipelines` field defines one or more pipelines. Each pipeline has
   its own tables and can override the default values, and is queried at
   `/rag/v1/pipelines/<name>`.
+
+pgEdge Starfleet supports two embedding providers: `OpenAI` and `Voyage`.
+Starfleet does not provide infrastructure for self-hosted model serving,
+so Ollama is not offered; Anthropic does not provide an embedding model,
+so it isn't available either.
+
+pgEdge Starfleet supports two completion providers: `Anthropic (Claude)`
+and `OpenAI`.
 
 When you select `OpenAI` for both the embedding provider and the completion
 provider, the two API key fields collapse into a single
@@ -159,15 +161,6 @@ Once enabled, the RAG Server pane updates to display:
   modify the RAG server deployment.
 - A `Disable` button that you can use to stop the RAG server.
 
-`Running` means the deploy finished, not that the server answers. The `state`
-field reads `running` the moment the deploy completes, whatever the server
-itself is doing, so it is not a readiness signal. Its useful value is
-`failed`, which calls for action. A `Running` badge proves nothing on its
-own.
-
-The RAG server exposes no handshake, so query a pipeline to find out whether
-it is ready.
-
 !!! hint
 
     Detailed information about the RAG server is also added to the `Services`
@@ -183,28 +176,39 @@ pane by selecting the `Disable` button.
 
 Select the `Disable RAG Server` button to stop the RAG server.
 
-## When the Services Page Shows an Error
+## Understanding the Server State
 
-`Unable to load services` appears as a red panel on the `Services` page,
-with the body `We could not load this database. Refresh the page to try
-again.` Refresh. The RAG and MCP servers keep running while the console
-cannot read them, so this is a console read failure rather than an outage of
-the services themselves.
+The `state` badge on the RAG Server pane is not a readiness signal. The
+state changes to `running` the moment the deployment completes, whatever
+the server itself is doing.
 
-`Failed to update RAG server.` is a red notification meaning a services
-change was refused. It is the fallback text, shown when the API sends no
-message of its own. A services change needs the database `Available`, and
-every services change writes one `update-managed` task, so the Activity Log
-carries the attempt whether it succeeded or not.
+* `Running` means the deploy finished, not that the server answers.
+* `Failed` is a reliable state that calls for action; a `Running` badge
+  proves nothing on its own.
 
-## Using the RAG Server
+The RAG server exposes no handshake, so query a pipeline to find out
+whether it is ready.
 
-Once the RAG server is running, its pane displays the pipeline, embedding
-and completion model, and retrieval settings, along with a `Connect`
-section that provides the API base URL and a ready-to-use `curl` command
-for querying a pipeline:
+## Reviewing RAG Server Details
+
+Once the RAG server is running, its pane displays the server's status and
+configuration:
 
 ![The RAG Server pane showing connection details](../images/sf_rag_connect_details.png)
+
+* `Pipelines` shows how many pipelines are configured, and their names.
+* `Embedding model` shows the configured embedding provider and model
+  (for example, `openai · text-embedding-3-small`).
+* `Completion model` shows the configured completion provider and model
+  (for example, `anthropic · claude-sonnet-4-6`).
+* `Retrieval` shows the token budget and the Top N result count used
+  during search.
+* The `Connect` section provides the API base URL and a ready-to-use
+  `curl` command for querying a pipeline.
+
+Select `Configure` to change these settings, or `Disable` to stop the server.
+
+## Using the RAG Server
 
 The API base URL is your database's own domain with `/rag/v1` on the end, and
 a pipeline is one segment below it: a query is a `POST` to
@@ -246,19 +250,19 @@ The RAG server only generates embeddings for incoming queries. The
 `embedding` column on your table must be populated separately before the
 server can retrieve against it.
 
-1. Connect with `psql` as the `app` user, using the connection string
-   from the `Application` tab of your database's `Connect` pane (see
-   [Connecting with psql](../connecting/psql.md)):
-   the `app` user owns the database and can create tables, while the
-   `admin` user cannot. For example:
+1.  Connect with `psql` as the `app` user, using the connection string
+    from the `Application` tab of your database's `Connect` pane (see
+    [Connecting with psql](../connecting/psql.md)): the `app` user owns
+    the database and can create tables, while the `admin` user cannot.
+    For example:
 
     ```bash
     PGSSLMODE=require PGPASSWORD=<your-app-password> psql -U app \
       -h <your-domain> -p <your-port> -d <your-database>
     ```
 
-2. Create a table to hold the documentation content, with a `pgvector`
-   column sized for your embedding model:
+2.  Create a table to hold the documentation content, with a
+    `pgvector` column sized for your embedding model:
 
     ```sql
     CREATE EXTENSION IF NOT EXISTS vector;
@@ -275,11 +279,12 @@ server can retrieve against it.
     CREATE INDEX ON documents USING ivfflat (embedding vector_cosine_ops);
     ```
 
-3. Use the [pgEdge Docloader](https://docs.pgedge.com/pgedge-docloader/v1-0-0/)
-   to load your documentation's Markdown files into the `documents`
-   table. Point `--source` at the folder containing your docs. Reuse
-   the `Host`, `Database name`, and `User` values from the
-   `Application` tab:
+3.  Use the
+    [pgEdge Docloader](https://docs.pgedge.com/pgedge-docloader/v1-0-0/)
+    to load your documentation's Markdown files into the `documents`
+    table. Point `--source` at the folder containing your docs. Reuse
+    the `Host`, `Database name`, and `User` values from the
+    `Application` tab:
 
     ```bash
     export PGPASSWORD=<your-app-password>
@@ -297,10 +302,11 @@ server can retrieve against it.
 
     !!! note
 
-        `pgedge-docloader` is an open-source command-line tool. Install it by
-        cloning and building the
+        `pgedge-docloader` is an open-source command-line tool. Install
+        it by cloning and building the
         [pgEdge Docloader](https://github.com/pgEdge/pgedge-docloader)
-        repository. You can download and install it with the following steps:
+        repository. You can download and install it with the following
+        steps:
 
         ```bash
         git clone https://github.com/pgEdge/pgedge-docloader.git
@@ -309,28 +315,30 @@ server can retrieve against it.
         make install
         ```
 
-4. Populate the `embedding` column for each row. Before populating the column,
-   enable the MCP server with `Generate embeddings` and `Allow writes` enabled
-   (see [Enabling the MCP Server](mcp.md#enabling-the-mcp-server)). If you
-   enable an AI client (like Claude Code), you can ask the interface to:
+4.  Populate the `embedding` column for each row. Before populating
+    the column, enable the MCP server with `Generate embeddings` and
+    `Allow writes` enabled (see
+    [Enabling the MCP Server](mcp.md#enabling-the-mcp-server)). If you
+    enable an AI client (like Claude Code), you can ask the interface
+    to:
 
     - find the rows in `documents` where `embedding IS NULL`.
     - call `generate_embedding` on each row's `content` to compute a
       vector.
     - `UPDATE` that row, storing the vector in its `embedding` column.
 
-5. Navigate to the RAG Server details page. In the console, go to the
-   `AI Services` pane and select `Details` on your running RAG Server, or
-   select `Services` from the navigation pane. Under `Connect`, note the API
-   base URL and the pipeline name.
+5.  Navigate to the RAG Server details page. In the console, go to the
+    `AI Services` pane and select `Details` on your running RAG
+    Server, or select `Services` from the navigation pane. Under
+    `Connect`, note the API base URL and the pipeline name.
 
-6. If the RAG Server's pipeline isn't already configured to use this table,
-   select `Configure`, open the pipeline's table block under `Add Tables`,
-   then set `Table Name` to `public.documents`, `Text Column` to `content`,
-   and `Vector Column` to `embedding`.
+6.  If the RAG Server's pipeline isn't already configured to use this
+    table, select `Configure`, open the pipeline's table block under
+    `Add Tables`, then set `Table Name` to `public.documents`,
+    `Text Column` to `content`, and `Vector Column` to `embedding`.
 
-7. Query the pipeline with a question that your documentation should
-   answer:
+7.  Query the pipeline with a question that your documentation should
+    answer:
 
     ```bash
     curl -X POST https://<your-domain>/rag/v1/pipelines/<pipeline-name> \
@@ -338,6 +346,27 @@ server can retrieve against it.
       -d '{"query": "How do I configure replication?"}'
     ```
 
-8. Verify the response: the RAG server returns a JSON payload with a
-   generated `answer` and the `sources` it retrieved, which should
-   reference content from the documentation you loaded in step 3.
+8.  Verify the response: the RAG server returns a JSON payload with a
+    generated `answer` and the `sources` it retrieved, which should
+    reference content from the documentation you loaded in step 3.
+
+## Troubleshooting - When the Services Page Shows an Error
+
+The `Services` page displays a message when something goes wrong:
+
+* `Unable to load services` is displayed as a red panel with the body
+  text: `We could not load this database. Refresh the page to try
+  again.`
+
+    The RAG and MCP servers keep running while the console cannot read
+    them, so this indicates a console read failure rather than an
+    outage of the services themselves.
+
+* `Failed to update RAG server.` is displayed when a service change is
+  refused. It is the fallback text, shown when the API sends no message
+  of its own.
+
+    A services change needs the database in an `Available` state, and
+    each service change writes one `update-managed` task, so the
+    Activity Log carries both failed and successful modification
+    attempts.
