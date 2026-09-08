@@ -4,7 +4,7 @@ Select `Team Management` in the navigation pane to open the `Team` page,
 where you can view a list of team members, invite members to your team, and
 manage pending or expired invitations.
 
-![The Team page](images/sf_team_mgmt.png)
+![The Team page](../images/sf_team_mgmt.png)
 
 * The `Pending Invitations` table lists invitations that have not been
   accepted:
@@ -21,7 +21,7 @@ To invite a team member to join your team, select `Add Team Member` in the
 upper-right corner of the `Team` page. When the `Invite Team Member` popup
 opens:
 
-![The Invite Team Member popup](images/sf_team_invite_member.png)
+![The Invite Team Member popup](../images/sf_team_invite_member.png)
 
 Enter the email address of the person you want to invite in the
 `Member Email` field, and select `Invite` to send an email to the address,

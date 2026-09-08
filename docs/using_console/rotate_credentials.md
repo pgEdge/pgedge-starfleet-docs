@@ -127,7 +127,7 @@ another rotation until it is recovered.
 
 The pgEdge Cloud API authenticates with an API client, managed on the
 `API Clients` tab under `Settings`. See
-[The API Clients Tab](../settings.md#the-api-clients-tab).
+[The API Clients Tab](settings.md#the-api-clients-tab).
 
 A client's secret is returned once, at creation, and cannot be fetched again.
 The creation dialog says so directly: "Please copy the authentication ID and
