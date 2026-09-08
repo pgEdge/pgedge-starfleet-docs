@@ -5,7 +5,7 @@ PostgreSQL database on pgEdge Starfleet; this applies to custom clients as
 well. Connections are made over TLS with password authentication. The connection
 string the console displays always includes `sslmode=require`, and Starfleet
 hosts serve TLS with a certificate that verifies, so `require` works from every
-client and a stricter mode is yours to add.
+client, and you may add a stricter mode.
 
 On clients with optional GSS encoding  (as shown in the pgAdmin client), you
 should set
@@ -76,13 +76,14 @@ practices when using the password:
   session, and shell history files outlive the terminal.
 * Do not pass the password as a command-line argument. Argument lists are
   visible in `ps` on a shared host.
-* Ensure that your password is not written to application/CI log files. A job
-  running under a shell trace writes the password into build output may be retained in an unsafe location.
+* Ensure that your password is not written to application/CI log files. A
+  job running under a shell trace writes the password into build output,
+  which may be retained in an unsafe location.
 
 !!! hint
 
-    Feed the string to your application through a secrets mechanism rather
-    than a shell variable. To retire a password, see
+    Supply the string to your application through a secrets mechanism
+    rather than a shell variable. To retire a password, see
     [Rotating Database Credentials](../using_console/rotate_credentials.md).
 
 ## Next Steps

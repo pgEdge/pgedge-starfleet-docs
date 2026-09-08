@@ -53,7 +53,7 @@ corner of the tab. When the `Create API Client` popup opens:
 
 ![The Create API Client popup](images/sf_settings_api_client_create.png)
 
-* Provide a user-friendly name for the API client in the `API Client Name`
+* Provide a descriptive name for the API client in the `API Client Name`
   field (required).
 * Provide a brief description of the API client in the `Description` field.
 

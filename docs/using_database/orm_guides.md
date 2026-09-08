@@ -25,8 +25,8 @@ double-quoted value is expanded by the shell that sources the file.
 Keep the whole string, query string included. The console always appends
 `sslmode=require`, and a URI trimmed back to its host and database drops the
 setting without saying so. Starfleet hosts serve TLS with a certificate that
-verifies, so `require` works from every client and a stricter mode is yours to
-add.
+verifies, so `require` works from every client, and you may add a
+stricter mode.
 
 The console hands you a URL, not discrete `PG*` values. A framework that
 wants separate host, port, user and password parameters needs the string
