@@ -120,9 +120,9 @@ revoking a privilege from `app` also revokes it from those servers.
 
 ## Next Steps
 
-* [Installing Extensions](extensions.md) covers which role
+* [Installing Extensions](extensions.md) describes which role
   installs which extension and what the refusal message means.
-* [Loading Data into Your pgEdge Starfleet Database](loading_data.md) covers
-  the load order that uses both roles.
-* [Connecting to a pgEdge Starfleet Database](../connecting/index.md) covers
-  the clients and how each one takes the credentials.
+* [Loading Data into Your pgEdge Starfleet Database](loading_data.md)
+  describes the load order that uses both roles.
+* [Connecting to a pgEdge Starfleet Database](../connecting/index.md)
+  describes the clients and how each one takes the credentials.

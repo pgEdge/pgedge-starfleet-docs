@@ -56,8 +56,9 @@ Select the copy icon next to any field to copy its value.
 
 The two users have different permissions on the database. Connect as `app`
 to create tables and load data, and as `admin` to install an allowlisted
-extension or for server-wide work. [Database Roles](../using_database/roles.md) covers
-what each one can do.
+extension or for server-wide work.
+[Database Roles](../using_database/roles.md) describes what each one can
+do.
 
 ### When the Connect Pane Shows a Message Instead
 

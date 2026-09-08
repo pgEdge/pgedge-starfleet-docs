@@ -28,7 +28,7 @@ by extension:
 * An extension that Postgres itself marks trusted installs as either role,
   because `admin` is a member of `app`. The role that runs the install owns the
   extension afterwards. See
-  [Determining Which Role Creates Objects](roles.md#determining-which-role-creates-objects).
+  [Creating Database Objects](roles.md#creating-database-objects).
 
 ## Installing Each Available Extension
 
@@ -90,9 +90,9 @@ loading it under the wrong role.
 
 ## Next Steps
 
-* [Database Roles](roles.md) covers what each of the two roles can do beyond
-  installing extensions.
+* [Database Roles](roles.md) describes what each of the two roles can
+  do beyond installing extensions.
 
 * [Loading Data into Your pgEdge Starfleet Database](loading_data.md)
-  covers the full load sequence and the `pg_restore` flag that can leave
-  the load silently incomplete.
+  describes the full load sequence and the `pg_restore` flag that can
+  leave the load silently incomplete.

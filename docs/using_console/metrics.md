@@ -203,6 +203,6 @@ again shortly.` in place of the whole page instead.
 
 ## Related Pages
 
-* [Reviewing the Activity Log](activity_log.md) covers the resize
+* [Reviewing the Activity Log](activity_log.md) describes the resize
   and the restore that put two instances on the charts.
-* [Restoring from Backup](backups.md) covers the restore itself.
+* [Restoring from Backup](backups.md) describes the restore itself.

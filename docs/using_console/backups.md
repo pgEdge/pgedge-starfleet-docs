@@ -130,5 +130,5 @@ again.
 
 ## Related Pages
 
-* [Reviewing the Activity Log](activity_log.md) covers the
+* [Reviewing the Activity Log](activity_log.md) describes the
   statuses and the task names a restore moves through.

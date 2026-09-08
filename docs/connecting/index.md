@@ -14,7 +14,7 @@ to `disable`.
 
 Every client connects as one of the database's two built-in roles, `admin` or
 `app`. Which one to use depends on the job, and
-[Database Roles](../using_database/roles.md) covers the split.
+[Database Roles](../using_database/roles.md) describes the split.
 
 The documentation includes instructions for installing and connecting with
 the following commonly used clients:

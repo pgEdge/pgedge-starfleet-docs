@@ -176,7 +176,7 @@ A status or a task name outside the two lists above can appear.
 
 ## Related Pages
 
-* [Restoring from Backup](backups.md) covers the restore
+* [Restoring from Backup](backups.md) describes the restore
   this glossary keeps pointing at.
 * [Accessing Management Options with the Actions Menu](actions.md)
-  covers the resize, the display-name edit, and deletion protection.
+  describes the resize, the display-name edit, and deletion protection.

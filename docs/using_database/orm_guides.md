@@ -116,10 +116,10 @@ export default defineConfig({
 
 Both read the same variable, so one env file covers the application and the
 migration tool, and both connect as `app`. The
-[Drizzle Postgres guide][drizzle-pg] covers the driver alternatives. A
-Drizzle migration carrying `CREATE EXTENSION pgcrypto` works using that
-shared `DATABASE_URL`. An allowlisted extension has to be installed on
-the `Admin` tab first.
+[Drizzle Postgres guide][drizzle-pg] describes the driver alternatives.
+A Drizzle migration carrying `CREATE EXTENSION pgcrypto` works using
+that shared `DATABASE_URL`. An allowlisted extension has to be
+installed on the `Admin` tab first.
 
 ## Django
 
@@ -158,8 +158,8 @@ import dj_database_url
 DATABASES = {"default": dj_database_url.config()}
 ```
 
-The [Django databases reference][django-db] covers what else the backend
-accepts. A Django migration whose operations include
+The [Django databases reference][django-db] describes what else the
+backend accepts. A Django migration whose operations include
 `CREATE EXTENSION pgcrypto` runs as `app` and succeeds. An allowlisted
 extension needs the `Admin` tab first.
 
@@ -226,17 +226,17 @@ servers; each server reads the password once at startup.
 ## Next Steps
 
 * [Connecting to a pgEdge Starfleet Database](../connecting/index.md)
-  covers connecting with psql, pgAdmin, and the AI DBA Workbench.
-* [Database Roles](roles.md) covers the two roles.
+  describes connecting with psql, pgAdmin, and the AI DBA Workbench.
+* [Database Roles](roles.md) describes the two roles.
 * [Loading Data into Your pgEdge Starfleet Database](loading_data.md)
-  covers the first data load, which usually happens before the first
-  migration.
-* [Installing Extensions](extensions.md) covers which role installs which
-  extension and what the refusal message means.
-* [Restoring from Backup](../using_console/backups.md) covers restoring
-  in place after a migration goes wrong.
-* [Enabling and Using the MCP Server](../serving_ai_content/mcp.md) covers
-  the server that a rotation of `app` restarts.
+  describes the first data load, which usually happens before the
+  first migration.
+* [Installing Extensions](extensions.md) describes which role installs
+  which extension and what the refusal message means.
+* [Restoring from Backup](../using_console/backups.md) describes
+  restoring in place after a migration goes wrong.
+* [Enabling and Using the MCP Server](../serving_ai_content/mcp.md)
+  describes the server that a rotation of `app` restarts.
 
 [prisma-pg]: https://www.prisma.io/docs/orm/overview/databases/postgresql
 [drizzle-pg]: https://orm.drizzle.team/docs/get-started-postgresql
