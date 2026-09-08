@@ -1,8 +1,7 @@
 # Deploying a Managed Database
 
-After authenticating with pgEdge Starfleet, you're welcomed and presented with
-an easy-to-follow dialog that will walk you through creating your first
-database:
+After authenticating with pgEdge Starfleet, a dialog guides you through
+creating your first database:
 
 ![Welcome to pgEdge Starfleet](../images/sf_cloud_welcome.png)
 

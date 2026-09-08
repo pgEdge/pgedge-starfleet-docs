@@ -285,8 +285,8 @@ When using the MCP server:
 - Turn `Allow writes` off again when the task that required write/delete
   access is complete. The `Allow writes` toggle changes this access.
 - Treat a write-enabled agent as a user holding the `app` role's privileges,
-  not as a tool. You should provide a database whose data you would hand to an
-  untrusted client.
+  not as a tool. You should provide a database whose data you would be
+  willing to expose to an untrusted client.
 - Read what the agent proposes before approving it, in a client that shows
   tool calls before running them.
 - Be especially careful accessing tables that hold text written by other

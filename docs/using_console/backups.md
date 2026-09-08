@@ -46,8 +46,8 @@ Select the `Restore` button, to the right of a backup, to restore your
 database to the selected backup. The `Restore from backup` popup opens,
 confirming the date and time of the backup you selected. The popup
 warns you that any changes made after that point in time are lost, and
-lets you know that the database keeps its name and connection details,
-and is briefly unavailable while the restore runs. A `hot` backup of
+notes that the database keeps its name and connection details, and is
+briefly unavailable while the restore runs. A `hot` backup of
 the current data is taken first, before the restore begins.
 
 ![The Restore from backup popup](../images/sf_backups_restore.png)
@@ -130,5 +130,5 @@ again.
 
 ## Related Pages
 
-* [Reviewing the Activity Log](activity_log.md) covers the
+* [Reviewing the Activity Log](activity_log.md) describes the
   statuses and the task names a restore moves through.

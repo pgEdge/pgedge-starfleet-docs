@@ -7,7 +7,7 @@ and manage billing. The page has four tabs: `Profile`, `Team`,
 
 ## The Profile Tab
 
-![The Profile tab](images/sf_settings_profile.png)
+![The Profile tab](../images/sf_settings_profile.png)
 
 The `Profile` tab displays the email address associated with your account
 (read-only), and lets you update the names associated with your account:
@@ -20,7 +20,7 @@ changes; select `Reset` to return the fields to their previous values.
 
 ## The Team Tab
 
-![The Team tab](images/sf_settings_team.png)
+![The Team tab](../images/sf_settings_team.png)
 
 The `Team` tab displays information about your account:
 
@@ -42,7 +42,7 @@ For information about inviting and managing team members, see
 
 ## The API Clients Tab
 
-![The API Clients tab](images/sf_settings_api_clients.png)
+![The API Clients tab](../images/sf_settings_api_clients.png)
 
 The `API Clients` tab lists the API clients on your account (`Name`,
 `Description`, and `Auth ID` columns), and is used to interact with the
@@ -51,9 +51,9 @@ pgEdge Cloud API, a REST interface for managing your databases (and more).
 To add an API client, select `Create API Client` in the upper-right
 corner of the tab. When the `Create API Client` popup opens:
 
-![The Create API Client popup](images/sf_settings_api_client_create.png)
+![The Create API Client popup](../images/sf_settings_api_client_create.png)
 
-* Provide a user-friendly name for the API client in the `API Client Name`
+* Provide a descriptive name for the API client in the `API Client Name`
   field (required).
 * Provide a brief description of the API client in the `Description` field.
 
@@ -62,7 +62,7 @@ without creating one.
 
 ## The Billing Tab
 
-![The Billing tab](images/sf_settings_billing.png)
+![The Billing tab](../images/sf_settings_billing.png)
 
 The `Billing` tab displays your account-level subscription and payment
 status:
@@ -77,4 +77,4 @@ change your billing details.
 
 This account-level billing is separate from the size and price of an
 individual database; for details about a specific database's size tier and
-price, see [Plan and Billing](using_console/index.md#plan-and-billing).
+price, see [Plan and Billing](index.md#plan-and-billing).

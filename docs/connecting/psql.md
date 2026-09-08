@@ -68,7 +68,7 @@ authenticate:
   string and press `Return`. Use the port from the connection string rather than
   assuming the Postgres default.
 * When prompted for a `Username [postgres]`, provide the `User` value from the
-  `Connect` pane, and press `Return`. In our example, the user is `admin`.
+  `Connect` pane, and press `Return`. In this example, the user is `admin`.
 * When prompted for the `Password`, provide the `Password` value from the
   `Connect` pane.
 

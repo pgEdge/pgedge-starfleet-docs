@@ -187,8 +187,8 @@ The page shows one of two messages in place of the charts:
 
 * `Couldn't load metrics` means the read failed, and the panel displays a
   `Retry` button. Use it. If it keeps failing while the database is
-  `Available`, the metrics store is the thing that is unwell rather than the
-  database.
+  `Available`, the metrics store, not the database, is the failing
+  component.
 
 * `No metrics in this window` means the read succeeded and the time range
   held no samples. The hint under it names a database created moments ago,
@@ -203,6 +203,6 @@ again shortly.` in place of the whole page instead.
 
 ## Related Pages
 
-* [Reviewing the Activity Log](activity_log.md) covers the resize
+* [Reviewing the Activity Log](activity_log.md) describes the resize
   and the restore that put two instances on the charts.
-* [Restoring from Backup](backups.md) covers the restore itself.
+* [Restoring from Backup](backups.md) describes the restore itself.

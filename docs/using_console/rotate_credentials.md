@@ -127,7 +127,7 @@ another rotation until it is recovered.
 
 The pgEdge Cloud API authenticates with an API client, managed on the
 `API Clients` tab under `Settings`. See
-[The API Clients Tab](../settings.md#the-api-clients-tab).
+[The API Clients Tab](settings.md#the-api-clients-tab).
 
 A client's secret is returned once, at creation, and cannot be fetched again.
 The creation dialog says so directly: "Please copy the authentication ID and
@@ -151,12 +151,13 @@ itself:
 
 ## Next Steps
 
-* [Database Roles](../using_database/roles.md) covers the roles whose passwords these
-  are, and [Connecting with psql](../connecting/psql.md) covers how to
-  handle the password once you have it.
+* [Database Roles](../using_database/roles.md) describes the roles whose
+  passwords these are, and
+  [Connecting with psql](../connecting/psql.md) explains how to handle
+  the password once you have it.
 
-* [Enabling and Using the MCP Server](../serving_ai_content/mcp.md) covers
-  the server a rotation of the `Application` role restarts.
+* [Enabling and Using the MCP Server](../serving_ai_content/mcp.md)
+  describes the server a rotation of the `Application` role restarts.
 
-* [Reviewing the Activity Log](activity_log.md) covers finding the
-  `rotate-password-managed` task.
+* [Reviewing the Activity Log](activity_log.md) explains how to find
+  the `rotate-password-managed` task.
