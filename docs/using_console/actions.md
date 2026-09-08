@@ -60,27 +60,38 @@ Select `Delete database` from the `Actions` menu to permanently delete your
 database. This option is unavailable while deletion protection is enabled; see
 [Enabling and Disabling Deletion Protection](#enabling-and-disabling-deletion-protection).
 
-## When an Action Is Refused
+## Troubleshooting - When an Action Is Refused
 
-Each refusal appears as a red notification. Where the API supplies a message
-of its own, the console shows that instead of the text below, so treat these
-as the fallback wording rather than the only wording.
+The `Actions` menu displays a red notification when a request is refused.
+If the API supplies a message of its own, the console displays that
+instead of the literal text message below:
 
-* `Could not resize the database.` means the resize was refused. A resize
-  needs the database `Available`, and sizes only go up.
+* `Could not resize the database.` is displayed when a resize is
+  refused.
 
-* `Could not delete the database.` means the delete was refused. Deletion
-  protection is the common cause, and the menu item reads
-  `Delete database (protected)` until you turn it off. The other is a database created seconds ago or one still
-  resizing, whose billing provision is unfinished. Wait and try again.
+    A resize needs the database in an `Available` state, and sizes
+    only go up.
 
-* `Could not update the database.` means the display-name edit was refused.
-  This edit takes no hold on the database and succeeds against a busy one, so
-  a refusal here is not a busy database. Check the name length against the
-  field's limit.
+* `Could not delete the database.` is displayed when a delete is
+  refused.
 
-* `Could not update deletion protection.` means the switch was refused. This
-  one also takes no hold on the database, so retrying is reasonable. It stays
-  changeable on a `Failed` database, because a protected failure has to be
-  removable.
+    Deletion protection is the common cause; the menu item reads
+    `Delete database (protected)` until you turn it off. The other
+    cause is a database that was created seconds ago, or one still
+    resizing, with an unfinished billing provision. Wait and try
+    again.
+
+* `Could not update the database.` is displayed when a display-name
+  edit is refused.
+
+    This edit takes no hold on the database and succeeds against a
+    busy one, so a refusal here isn't caused by a busy database.
+    Check the name length against the field's limit.
+
+* `Could not update deletion protection.` is displayed when the
+  switch is refused.
+
+    This one also takes no hold on the database, so retrying is
+    reasonable. It stays changeable on a `Failed` database, because a
+    protected failure has to be removable.
 
