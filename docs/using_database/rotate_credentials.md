@@ -1,13 +1,13 @@
 # Rotating Database Credentials
 
 Rotating a database role's password replaces it with a new one the platform
-generates. The `Rotate credentials` button on the `Connect` pane does it, and
-for roughly ten seconds afterwards neither the old password nor the new one is
-a safe bet. Your account carries one other credential, the API client secret,
-which is replaced rather than rotated.
+generates. The `Rotate credentials` button on the `Connect` pane triggers
+this, and for roughly ten seconds afterwards neither the old password nor
+the new one can be relied on. Your account carries one other credential,
+the API client secret, which is replaced rather than rotated.
 
 Rotation is not on the `Actions` menu. For the options that are, see
-[Accessing Management Options with the Actions Menu](actions.md).
+[Accessing Management Options with the Actions Menu](../using_console/actions.md).
 
 ## Rotating from the Connect Pane
 
@@ -23,9 +23,9 @@ enables it on a database that is `Available` or `Degraded`. The API admits a
 rotation only from `Available`, so a `Degraded` database can offer the button
 and still refuse the write.
 
-For where the `Connect` pane is, see
-[Connecting with psql](../connecting/psql.md). For what each role is
-for, see [Database Roles](../using_database/roles.md).
+For the location of the `Connect` pane, see
+[Connecting with psql](../connecting/psql.md). For the purpose of each
+role, see [Managing Database Roles](roles.md).
 
 ## What Happens When You Confirm
 
@@ -41,7 +41,7 @@ Confirming does three things:
 * A `rotate-password-managed` task appears in the Activity Log for this
   database. The call returns no task ID, so find the task by pasting the
   database ID into the Activity Log's `Subject ID` filter. See
-  [Reviewing the Activity Log](activity_log.md).
+  [Reviewing the Activity Log](../using_console/activity_log.md).
 
 * The console re-reads every per-role credential, so the `Connect` pane shows
   the new password rather than a stale one for any role.
@@ -54,25 +54,26 @@ The database reads `Modifying` for about ten seconds.
 
 Until it is back to `Available`, two things are true at once:
 
-* The new password does not authenticate yet. The `Connect` pane hands it to
-  you before the running database accepts it, so reading it back and
+* The new password does not authenticate yet. The `Connect` pane provides
+  it to you before the running database accepts it, so reading it back and
   connecting immediately fails.
 
-* The old password may still work. The rotation is not proof the old one is
-  dead. That outlives the task as well: a succeeded task says the new
-  credential is live, never that the old one has stopped working.
+* The old password may still work. The rotation is not proof the old one
+  is invalid. That outlives the task as well: a succeeded task says the
+  new credential is live, never that the old one has stopped working.
 
-Wait for `Available` before switching anything over. The status badge on the
-same page is the signal.
+Wait for `Available` before switching anything over. The status badge on
+the same page is the signal.
 
 Rotation breaks any session still using the old password, so switch every
-client that holds the rotated role, not only the one you were testing with.
+client that holds the rotated role, not only the client used for testing.
 
 ## Rotating the Application Role Restarts MCP and RAG
 
-The MCP and RAG servers read the database's `app` password once, at startup, so
-a rotation of the `Application` role ends by restarting them. They are back on
-the new password by the time the database reads `Available` again.
+The MCP and RAG servers read the database's `app` password once, at
+startup, so a rotation of the `Application` role restarts them. They
+resume using the new password by the time the database reads
+`Available` again.
 
 Expect a short gap in service on both, and no change to your MCP client
 configuration. See
@@ -88,7 +89,7 @@ The new password is not shown by the rotation itself.
 Read it from the `Password` field on the `Connect` pane, which is masked with a
 reveal control and a copy button. The `Connection string` and `psql command`
 rows show the password masked and copy it filled in, so copying either gives
-you a working string without putting the secret on screen.
+you a working string without displaying the secret on screen.
 
 Then update every place the old password is saved. That includes:
 
@@ -104,13 +105,13 @@ again.`, or the API's own message where it sends one. The API's rotation
 refusal reads `rotating a password requires the database to be available; it
 is busy with another operation`.
 
-Waiting is the fix. A database already `Modifying` because of an earlier
-restore or resize refuses a rotation for the same reason.
+Waiting resolves this. A database already `Modifying` because of an
+earlier restore or resize refuses a rotation for the same reason.
 
-**An uncertain outcome.** If no notification arrives, do not press the button
-again. A rotation hands the new credential to the database before it waits for
-confirmation, and the database applies it independently, so a repeat risks
-replacing a credential that is already in place.
+**An uncertain outcome.** If no notification arrives, do not select the
+button again. A rotation sends the new credential to the database before
+it waits for confirmation, and the database applies it independently, so
+a repeat risks replacing a credential that is already in place.
 
 Read the Activity Log instead. Find the `rotate-password-managed` task for this
 database and compare its `Updated at` against the current time rather than
@@ -127,7 +128,7 @@ another rotation until it is recovered.
 
 The pgEdge Cloud API authenticates with an API client, managed on the
 `API Clients` tab under `Settings`. See
-[The API Clients Tab](settings.md#the-api-clients-tab).
+[The API Clients Tab](../using_console/settings.md#the-api-clients-tab).
 
 A client's secret is returned once, at creation, and cannot be fetched again.
 The creation dialog says so directly: "Please copy the authentication ID and
@@ -151,13 +152,12 @@ itself:
 
 ## Next Steps
 
-* [Database Roles](../using_database/roles.md) describes the roles whose
-  passwords these are, and
-  [Connecting with psql](../connecting/psql.md) explains how to handle
-  the password once you have it.
+* [Managing Database Roles](roles.md) describes the roles whose passwords these
+  are, and [Connecting with psql](../connecting/psql.md) explains how
+  to handle the password once you have it.
 
 * [Enabling and Using the MCP Server](../serving_ai_content/mcp.md)
   describes the server a rotation of the `Application` role restarts.
 
-* [Reviewing the Activity Log](activity_log.md) explains how to find
-  the `rotate-password-managed` task.
+* [Reviewing the Activity Log](../using_console/activity_log.md)
+  explains how to find the `rotate-password-managed` task.

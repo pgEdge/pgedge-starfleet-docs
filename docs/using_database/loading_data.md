@@ -8,7 +8,7 @@ Postgres database, and loading documents for the RAG server.
 You should load schema and data as the `app` user (the `Application` tab
 credentials), so that every object ends up owned by the role your application
 connects as. The `admin` user can insert data into tables that already exist.
-For what each role can do, see [Database Roles](roles.md).
+For what each role can do, see [Managing Database Roles](roles.md).
 
 ## Loading CSV Data with `\copy`
 
@@ -31,7 +31,7 @@ For example, to load a CSV file named `customers.csv` (with a header row of
     See [Connecting with psql](../connecting/psql.md) for directions about
     finding the ready-to-use `psql command` for your database.
 
-2.  Create the target table on your database with a column for each data block
+2.  Create the target table on your database with a column for each field
     in your CSV file:
 
     ```sql
@@ -44,7 +44,7 @@ For example, to load a CSV file named `customers.csv` (with a header row of
 
 3.  Load the CSV file with `\copy`:
 
-    ```
+    ```sql
     \copy public.customers (id, name, email) FROM 'customers.csv' WITH (FORMAT csv, HEADER true)
     ```
 
@@ -79,7 +79,8 @@ Copy the `psql command` from each tab rather than assembling one; the
 `psql command` already carries the TLS setting as `PGSSLMODE=require`, and it
 fills the password in when you copy it.
 
-Keep both out of your shell history and out of any file you commit.
+Keep both `psql command` values out of your shell history and out of
+any file you commit.
 
 Create the dump on the source database with `pg_dump`:
 
@@ -114,7 +115,7 @@ this order:
 Loading a schema before the extensions it depends on exist fails on the first
 object that needs one.
 
-For which extension falls on which side, see
+For which extension requires which role, see
 [Installing Extensions](extensions.md).
 
 `pg_dump` and `pg_restore` are ordinary Postgres clients, so the same
@@ -154,7 +155,7 @@ errors. Foreign keys therefore stay enforced for the whole load.
 
 `pg_restore` restores table data in the dump's table-of-contents order, not in
 the order of the `-t` flags. A child table can therefore be loaded before its
-parent, its `COPY` aborts on the foreign key, and `pg_restore` carries on with
+parent, its `COPY` aborts on the foreign key, and `pg_restore` continues with
 the rest.
 
 The result: `pg_restore` exits with status `1`, most tables are populated, and
@@ -190,8 +191,9 @@ Run the count as `app`, from the `psql command` on the `Application` tab:
 SELECT count(*) FROM rulebook_sections;
 ```
 
-Compare each table against the source. Neither the exit code nor the console
-status reports a table left at zero rows beside tables that loaded.
+Compare each table against the source. Neither the exit code nor the
+console status distinguishes a table left at zero rows from the tables
+that loaded successfully.
 
 ## Loading Documents for the RAG Server
 

@@ -170,7 +170,7 @@ A status or a task name outside the two lists above can appear.
   beside the `-managed` ones, along with names such as `replicate` and
   `restore-from-pgdump`.
 
-* A status you do not recognise is not automatically an error. Read it,
+* A status you do not recognize is not automatically an error. Read it,
   and treat anything that is not `available` as a database that is not
   ready for the five writes.
 

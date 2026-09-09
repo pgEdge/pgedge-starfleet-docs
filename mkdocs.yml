@@ -40,29 +40,28 @@ theme:
 nav:
   - pgEdge Starfleet Managed Postgres:
     - Overview: index.md
-  - Deploying a Managed Database:
-    - managed/creating_managed.md
-    - Selecting a Database Size: managed/sizes.md
+  - managed/creating_managed.md
   - Using the pgEdge Starfleet Console:
-    - using_console/index.md
+    - "Using the pgEdge Starfleet Console: Overview": using_console/console_overview.md
+    - Enabling AI Services:
+      - Enabling and Using the MCP Server: serving_ai_content/mcp.md
+      - Enabling and Using the RAG Server: serving_ai_content/rag.md
     - Monitoring System Metrics: using_console/metrics.md
     - Reviewing the Log Files: using_console/logs.md
     - Restoring from Backup: using_console/backups.md
-    - Rotating Database Credentials: using_console/rotate_credentials.md
     - Reviewing the Activity Log: using_console/activity_log.md
-    - Accessing Management Options with the Actions Menu: using_console/actions.md
     - Managing Account Settings: using_console/settings.md
     - Managing Team Members: using_console/team_management.md
-  - Serving up AI Content:
-    - Enabling and Using the MCP Server: serving_ai_content/mcp.md
-    - Enabling and Using the RAG Server: serving_ai_content/rag.md
+    - Accessing Management Options with the Actions Menu: using_console/actions.md
   - Connecting to a pgEdge Starfleet Database:
     - connecting/index.md
     - Connecting with the AI DBA Workbench: connecting/workbench.md
     - Connecting with psql: connecting/psql.md
     - Connecting with pgAdmin: connecting/pgadmin.md
   - Using Your Database:
-    - Database Roles: using_database/roles.md
+    - Managing Database Roles: using_database/roles.md
+    - Rotating Database Credentials: using_database/rotate_credentials.md
+    - Selecting or Modifying the Database Size: using_database/sizes.md
     - Loading Data into Your pgEdge Starfleet Database: using_database/loading_data.md
     - Installing Extensions: using_database/extensions.md
     - ORM and Framework Guides: using_database/orm_guides.md

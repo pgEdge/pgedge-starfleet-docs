@@ -1,14 +1,14 @@
-# Database Roles
+# Managing Database Roles
 
 Every pgEdge Starfleet database comes with two roles you can connect as,
-`admin` and `app`; neither role is a Postgres superuser. They split the work
-by job rather than by seniority: 
+`admin` and `app`; neither role is a Postgres superuser. They divide
+responsibilities by function rather than by privilege level:
 
 * `app` owns the database and everything your application builds.
-* `admin` has the server-wide privileges an operator needs. 
+* `admin` has the server-wide privileges an operator needs.
 
-The `Connect` pane on the database page displays a tab for each role, that
-displays the password associated with the role.
+The `Connect` pane on the database page displays a tab for each role,
+showing the password associated with it.
 
 Your pgEdge Starfleet database starts as a single database, owned by `app`.
 The `admin` role exists to administer Postgres, including creating further
@@ -24,12 +24,12 @@ installs.
 !!! hint
 
     Each Postgres object belongs to the role that creates the object; object
-    ownership is managed after creation with the sql ALTER object_name
+    ownership is managed after creation with the SQL ALTER object_name
     command.
 
-`app` is the sensible default role to own an application. The MCP and RAG servers
-also connect as `app`, so whatever your migrations and data imports add to
-the database, those servers can read.
+`app` is the recommended default role to own an application. The MCP and
+RAG servers also connect as `app`, so whatever your migrations and data
+imports add to the database, those servers can read.
 
 `app` holds no server-wide privilege: it cannot create roles or databases,
 cannot see what other sessions are running, cannot end another session, and
@@ -94,10 +94,10 @@ The `Connect` pane on the database page provides an `Admin` tab and an
 * a `Rotate credentials` button.
 
 For details about reading and handling these credentials, see
-[Connecting with psql](../connecting/psql.md). 
+[Connecting with psql](../connecting/psql.md).
 
 For details about replacing a password, see
-[Rotating Database Credentials](../using_console/rotate_credentials.md).
+[Rotating Database Credentials](rotate_credentials.md).
 
 The MCP and RAG servers connect to the database as `app`. As a result,
 each server can read and change whatever `app` can, and rotating the

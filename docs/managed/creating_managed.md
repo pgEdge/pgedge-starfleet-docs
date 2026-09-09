@@ -31,7 +31,7 @@ Next, you'll select deployment features:
  | XL | 4 vCPU | 16 GB RAM | 150 GB storage | 100 conns | $249/mo |
 
   For details about functionality provided by each size, see 
-  [Selecting a Database Size](sizes.md).
+  [Selecting a Database Size](../using_database/sizes.md).
 
 - The `ADD-ONS` section features a list of optional features for your database:
 
