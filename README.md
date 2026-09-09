@@ -71,3 +71,11 @@ docs/
       logs.md                   Logs
       backups.md                Backups
 ```
+
+## Pages the console links to
+
+The pgEdge console links to a few of these pages from its "Learn more"
+anchors, and its deploy fails if one is missing. The `Console links` check
+lists them in `.github/console-links.txt` and fails a pull request that moves
+or removes one. To move such a page, update `managedDocsPaths.json` in
+`pgEdge/product-ui` in the same change, then the list.
