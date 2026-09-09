@@ -20,7 +20,7 @@ with the password included, so the clipboard holds a live credential even
 though the screen does not display it.
 
 For details about each role's capabilities and which role to use, see
-[Database Roles](../using_database/roles.md). 
+[Managing Database Roles](../using_database/roles.md). 
 
 !!! hint
 

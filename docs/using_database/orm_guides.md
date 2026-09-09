@@ -17,8 +17,9 @@ role that created it, so a framework connected as `app` owns every table
 its migrations create and can alter or drop them later.
 
 For more information about the `Connect` pane, see
-[The Connect Pane](../using_console/index.md#the-connect-pane). For more
-information about default role permissions, see [Database Roles](roles.md).
+[The Connect Pane](../using_console/console_overview.md#the-connect-pane).
+For more information about default role permissions, see
+[Managing Database Roles](roles.md).
 
 Every recipe below reads the connection string from `DATABASE_URL`. Put
 the string there via a secrets mechanism rather than an exported shell
@@ -80,7 +81,7 @@ datasource db {
 }
 ```
 
-Set `DATABASE_URL` to the string the console gave you. Prisma's own default is
+Set `DATABASE_URL` to the string the console provided. Prisma's own default is
 `sslmode=prefer`, which accepts a plain-text connection when TLS is not
 available, so the `sslmode=require` on the end of the console's string is what
 holds the connection encrypted.
@@ -94,7 +95,7 @@ A Prisma migration that runs `CREATE EXTENSION pgcrypto` works against the
 ## Drizzle
 
 Drizzle connects through the `pg` driver, which parses the URI itself, so the
-string goes straight into the constructor:
+string passes directly into the constructor:
 
 ```ts
 import { drizzle } from 'drizzle-orm/node-postgres';
@@ -126,7 +127,7 @@ installed on the `Admin` tab first.
 Django reads discrete parameters from the `DATABASES` setting rather than a
 URL, so the string has to be split or parsed. The split version reads the
 parts of the console's string from the standard `PG*` environment variables,
-which every libpq client also honours:
+which every libpq client also honors:
 
 ```python
 DATABASES = {
@@ -227,7 +228,7 @@ servers; each server reads the password once at startup.
 
 * [Connecting to a pgEdge Starfleet Database](../connecting/index.md)
   describes connecting with psql, pgAdmin, and the AI DBA Workbench.
-* [Database Roles](roles.md) describes the two roles.
+* [Managing Database Roles](roles.md) describes the two roles.
 * [Loading Data into Your pgEdge Starfleet Database](loading_data.md)
   describes the first data load, which usually happens before the
   first migration.

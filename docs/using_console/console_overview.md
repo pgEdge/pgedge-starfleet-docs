@@ -57,8 +57,8 @@ Select the copy icon next to any field to copy its value.
 The two users have different permissions on the database. Connect as `app`
 to create tables and load data, and as `admin` to install an allowlisted
 extension or for server-wide work.
-[Database Roles](../using_database/roles.md) describes what each one can
-do.
+[Managing Database Roles](../using_database/roles.md) describes what
+each one can do.
 
 ### When the Connect Pane Shows a Message Instead
 
@@ -76,7 +76,7 @@ The pane shows one of three messages in place of connection details:
 * `This database is <status> and is not available to connect right now.`
   names a status the pane treats as not connectable: `deleting`,
   `suspending`, `suspended`, `resuming`, or any status the console does not
-  recognise. Read the status against
+  recognize. Read the status against
   [Database Statuses](activity_log.md#database-statuses).
 
 A database that is still being created shows a provisioning message instead.
@@ -179,7 +179,7 @@ and configuration of your database.
 The `Plan & billing` pane displays the current size tier of your database and
 the price you'll be billed after any free trial ends. Select `Upgrade size` to
 change the size of your database. For what each size gives you, see
-[Selecting a Database Size](../managed/sizes.md).
+[Selecting a Database Size](../using_database/sizes.md).
 
 Two notifications can appear after you add a payment method.
 `Payment saved, but we could not refresh billing status.` means the card was

@@ -14,7 +14,7 @@ to `disable`.
 
 Every client connects as one of the database's two built-in roles, `admin` or
 `app`. Which one to use depends on the job, and
-[Database Roles](../using_database/roles.md) describes the split.
+[Managing Database Roles](../using_database/roles.md) describes the split.
 
 The documentation includes instructions for installing and connecting with
 the following commonly used clients:
@@ -84,16 +84,17 @@ practices when using the password:
 
     Supply the string to your application through a secrets mechanism
     rather than a shell variable. To retire a password, see
-    [Rotating Database Credentials](../using_console/rotate_credentials.md).
+    [Rotating Database Credentials](../using_database/rotate_credentials.md).
 
 ## Next Steps
 
-* [Database Roles](../using_database/roles.md) explains what the `admin` and `app` roles can
-  each do, and which role to choose to accomplish tasks.
+* [Managing Database Roles](../using_database/roles.md) explains what
+  the `admin` and `app` roles can each do, and which role to choose to
+  accomplish tasks.
 * [Installing Extensions](../using_database/extensions.md) discusses which role
   installs which extension, and refusal messages.
 * [Loading Data into Your pgEdge Starfleet Database](../using_database/loading_data.md)
   discusses loading a schema and its data with each role, in order.
-* [Rotating Database Credentials](../using_console/rotate_credentials.md)
+* [Rotating Database Credentials](../using_database/rotate_credentials.md)
   explains how to replace a password, and the window during which neither
   password is safe to use.

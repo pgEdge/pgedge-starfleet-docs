@@ -1,9 +1,9 @@
-# Selecting a Database Size
+# Selecting or Modifying the Database Size
 
 A managed database runs at one of three sizes. You select the size when you
 create the database, and can move to a larger size as your needs change. The
-size sets the compute, memory, storage and connection limits the database
-adheres to.
+size sets the compute, memory, storage, and connection limits the
+database adheres to.
 
 The following table shows what each size provides:
 
@@ -29,7 +29,7 @@ the database console.
 
 The database header displays a badge with the resource size, and the
 `Plan & billing` pane displays the size alongside the price. The `CPU`,
-`Memory`, `Storage` and `Conns` figures in the header are live readings of
+`Memory`, `Storage`, and `Conns` figures in the header are live readings of
 current usage against the size's limits: `CPU` and `Memory` compare the
 current load against their allotted capacity, `Storage` compares used
 space against capacity, and `Conns` compares active connections against
@@ -46,10 +46,10 @@ is `Available`. See
 
 ## Next Steps
 
-* [Deploying a Managed Database](creating_managed.md) discusses using the
-  create wizard.
+* [Deploying a Managed Database](../managed/creating_managed.md)
+  describes using the create wizard.
 * [Accessing Management Options with the Actions Menu](../using_console/actions.md)
-  discusses upgrading your resources.
+  describes upgrading your resources.
 * [Monitoring System Metrics](../using_console/metrics.md) details the
   `CPU`, `Memory`, `Disk used` and `Active connections` charts which show the
   current resources in use.

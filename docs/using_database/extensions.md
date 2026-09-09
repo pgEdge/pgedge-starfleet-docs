@@ -13,8 +13,8 @@ pane on the database page displays a `psql command` for each role that
 already includes `PGSSLMODE=require` and fills the password in when you
 copy it.
 
-See [Connecting with psql](../connecting/psql.md) for finding the pane and
-copying the command for either role.
+See [Connecting with psql](../connecting/psql.md) to find the pane and
+copy the command for either role.
 
 ## Determining Which Role Installs Which Extension
 
@@ -71,13 +71,13 @@ only manage an extension its own role owns. Most migration tools connect as
 `app`, so install trusted extensions such as `pgcrypto` and `citext` as `app`,
 or let the migration's own `CREATE EXTENSION IF NOT EXISTS` line handle the
 installation. Allowlisted extensions always end up owned by `postgres` no
-matter who installs them, so for those the role makes no difference to
+matter who installs them, so the role makes no difference to their
 ownership.
 
 ## Installing in Order
 
-A schema and data load that needs extensions from both halves of the table
-needs the `admin` connection once, before anything else:
+A schema and data load that needs extensions from both categories in the
+table needs the `admin` connection once, before anything else:
 
 1.  Connect as `admin` and install the allowlisted extensions the schema
     depends on.
@@ -90,7 +90,7 @@ loading it under the wrong role.
 
 ## Next Steps
 
-* [Database Roles](roles.md) describes what each of the two roles can
+* [Managing Database Roles](roles.md) describes what each of the two roles can
   do beyond installing extensions.
 
 * [Loading Data into Your pgEdge Starfleet Database](loading_data.md)
