@@ -1,0 +1,21 @@
+# The pgEdge console links to a handful of these pages, and its deploy fails
+# if one is missing. This check moves that failure to the docs PR.
+name: Console links
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - run: .github/scripts/check-console-links.sh

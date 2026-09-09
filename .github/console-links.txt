@@ -1,0 +1,10 @@
+# Pages the pgEdge console links to from its "Learn more" anchors.
+# Source: src/components/databases/managed/copy/managedDocsPaths.json in
+# pgEdge/product-ui. Paths are relative to docs/. If a page here moves,
+# update that file in product-ui in the same change, then this list.
+connecting/index.md
+using_console/backups.md
+using_console/metrics.md
+using_console/logs.md
+serving_ai_content/mcp.md
+serving_ai_content/rag.md
