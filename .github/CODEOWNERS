@@ -1,0 +1,5 @@
+# GitHub requests a review from every owner on a matching line, so a pull
+# request here goes to all five at once. The order is not a fallback chain.
+
+# Default owners for everything in the repo.
+*   @susan-pgedge @gbrowdy @AntTheLimey @mmols @dpage
