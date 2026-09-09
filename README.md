@@ -17,9 +17,24 @@ console's Vercel deploy fails rather than shipping stale pages.
 Two consequences worth knowing before you merge anything:
 
 - A build that is broken here breaks an unrelated product's deploy.
-  `requirements.txt` in this repo is pinned to exactly the versions the
-  console installs, and the `Build docs` check runs them, so CI here
-  tests the same build the console runs.
+  `requirements.txt` is pinned to exactly the versions the console
+  installs, and the `Build docs` check runs them, so a mkdocs failure
+  surfaces on the docs PR rather than on the console's deploy.
+- `Build docs` does not cover everything the console checks. Two of its
+  gates are not replicated here, so these still fail at deploy time:
+
+  - **Asset extensions.** The console serves `/docs` through a route
+    with a fixed content-type map (`src/pages/api/docs/
+    contentTypes.json` in `product-ui`). An extension missing from it
+    either fails the deploy outright, `.pdf` for instance, or ships an
+    asset that 404s in-product, which is currently the case for `.svg`.
+    Only add image formats already in that map: `.png`, `.jpg`,
+    `.jpeg`, `.gif`, `.webp`, `.avif`, `.ico`.
+  - **Nav entries the console mirrors.** See "Pages the console links
+    to" below.
+
+  Symlinks are the exception: the console refuses them, and `Build
+  docs` now rejects them here too.
 - The console links directly into a handful of these pages. See
   "Pages the console links to" below.
 
@@ -125,6 +140,17 @@ overrides/
 The pgEdge console links to a few of these pages from its "Learn more"
 anchors, and its deploy fails if one is missing. The `Console links`
 check lists them in `.github/console-links.txt` and fails a pull request
-that moves or removes one. To move such a page, update
-`managedDocsPaths.json` in `pgEdge/product-ui` in the same change, then
-the list.
+that moves or removes one.
+
+`product-ui` holds two mirrors of this repo's layout, and moving a page
+means updating whichever apply, in the same change:
+
+- `src/components/databases/managed/copy/managedDocsPaths.json` — the
+  six pages the console deep-links into. `Console links` guards these,
+  so a miss fails a PR here.
+- `src/components/databases/managed/copy/docsBundleNav.json` — a dated
+  snapshot of every page in this repo, which gates `docsLinks.test.ts`.
+  Nothing here guards it, so a rename that misses it leaves that test
+  failing in `product-ui` for a reason neither repo explains.
+
+Update the mirrors first, then `.github/console-links.txt`.

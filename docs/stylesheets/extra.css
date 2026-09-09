@@ -1,9 +1,15 @@
+/* Both logos are emitted by overrides/partials/logo.html; the palette
+   attribute below shows exactly one. The `none` fallbacks matter: an
+   undefined custom property makes `display` invalid at computed-value
+   time and it falls back to `inline`, which renders both logos side by
+   side. That is what happens if a palette entry in mkdocs.yml is
+   renamed or a third scheme is added without a rule here. */
 #logo_light_mode {
-    display: var(--md-footer-logo-light-mode);
+    display: var(--md-footer-logo-light-mode, none);
 }
 
 #logo_dark_mode {
-    display: var(--md-footer-logo-dark-mode);
+    display: var(--md-footer-logo-dark-mode, none);
 }
 
 [data-md-color-scheme="default"] {

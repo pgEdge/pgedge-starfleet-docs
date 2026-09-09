@@ -5,6 +5,11 @@
 # builds it with that file's pins, so a version that only exists here
 # is a version CI tested and the console never runs.
 #
+# Nothing enforces that. No test or workflow in either repo compares
+# the two files, so a bump on one side voids the guarantee silently.
+# The durable fix is for sync-docs.mjs to install this file, which it
+# already has on disk from the clone, instead of keeping its own copy.
+#
 # Regenerate:
 #   python3 -m venv v
 #   v/bin/pip install mkdocs==X mkdocs-material==Y

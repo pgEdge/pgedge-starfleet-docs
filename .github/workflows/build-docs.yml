@@ -36,13 +36,26 @@ jobs:
       # --no-deps because requirements.txt already pins every transitive,
       # the same way the console installs them. Letting pip resolve here
       # would test a dependency set the console never builds.
+      # mkdocs copies static files with shutil.copyfile, which dereferences:
+      # a committed docs/x.html -> /etc/passwd would publish its target as
+      # text/html. product-ui refuses to deploy a docs tree with symlinks, so
+      # catch it here instead of at deploy time. No cross-repo list needed.
+      - name: Reject symlinks
+        run: |
+          found=$(git ls-files -s | awk '$1 == "120000" { print $4 }')
+          if [ -n "$found" ]; then
+            echo "symlinks are not allowed in this repo:" >&2
+            echo "$found" >&2
+            exit 1
+          fi
+
       - name: Install mkdocs
         run: |
-          python3 -m venv venv
-          venv/bin/pip install --quiet --no-deps -r requirements.txt
+          python3 -m venv .venv
+          .venv/bin/pip install --quiet --no-deps -r requirements.txt
 
       - name: Build the docs
-        run: venv/bin/python -m mkdocs build --strict
+        run: .venv/bin/python -m mkdocs build --strict
 
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
