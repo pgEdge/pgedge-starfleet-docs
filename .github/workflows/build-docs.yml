@@ -1,0 +1,51 @@
+# The pgEdge console clones this repo at deploy time and builds it with
+# mkdocs; a build failure there fails the console's Vercel deploy. This
+# check moves that failure to the docs PR that caused it.
+#
+# Deliberately stricter than the console: --strict turns mkdocs warnings
+# (a nav entry with no file, a relative link to a page that moved) into
+# errors, so they surface here rather than shipping quietly.
+name: Build docs
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+
+      # --no-deps because requirements.txt already pins every transitive,
+      # the same way the console installs them. Letting pip resolve here
+      # would test a dependency set the console never builds.
+      - name: Install mkdocs
+        run: |
+          python3 -m venv venv
+          venv/bin/pip install --quiet --no-deps -r requirements.txt
+
+      - name: Build the docs
+        run: venv/bin/python -m mkdocs build --strict
+
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          if-no-files-found: error
+          name: pgedge-starfleet-docs-site
+          path: site
