@@ -1,0 +1,6 @@
+{# Material ships one logo. pgEdge needs a different mark per colour scheme,
+   so both are emitted and extra.css shows exactly one via prefers-color-scheme.
+   Matches pgEdge/pgedge-docs. Removing theme.custom_dir silently drops the
+   logo rather than failing the build. #}
+<img id="logo_dark_mode" src="{{ config.theme.logo_dark_mode | url }}" alt="logo">
+<img id="logo_light_mode" src="{{ config.theme.logo_light_mode | url }}" alt="logo">
