@@ -8,18 +8,18 @@ into a table that you can sort and filter.
 The console also displays a task progress bar on the main console dialog for
 the related database or cluster.
 
-![Progress bar update](../cloud/images/task_update.png)
+![Progress bar update](images/task_update.png)
 
 The progress bar provides information about the task in progress,
 including the identifier and duration. Select the `show details` link to
 display additional information about the task in progress.
 
-![Task details](../cloud/images/task_details.png)
+![Task details](images/task_details.png)
 
 Each point on the task bar corresponds to an event detail. To close the task
 bar, select the `X` in the upper-right corner of the task progress bar.
 
-![Activity Log page](../cloud/images/tasks.png)
+![Activity Log page](images/tasks.png)
 
 The Activity Log page displays the following columns:
 
@@ -34,7 +34,7 @@ The Activity Log page displays the following columns:
 - Created At is the timestamp at which the task started.
 - Updated At is the timestamp at which the console last updated the task.
 
-![Activity Log page](../cloud/images/task_table_detail.png)
+![Activity Log page](images/task_table_detail.png)
 
 Use the arrow to the left of a `Task name` to expand the task information and
 view details about the selected task.
@@ -46,7 +46,7 @@ The Activity Log table supports filtering and sorting by column value. A
 drop-down filter icon located next to each column name lists the available
 values for that column.
 
-![Filtering by task type](../cloud/images/task_filter.png)
+![Filtering by task type](images/task_filter.png)
 
 Select a value from the filter drop-down to re-arrange the table and move
 matching content to the top. Select the arrow between the column name and the

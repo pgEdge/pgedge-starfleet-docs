@@ -5,13 +5,13 @@ configured MCP server, ready for connections. After deployment, use the
 `Services` dialog to open the `Add MCP Server` popup to add AI
 functionality to an existing cluster or to manage defined functionality.
 
-![The Services dialog](../cloud/images/services.png)
+![The Services dialog](images/services.png)
 
 !!! note
 
     If your BYOC cluster resides on a private network, you can expose a
     port for connections by
-    [creating a public ingress](../cloud/cluster/ingress.md).
+    [creating a public ingress](cluster/ingress.md).
     An ingress into a private network is used only for services (like AI 
     tools), and does not accept Postgres database connections.
     
@@ -21,7 +21,7 @@ functionality to an existing cluster or to manage defined functionality.
 Select the `+ Add MCP Server` button to access the `Add MCP Server` popup to
 define an MCP server and optionally enable an LLM.
 
-![Adding an MCP Server](../cloud/images/add_mcp_server.png)
+![Adding an MCP Server](images/add_mcp_server.png)
 
 Use the fields on the `Add MCP Server` popup to describe the server and,
 optionally, the LLM:
@@ -58,14 +58,14 @@ When you've defined the MCP server (and optionally LLM functionality), select
 the `+ Add MCP Server` button to update the database. The `Services` dialog
 displays the MCP server deployment details when the deployment is complete.
 
-![The updated Services dialog](../cloud/images/services_mcp_deployed.png)
+![The updated Services dialog](images/services_mcp_deployed.png)
 
 To delete an MCP Server, use the menu in the upper-right corner of the MCP
 Servers details panel; select `Delete Service` to access a confirmation popup
 that prompts you to enter the database name as confirmation that you wish to
 delete the service.
 
-![Deleting an MCP Server](../cloud/images/services_mcp_delete.png)
+![Deleting an MCP Server](images/services_mcp_delete.png)
 
 
 ### Connecting a Client to the MCP Server
@@ -74,7 +74,7 @@ The steps for connecting a client to the MCP server vary by client and
 platform. The Services dialog displays connection details for several popular
 clients under the `Connect to MCP Clients` label:
 
-![Connecting to an MCP server](../cloud/images/connect_to_mcp.png)
+![Connecting to an MCP server](images/connect_to_mcp.png)
 
 Select a tab to view and copy connection details for the selected client.
 Choose from:
@@ -90,7 +90,7 @@ Choose from:
 Select the `Add RAG Server` button to access the `Add RAG Server` popup to
 define a RAG server and optionally enable an associated LLM.
 
-![Adding a RAG Server](../cloud/images/add_rag_server.png)
+![Adding a RAG Server](images/add_rag_server.png)
 
 Use the fields on the `Add RAG Server` popup to describe the server:
 
@@ -134,7 +134,7 @@ and their associated columns and vector columns.
     For more information about using pipelines, see the
     [pgEdge RAG Server documentation](https://docs.pgedge.com/pgedge-rag-server/v1-0-0/configuration/#specifying-properties-in-the-pipeline-section).
 
-![Adding a RAG Pipeline](../cloud/images/add_rag_pipeline.png)
+![Adding a RAG Pipeline](images/add_rag_pipeline.png)
 
 Use the:
 
@@ -155,14 +155,14 @@ When you're finished defining the RAG server, select the `+ Add RAG Server`
 button. The `Services` dialog displays the RAG server deployment details when
 the deployment is complete.
 
-![The updated Services dialog](../cloud/images/services_rag_deployed.png)
+![The updated Services dialog](images/services_rag_deployed.png)
 
 To delete a RAG Server, use the menu in the upper-right corner of the RAG
 Servers details panel; select `Delete Service` to access a confirmation popup
 that prompts you to enter the database name as confirmation that you wish to
 delete the service.
 
-![Deleting a RAG Server](../cloud/images/services_rag_delete.png)
+![Deleting a RAG Server](images/services_rag_delete.png)
 
 
 ### Using the RAG Server

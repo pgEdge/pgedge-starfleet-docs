@@ -39,6 +39,57 @@ theme:
 
 nav:
   - Home: index.md
+  - pgEdge Starfleet BYOC:
+    - Cloud Edition - Overview: byoc/index.md
+    - Getting Started with pgEdge Cloud: byoc/getting_started/getting_started.md
+    - Prerequisites:
+      - Linking and Managing your Cloud Provider Accounts:
+        - Managing Cloud Provider Accounts: byoc/prerequisites/cloud_accounts/index.md
+        - Linking an AWS Account: byoc/prerequisites/cloud_accounts/link_to_AWS.md
+        - Linking an Azure Account: byoc/prerequisites/cloud_accounts/link_to_Azure.md
+        - Linking a Google Account: byoc/prerequisites/cloud_accounts/link_to_Google.md
+      - Adding an SSH Key: byoc/prerequisites/ssh_key.md
+    - Cluster Management:
+      - Reviewing your Cloud Clusters: byoc/cluster/index.md
+      - Creating a Cluster: byoc/cluster/create_cluster.md
+      - Managing a Cluster: byoc/cluster/manage_cluster.md
+      - Defining a Cluster's Backup Store: byoc/cluster/backup_store.md
+      - Managing Firewall Rules: byoc/cluster/firewall.md
+      - Using Resource Tags: byoc/cluster/resource_tag.md
+      - Managing VPC Associations: byoc/cluster/vpc_assoc.md
+      - Adding an Ingress to a Private Cluster: byoc/cluster/ingress.md
+    - Database Management:
+      - Reviewing your Databases: byoc/database/index.md
+      - Creating a Database: byoc/database/create_db.md
+      - Managing a Database: byoc/database/manage_db.md
+    - Services: byoc/services.md
+    - Metrics: byoc/database_admin/metrics.md
+    - Logs: byoc/database_admin/logs.md
+    - Backups: byoc/database_admin/backup_details.md
+    - Managing Database Backups:
+      - Reviewing Backup Details: byoc/backup/backups.md
+      - Backing up your Database: byoc/backup/backup_providers.md
+      - Restoring from Backup: byoc/backup/restore.md
+    - Database and Cluster Administration:
+      - Using the Actions Menu: byoc/mod_cluster/actions.md
+      - Adding a Database or Cluster Node: byoc/mod_cluster/add.md
+      - Dropping a Database, Node, or Cluster: byoc/mod_cluster/drop.md
+      - Using Postgres Extensions: byoc/database_admin/supported_extensions.md
+    - Migrating to pgEdge Distributed Postgres (Cloud Edition):
+      - Overview - Using a Backup to Migrate into a Distributed Database: byoc/migration/index.md
+      - Taking a Backup: byoc/migration/backup.md
+      - Restoring from Backup: byoc/migration/restore.md
+    - Connecting to a Database:
+      - Connecting to your Database or Cluster: byoc/connecting/index.md
+      - Connecting with SSH: byoc/connecting/ssh.md
+      - Connecting with psql: byoc/connecting/psql.md
+      - Connecting with pgAdmin: byoc/connecting/pgadmin.md
+      - Connecting a Custom Client: byoc/connecting/custom_client.md
+      - Best Practices for Managing Connections: byoc/connecting/best_practices.md
+    - Reviewing the Activity Log: byoc/tasks.md
+    - Settings: byoc/settings.md
+    - Team Resources: byoc/teams.md
+    - Troubleshooting: byoc/troubleshooting.md
   - pgEdge Starfleet Managed Postgres:
     - Overview: managed/index.md
   - managed/creating_managed.md
