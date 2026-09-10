@@ -3,3 +3,15 @@ site/
 .DS_Store
 __pycache__/
 REPO_READY_AUDIT.md
+
+# IDE and editor files
+.idea/
+.vscode/
+
+# Secrets
+.env
+.env.local
+
+# Claude
+.claude/
+CLAUDE.local.md
