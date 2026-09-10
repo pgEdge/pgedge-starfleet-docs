@@ -32,9 +32,8 @@ button displays `Database not available`.
 ![Enabling the MCP server](../images/sf_enable_mcp.png)
 
 When the `Enable MCP server` popup opens, select the features you wish to
-enable. Both settings are optional and off by default; submitting the
-form unchanged creates a read-only server with a platform-generated
-bearer token.
+enable. Both settings are optional and off by default; submitting the form
+unchanged creates a read-only server with a platform-generated bearer token.
 
 - Enable `Generate embeddings` to expose the `generate_embedding` tool, which
   allows the connected LLM to request vector embeddings for text (for example,
@@ -60,10 +59,10 @@ server.
 
 ![The deployed MCP service](../images/sf_enable_mcp_deployed.png)
 
-Enabling, configuring or disabling any service requires the database to
-be `Available`, and appears in the Activity Log as an `update-managed`
-task. Each services change shares that one task name, so the Activity Log
-cannot tell an MCP change from a RAG change.
+Enabling, configuring or disabling any service requires the database to be
+`Available`, and appears in the Activity Log as an `update-managed` task. Each
+services change shares that one task name, so the Activity Log cannot tell an
+MCP change from a RAG change.
 
 Once enabled, the MCP Server pane updates to display:
 

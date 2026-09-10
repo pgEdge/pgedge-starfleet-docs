@@ -2,8 +2,8 @@
 
 This page discusses how to connect an ORM or a web framework to a pgEdge
 Starfleet database: where each one reads its Postgres URL, why the
-`sslmode=require` on the end of the string matters, and what happens when
-a generated migration runs `CREATE EXTENSION`.
+`sslmode=require` on the end of the string matters, and what happens when a
+generated migration runs `CREATE EXTENSION`.
 
 Nothing in a pgEdge Starfleet connection string is unique to pgEdge, so no
 adapter, driver patch, or extra package is required for connection.
