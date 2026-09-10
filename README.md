@@ -97,7 +97,7 @@ browser.
 The `docs/` directory mirrors the site's navigation hierarchy (see `nav:`
 in `mkdocs.yml`). Filenames are lowercase; prose wraps at 79 characters.
 
-```
+```text
 docs/
   index.md                        Overview
   community.md                    Community

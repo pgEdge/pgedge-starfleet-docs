@@ -9,7 +9,7 @@ the same way you would report one in a pgEdge product.
 
 **Do not open a public issue.**
 
-Email security@pgedge.com with:
+Email <security@pgedge.com> with:
 
 - The affected page, or its path under `docs/`
 - A description of the problem

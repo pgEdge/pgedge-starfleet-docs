@@ -30,7 +30,7 @@ Next, you'll select deployment features:
  | Large | 2 vCPU | 8 GB RAM | 50 GB storage | 50 conns | $99/mo |
  | XL | 4 vCPU | 16 GB RAM | 150 GB storage | 100 conns | $249/mo |
 
-  For details about functionality provided by each size, see 
+  For details about functionality provided by each size, see
   [Selecting a Database Size](../using_database/sizes.md).
 
 - The `ADD-ONS` section features a list of optional features for your database:
@@ -61,24 +61,23 @@ The wizard displays a message when a step fails:
 
 * `Couldn't check billing status` is displayed with the body text: `We
   couldn't confirm your billing status. Please retry before continuing.`. The
-  message includes a `Retry` button. 
-  
+  message includes a `Retry` button.
+
     The account requires a payment method before you can create a database;
     continuing past an unconfirmed billing status risks a refusal at the end
     of the wizard.
 
 * `Something went wrong` is displayed with the body text: `Unable to start
   checkout. Please try again.`  The message includes a `Back` button.
-  
+
     The payment step could not open a checkout session. If the API sends a
     message of its own, it will replace the body text.
 
 * `Confirmation failed` is displayed with the body text: `We couldn't confirm
-  your payment method.` 
-  
+  your payment method.`
+
     The panel also notes that the card may still have been saved, so check
     again in a moment before entering the card a second time.
 
 * `Couldn't create your database` means the create request itself failed.
   The panel displays the reason, as well as `Try again` and `Back` buttons.
-

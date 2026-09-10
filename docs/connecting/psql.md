@@ -20,18 +20,17 @@ with the password included, so the clipboard holds a live credential even
 though the screen does not display it.
 
 For details about each role's capabilities and which role to use, see
-[Managing Database Roles](../using_database/roles.md). 
+[Managing Database Roles](../using_database/roles.md).
 
 !!! hint
 
-    Connect as `app` to create tables and load data. 
-    
+    Connect as `app` to create tables and load data.
+
     Connect as `admin` to install an allowlisted extension or
     perform server-wide administration, such as monitoring sessions or
     creating roles.
 
 ![Connecting to your database](../images/sf_connecting.png)
-
 
 ## Using the psql Client
 
@@ -43,7 +42,9 @@ If you have already installed a copy of psql, connection is simple. Each tab
 of the `Connect` pane (`Admin` or `Application`) displays a ready-to-use psql
 connection string. For example:
 
-`PGSSLMODE=require PGPASSWORD=<your-password> psql -U admin -h <your-domain> -p <your-port> -d <your-database>`
+```bash
+PGSSLMODE=require PGPASSWORD=<your-password> psql -U admin -h <your-domain> -p <your-port> -d <your-database>
+```
 
 Select the copy icon next to the psql connection string to copy it, paste
 it directly into a terminal window, and press `Return` to connect.

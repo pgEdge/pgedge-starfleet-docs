@@ -94,4 +94,3 @@ instead of the literal text message below:
     This one also takes no hold on the database, so retrying is
     reasonable. It stays changeable on a `Failed` database, because a
     protected failure has to be removable.
-

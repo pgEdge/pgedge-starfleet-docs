@@ -323,4 +323,3 @@ The `Services` page displays a message when something goes wrong:
     A services change needs the database in an `Available` state, and each
     service change writes one `update-managed` task, so the Activity
     Log carries both failed and successful modification attempts.
-

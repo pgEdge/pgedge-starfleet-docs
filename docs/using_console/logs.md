@@ -57,4 +57,3 @@ The page shows one of these messages in place of the log table:
 could not reach the clipboard, which is a browser permission or a non-secure
 context rather than anything about the database. Use the download icon
 instead, which writes the same lines to a text file.
-
