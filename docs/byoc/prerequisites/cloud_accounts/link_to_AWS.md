@@ -81,7 +81,6 @@ Account` button to finish linking your account.
 With a linked account in place, you're ready to
 [create an Enterprise Edition cluster](../../cluster/create_cluster.md).
 
-
 ## Creating an AWS Key Pair
 
 To create a new AWS key pair:
@@ -100,7 +99,6 @@ key pair` to create the key pair and return to the main `Key pairs` window.
 
 You can now use the AWS key pair when defining a cluster that is provisioned on
 AWS.
-
 
 ## Enabling a Region in the AWS Console
 
@@ -121,7 +119,6 @@ left of the region name, and select the `Enable` button. A popup will open,
 asking you to confirm that you wish to enable the region(s); select the `Enable
 regions` button to continue. Use the `refresh` button in the upper-right corner
 to update table to check the `Status` column.
-
 
 ## Deleting an Account Link
 

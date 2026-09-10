@@ -1,7 +1,7 @@
 # Managing a Database
 
 Highlight a database name in the navigation tree to display detailed
-database information in the pgEdge Starfleet BYOC console. 
+database information in the pgEdge Starfleet BYOC console.
 
 ![pgEdge Database Console](../images/manage_db.png)
 
@@ -28,14 +28,16 @@ The database header tells you:
 
 ### Changing the Display Name of a Database
 
-To change the name of a database that is displayed in the navigation pane, highlight the database name and select `Edit Display Name` from the `Actions` menu.
+To change the name of a database that is displayed in the navigation pane,
+highlight the database name and select `Edit Display Name` from the `Actions`
+menu.
 
 ![pgEdge Database Console](../images/actions_database.png)
 
-When the `Change Display Name` popup opens, enter the new database name in the `Display Name` field and select `Apply`.
+When the `Change Display Name` popup opens, enter the new database name in the
+`Display Name` field and select `Apply`.
 
 ![pgEdge Database Console](../images/edit_display_name.png)
-
 
 ## The Get Started Pane
 
@@ -51,9 +53,8 @@ For detailed information about:
   [Connecting](../connecting/index.md).
 * moving a database object into your database, see
   [Migrating to pgEdge Starfleet BYOC](../migration/index.md).
-* Postgres SQL commands, see the 
+* Postgres SQL commands, see the
 [Postgres documentation](https://www.postgresql.org/docs/16/sql-commands.html).
-
 
 ## The Users Pane
 
@@ -64,7 +65,6 @@ In its initial state, a new database has roles required to perform
 administrative tasks. You can use [psql](../connecting/psql.md) or
 [pgAdmin](../connecting/pgadmin.md) to [create additional database
 users](https://www.postgresql.org/docs/16/sql-createrole.html).
-
 
 ## Connect to your database
 
@@ -145,7 +145,7 @@ section allow you to display the metrics for the entire cluster or select
 the metrics for an individual node.
 
 The `All nodes` tab shows bar graphs that compare resource usage for all
-three nodes of your cluster. 
+three nodes of your cluster.
 
 ![Node Metrics](../images/node_metrics.png)
 
@@ -163,7 +163,6 @@ point in time, hover over a graph.
 | `CPU` | The `CPU` graph displays information about the CPU usage for the server.
 | `Memory` | The `Memory` graph displays information about memory usage (in MB) for the cluster or by the node.
 | `Replication Output` | The `Replication Output` graph displays the replication traffic for the database in tuples.
-
 
 ## Reviewing the Database Logs
 

@@ -30,7 +30,6 @@ the cluster, enter the cluster name in the confirmation field and click
     multi-node cluster with replication enabled, the cluster cannot drop
     below two nodes.
 
-
 ## Removing a Database from a Node
 
 To drop a database from a cluster node, select the name of the database
@@ -76,7 +75,7 @@ If the cluster contains databases, use the `Force Delete` slider to confirm
 that you wish to delete the cluster, and all cluster resources currently
 deployed; this will remove all databases, DNS records, and CloudWatch alarms.
 
-To delete the cluster, enter the cluster name to confirm and press `Delete 
+To delete the cluster, enter the cluster name to confirm and press `Delete
 Cluster` (or `Force Delete Cluster`) to confirm.
 
 ![Confirm deleting a cluster](../images/confirm_delete_cluster.png)

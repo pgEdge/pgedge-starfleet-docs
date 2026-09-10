@@ -20,7 +20,7 @@ with the password included, so the clipboard holds a live credential even
 though the screen does not display it.
 
 For details about each role's capabilities and which role to use, see
-[Managing Database Roles](../using_database/roles.md). 
+[Managing Database Roles](../using_database/roles.md).
 
 !!! hint
 
@@ -32,7 +32,6 @@ For details about each role's capabilities and which role to use, see
 
 ![Connecting to your database](../images/sf_connecting.png)
 
-
 ## Using the psql Client
 
 The psql client is distributed with PostgreSQL, and is available for download
@@ -43,7 +42,8 @@ If you have already installed a copy of psql, connection is simple. Each tab
 of the `Connect` pane (`Admin` or `Application`) displays a ready-to-use psql
 connection string. For example:
 
-`PGSSLMODE=require PGPASSWORD=<your-password> psql -U admin -h <your-domain> -p <your-port> -d <your-database>`
+`PGSSLMODE=require PGPASSWORD=<your-password> psql -U admin -h <your-domain> -p
+<your-port> -d <your-database>`
 
 Select the copy icon next to the psql connection string to copy it, paste
 it directly into a terminal window, and press `Return` to connect.
@@ -59,14 +59,13 @@ line) you can use the individual values from the psql connection string to
 authenticate:
 
 * When prompted for a `Server [localhost]`, provide the host name from the
-  connection string (the value shown in the `Domain` field) and press
-  `Return`.
+  connection string (the value shown in the `Domain` field) and press `Return`.
 * When prompted for a `Database [postgres]`, provide the database name from the
   connection string (the value shown in the `Database name` field) and press
   `Return`.
 * When prompted for a `Port [5432]`, enter the port shown in the connection
-  string and press `Return`. Use the port from the connection string rather than
-  assuming the Postgres default.
+  string and press `Return`. Use the port from the connection string rather
+  than assuming the Postgres default.
 * When prompted for a `Username [postgres]`, provide the `User` value from the
   `Connect` pane, and press `Return`. In this example, the user is `admin`.
 * When prompted for the `Password`, provide the `Password` value from the

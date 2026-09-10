@@ -44,10 +44,10 @@ applied. This option is available only while the database status is
 
 ## Next Steps
 
-* [Deploying a Managed Database](../creating_managed.md)
-  describes using the create wizard.
-* [Accessing Management Options with the Actions Menu](../using_console/actions.md)
-  describes upgrading your resources.
-* [Monitoring System Metrics](../using_console/metrics.md) details the
-  `CPU`, `Memory`, `Disk used` and `Active connections` charts which show the
-  current resources in use.
+* [Deploying a Managed Database](../creating_managed.md) describes using the
+  create wizard.
+* [Accessing Management Options with the Actions
+  Menu](../using_console/actions.md) describes upgrading your resources.
+* [Monitoring System Metrics](../using_console/metrics.md) details the `CPU`,
+  `Memory`, `Disk used` and `Active connections` charts which show the current
+  resources in use.

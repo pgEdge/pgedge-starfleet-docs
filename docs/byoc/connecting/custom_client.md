@@ -6,7 +6,7 @@ The `Code Snippets` pane displays three code snippets:
 * [Python](#connecting-with-python)
 * [Go](#connecting-with-go))
 
-Each sample sets the environment variables for your cluster and creates a 
+Each sample sets the environment variables for your cluster and creates a
 cursor that lists the nodes in your cluster.
 
 ![Code Snippets](../images/code_snippets.png)
@@ -46,6 +46,7 @@ def main():
        sslmode=os.getenv("PGSSLMODE")
    )
 ```
+
 Then, we open a cursor that allows us to interact with the database; each
 call to `cur.execute` invokes a command in PostgreSQL syntax and confirms
 execution of the command.
@@ -99,7 +100,6 @@ if __name__ == "__main__":
    main()
 ```
 
-
 ## Connecting with TypeScript
 
 The code snippet on the `TypeScript` tab provides parameters and cursor
@@ -145,6 +145,7 @@ async function main(): Promise<void> {
         // Connect to the database
         await client.connect();
 ```
+
 Then, a series of TypeScript constructs use PostgreSQL syntax to create a
 table, insert and query user information, and eventually, drop the table:
 
@@ -188,6 +189,7 @@ table, insert and query user information, and eventually, drop the table:
         await client.query(dropTableQuery);
         console.log('Table dropped');
 ```
+
 Finally, we check for an error message before closing the connection to the
 client:
 
@@ -218,93 +220,94 @@ with the database:
 package main
 
 import (
-	"context"
-	"fmt"
-	"log"
-	"os"
+ "context"
+ "fmt"
+ "log"
+ "os"
 
-	"github.com/jackc/pgx/v4"
+ "github.com/jackc/pgx/v4"
 )
 
 func main() {
-	// Set the environment variables
-	os.Setenv("PGHOST", "virtually-pleasing-giraffe-iad.dev.pgedge.cloud")
-	os.Setenv("PGUSER", "admin")
-	os.Setenv("PGDATABASE", "testdb")
-	os.Setenv("PGSSLMODE", "require")
-	os.Setenv("PGPASSWORD", "************")
+ // Set the environment variables
+ os.Setenv("PGHOST", "virtually-pleasing-giraffe-iad.dev.pgedge.cloud")
+ os.Setenv("PGUSER", "admin")
+ os.Setenv("PGDATABASE", "testdb")
+ os.Setenv("PGSSLMODE", "require")
+ os.Setenv("PGPASSWORD", "************")
 
-	ctx := context.Background()
+ ctx := context.Background()
 
-	config, err := pgx.ParseConfig("")
-	if err != nil {
-		log.Fatalf("Failed to parse configuration: %v", err)
-	}
-	conn, err := pgx.ConnectConfig(ctx, config)
-	if err != nil {
-		log.Fatalf("Unable to connect to database: %v", err)
-	}
-	defer conn.Close(ctx)
+ config, err := pgx.ParseConfig("")
+ if err != nil {
+  log.Fatalf("Failed to parse configuration: %v", err)
+ }
+ conn, err := pgx.ConnectConfig(ctx, config)
+ if err != nil {
+  log.Fatalf("Unable to connect to database: %v", err)
+ }
+ defer conn.Close(ctx)
 ```
+
 After connecting, the example uses the `exec` package to execute PostgreSQL
 syntax commands that create a table, add a user, update the user, and
 eventually drop the table.
 
 ```go
 
-	// Create a new table
-	_, err = conn.Exec(ctx, `CREATE TABLE IF NOT EXISTS users (
-		id SERIAL PRIMARY KEY,
-		name VARCHAR(50) NOT NULL,
-		email VARCHAR(255) NOT NULL
-	)`)
-	if err != nil {
-		log.Fatalf("Failed to create table: %v", err)
-	}
-	fmt.Printf("Created table\n")
+ // Create a new table
+ _, err = conn.Exec(ctx, `CREATE TABLE IF NOT EXISTS users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(255) NOT NULL
+ )`)
+ if err != nil {
+  log.Fatalf("Failed to create table: %v", err)
+ }
+ fmt.Printf("Created table\n")
 
-	// Insert a new user
-	res, err := conn.Exec(ctx, "INSERT INTO users (name, email) VALUES ($1, $2)", "John Doe", "john@example.com")
-	if err != nil {
-		log.Fatalf("Failed to insert user: %v", err)
-	}
-	fmt.Printf("Inserted %d user\n", res.RowsAffected())
+ // Insert a new user
+ res, err := conn.Exec(ctx, "INSERT INTO users (name, email) VALUES ($1, $2)", "John Doe", "john@example.com")
+ if err != nil {
+  log.Fatalf("Failed to insert user: %v", err)
+ }
+ fmt.Printf("Inserted %d user\n", res.RowsAffected())
 
-	// Read all users
-	rows, err := conn.Query(ctx, "SELECT * FROM users")
-	if err != nil {
-		log.Fatalf("Failed to read users: %v", err)
-	}
-	defer rows.Close()
-	for rows.Next() {
-		var id int
-		var name string
-		var email string
-		if err := rows.Scan(&id, &name, &email); err != nil {
-			log.Fatalf("Failed to scan row: %v", err)
-		}
-		fmt.Printf("ID: %d, Name: %s, Email: %s\n", id, name, email)
-	}
+ // Read all users
+ rows, err := conn.Query(ctx, "SELECT * FROM users")
+ if err != nil {
+  log.Fatalf("Failed to read users: %v", err)
+ }
+ defer rows.Close()
+ for rows.Next() {
+  var id int
+  var name string
+  var email string
+  if err := rows.Scan(&id, &name, &email); err != nil {
+   log.Fatalf("Failed to scan row: %v", err)
+  }
+  fmt.Printf("ID: %d, Name: %s, Email: %s\n", id, name, email)
+ }
 
-	// Update a user
-	res, err = conn.Exec(ctx, "UPDATE users SET email = $1 WHERE id = $2", "newemail@example.com", 1)
-	if err != nil {
-		log.Fatalf("Failed to update user: %v", err)
-	}
-	fmt.Printf("Updated %d user\n", res.RowsAffected())
+ // Update a user
+ res, err = conn.Exec(ctx, "UPDATE users SET email = $1 WHERE id = $2", "newemail@example.com", 1)
+ if err != nil {
+  log.Fatalf("Failed to update user: %v", err)
+ }
+ fmt.Printf("Updated %d user\n", res.RowsAffected())
 
-	// Delete a user
-	res, err = conn.Exec(ctx, "DELETE FROM users WHERE id = $1", 1)
-	if err != nil {
-		log.Fatalf("Failed to delete user: %v", err)
-	}
-	fmt.Printf("Deleted %d user\n", res.RowsAffected())
+ // Delete a user
+ res, err = conn.Exec(ctx, "DELETE FROM users WHERE id = $1", 1)
+ if err != nil {
+  log.Fatalf("Failed to delete user: %v", err)
+ }
+ fmt.Printf("Deleted %d user\n", res.RowsAffected())
 
-	// Drop the table
-	_, err = conn.Exec(ctx, "DROP TABLE IF EXISTS users")
-	if err != nil {
-		log.Fatalf("Failed to drop table: %v", err)
-	}
-	fmt.Printf("Dropped table\n")
+ // Drop the table
+ _, err = conn.Exec(ctx, "DROP TABLE IF EXISTS users")
+ if err != nil {
+  log.Fatalf("Failed to drop table: %v", err)
+ }
+ fmt.Printf("Dropped table\n")
 }
 ```

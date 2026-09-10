@@ -97,12 +97,11 @@ would like to retain in storage:
 
 Select the `Save Configuration` button when you've finished providing
 backup configuration details.
- 
+
 !!! warning
 
     Incremental and differential backups will be retained only as long as
     the full backup that provides their baseline.
-
 
 ## Taking a Backup
 
@@ -117,7 +116,7 @@ When the `Backup Database` popup opens:
 * Use the `Target Nodes` drop-down to select one or more nodes to be
   included in the backup.
 * Specify the type of backup in the `Backup Type` field. Choose:
-    
+
     * `Full` to do a complete backup of the selected database and nodes.
     * `Incremental` to backup only those items that have changed since the
       last backup.

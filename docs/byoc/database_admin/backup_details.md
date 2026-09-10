@@ -63,5 +63,3 @@ your [backup provider](../backup/backup_providers.md):
     files](../database_admin/logs.md).  pg_dump backups that fail to
     complete are not displayed in the `Backups` table or written to log
     files.
-
-

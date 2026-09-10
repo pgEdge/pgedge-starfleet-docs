@@ -1,6 +1,8 @@
-# Reviewing Database Metrics 
+# Reviewing Database Metrics
 
-Highlight a database name in the tree control to access the link to the `Metrics` dialog; the dialog allows you to review statistical information gathered from that specific database.
+Highlight a database name in the tree control to access the link to the
+`Metrics` dialog; the dialog allows you to review statistical information
+gathered from that specific database.
 
 ![The Metrics dialog](../images/metrics.png)
 
@@ -8,7 +10,8 @@ Select a graphed point to see detailed information about the selected event.
 
 ![Metric details](../images/metric_details.png)
 
-Select a tab to display information for `All nodes`, or a specific individual node. The graphs display metrics about:
+Select a tab to display information for `All nodes`, or a specific individual
+node. The graphs display metrics about:
 
 | Graph Name | Description |
 |------------|-------------|

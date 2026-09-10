@@ -85,10 +85,10 @@ A database that is still being created shows a provisioning message instead.
 
 For detailed information about:
 
-* installing the psql client and connecting to the database, see
-  [Connecting with psql](../connecting/psql.md).
-* Postgres SQL commands, see the
-  [Postgres documentation](https://www.postgresql.org/docs/18/sql-commands.html).
+* installing the psql client and connecting to the database, see [Connecting
+  with psql](../connecting/psql.md).
+* Postgres SQL commands, see the [Postgres
+  documentation](https://www.postgresql.org/docs/18/sql-commands.html).
 
 ## The AI Services Pane
 
@@ -189,8 +189,8 @@ read failed again.
 
 ### Details
 
-The `Details` pane displays identifying and configuration information about your
-database.
+The `Details` pane displays identifying and configuration information about
+your database.
 
 | Field | Description |
 |-------|--------------|
@@ -214,4 +214,3 @@ Two messages replace the whole page:
 * `Database not found` means the read succeeded and returned no record for
   the database ID in the URL. Go back to the Databases list, and if you
   expected the database to exist, check that you are in the right account.
-

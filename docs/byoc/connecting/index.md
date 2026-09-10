@@ -23,10 +23,8 @@ information dialog.
 For detailed information about using SSH to connect to a node, see
 [Connecting with ssh](./ssh.md).
 
-
 ## Connecting to a Database
 
 You can use any PostgreSQL client that meets the connection criteria
 detailed above to connect to a PostgreSQL database. In this guide, we'll
 walk you through connecting with some commonly used clients.
-

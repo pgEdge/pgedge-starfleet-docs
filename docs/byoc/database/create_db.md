@@ -72,4 +72,3 @@ console; a green dot to the left of the name indicates that the database is
 available for connections.
 
 ![Initializing a Cluster](../images/initializing.png)
-

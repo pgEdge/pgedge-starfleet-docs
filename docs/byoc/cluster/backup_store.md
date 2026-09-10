@@ -23,11 +23,10 @@ located geographically close to the node's region (ideally within the same
 region). You can optionally create a backup store in another region, but
 archiving will take longer if the store is geographically distanced.
 
-
 ## Creating a Backup Store
 
-The `Backup Stores` dialog displays the backup storage defined on your
-cloud provider; select the `Create Backup Store` icon (located in the upper-right
+The `Backup Stores` dialog displays the backup storage defined on your cloud
+provider; select the `Create Backup Store` icon (located in the upper-right
 corner of the dialog) to provide details and define a backup store.
 
 ![Create a Backup Store](../images/backup_store_create.png)
@@ -42,14 +41,13 @@ you wish to create a backup store. Then, when the dialog expands:
 When you've specified your preferences, click the `Create Backup Store` icon
 to create the store.
 
-
 ## Attaching a Backup Store to a Cluster
 
-You can attach multiple backup stores to each cluster
-[during cluster creation](../cluster/create_cluster.md#creating-a-cluster);
-before creating a cluster, define any available [backup stores](#defining-a-backup-store) you wish to use. Once 
-defined, a store will be included in the list of available stores on the
-`Backup Stores` drop-down.
+You can attach multiple backup stores to each cluster [during cluster
+creation](../cluster/create_cluster.md#creating-a-cluster); before creating a
+cluster, define any available [backup stores](#defining-a-backup-store) you
+wish to use. Once defined, a store will be included in the list of available
+stores on the `Backup Stores` drop-down.
 
 Then, to attach the store during cluster creation, select the backup store
 from the `Backup Stores` field or toggle the `Show map` option to `enabled`
@@ -77,7 +75,6 @@ your cluster.  When you've identified the clusters backup stores, select the
     `Update Cluster Backup Stores` menu option, selected from the `Actions`
     dialog. 
 
-
 ## The Backup Stores Dialog
 
 After you define a backup store, the new store will be added to the Backup
@@ -101,7 +98,6 @@ Backup store details include:
 Note that the security policy associated with the ARN uses the least
 permissions required to create and use backup stores.  You can use your
 provider's console to modify the security policy if needed.
-
 
 ## Deleting a Backup Store
 

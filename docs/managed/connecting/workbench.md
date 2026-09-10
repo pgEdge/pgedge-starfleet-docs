@@ -8,11 +8,12 @@ AI-generated insights about your cluster.
 
 ## Installing the Workbench
 
-The Workbench consists of four services: a collector, a server, an alerter,
-and a web client. Docker Compose is the quickest way to deploy all four;
-make sure Docker is running before you begin (on macOS or Windows, start
-the Docker Desktop application). For other installation methods, see the
-[Supported Installation Methods](https://github.com/pgEdge/ai-dba-workbench/blob/main/docs/getting-started/installation_overview.md)
+The Workbench consists of four services: a collector, a server, an alerter, and
+a web client. Docker Compose is the quickest way to deploy all four; make sure
+Docker is running before you begin (on macOS or Windows, start the Docker
+Desktop application). For other installation methods, see the [Supported
+Installation
+Methods](https://github.com/pgEdge/ai-dba-workbench/blob/main/docs/getting-started/installation_overview.md)
 guide.
 
 1.  Clone the repository, and enter the project directory:

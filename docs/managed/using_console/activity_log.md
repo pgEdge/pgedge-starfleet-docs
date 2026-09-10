@@ -75,9 +75,9 @@ today.
 services write shares it. To find out what changed, expand the row and
 read the steps, or read the `AI Services` pane.
 
-**`update-managed-size` is the resize**, not a generic size-related
-update. It is the task behind the `Upgrade size` action described in
-[Accessing Management Options with the Actions Menu](actions.md#upgrading-the-size-tier).
+**`update-managed-size` is the resize**, not a generic size-related update. It
+is the task behind the `Upgrade size` action described in [Accessing Management
+Options with the Actions Menu](actions.md#upgrading-the-size-tier).
 
 **`backup-managed` can read `succeeded` while the backup is still
 pending.** The task claims to have taken the backup, and its steps read

@@ -2,12 +2,12 @@
 
 Any client that can negotiate a connection using libpq can connect to the
 PostgreSQL database on pgEdge Starfleet; this applies to custom clients as
-well. Connections are made over TLS with password authentication. The connection
-string the console displays always includes `sslmode=require`, and Starfleet
-hosts serve TLS with a certificate that verifies, so `require` works from every
-client, and you may add a stricter mode.
+well. Connections are made over TLS with password authentication. The
+connection string the console displays always includes `sslmode=require`, and
+Starfleet hosts serve TLS with a certificate that verifies, so `require` works
+from every client, and you may add a stricter mode.
 
-On clients with optional GSS encoding  (as shown in the pgAdmin client), you
+On clients with optional GSS encoding (as shown in the pgAdmin client), you
 should set
 [encoding](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-GSSENCMODE)
 to `disable`.
@@ -88,13 +88,14 @@ practices when using the password:
 
 ## Next Steps
 
-* [Managing Database Roles](../using_database/roles.md) explains what
-  the `admin` and `app` roles can each do, and which role to choose to
-  accomplish tasks.
+* [Managing Database Roles](../using_database/roles.md) explains what the
+  `admin` and `app` roles can each do, and which role to choose to accomplish
+  tasks.
 * [Installing Extensions](../using_database/extensions.md) discusses which role
   installs which extension, and refusal messages.
-* [Loading Data into Your pgEdge Starfleet Database](../using_database/loading_data.md)
-  discusses loading a schema and its data with each role, in order.
+* [Loading Data into Your pgEdge Starfleet
+  Database](../using_database/loading_data.md) discusses loading a schema and
+  its data with each role, in order.
 * [Rotating Database Credentials](../using_database/rotate_credentials.md)
   explains how to replace a password, and the window during which neither
   password is safe to use.

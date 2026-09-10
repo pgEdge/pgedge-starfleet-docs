@@ -32,8 +32,8 @@ optionally, the LLM:
 - Use the `Target Nodes` field to optionally select the database nodes this
   MCP server connects to, in priority order. Defaults to all nodes.
 
-- Use the `Allow Writes?` toggle to optionally grant the MCP service
-  read-write access (INSERT / UPDATE / DELETE) via the
+- Use the `Allow Writes?` toggle to optionally grant the MCP service read-write
+  access (INSERT / UPDATE / DELETE) via the
   [`query_database`](https://docs.pgedge.com/pgedge-postgres-mcp-server/v1-0-0/developers/mcp-protocol/#tools)
   tool. Note that allowing read-write access could potentially expose data to
   unexpected or unwanted modifications.
@@ -67,7 +67,6 @@ delete the service.
 
 ![Deleting an MCP Server](images/services_mcp_delete.png)
 
-
 ### Connecting a Client to the MCP Server
 
 The steps for connecting a client to the MCP server vary by client and
@@ -83,7 +82,6 @@ Choose from:
 - [Cursor](https://cursor.com/en-US/docs)
 - [OpenAI Codex](https://openai.com/codex/)
 - [Replit](https://docs.replit.com/getting-started/intro-replit)
-
 
 ## Adding a RAG Server
 
@@ -163,7 +161,6 @@ that prompts you to enter the database name as confirmation that you wish to
 delete the service.
 
 ![Deleting a RAG Server](images/services_rag_delete.png)
-
 
 ### Using the RAG Server
 

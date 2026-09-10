@@ -58,7 +58,8 @@ While deletion protection is enabled, `Delete database` is unavailable
 
 Select `Delete database` from the `Actions` menu to permanently delete your
 database. This option is unavailable while deletion protection is enabled; see
-[Enabling and Disabling Deletion Protection](#enabling-and-disabling-deletion-protection).
+[Enabling and Disabling Deletion
+Protection](#enabling-and-disabling-deletion-protection).
 
 ## Troubleshooting - When an Action Is Refused
 
@@ -94,4 +95,3 @@ instead of the literal text message below:
     This one also takes no hold on the database, so retrying is
     reasonable. It stays changeable on a `Failed` database, because a
     protected failure has to be removable.
-

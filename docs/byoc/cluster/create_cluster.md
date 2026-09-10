@@ -97,7 +97,6 @@ and `Value`; the terms are displayed with a `/` delimiter.
 
 ![Adding a resource tag](../images/resource_tag_add.png)
 
-
 Define a [VPC association](vpc_assoc.md) to configure VPC peering and,
 if needed, private zone routing between any defined VPCs and the pgEdge
 cluster network. Peering allows an application to connect seamlessly to

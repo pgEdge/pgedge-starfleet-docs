@@ -1,9 +1,10 @@
 # Getting Started with pgEdge Starfleet BYOC
 
-Getting started with pgEdge Starfleet BYOC is easy; simply navigate to
-[the pgEdge sign-in page](https://app.pgedge.com/login?plan=developer&screen_hint=signup)
-and follow the provided link to create an account, or log in with your Google
-or GitHub account.
+Getting started with pgEdge Starfleet BYOC is easy; simply navigate to [the
+pgEdge sign-in
+page](https://app.pgedge.com/login?plan=developer&screen_hint=signup) and
+follow the provided link to create an account, or log in with your Google or
+GitHub account.
 
 ![pgEdge Starfleet BYOC login](../images/cloud_login.png)
 
@@ -31,12 +32,12 @@ Before creating your first cluster, you need to link your cloud
 provider account with BYOC. Select the `Go to Cloud Accounts` button to
 get started.
 
-![Linking an Account](../images/gs_link_cloud_account.png) 
+![Linking an Account](../images/gs_link_cloud_account.png)
 
 Information panes in the center of the page list the credentials and artifacts
 you will need to create an account with each provider, as well as a link to the
 provider-specific `Setup guide` for detailed information about linking your
-account. 
+account.
 
 When you're ready to get started, select the `Link Cloud Account`
 button to choose your provider.
@@ -91,7 +92,7 @@ dialog.
 Next, you'll [create a cluster](../cluster/create_cluster.md). A cluster is a
 database container that can house one or more databases in one or more regions.
 Single-region clusters are not distributed; distributed clusters have databases
-in multiple regions. 
+in multiple regions.
 
 Use the link on the progress tracker to navigate to a page with more
 information about cluster creation and handy links.

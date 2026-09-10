@@ -27,7 +27,6 @@ the state of the cluster at a glance:
 - The number of unhealthy nodes.
 - The number of unresponsive nodes.
 
-
 ## The Cluster Information Tabs
 
 ![Cluster Overview](../images/cluster_overview.png)
@@ -92,7 +91,6 @@ The `Overview` tab also displays the current [VPC Associations](vpc_assoc.md).
 
 Select the `+ Add VPC Association` button to add a new association.
 
-
 ### Reviewing Cluster Metrics
 
 Select the `Metrics` tab to review detailed system resource usage for
@@ -110,7 +108,8 @@ time displayed by each graph.
 
 Select a point on a graph to display information about the graphed event:
 
-![A point-in-time in the cluster metrics graph](../images/cluster_metrics_PIT.png)
+![A point-in-time in the cluster metrics
+graph](../images/cluster_metrics_PIT.png)
 
 The following table describes the available graphs:
 
@@ -122,7 +121,6 @@ The following table describes the available graphs:
 | Running Processes | The number of running processes |
 | Network Receive | The amount of data received by the instance |
 | Network Send | The amount of data transmitted from the instance |
-
 
 ### Reviewing Cluster Log Files
 
@@ -167,7 +165,8 @@ Use the links at the end of the navigation pane to access pgEdge
 Starfleet BYOC resources:
 
 - To manage account details, select the [`Settings`](../settings.md) link.
-- Select the [`Team Management`](../teams.md) link to manage account membership.
+- Select the [`Team Management`](../teams.md) link to manage account
+  membership.
 - For an invitation to the pgEdge Discord server, select the `Community` link.
-- To review the documentation, select the
-  [`Docs`](https://docs.pgedge.com/) link.
+- To review the documentation, select the [`Docs`](https://docs.pgedge.com/)
+  link.

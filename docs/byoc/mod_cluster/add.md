@@ -15,7 +15,7 @@ navigation panel, open the `Actions` menu, and select `Add Nodes`.
 
 ![Adding a node to a cluster](../images/add_nodes.png)
 
-When the `Add Node` dialog opens, provide details the new node(s): 
+When the `Add Node` dialog opens, provide details the new node(s):
 
 * Use indicators on the map or select regions from the drop-down list in
   the `Select regions` field to choose the region(s) in which the new
@@ -26,8 +26,8 @@ When the `Add Node` dialog opens, provide details the new node(s):
 * Network addresses for the new node(s) are assigned for consistency with the
   rest of your cluster, and are not modifiable.
 * The `Instance Type` field displays the value selected for the other nodes
-  in your cluster; use the selector to choose an alternative configuration. 
-  If you are adding more than one node in a single update, the same 
+  in your cluster; use the selector to choose an alternative configuration.
+  If you are adding more than one node in a single update, the same
   configuration will be applied to both nodes.
 * The `Volume Size` field displays the data volume size of the other nodes in
   your cluster; use the selector to choose an alternative size. If you are
@@ -44,21 +44,20 @@ during the initial cluster creation.
 
     Existing databases are not added to a new node automatically.
 
-
 ## Adding a Database to a Cluster Node
 
 To add a database to a cluster node, select the database name in the
 navigation panel, open the `Actions` menu, and select `Add to Nodes`. Note
-that node must be 
+that node must be
 [an operational member of the cluster](#adding-a-node-to-a-cluster)
 before you can add a database to the node. The node to which you are adding
 the database must be a member of the cluster on which the database was
 created.
 
-When you add a database to a node, BYOC uses 
-[Spock's Zodan functionality](https://docs.pgedge.com/spock-v5/v5-0-6/modify/zodan/)
-to copy the existing data to the new node. Automatic DDL replication is
-enabled as the node joins the cluster.
+When you add a database to a node, BYOC uses [Spock's Zodan
+functionality](https://docs.pgedge.com/spock-v5/v5-0-6/modify/zodan/) to copy
+the existing data to the new node. Automatic DDL replication is enabled as the
+node joins the cluster.
 
 ![Adding a database](../images/actions_database.png)
 

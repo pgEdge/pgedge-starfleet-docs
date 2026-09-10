@@ -1,12 +1,10 @@
 # Using Extensions with pgEdge Starfleet BYOC
 
-pgEdge Starfleet BYOC databases include pre-installed PostgreSQL
-extensions.
-Before using an extension, you must
-[create the extension](https://www.postgresql.org/docs/current/extend-extensions.html)
-in each database where the extension will be used. To create an
-extension, invoke the following command on the
-[psql command line](../connecting/psql.md):
+pgEdge Starfleet BYOC databases include pre-installed PostgreSQL extensions.
+Before using an extension, you must [create the
+extension](https://www.postgresql.org/docs/current/extend-extensions.html) in
+each database where the extension will be used. To create an extension, invoke
+the following command on the [psql command line](../connecting/psql.md):
 
 ```sql
 CREATE EXTENSION extension_name;
@@ -33,7 +31,6 @@ pg_stat_statements, pg_readonly, pg_failover_slots, spock, vector, postgis-3
 For detailed information about using each extension, visit the project
 site links provided in the table.
 
-
 ## pgEdge and Community Extensions
 
 The following table describes the pgEdge and community extensions
@@ -58,7 +55,6 @@ in `CREATE EXTENSION` statements:
 | [system_stats](https://github.com/EnterpriseDB/system_stats) | 3.0 | System-level performance statistics |
 | [vchord_bm25](https://github.com/tensorchord/VectorChord-bm25) | 0.2.2 | BM25 ranking for full-text vector search |
 | [vector](https://github.com/pgvector/pgvector) | 0.8.1 | Vector similarity search for AI embeddings |
-
 
 ## PostgreSQL Contrib Modules
 

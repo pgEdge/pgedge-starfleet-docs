@@ -8,7 +8,6 @@ nodes on a map.
 
 ![The API Clients tab](./images/settings.png)
 
-
 ## The Profile Tab
 
 Use fields on the `Profile` tab to modify the names associated with your
@@ -22,11 +21,9 @@ drop-down menu (located in the upper-right corner of the screen):
 
     The email associated with the account cannot be modified.
 
-
 When you've finished, select `Save` to update your account with the name
 changes; use the `Reset` icon to return the fields to their previous
 values.
-
 
 ## The API Clients Tab
 
@@ -50,7 +47,7 @@ Then, to create the API client, click the `Create` button.
 When you create an API client, you will be provided an `Auth ID` and `Auth
 Secret` that you can use when connecting to BYOC with the API, and the new
 client will be added to the `API Clients` list.
- 
+
 !!! warning
 
     Be sure to copy your `Auth Secret` when it is displayed on the `Client
@@ -70,10 +67,9 @@ the selected client(s).
 **API Documentation**
 
 Use the `pgEdge Starfleet BYOC API` link below the table to access the API
-documentation. 
+documentation.
 
 ![The API Client documentation](./images/api_clients_doc.png)
-
 
 ## The Team Tab
 
@@ -88,4 +84,3 @@ The Team tab displays information about your account:
 * Update the `Team Name` to match your team, division, or company name.
   This name appears in invitation emails when you invite other people to
   join your account.
-

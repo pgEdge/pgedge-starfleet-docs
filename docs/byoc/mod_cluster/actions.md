@@ -1,6 +1,9 @@
 # Using the Actions Menu to Modify a Cluster or Database
 
-The `Actions` menu is a context-sensitive menu that provides a shortcut to frequently-used behaviors related to the object displayed when you open the menu.  Use options accessed via the `Actions` drop-down menu in the upper-right corner of the dialog to manage your cluster or database.
+The `Actions` menu is a context-sensitive menu that provides a shortcut to
+frequently-used behaviors related to the object displayed when you open the
+menu. Use options accessed via the `Actions` drop-down menu in the upper-right
+corner of the dialog to manage your cluster or database.
 
 For example, when opened from a cluster node the `Actions` menu might show:
 
@@ -25,7 +28,10 @@ Select from the options listed to:
 
 * [Backup the Database](../backup/backups.md).
 * [Restore the Database](../backup/restore.md) from backup.
-* [Add the database](add.md#adding-a-database-to-a-cluster-node) to another node.
+* [Add the database](add.md#adding-a-database-to-a-cluster-node) to another
+  node.
 * [Remove the database](drop.md#removing-a-database-from-a-node) from a node.
-* [Edit the Display Name](../database/manage_db.md#changing-the-display-name-of-a-database) of the database.
+* [Edit the Display
+  Name](../database/manage_db.md#changing-the-display-name-of-a-database) of
+  the database.
 * [Delete the database](drop.md#deleting-a-database).

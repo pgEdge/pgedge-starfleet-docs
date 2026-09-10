@@ -40,14 +40,13 @@ its own row. The Django section below uses the split form.
 
 ### Checking the String with psql
 
-Using the `Connect` pane's `psql command` block is the quickest way to
-test the string before implementing a framework. A row returned by a
-[`SELECT version()`](https://www.postgresql.org/docs/current/functions-info.html#FUNCTIONS-INFO-VERSION)
+Using the `Connect` pane's `psql command` block is the quickest way to test the
+string before implementing a framework. A row returned by a [`SELECT
+version()`](https://www.postgresql.org/docs/current/functions-info.html#FUNCTIONS-INFO-VERSION)
 query will let you know that the host details resolve, the TLS handshake
-completes, and the role can authenticate with the Postgres server. A
-framework that fails when the psql check succeeds is failing on its own
-configuration rather than on the database. See
-[Connecting with psql](../connecting/psql.md).
+completes, and the role can authenticate with the Postgres server. A framework
+that fails when the psql check succeeds is failing on its own configuration
+rather than on the database. See [Connecting with psql](../connecting/psql.md).
 
 ## Extensions in Migrations
 

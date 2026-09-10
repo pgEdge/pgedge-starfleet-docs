@@ -60,7 +60,6 @@ link to a Google account; you must provide:
   and click the edit button. The full provider name is the `default audience`
   value.
 
-
 ## Creating Google Resources
 
 You can use the Google Cloud Shell editor to create the resources needed to
@@ -68,7 +67,7 @@ provision clusters. After authenticating with the account in which you wish to
 create resources, open the Cloud Shell Terminal, and enter the following
 command to enable access to the APIs:
 
-```
+```bash
 gcloud services enable cloudkms.googleapis.com \
 compute.googleapis.com \
 iam.googleapis.com \
@@ -87,7 +86,7 @@ open the `Settings` page in the BYOC console, and open the `Team` tab. The
 
 After substituting `YOUR-TENANT-ID` into the first line, invoke the command:
 
-```
+```bash
 export TENANT_ID=YOUR-TENANT-ID &&
 gcloud iam workload-identity-pools create pgedge --location="global" \
 --display-name="pgEdge Workload Identity" \
@@ -155,7 +154,6 @@ information needed to link your account. In our example:
   `pgedge-sa@susan-test-408015.iam.gserviceaccount.com`
 * The provider is the last information listed:
   `https://iam.googleapis.com/projects/998194889240/locations/global/workloadIdentityPools/pgedge/providers/pgedge-oidc`
-
 
 ## Deleting an Account Link
 

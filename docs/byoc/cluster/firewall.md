@@ -36,7 +36,7 @@ To add or modify a firewall rule:
 * Use the `Sources` field in the left column to specify details about the
   connection source that will be allowed access to your cluster with the rule.
 
-  * To remove a source, click the `X` in the rule's `Sources` field. 
+  * To remove a source, click the `X` in the rule's `Sources` field.
   * To add a source, click in the `Sources` field and select from the
     predefined options, or type directly in the field.
 

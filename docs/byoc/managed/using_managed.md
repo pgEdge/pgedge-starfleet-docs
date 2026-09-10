@@ -4,7 +4,8 @@ When you create a pgEdge managed PostgreSQL database, the database name is
 displayed in the tree control on the left side of the pgEdge Starfleet
 BYOC console when the deployment completes.
 
-![Displaying the currently deployed databases](../images/managed_tree_control.png)
+![Displaying the currently deployed
+databases](../images/managed_tree_control.png)
 
 Select the database name to navigate to the database management page of
 the BYOC console.
@@ -13,7 +14,6 @@ the BYOC console.
 
     If you're using a free trial, you can use the link at the top of the
     console to provide billing information for your database.
-
 
 ## The Database Header
 
@@ -49,12 +49,11 @@ lower-right corner of the window confirms that protection is enabled. To
 disable deletion protection, select `Disable deletion protection` from the
 menu.
 
-
 ## Connecting to your Database
 
 Below the header, the console displays the `Connect` pane; the pane includes
 an `Admin` tab with credentials that you can use to connect to the database
-as the `admin` user (a database superuser), and an `Application` tab with 
+as the `admin` user (a database superuser), and an `Application` tab with
 credentials that you can use to connect a client application to your
 database.
 
@@ -64,22 +63,22 @@ For detailed information about:
 
 * installing the psql client and connecting to the database, see
   [Connecting](../connecting/index.md).
-* Postgres SQL commands, see the 
-  [Postgres documentation](https://www.postgresql.org/docs/18/sql-commands.html).
-
+* Postgres SQL commands, see the [Postgres
+  documentation](https://www.postgresql.org/docs/18/sql-commands.html).
 
 ## The AI Services Pane
 
 ![The AI Services pane](../images/managed_services.png)
 
 The `AI Services` pane displays icons you can use to deploy available services
-on your database. 
+on your database.
 
 ### Enabling the MCP Server
 
-The [pgEdge Postgres MCP server](https://docs.pgedge.com/pgedge-postgres-mcp-server/v1-0-0/) 
-acts as a gateway to your Postgres database; the server translates requests
-into actual operations against your database.
+The [pgEdge Postgres MCP
+server](https://docs.pgedge.com/pgedge-postgres-mcp-server/v1-0-0/) acts as a
+gateway to your Postgres database; the server translates requests into actual
+operations against your database.
 
 !!! warning
 
@@ -91,7 +90,8 @@ To enable an MCP server, select `Enable MCP`.
 
 ![Enabling the MCP server](../images/managed_enable_mcp.png)
 
-When the `Enable MCP server` popup opens, select the features you wish to enable: 
+When the `Enable MCP server` popup opens, select the features you wish to
+enable:
 
 — Enable `Generate embeddings` to expose a tool that lets the connected LLM
 request vector embeddings for text (e.g., to support semantic search over your
@@ -112,21 +112,21 @@ server.
 Once enabled, the MCP Server pane updates to display:
 
 - A green `Running` indicator to let you know the server is enabled.
-- A `Details` button that takes you to the Services window where you'll find information about connecting to MCP Clients.
+- A `Details` button that takes you to the Services window where you'll find
+  information about connecting to MCP Clients.
 - A `Disable` button that you can use to stop the MCP server.
 
 ![Disabling the MCP Server](../images/managed_mcp_confirm_disable.png)
 
 Select the `Disable MCP Server` button to stop the MCP server.
 
-
 ### Enabling the RAG Server
 
-The [pgEdge Postgres RAG server](https://docs.pgedge.com/pgedge-rag-server/v1-0-0/)
-is a simple API server used to perform Retrieval-Augmented Generation (RAG) of
-text based on content from a Postgres database using pgvector. Consider using
-a RAG server when you have a well-defined use case with predictable query
-patterns.
+The [pgEdge Postgres RAG
+server](https://docs.pgedge.com/pgedge-rag-server/v1-0-0/) is a simple API
+server used to perform Retrieval-Augmented Generation (RAG) of text based on
+content from a Postgres database using pgvector. Consider using a RAG server
+when you have a well-defined use case with predictable query patterns.
 
 ![Enabling the RAG server](../images/managed_enable_rag_icon.png)
 
@@ -135,7 +135,7 @@ To enable a RAG server, select the `Enable RAG` icon in the RAG Server pane.
 ![Provide details about the RAG server](../images/managed_rag_details.png)
 
 When the `Enable RAG server` popup opens, provide details about the RAG server
-deployment: 
+deployment:
 
 * The `Default Token Budget` field sets the maximum number of context tokens
   allowed for the LLM (500 - 128,000); the default value is `1000`.
@@ -166,7 +166,7 @@ Select `+Add Pipeline` to expand the dialog and define one or more pipelines
    that will be used by the RAG server.
 
 ![Provide details about the RAG server](../images/managed_rag_pipeline.png)
-   
+
 For each pipeline, provide:
 
 * A unique name in the `Name` field; only lowercase letters, digits, hyphens,
@@ -241,7 +241,8 @@ Once enabled, the RAG Server pane updates to display:
     Detailed information about the RAG server is also added to the `Services`
     page; use the link to `Services` located under the database name in the navigation pane to acess the page.
 
-![RAG Server information is now displayed on the Services dialog](../images/managed_rag_services.png)
+![RAG Server information is now displayed on the Services
+dialog](../images/managed_rag_services.png)
 
 You can disable the RAG server from either the Services page or the RAG Server
 pane by selecting the `Disable` button.
@@ -331,7 +332,6 @@ write-ahead log (WAL) activity for your database.
 | WAL size | The size of the write-ahead log (WAL). |
 | WAL segments | The number of WAL segments currently retained. |
 
-
 ## The Logs Pane
 
 The `Logs` pane displays the most recent entries from your database's log
@@ -358,7 +358,6 @@ live-updated as new entries are written.
 * Use the copy and download icons (in the upper-right corner of the log
   table) to copy or download the loaded log lines.
 
-
 ## Read Replicas and Branching
 
 The `Primary` badge identifies the current database as the primary node in
@@ -370,7 +369,6 @@ The `Read replicas & branching` pane previews upcoming functionality for
 scaling read traffic with read replicas and spinning up copy-on-write
 branches of your database. This functionality is still in development, and
 will remain disabled until it becomes available.
-
 
 ## Summary Panes
 
@@ -398,10 +396,3 @@ your database.
 | Storage | The amount of storage allocated to the database. |
 | Network | Whether the database is publicly or privately accessible, and whether TLS is enabled. |
 | Created | How long ago the database was created. |
-
-
-
-
-
-
-

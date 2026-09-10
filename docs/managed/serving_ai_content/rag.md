@@ -167,7 +167,8 @@ Once enabled, the RAG Server pane updates to display:
     page. Use the link to `Services` located under the database name in the
     navigation pane to access the page.
 
-![RAG Server information is now displayed on the Services dialog](../images/sf_rag_services.png)
+![RAG Server information is now displayed on the Services
+dialog](../images/sf_rag_services.png)
 
 You can disable the RAG server from either the Services page or the RAG Server
 pane by selecting the `Disable` button.
@@ -194,7 +195,8 @@ whether it is ready.
 Once the RAG server is running, its pane displays the server's status and
 configuration:
 
-![The RAG Server pane showing connection details](../images/sf_rag_connect_details.png)
+![The RAG Server pane showing connection
+details](../images/sf_rag_connect_details.png)
 
 * `Pipelines` shows how many pipelines are configured, and their names.
 * `Embedding model` shows the configured embedding provider and model

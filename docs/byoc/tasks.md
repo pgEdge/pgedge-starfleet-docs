@@ -39,7 +39,6 @@ The Activity Log page displays the following columns:
 Use the arrow to the left of a `Task name` to expand the task information and
 view details about the selected task.
 
-
 ## Filtering and Sorting the Activity Log
 
 The Activity Log table supports filtering and sorting by column value. A

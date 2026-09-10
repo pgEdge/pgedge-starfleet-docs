@@ -8,10 +8,10 @@ can use to deploy available services on your database.
 Select `Enable MCP` to deploy the server. Once the service is deployed, select
 the `Details` button to view details and manage the server.
 
-The
-[pgEdge Postgres MCP server](https://docs.pgedge.com/pgedge-postgres-mcp-server/v1-0-0/)
-acts as a gateway to your Postgres database. The server translates requests
-into actual operations against your database.
+The [pgEdge Postgres MCP
+server](https://docs.pgedge.com/pgedge-postgres-mcp-server/v1-0-0/) acts as a
+gateway to your Postgres database. The server translates requests into actual
+operations against your database.
 
 The server connects to the database as the `app` role, so even a read-only
 server has read access to every table `app` can read.
@@ -322,4 +322,3 @@ The `Services` page displays a message when something goes wrong:
     A services change needs the database in an `Available` state, and each
     service change writes one `update-managed` task, so the Activity
     Log carries both failed and successful modification attempts.
-

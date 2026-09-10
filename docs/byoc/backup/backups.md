@@ -17,6 +17,3 @@ the information displaying backup details for the node.
 
 Scroll down to review the `Backups` table; the table displays detailed
 information about each backup taken.
-
-
-
