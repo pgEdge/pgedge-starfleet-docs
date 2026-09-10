@@ -16,6 +16,7 @@ theme:
 
   features:
     - navigation.top
+    - navigation.tabs
     - navigation.indexes
     - toc.follow
     - content.code.copy
@@ -92,30 +93,30 @@ nav:
     - Troubleshooting: byoc/troubleshooting.md
   - pgEdge Starfleet Managed Postgres:
     - Overview: managed/index.md
-  - managed/creating_managed.md
-  - Using the pgEdge Starfleet Console:
-    - "Using the pgEdge Starfleet Console: Overview": managed/using_console/console_overview.md
-    - Enabling AI Services:
-      - Enabling and Using the MCP Server: managed/serving_ai_content/mcp.md
-      - Enabling and Using the RAG Server: managed/serving_ai_content/rag.md
-    - Monitoring System Metrics: managed/using_console/metrics.md
-    - Reviewing the Log Files: managed/using_console/logs.md
-    - Restoring from Backup: managed/using_console/backups.md
-    - Reviewing the Activity Log: managed/using_console/activity_log.md
-    - Managing Account Settings: managed/using_console/settings.md
-    - Managing Team Members: managed/using_console/team_management.md
-    - Accessing Management Options with the Actions Menu: managed/using_console/actions.md
-  - Connecting to a pgEdge Starfleet Database:
-    - managed/connecting/index.md
-    - Connecting with the AI DBA Workbench: managed/connecting/workbench.md
-    - Connecting with psql: managed/connecting/psql.md
-    - Connecting with pgAdmin: managed/connecting/pgadmin.md
-  - Using Your Database:
-    - Managing Database Roles: managed/using_database/roles.md
-    - Rotating Database Credentials: managed/using_database/rotate_credentials.md
-    - Selecting or Modifying the Database Size: managed/using_database/sizes.md
-    - Loading Data into Your pgEdge Starfleet Database: managed/using_database/loading_data.md
-    - Installing Extensions: managed/using_database/extensions.md
-    - ORM and Framework Guides: managed/using_database/orm_guides.md
-  - Community: managed/community.md
-  - Docs: managed/docs_link.md
+    - managed/creating_managed.md
+    - Using the pgEdge Starfleet Console:
+      - "Using the pgEdge Starfleet Console: Overview": managed/using_console/console_overview.md
+      - Enabling AI Services:
+        - Enabling and Using the MCP Server: managed/serving_ai_content/mcp.md
+        - Enabling and Using the RAG Server: managed/serving_ai_content/rag.md
+      - Monitoring System Metrics: managed/using_console/metrics.md
+      - Reviewing the Log Files: managed/using_console/logs.md
+      - Restoring from Backup: managed/using_console/backups.md
+      - Reviewing the Activity Log: managed/using_console/activity_log.md
+      - Managing Account Settings: managed/using_console/settings.md
+      - Managing Team Members: managed/using_console/team_management.md
+      - Accessing Management Options with the Actions Menu: managed/using_console/actions.md
+    - Connecting to a pgEdge Starfleet Database:
+      - managed/connecting/index.md
+      - Connecting with the AI DBA Workbench: managed/connecting/workbench.md
+      - Connecting with psql: managed/connecting/psql.md
+      - Connecting with pgAdmin: managed/connecting/pgadmin.md
+    - Using Your Database:
+      - Managing Database Roles: managed/using_database/roles.md
+      - Rotating Database Credentials: managed/using_database/rotate_credentials.md
+      - Selecting or Modifying the Database Size: managed/using_database/sizes.md
+      - Loading Data into Your pgEdge Starfleet Database: managed/using_database/loading_data.md
+      - Installing Extensions: managed/using_database/extensions.md
+      - ORM and Framework Guides: managed/using_database/orm_guides.md
+    - Community: managed/community.md
+    - Docs: managed/docs_link.md
