@@ -5,7 +5,7 @@
 
 This repo contains the docs for pgEdge Starfleet.
 
-## Where these docs are published
+## Publishing this Documentation
 
 The pgEdge console builds this repo and serves it in-product at `/docs`.
 `scripts/sync-docs.mjs` in `pgEdge/product-ui` clones `main` at deploy
@@ -41,7 +41,7 @@ Two consequences worth knowing before you merge anything:
 After launch this repo also goes public and is served through
 `docs.pgedge.com`, alongside `pgEdge/pgedge-docs`.
 
-## Building the Docs
+## Building the Documentation
 
 The docs are built with [MkDocs](https://www.mkdocs.org/) and the
 [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme.
@@ -50,7 +50,7 @@ The docs are built with [MkDocs](https://www.mkdocs.org/) and the
 
 - Python 3.12+
 
-### One-time setup
+### One-time Setup
 
 From the repo root, create a virtual environment and install the pinned
 dependencies:
@@ -64,7 +64,7 @@ python3 -m venv .venv
 letting pip resolve them instead would build the docs against a
 dependency set the console never runs.
 
-### Building the site
+### Building the Site
 
 To build a static copy of the site into the `site/` directory:
 
@@ -81,7 +81,7 @@ page in the product.
 anywhere to serve the docs as static files, no server-side dependencies
 required.
 
-### Previewing changes locally
+### Previewing Changes Locally
 
 To run a local server that live-reloads as you edit files under `docs/`:
 
@@ -135,7 +135,7 @@ overrides/
   partials/logo.html              Per-scheme logo, needs theme.custom_dir
 ```
 
-## Pages the console links to
+## Linking to the Console
 
 The pgEdge console links to a few of these pages from its "Learn more"
 anchors, and its deploy fails if one is missing. The `Console links`
