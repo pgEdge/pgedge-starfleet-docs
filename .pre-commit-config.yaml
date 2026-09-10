@@ -19,8 +19,9 @@ repos:
     hooks:
       - id: gitleaks
 
-  # Pinned to the version CodeRabbit runs, so a local run and a PR
-  # comment cannot disagree. Rules live in .markdownlint.yaml.
+  # Matches the version CodeRabbit ran as of 2026-09-10. It upgrades on
+  # its own schedule, so treat drift as expected. Rules live in
+  # .markdownlint.yaml.
   - repo: https://github.com/DavidAnson/markdownlint-cli2
     rev: v0.23.2
     hooks:

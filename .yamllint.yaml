@@ -1,4 +1,5 @@
-# Read by CodeRabbit's yamllint tool. Kept for what it catches that
+# Read by the pre-commit hook, and by CodeRabbit for the rules it does
+# not ignore, which is truthy alone. Kept for what it catches that
 # nothing else does: a duplicate key in mkdocs.yml parses fine and the
 # last one silently wins.
 extends: default
