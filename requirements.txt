@@ -1,14 +1,7 @@
-# Fully pinned, including transitives, and installed with --no-deps.
-#
-# These must stay identical to scripts/docs-requirements.txt in
-# pgEdge/product-ui. The console clones this repo at deploy time and
-# builds it with that file's pins, so a version that only exists here
-# is a version CI tested and the console never runs.
-#
-# Nothing enforces that. No test or workflow in either repo compares
-# the two files, so a bump on one side voids the guarantee silently.
-# The durable fix is for sync-docs.mjs to install this file, which it
-# already has on disk from the clone, instead of keeping its own copy.
+# Must stay identical to scripts/docs-requirements.txt in
+# pgEdge/product-ui, which is what the console actually installs. A
+# version only pinned here is one CI tested and the console never runs.
+# Nothing compares the two files.
 #
 # Regenerate:
 #   python3 -m venv v

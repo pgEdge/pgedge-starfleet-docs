@@ -2,9 +2,8 @@
 # mkdocs; a build failure there fails the console's Vercel deploy. This
 # check moves that failure to the docs PR that caused it.
 #
-# Deliberately stricter than the console: --strict turns mkdocs warnings
-# (a nav entry with no file, a relative link to a page that moved) into
-# errors, so they surface here rather than shipping quietly.
+# Stricter than the console, which builds without --strict: a mkdocs
+# warning here is an error rather than a page that ships missing.
 name: Build docs
 
 on:
@@ -38,8 +37,8 @@ jobs:
       # would test a dependency set the console never builds.
       # mkdocs copies static files with shutil.copyfile, which dereferences:
       # a committed docs/x.html -> /etc/passwd would publish its target as
-      # text/html. product-ui refuses to deploy a docs tree with symlinks, so
-      # catch it here instead of at deploy time. No cross-repo list needed.
+      # text/html. product-ui refuses to deploy a tree containing one, so
+      # catch it on the PR instead.
       - name: Reject symlinks
         run: |
           found=$(git ls-files -s | awk '$1 == "120000" { print $4 }')

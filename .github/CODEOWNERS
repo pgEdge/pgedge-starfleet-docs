@@ -1,7 +1,3 @@
-# GitHub requests a review from every owner on a matching line, so keep
-# this list to the people who should see every pull request. GitHub never
-# requests a review from the PR author, so an Ant PR goes to Susan alone
-# and vice versa.
-
-# Default owners for everything in the repo.
+# GitHub requests a review from every owner on a matching line, and never
+# from the pull request's author.
 *   @susan-pgedge @AntTheLimey
