@@ -1,0 +1,18 @@
+# Read by CodeRabbit's markdownlint tool and by the pre-commit hook, so
+# a PR comment and a local run say the same thing.
+default: true
+
+# The wrapping rule from CONTRIBUTING.md. MD013 already exempts a line
+# with no whitespace past the limit, which covers a bare URL.
+MD013:
+  line_length: 79
+  tables: false
+  code_blocks: false
+
+# Off because the tree was written this way throughout. Turning one on
+# rewrites every page and changes nothing a reader sees.
+MD004: false
+MD007: false
+MD030: false
+MD046: false
+MD060: false

@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: "en-US"
+
+reviews:
+  profile: "chill"
+  auto_review:
+    enabled: true
+    drafts: false
+  high_level_summary: false
+  sequence_diagrams: false
+  related_issues: false
+  related_prs: false
+  poem: false
+  path_filters:
+    - "!docs/**/*.png"
+    - "!docs/**/*.ico"
+  tools:
+    # Every tool CodeRabbit ships defaults to on. Listed here are the
+    # ones with files to act on in a docs tree, and the ones switched
+    # off because they would report on this repo without helping it.
+    markdownlint:
+      enabled: true
+    languagetool:
+      enabled: true
+    yamllint:
+      enabled: true
+    actionlint:
+      enabled: true
+    zizmor:
+      enabled: true
+    shellcheck:
+      enabled: true
+    gitleaks:
+      enabled: true
+    # requirements.txt is pinned to match product-ui's
+    # docs-requirements.txt; a CVE-driven bump here diverges them.
+    osvScanner:
+      enabled: false
+    # No application code or IaC here, and gitleaks covers secrets.
+    trufflehog:
+      enabled: false
+    checkov:
+      enabled: false
+    semgrep:
+      enabled: false
+
+chat:
+  auto_reply: true
