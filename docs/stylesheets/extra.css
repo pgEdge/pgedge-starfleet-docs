@@ -1,9 +1,12 @@
+/* The `none` fallbacks matter: a scheme with no rule below leaves the
+   property undefined, and `display` reverts to `inline`, showing both
+   logos rather than neither. */
 #logo_light_mode {
-    display: var(--md-footer-logo-light-mode);
+    display: var(--md-footer-logo-light-mode, none);
 }
 
 #logo_dark_mode {
-    display: var(--md-footer-logo-dark-mode);
+    display: var(--md-footer-logo-dark-mode, none);
 }
 
 [data-md-color-scheme="default"] {
