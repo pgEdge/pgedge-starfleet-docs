@@ -28,9 +28,9 @@ database object to a pgEdge Starfleet BYOC database:
     pg_dump -Fp -h domain_name -U user_name -d database_name -n schema_name > path_to_file/target_filename
     ```
 
-5. Use psql to replay the script into your BYOC database; simply append `<
-   path_to_file/target_filename` to the `PSQL` connection string displayed in
-   your BYOC console and press `Return`.
+5. Use psql to replay the script into your BYOC database; simply
+   append `< path_to_file/target_filename` to the `PSQL` connection
+   string displayed in your BYOC console and press `Return`.
 
 For more details, see:
 

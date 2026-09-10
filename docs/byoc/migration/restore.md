@@ -11,9 +11,9 @@ To restore with psql, append the `PSQL` connection string with
 starts psql and plays back a script named `fruit`, creating the new schema
 objects and data in the `produce` database:
 
-`PGSSLMODE=require PGPASSWORD=49VqNp6tg6g76RBz5L9n39DU psql -h
-mentally-cute-ladybird-iad.a1.pgedge.io -p 5432 -U admin -d produce <
-/Users/susan/Desktop/fruit`
+```bash
+PGSSLMODE=require PGPASSWORD=49VqNp6tg6g76RBz5L9n39DU psql -h mentally-cute-ladybird-iad.a1.pgedge.io -p 5432 -U admin -d produce < /Users/susan/Desktop/fruit
+```
 
 As the commands are played back, the command results are echoed onscreen:
 

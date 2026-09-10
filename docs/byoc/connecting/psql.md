@@ -46,8 +46,9 @@ If you prefer to start psql with a graphical prompt or icon (rather than the
 command line) you can use individual clauses found in the connection string to
 authenticate:
 
-`PGSSLMODE=require PGPASSWORD=********** psql -h
-actually-massive-amoeba-iad.pgedge.io -p 5432 -U admin -d receivables`
+```bash
+PGSSLMODE=require PGPASSWORD=********** psql -h actually-massive-amoeba-iad.pgedge.io -p 5432 -U admin -d receivables
+```
 
 When you open psql, the client prompts you for authentication information:
 

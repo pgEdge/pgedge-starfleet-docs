@@ -18,8 +18,9 @@ the schema or objects that you are recreating. You can invoke pg_dump on the
 command line or with the pgAdmin graphical client. At the command line, the
 simplest form of the command is:
 
-`pg_dump -Fp -h domain_name -U user_name -d database_name -n schema_name >
-path_to_file/target_filename`
+```bash
+pg_dump -Fp -h domain_name -U user_name -d database_name -n schema_name > path_to_file/target_filename
+```
 
 Use the `-F` flag to specify a format; `-Fp` generates a plain-text SQL script
 that can be restored with psql (the default), while `-Ft` produces a tar
@@ -28,8 +29,9 @@ archive that can be installed with pg_restore.
 When prompted, provide the database password. For example, the following
 command:
 
-`./pg_dump -Fp -h usefully-excited-foxhound-iad.a1.pgedge.io -U admin -d
-inventory > /Users/susan/Desktop/inventory_backup`
+```bash
+./pg_dump -Fp -h usefully-excited-foxhound-iad.a1.pgedge.io -U admin -d inventory > /Users/susan/Desktop/inventory_backup
+```
 
 Creates a plain-text file that recreates the `inventory` database; the database
 resides on a BYOC host with the domain of
