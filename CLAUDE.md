@@ -5,26 +5,17 @@ Material theme. Prose in `docs/`, navigation in `mkdocs.yml`, no
 application code.
 
 Read [README.md](README.md) and [CONTRIBUTING.md](CONTRIBUTING.md)
-first. They carry the build commands, the writing style and the
-console coupling. This file carries only what those two do not: the
-mistakes that build green here and fail somewhere else.
+first. Between them they carry the layout, the build commands, the
+writing style and the console coupling, and they are the source of
+truth for all four. This file carries only what those two do not:
+the mistakes that build green here and fail somewhere else.
 
 > **A change here can break another product's deploy.** `pgEdge/
-> product-ui` clones `main` at deploy time and builds it as a
+> product-ui` clones `main` at deploy time and builds it in a
 > `prebuild` step. There is no committed baseline and no fallback, so
 > a build this repo cannot complete fails the console's Vercel deploy
 > rather than shipping stale pages. Treat every change as a change to
 > two repos.
-
-## Layout
-
-- `docs/` — the pages. The tree mirrors `nav:` in `mkdocs.yml`, which
-  is ordered deliberately rather than alphabetically.
-- `overrides/partials/logo.html` — the per-scheme logo. Reached only
-  through `theme.custom_dir`.
-- `docs/stylesheets/extra.css` — the styling this repo actually uses.
-- `.github/console-links.txt` — the pages the console deep-links,
-  mirroring `managedDocsPaths.json` in `product-ui`.
 
 ## Commands
 
@@ -36,10 +27,6 @@ python3 -m venv .venv
 .venv/bin/mkdocs serve -a 127.0.0.1:8000 # live preview
 .github/scripts/check-console-links.sh   # from the repo root only
 ```
-
-`--no-deps` is deliberate: `requirements.txt` pins every transitive,
-and letting pip resolve them builds against a dependency set the
-console never installs.
 
 ## What the checks do and do not cover
 
@@ -69,14 +56,17 @@ does not install means CI tests a build the console never runs.
 Install contributor tooling separately.
 
 **`check-console-links.sh` uses relative paths.** Run it from the
-repo root. From anywhere else it fails claiming `mkdocs.yml` must
-keep `use_directory_urls: false`, which has nothing to do with the
-actual problem.
+repo root. From anywhere else it cannot find `mkdocs.yml`, and the
+failing `grep` makes it report that `mkdocs.yml` must keep
+`use_directory_urls: false`, which has nothing to do with the actual
+problem.
 
 **The public URL is not set by this repo.** After launch,
 `pgedge-docs` imports this repo and derives the directory from the
-nav label in its own `mkdocs.yml`, not from any `site_url` or
-`site_name` here. That one string in the other repo decides the path.
+nav label in its own `mkdocs.yml`, through `slug()` in
+`scripts/expand_imports.py`. It never reads `site_url` or `site_name`
+from an imported repo. That one string in the other repo decides the
+path.
 
 **Moving a page is a two-repo change.** `product-ui` holds two
 mirrors of this layout. `Console links` guards one of them and fails
@@ -84,26 +74,28 @@ the PR; nothing guards the other, so a miss leaves a test failing in
 `product-ui` for a reason neither repo explains. README.md names
 both files.
 
-**Fetch before assuming a branch is yours.** Maintainers push
-directly to feature branches here.
+## Naming the console
+
+Three usages, all deliberate:
+
+- Repo-facing files — README, CONTRIBUTING, workflows, scripts — say
+  **the pgEdge console**, never "the pgEdge Starfleet console".
+- Prose on the pages says **the console**, bare. It reads that way 50
+  times in `docs/`, against one outlier in `connecting/workbench.md`.
+- Nav labels and page titles keep **pgEdge Starfleet Console** as the
+  name of that section of the product UI.
 
 ## Writing
 
-CONTRIBUTING.md has the style rules. Two things it does not say:
+CONTRIBUTING.md has the style rules. One thing it does not say:
+banned vocabulary, pgEdge-wide — synergy, leverage, paradigm shift,
+best-in-class, utilize, ensure, stakeholder alignment.
 
-- The repo's name for the product console is **the pgEdge console**,
-  not "the pgEdge Starfleet console". Pages themselves mostly say
-  "the console" bare. A reviewer has flagged this the other way
-  round and was wrong; the existing usage wins.
-- Banned vocabulary, pgEdge-wide: synergy, leverage, paradigm shift,
-  best-in-class, utilize, ensure, stakeholder alignment.
+## Commits
 
-## Commits and pull requests
+CONTRIBUTING.md has the commit and pull request rules. Two it does
+not state:
 
 - Branch off `main`. Never commit to `main` directly.
-- Conventional commits — `docs:`, `fix:`, `chore:`, `feat:` — header
-  at 50 characters or fewer, body wrapped at 72.
-- A pull request body must not be longer than the change it
-  describes, and says nothing about a file the diff does not touch.
 - Never add `Co-Authored-By` lines, "Generated with" footers, or any
   other self-attribution to a commit, pull request or comment.
