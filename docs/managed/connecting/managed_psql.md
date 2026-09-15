@@ -24,8 +24,8 @@ For details about each role's capabilities and which role to use, see
 
 !!! hint
 
-    Connect as `app` to create tables and load data. 
-    
+    Connect as `app` to create tables and load data.
+
     Connect as `admin` to install an allowlisted extension or
     perform server-wide administration, such as monitoring sessions or
     creating roles.
