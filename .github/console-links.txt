@@ -3,8 +3,8 @@
 # pgEdge/product-ui. Paths are relative to docs/. If a page here moves,
 # update that file in product-ui in the same change, then this list.
 managed/connecting/managed_index.md
-managed/using_console/backups.md
-managed/using_console/metrics.md
-managed/using_console/logs.md
+managed/using_console/managed_backups.md
+managed/using_console/managed_metrics.md
+managed/using_console/managed_logs.md
 managed/serving_ai_content/mcp.md
 managed/serving_ai_content/rag.md

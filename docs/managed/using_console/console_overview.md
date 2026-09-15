@@ -35,7 +35,7 @@ upgrading the size tier, and enabling deletion protection.
 ![The Actions menu](../images/sf_actions_menu.png)
 
 For detailed information about options available through the `Actions` menu,
-see [Accessing Management Options with the Actions Menu](actions.md).
+see [Accessing Management Options with the Actions Menu](managed_actions.md).
 
 ## The Connect Pane
 
@@ -127,7 +127,7 @@ backup; select `View all` (in the upper-right corner of the pane) to see the
 complete list of backups.
 
 For detailed information about the `Backups` page, see
-[Restoring from Backup](backups.md).
+[Restoring from Backup](managed_backups.md).
 
 ## The Metrics Pane
 
@@ -141,7 +141,7 @@ Select `Open metrics` (in the upper-right corner of the `Metrics` pane) to see
 detailed metrics for your database.
 
 For detailed information about the `Metrics` page, see
-[Monitoring System Metrics](metrics.md).
+[Monitoring System Metrics](managed_metrics.md).
 
 ## The Logs Pane
 
@@ -154,7 +154,7 @@ Select `View logs` (in the upper-right corner of the pane) to see the complete,
 searchable log for your database.
 
 For detailed information about the `Logs` page, see
-[Reviewing the Log Files](logs.md).
+[Reviewing the Log Files](managed_logs.md).
 
 ## Read Replicas and Branching
 

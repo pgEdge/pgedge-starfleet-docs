@@ -234,7 +234,7 @@ servers; each server reads the password once at startup.
   first migration.
 * [Installing Extensions](extensions.md) describes which role installs
   which extension and what the refusal message means.
-* [Restoring from Backup](../using_console/backups.md) describes
+* [Restoring from Backup](../using_console/managed_backups.md) describes
   restoring in place after a migration goes wrong.
 * [Enabling and Using the MCP Server](../serving_ai_content/mcp.md)
   describes the server that a rotation of `app` restarts.

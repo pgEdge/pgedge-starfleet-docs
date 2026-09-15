@@ -205,4 +205,4 @@ again shortly.` in place of the whole page instead.
 
 * [Reviewing the Activity Log](activity_log.md) describes the resize
   and the restore that put two instances on the charts.
-* [Restoring from Backup](backups.md) describes the restore itself.
+* [Restoring from Backup](managed_backups.md) describes the restore itself.

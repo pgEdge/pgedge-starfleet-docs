@@ -77,7 +77,7 @@ read the steps, or read the `AI Services` pane.
 
 **`update-managed-size` is the resize**, not a generic size-related update. It
 is the task behind the `Upgrade size` action described in [Accessing Management
-Options with the Actions Menu](actions.md#upgrading-the-size-tier).
+Options with the Actions Menu](managed_actions.md#upgrading-the-size-tier).
 
 **`backup-managed` can read `succeeded` while the backup is still
 pending.** The task claims to have taken the backup, and its steps read
@@ -176,7 +176,7 @@ A status or a task name outside the two lists above can appear.
 
 ## Related Pages
 
-* [Restoring from Backup](backups.md) describes the restore
+* [Restoring from Backup](managed_backups.md) describes the restore
   this glossary keeps pointing at.
-* [Accessing Management Options with the Actions Menu](actions.md)
+* [Accessing Management Options with the Actions Menu](managed_actions.md)
   describes the resize, the display-name edit, and deletion protection.

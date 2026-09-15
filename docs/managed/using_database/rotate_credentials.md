@@ -7,7 +7,7 @@ the new one can be relied on. Your account carries one other credential,
 the API client secret, which is replaced rather than rotated.
 
 Rotation is not on the `Actions` menu. For the options that are, see [Accessing
-Management Options with the Actions Menu](../using_console/actions.md).
+Management Options with the Actions Menu](../using_console/managed_actions.md).
 
 ## Rotating from the Connect Pane
 

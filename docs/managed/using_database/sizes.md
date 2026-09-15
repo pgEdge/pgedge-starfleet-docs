@@ -40,14 +40,15 @@ Sizes can only be increased. `Upgrade size` on the `Actions` menu moves the
 database to a larger size, and restarts the database when the new size is
 applied. This option is available only while the database status is
 `Available`. See
-[Upgrading the Size Tier](../using_console/actions.md#upgrading-the-size-tier).
+[Upgrading the Size Tier](../using_console/managed_actions.md#upgrading-the-size-tier).
 
 ## Next Steps
 
-* [Deploying a Managed Database](../managed_creating_managed.md) describes using the
-  create wizard.
+* [Deploying a Managed Database](../managed_creating_managed.md)
+  describes using the create wizard.
 * [Accessing Management Options with the Actions
-  Menu](../using_console/actions.md) describes upgrading your resources.
-* [Monitoring System Metrics](../using_console/metrics.md) details the `CPU`,
-  `Memory`, `Disk used` and `Active connections` charts which show the current
-  resources in use.
+  Menu](../using_console/managed_actions.md) describes upgrading your
+  resources.
+* [Monitoring System Metrics](../using_console/managed_metrics.md)
+  details the `CPU`, `Memory`, `Disk used` and `Active connections`
+  charts which show the current resources in use.

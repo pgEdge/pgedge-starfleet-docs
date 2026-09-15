@@ -26,7 +26,7 @@ When opened from a database menu, the `Actions` menu may include:
 
 Select from the options listed to:
 
-* [Backup the Database](../backup/backups.md).
+* [Backup the Database](../backup/byoc_backups.md).
 * [Restore the Database](../backup/restore.md) from backup.
 * [Add the database](add.md#adding-a-database-to-a-cluster-node) to another
   node.

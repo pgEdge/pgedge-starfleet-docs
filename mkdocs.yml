@@ -65,15 +65,15 @@ nav:
       - Creating a Database: byoc/database/create_db.md
       - Managing a Database: byoc/database/manage_db.md
     - Services: byoc/byoc_services.md
-    - Metrics: byoc/database_admin/metrics.md
-    - Logs: byoc/database_admin/logs.md
+    - Metrics: byoc/database_admin/byoc_metrics.md
+    - Logs: byoc/database_admin/byoc_logs.md
     - Backups: byoc/database_admin/backup_details.md
     - Managing Database Backups:
-      - Reviewing Backup Details: byoc/backup/backups.md
+      - Reviewing Backup Details: byoc/backup/byoc_backups.md
       - Backing up your Database: byoc/backup/backup_providers.md
       - Restoring from Backup: byoc/backup/restore.md
     - Database and Cluster Administration:
-      - Using the Actions Menu: byoc/mod_cluster/actions.md
+      - Using the Actions Menu: byoc/mod_cluster/byoc_actions.md
       - Adding a Database or Cluster Node: byoc/mod_cluster/add.md
       - Dropping a Database, Node, or Cluster: byoc/mod_cluster/drop.md
       - Using Postgres Extensions: byoc/database_admin/supported_extensions.md
@@ -100,13 +100,13 @@ nav:
       - Enabling AI Services:
         - Enabling and Using the MCP Server: managed/serving_ai_content/mcp.md
         - Enabling and Using the RAG Server: managed/serving_ai_content/rag.md
-      - Monitoring System Metrics: managed/using_console/metrics.md
-      - Reviewing the Log Files: managed/using_console/logs.md
-      - Restoring from Backup: managed/using_console/backups.md
+      - Monitoring System Metrics: managed/using_console/managed_metrics.md
+      - Reviewing the Log Files: managed/using_console/managed_logs.md
+      - Restoring from Backup: managed/using_console/managed_backups.md
       - Reviewing the Activity Log: managed/using_console/activity_log.md
       - Managing Account Settings: managed/using_console/settings.md
       - Managing Team Members: managed/using_console/team_management.md
-      - Accessing Management Options with the Actions Menu: managed/using_console/actions.md
+      - Accessing Management Options with the Actions Menu: managed/using_console/managed_actions.md
     - Connecting to a pgEdge Starfleet Database:
       - managed/connecting/managed_index.md
       - Connecting with the AI DBA Workbench: managed/connecting/managed_workbench.md
