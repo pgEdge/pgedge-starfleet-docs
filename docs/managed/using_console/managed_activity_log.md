@@ -12,7 +12,7 @@ Select `show details` on the progress bar to display additional information
 about the task in progress. Each point on the task bar corresponds to an event
 detail. To close the task bar, select the `X` in its upper-right corner.
 
-![Reviewing the Activity Log](../images/sf_activity_log.png)
+![Reviewing the Activity Log](../images/managed_activity_log.png)
 
 The Activity Log page displays the following columns:
 

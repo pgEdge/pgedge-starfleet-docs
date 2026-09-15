@@ -18,7 +18,7 @@ Each backup entry displays:
 * The backup status (for example, `completed`).
 * How long ago the backup was taken, and how long it took to run.
 
-![The Backups page](../images/sf_backups_page.png)
+![The Backups page](../images/managed_backups_page.png)
 
 ## Only Completed Backups Can Be Restored
 
@@ -48,7 +48,7 @@ made after that point in time are lost, and notes that the database keeps its
 name and connection details, and is briefly unavailable while the restore runs.
 A `hot` backup of the current data is taken first, before the restore begins.
 
-![The Restore from backup popup](../images/sf_backups_restore.png)
+![The Restore from backup popup](../images/managed_backups_restore.png)
 
 Select `Restore` to confirm, or `Cancel` to close the popup without restoring
 the database.
@@ -72,7 +72,7 @@ and a checklist of restore steps:
 
 Each step is checked off as it completes:
 
-![The Restore in progress popup](../images/sf_backup_restoring.png)
+![The Restore in progress popup](../images/managed_backup_restoring.png)
 
 The checklist shows the steps reported for the restore task, so a restore can
 list more of them, including `Repointing Backups`, `Cutting Over Connection`,

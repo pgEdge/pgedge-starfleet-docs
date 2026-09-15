@@ -3,7 +3,7 @@
 The `AI Services` pane on your database's management page displays icons you
 can use to deploy available services on your database.
 
-![The AI Services pane](../images/sf_services.png)
+![The AI Services pane](../images/managed_services.png)
 
 Select `Enable MCP` to deploy the server. Once the service is deployed, select
 the `Details` button to view details and manage the server.
@@ -29,7 +29,7 @@ database's management page. The button is active only while the database status
 is `Available`; on a database in any other status, hovering over the button
 displays `Database not available`.
 
-![Enabling the MCP server](../images/sf_enable_mcp.png)
+![Enabling the MCP server](../images/managed_enable_mcp.png)
 
 When the `Enable MCP server` popup opens, select the features you wish to
 enable. Both settings are optional and off by default; submitting the form
@@ -57,7 +57,7 @@ provider requires a new key.
 When you're finished, select the `Enable MCP server` button to deploy the MCP
 server.
 
-![The deployed MCP service](../images/sf_enable_mcp_deployed.png)
+![The deployed MCP service](../images/managed_enable_mcp_deployed.png)
 
 Enabling, configuring or disabling any service requires the database to be
 `Available`, and appears in the Activity Log as an `update-managed` task. Each
@@ -73,7 +73,7 @@ Once enabled, the MCP Server pane updates to display:
   information about connecting to MCP Clients.
 - A `Disable` button that you can use to stop the MCP server.
 
-![Disabling the MCP Server](../images/sf_mcp_confirm_disable.png)
+![Disabling the MCP Server](../images/managed_mcp_confirm_disable.png)
 
 Select the `Disable MCP Server` button to stop the MCP server. Removing the
 server does not change your client configuration, and every request from that
@@ -102,7 +102,7 @@ reconnect.
 Select the `Details` button on a running MCP Server to open the `Services`
 page, which displays the server's status and configuration:
 
-![MCP Server details](../images/sf_connect_to_mcp.png)
+![MCP Server details](../images/managed_connect_to_mcp.png)
 
 * `Access` shows whether the server is read-only or
   `READ-WRITE (INSERT / UPDATE / DELETE)`, based on the `Allow writes` setting
@@ -248,18 +248,18 @@ header can use the same two values the panel shows.
     The `/mcp` output shows `pgedge-postgres` as `connected`, along with the
     number of tools it exposes:
 
-    ![The pgedge-postgres MCP server connected in Claude Code](../images/sf_mcp_server_list.png)
+    ![The pgedge-postgres MCP server connected in Claude Code](../images/managed_mcp_server_list.png)
 
     Now, you can ask Claude Code to invoke SQL queries against your pgEdge
     Starfleet database:
 
-    ![Claude Code calling the pgedge-postgres MCP server to create a table](../images/sf_mcp_call_to_pg.png)
+    ![Claude Code calling the pgedge-postgres MCP server to create a table](../images/managed_mcp_call_to_pg.png)
 
     Connecting directly to the database with `psql` as `app` (the owner of the
     table) confirms that the changes made through the MCP server were applied
     to the underlying database:
 
-    ![Querying the employees table with psql as the app user](../images/sf_mcp_call_pg_psql.png)
+    ![Querying the employees table with psql as the app user](../images/managed_mcp_call_pg_psql.png)
 
 ## Best Practices to Avoid Prompt Injection
 

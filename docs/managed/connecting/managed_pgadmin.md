@@ -4,11 +4,11 @@ To use the pgAdmin client to manage your pgEdge Starfleet database and the
 objects that reside on it, right-click on the `Servers` node in the pgAdmin
 client, and select `Register`, then `Server` from the context menu.
 
-![Accessing pgAdmin](../images/sf_pgadmin_register_server.png)
+![Accessing pgAdmin](../images/managed_pgadmin_register_server.png)
 
 The `Register - Server` dialog opens:
 
-![The pgAdmin Register - Server dialog](../images/sf_pgadmin_connection.png)
+![The pgAdmin Register - Server dialog](../images/managed_pgadmin_connection.png)
 
 When prompted, provide authentication details on the pgAdmin `Connection` tab.
 To find connection information for your database, highlight the database name
@@ -30,7 +30,7 @@ page:
 
 * Enter the password associated with the user in the `Password` field.
 
-![The pgAdmin Parameters tab](../images/sf_pgadmin_register_parameters.png)
+![The pgAdmin Parameters tab](../images/managed_pgadmin_register_parameters.png)
 
 Provide the following information on the `Parameters` tab:
 
@@ -45,7 +45,7 @@ connection preferences, and select `Save`. The connection to your database is
 added to the `Servers` node in the `Object Explorer` pane, and the pgAdmin
 `Dashboard` displays current database activities.
 
-![pgAdmin Connected](../images/sf_pgadmin_connected.png)
+![pgAdmin Connected](../images/managed_pgadmin_connected.png)
 
 For detailed information about using pgAdmin, you can review the pgAdmin
 documentation at:

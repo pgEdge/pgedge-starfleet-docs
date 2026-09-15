@@ -3,11 +3,11 @@
 After authenticating with pgEdge Starfleet, a dialog guides you through
 creating your first database:
 
-![Welcome to pgEdge Starfleet](images/sf_cloud_welcome.png)
+![Welcome to pgEdge Starfleet](images/managed_cloud_welcome.png)
 
 Select the `Create your first database` button to continue.
 
-![Step one - name your database and choose regions](images/sf_deploy_one.png)
+![Step one - name your database and choose regions](images/managed_deploy_one.png)
 
 In the first step, you'll provide details about the database:
 
@@ -18,7 +18,7 @@ In the first step, you'll provide details about the database:
 
 After completing the dialog, click `Continue`.
 
-![Step two - select features for your database](images/sf_deploy_two.png)
+![Step two - select features for your database](images/managed_deploy_two.png)
 
 Next, you'll select deployment features:
 
@@ -45,7 +45,7 @@ Next, you'll select deployment features:
 Select the features that will be accessible to your database, and select
 `Create Database`.
 
-![Step three - deploy your database](images/sf_deploy_three.png)
+![Step three - deploy your database](images/managed_deploy_three.png)
 
 When your database is ready, the console opens to an information page showing
 your database features, and connection details. The database name is selected
@@ -53,7 +53,7 @@ in the navigation pane (on the left side of the console).
 
 The new database is also shown on a pane on the Databases page:
 
-![The new database pane on the Databases page](images/sf_database_page.png)
+![The new database pane on the Databases page](images/managed_database_page.png)
 
 ## Troubleshooting - When the Wizard Cannot Continue
 

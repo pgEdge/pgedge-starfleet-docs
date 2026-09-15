@@ -29,7 +29,7 @@ For details about each role's capabilities and which role to use, see
     Connect as `admin` to install an allowlisted extension or perform
     server-wide administration, such as monitoring sessions or creating roles.
 
-![Connecting to your database](../images/sf_connecting.png)
+![Connecting to your database](../images/managed_connecting.png)
 
 ## Using the psql Client
 
@@ -92,7 +92,7 @@ Then, to connect to a pgEdge Starfleet database, use the copy button to the
 right of the connection string in the `Connect` section to copy the psql
 connection string of your database, and paste the string into the `Terminal`.
 
-![Copying a Connection String](../images/sf_copy_conn_string.png)
+![Copying a Connection String](../images/managed_copy_conn_string.png)
 
 Press `Return` to connect to the server with the psql client.
 
