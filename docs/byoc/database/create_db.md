@@ -60,10 +60,10 @@ installation.
 ![Selecting database services](../images/create_db_services.png)
 
 - Select the `+ MCP Server` button to add MCP server details for the database;
-  for more information, see [Adding an MCP or RAG Server](../services.md).
+  for more information, see [Adding an MCP or RAG Server](../byoc_services.md).
 
 - Select the `+ RAG Server` button to add RAG server details for the database;
-  for more information, see [Adding an MCP or RAG Server](../services.md).
+  for more information, see [Adding an MCP or RAG Server](../byoc_services.md).
 
 After making selections, select `Create Database` to initialize a PostgreSQL
 database and start replicating data between the nodes in the cluster. The

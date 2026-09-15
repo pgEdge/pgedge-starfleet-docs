@@ -164,8 +164,8 @@ Use the controls in the table header to sort or search the selected log file:
 Use the links at the end of the navigation pane to access pgEdge
 Starfleet BYOC resources:
 
-- To manage account details, select the [`Settings`](../settings.md) link.
-- Select the [`Team Management`](../teams.md) link to manage account
+- To manage account details, select the [`Settings`](../byoc_settings.md) link.
+- Select the [`Team Management`](../byoc_teams.md) link to manage account
   membership.
 - For an invitation to the pgEdge Discord server, select the `Community` link.
 - To review the documentation, select the [`Docs`](https://docs.pgedge.com/)

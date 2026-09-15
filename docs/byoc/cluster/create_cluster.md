@@ -175,4 +175,4 @@ is ready to use, it is added to the list of clusters in the navigation
 tree.
 
 If errors occur during cluster creation, see the
-[Troubleshooting section](../troubleshooting.md).
+[Troubleshooting section](../byoc_troubleshooting.md).

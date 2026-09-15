@@ -42,7 +42,7 @@ theme:
 nav:
   - Home: index.md
   - pgEdge Starfleet BYOC:
-    - Cloud Edition - Overview: byoc/index.md
+    - Cloud Edition - Overview: byoc/byoc_index.md
     - Getting Started with pgEdge Cloud: byoc/getting_started/getting_started.md
     - Prerequisites:
       - Linking and Managing your Cloud Provider Accounts:
@@ -64,7 +64,7 @@ nav:
       - Reviewing your Databases: byoc/database/index.md
       - Creating a Database: byoc/database/create_db.md
       - Managing a Database: byoc/database/manage_db.md
-    - Services: byoc/services.md
+    - Services: byoc/byoc_services.md
     - Metrics: byoc/database_admin/metrics.md
     - Logs: byoc/database_admin/logs.md
     - Backups: byoc/database_admin/backup_details.md
@@ -88,13 +88,13 @@ nav:
       - Connecting with pgAdmin: byoc/connecting/pgadmin.md
       - Connecting a Custom Client: byoc/connecting/custom_client.md
       - Best Practices for Managing Connections: byoc/connecting/best_practices.md
-    - Reviewing the Activity Log: byoc/tasks.md
-    - Settings: byoc/settings.md
-    - Team Resources: byoc/teams.md
-    - Troubleshooting: byoc/troubleshooting.md
+    - Reviewing the Activity Log: byoc/byoc_tasks.md
+    - Settings: byoc/byoc_settings.md
+    - Team Resources: byoc/byoc_teams.md
+    - Troubleshooting: byoc/byoc_troubleshooting.md
   - pgEdge Starfleet Managed Postgres:
-    - Overview: managed/index.md
-    - managed/creating_managed.md
+    - Overview: managed/managed_index.md
+    - managed/managed_creating_managed.md
     - Using the pgEdge Starfleet Console:
       - "Using the pgEdge Starfleet Console: Overview": managed/using_console/console_overview.md
       - Enabling AI Services:
@@ -119,5 +119,5 @@ nav:
       - Loading Data into Your pgEdge Starfleet Database: managed/using_database/loading_data.md
       - Installing Extensions: managed/using_database/extensions.md
       - ORM and Framework Guides: managed/using_database/orm_guides.md
-    - Community: managed/community.md
-    - Docs: managed/docs_link.md
+    - Community: managed/managed_community.md
+    - Docs: managed/managed_docs_link.md

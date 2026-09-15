@@ -44,7 +44,7 @@ applied. This option is available only while the database status is
 
 ## Next Steps
 
-* [Deploying a Managed Database](../creating_managed.md) describes using the
+* [Deploying a Managed Database](../managed_creating_managed.md) describes using the
   create wizard.
 * [Accessing Management Options with the Actions
   Menu](../using_console/actions.md) describes upgrading your resources.
