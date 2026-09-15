@@ -28,8 +28,9 @@ For example, to load a CSV file named `customers.csv` (with a header row of
     PGSSLMODE=require psql -U app -h <your-domain> -p <your-port> -d <your-database>
     ```
 
-    See [Connecting with psql](../connecting/psql.md) for directions about
-    finding the ready-to-use `psql command` for your database.
+    See [Connecting with psql](../connecting/managed_psql.md) for
+    directions about finding the ready-to-use `psql command` for your
+    database.
 
 2.  Create the target table on your database with a column for each field
     in your CSV file:
@@ -120,7 +121,8 @@ For which extension requires which role, see
 
 `pg_dump` and `pg_restore` are ordinary Postgres clients, so the same
 connection requirements described in
-[Connecting to a pgEdge Starfleet Database](../connecting/index.md) apply.
+[Connecting to a pgEdge Starfleet Database](../connecting/managed_index.md)
+apply.
 
 ### Restoring the Schema
 

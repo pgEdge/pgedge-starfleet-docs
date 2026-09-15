@@ -24,7 +24,7 @@ rotation only from `Available`, so a `Degraded` database can offer the button
 and still refuse the write.
 
 For the location of the `Connect` pane, see
-[Connecting with psql](../connecting/psql.md). For the purpose of each
+[Connecting with psql](../connecting/managed_psql.md). For the purpose of each
 role, see [Managing Database Roles](roles.md).
 
 ## What Happens When You Confirm
@@ -153,7 +153,7 @@ itself:
 ## Next Steps
 
 * [Managing Database Roles](roles.md) describes the roles whose passwords these
-  are, and [Connecting with psql](../connecting/psql.md) explains how
+  are, and [Connecting with psql](../connecting/managed_psql.md) explains how
   to handle the password once you have it.
 
 * [Enabling and Using the MCP Server](../serving_ai_content/mcp.md)

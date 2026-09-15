@@ -254,7 +254,7 @@ server can retrieve against it.
 
 1.  Connect with `psql` as the `app` user, using the connection string
     from the `Application` tab of your database's `Connect` pane (see
-    [Connecting with psql](../connecting/psql.md)): the `app` user owns
+    [Connecting with psql](../connecting/managed_psql.md)): the `app` user owns
     the database and can create tables, while the `admin` user cannot.
     For example:
 

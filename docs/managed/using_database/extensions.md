@@ -13,7 +13,7 @@ pane on the database page displays a `psql command` for each role that
 already includes `PGSSLMODE=require` and fills the password in when you
 copy it.
 
-See [Connecting with psql](../connecting/psql.md) to find the pane and
+See [Connecting with psql](../connecting/managed_psql.md) to find the pane and
 copy the command for either role.
 
 ## Determining Which Role Installs Which Extension

@@ -19,13 +19,13 @@ Every client connects as one of the database's two built-in roles, `admin` or
 The documentation includes instructions for installing and connecting with
 the following commonly used clients:
 
-* [Connecting with the AI DBA Workbench](workbench.md) describes how to
-  install the pgEdge AI DBA Workbench, then connect it to your database for
-  monitoring, alerting, and AI-assisted diagnostics.
-* [Connecting with psql](psql.md) describes how to connect with psql, the
-  command-line client distributed with PostgreSQL.
-* [Connecting with pgAdmin](pgadmin.md) describes how to register your
-  database as a server in the pgAdmin graphical client.
+* [Connecting with the AI DBA Workbench](managed_workbench.md) describes how
+  to install the pgEdge AI DBA Workbench, then connect it to your database
+  for monitoring, alerting, and AI-assisted diagnostics.
+* [Connecting with psql](managed_psql.md) describes how to connect with
+  psql, the command-line client distributed with PostgreSQL.
+* [Connecting with pgAdmin](managed_pgadmin.md) describes how to register
+  your database as a server in the pgAdmin graphical client.
 
 ## While the Database Is Still Being Created
 

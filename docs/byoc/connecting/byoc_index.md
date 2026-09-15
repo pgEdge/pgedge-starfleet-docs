@@ -21,7 +21,7 @@ information dialog.
 ![Connecting to a Cluster](../images/cluster_conn.png)
 
 For detailed information about using SSH to connect to a node, see
-[Connecting with ssh](./ssh.md).
+[Connecting with ssh](./byoc_ssh.md).
 
 ## Connecting to a Database
 

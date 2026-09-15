@@ -2,7 +2,7 @@
 # Source: src/components/databases/managed/copy/managedDocsPaths.json in
 # pgEdge/product-ui. Paths are relative to docs/. If a page here moves,
 # update that file in product-ui in the same change, then this list.
-managed/connecting/index.md
+managed/connecting/managed_index.md
 managed/using_console/backups.md
 managed/using_console/metrics.md
 managed/using_console/logs.md

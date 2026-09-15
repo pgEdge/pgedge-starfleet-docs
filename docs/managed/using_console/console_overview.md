@@ -86,7 +86,7 @@ A database that is still being created shows a provisioning message instead.
 For detailed information about:
 
 * installing the psql client and connecting to the database, see [Connecting
-  with psql](../connecting/psql.md).
+  with psql](../connecting/managed_psql.md).
 * Postgres SQL commands, see the [Postgres
   documentation](https://www.postgresql.org/docs/18/sql-commands.html).
 

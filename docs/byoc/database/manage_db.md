@@ -50,7 +50,7 @@ connect to the database as the `admin` user (a database superuser).
 For detailed information about:
 
 * installing the psql client and connecting to the database, see
-  [Connecting](../connecting/index.md).
+  [Connecting](../connecting/byoc_index.md).
 * moving a database object into your database, see
   [Migrating to pgEdge Starfleet BYOC](../migration/index.md).
 * Postgres SQL commands, see the
@@ -62,8 +62,8 @@ For detailed information about:
 
 The Users pane displays a list of current users.
 In its initial state, a new database has roles required to perform
-administrative tasks. You can use [psql](../connecting/psql.md) or
-[pgAdmin](../connecting/pgadmin.md) to [create additional database
+administrative tasks. You can use [psql](../connecting/byoc_psql.md) or
+[pgAdmin](../connecting/byoc_pgadmin.md) to [create additional database
 users](https://www.postgresql.org/docs/16/sql-createrole.html).
 
 ## Connect to your database
@@ -76,7 +76,7 @@ for a specific node/user pair.
 ![Users Pane](../images/connect_to_your_database.png)
 
 For detailed information about using the connection information to connect
-to your database, see [Connecting](../connecting/index.md).
+to your database, see [Connecting](../connecting/byoc_index.md).
 
 ## Password Management
 

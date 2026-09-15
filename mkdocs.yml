@@ -82,12 +82,12 @@ nav:
       - Taking a Backup: byoc/migration/backup.md
       - Restoring from Backup: byoc/migration/restore.md
     - Connecting to a Database:
-      - Connecting to your Database or Cluster: byoc/connecting/index.md
-      - Connecting with SSH: byoc/connecting/ssh.md
-      - Connecting with psql: byoc/connecting/psql.md
-      - Connecting with pgAdmin: byoc/connecting/pgadmin.md
-      - Connecting a Custom Client: byoc/connecting/custom_client.md
-      - Best Practices for Managing Connections: byoc/connecting/best_practices.md
+      - Connecting to your Database or Cluster: byoc/connecting/byoc_index.md
+      - Connecting with SSH: byoc/connecting/byoc_ssh.md
+      - Connecting with psql: byoc/connecting/byoc_psql.md
+      - Connecting with pgAdmin: byoc/connecting/byoc_pgadmin.md
+      - Connecting a Custom Client: byoc/connecting/byoc_custom_client.md
+      - Best Practices for Managing Connections: byoc/connecting/byoc_best_practices.md
     - Reviewing the Activity Log: byoc/byoc_tasks.md
     - Settings: byoc/byoc_settings.md
     - Team Resources: byoc/byoc_teams.md
@@ -108,10 +108,10 @@ nav:
       - Managing Team Members: managed/using_console/team_management.md
       - Accessing Management Options with the Actions Menu: managed/using_console/actions.md
     - Connecting to a pgEdge Starfleet Database:
-      - managed/connecting/index.md
-      - Connecting with the AI DBA Workbench: managed/connecting/workbench.md
-      - Connecting with psql: managed/connecting/psql.md
-      - Connecting with pgAdmin: managed/connecting/pgadmin.md
+      - managed/connecting/managed_index.md
+      - Connecting with the AI DBA Workbench: managed/connecting/managed_workbench.md
+      - Connecting with psql: managed/connecting/managed_psql.md
+      - Connecting with pgAdmin: managed/connecting/managed_pgadmin.md
     - Using Your Database:
       - Managing Database Roles: managed/using_database/roles.md
       - Rotating Database Credentials: managed/using_database/rotate_credentials.md

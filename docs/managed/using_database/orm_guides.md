@@ -44,9 +44,10 @@ Using the `Connect` pane's `psql command` block is the quickest way to test the
 string before implementing a framework. A row returned by a [`SELECT
 version()`](https://www.postgresql.org/docs/current/functions-info.html#FUNCTIONS-INFO-VERSION)
 query will let you know that the host details resolve, the TLS handshake
-completes, and the role can authenticate with the Postgres server. A framework
-that fails when the psql check succeeds is failing on its own configuration
-rather than on the database. See [Connecting with psql](../connecting/psql.md).
+completes, and the role can authenticate with the Postgres server. A
+framework that fails when the psql check succeeds is failing on its own
+configuration rather than on the database. See
+[Connecting with psql](../connecting/managed_psql.md).
 
 ## Extensions in Migrations
 
@@ -225,7 +226,7 @@ servers; each server reads the password once at startup.
 
 ## Next Steps
 
-* [Connecting to a pgEdge Starfleet Database](../connecting/index.md)
+* [Connecting to a pgEdge Starfleet Database](../connecting/managed_index.md)
   describes connecting with psql, pgAdmin, and the AI DBA Workbench.
 * [Managing Database Roles](roles.md) describes the two roles.
 * [Loading Data into Your pgEdge Starfleet Database](loading_data.md)

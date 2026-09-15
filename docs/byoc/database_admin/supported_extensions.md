@@ -4,7 +4,7 @@ pgEdge Starfleet BYOC databases include pre-installed PostgreSQL extensions.
 Before using an extension, you must [create the
 extension](https://www.postgresql.org/docs/current/extend-extensions.html) in
 each database where the extension will be used. To create an extension, invoke
-the following command on the [psql command line](../connecting/psql.md):
+the following command on the [psql command line](../connecting/byoc_psql.md):
 
 ```sql
 CREATE EXTENSION extension_name;

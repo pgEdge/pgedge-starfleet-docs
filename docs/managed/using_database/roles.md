@@ -94,7 +94,7 @@ The `Connect` pane on the database page provides an `Admin` tab and an
 * a `Rotate credentials` button.
 
 For details about reading and handling these credentials, see
-[Connecting with psql](../connecting/psql.md).
+[Connecting with psql](../connecting/managed_psql.md).
 
 For details about replacing a password, see
 [Rotating Database Credentials](rotate_credentials.md).
@@ -124,5 +124,5 @@ revoking a privilege from `app` also revokes it from those servers.
   installs which extension and what the refusal message means.
 * [Loading Data into Your pgEdge Starfleet Database](loading_data.md)
   describes the load order that uses both roles.
-* [Connecting to a pgEdge Starfleet Database](../connecting/index.md)
+* [Connecting to a pgEdge Starfleet Database](../connecting/managed_index.md)
   describes the clients and how each one takes the credentials.
