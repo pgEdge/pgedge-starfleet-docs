@@ -18,7 +18,7 @@ PGSSLMODE=require PGPASSWORD=49VqNp6tg6g76RBz5L9n39DU psql -h mentally-cute-lady
 As the commands are played back, the command results are echoed onscreen:
 
 ```sql
-PGSSLMODE=require PGPASSWORD=q2w40BbTL7e2Ug45c437MKaO psql -h brightly-striking-ram-iad.a1.pgedge.io -p 5432 -U admin -d produce < /Users/susan/Desktop/fruit 
+PGSSLMODE=require PGPASSWORD=q2w40BbTL7e2Ug45c437MKaO psql -h brightly-striking-ram-iad.a1.pgedge.io -p 5432 -U admin -d produce < /Users/susan/Desktop/fruit
 SET
 SET
 SET

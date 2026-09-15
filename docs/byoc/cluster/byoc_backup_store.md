@@ -71,9 +71,9 @@ your cluster.  When you've identified the clusters backup stores, select the
 
 !!! hint
 
-    To add a backup store after cluster creation, use the 
+    To add a backup store after cluster creation, use the
     `Update Cluster Backup Stores` menu option, selected from the `Actions`
-    dialog. 
+    dialog.
 
 ## The Backup Stores Dialog
 

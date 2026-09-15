@@ -6,7 +6,7 @@ ingress for users not on your network that exposes AI Tooling for use.
 
 !!! note
 
-    An ingress into a private network is used only for services (like AI 
+    An ingress into a private network is used only for services (like AI
     tools), and does not accept Postgres database connections.
 
 To add a network ingress to your cluster, select `Add Ingress` from the
