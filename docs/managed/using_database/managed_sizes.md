@@ -26,13 +26,13 @@ console.
 
 ## Reading the Current Size
 
-The database header displays a badge with the resource size, and the `Plan &
-billing` pane displays the size alongside the price. The `CPU`, `Memory`,
-`Storage`, and `Conns` figures in the header are live readings of current usage
-against the size's limits: `CPU` and `Memory` compare the current load against
-their allotted capacity, `Storage` compares used space against capacity, and
-`Conns` compares active connections against the connection limit. The `Upgrade
-size` popup displays each size's allocated resources.
+The database header displays a badge with the resource size, and the
+`Plan & billing` pane displays the size alongside the price. The `CPU`,
+`Memory`, `Storage`, and `Conns` figures in the header are live readings of
+current usage against the size's limits: `CPU` and `Memory` compare the current
+load against their allotted capacity, `Storage` compares used space against
+capacity, and `Conns` compares active connections against the connection limit.
+The `Upgrade size` popup displays each size's allocated resources.
 
 ## Changing the Allocated Size
 
@@ -44,11 +44,10 @@ applied. This option is available only while the database status is
 
 ## Next Steps
 
-* [Deploying a Managed Database](../managed_creating_managed.md)
-  describes using the create wizard.
-* [Accessing Management Options with the Actions
-  Menu](../using_console/managed_actions.md) describes upgrading your
-  resources.
-* [Monitoring System Metrics](../using_console/managed_metrics.md)
-  details the `CPU`, `Memory`, `Disk used` and `Active connections`
-  charts which show the current resources in use.
+* [Deploying a Managed Database](../managed_creating_managed.md) describes
+  using the create wizard.
+* [Accessing Management Options with the Actions Menu](../using_console/managed_actions.md)
+  describes upgrading your resources.
+* [Monitoring System Metrics](../using_console/managed_metrics.md) details the
+  `CPU`, `Memory`, `Disk used` and `Active connections` charts which show the
+  current resources in use.

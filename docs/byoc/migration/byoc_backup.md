@@ -37,8 +37,8 @@ Creates a plain-text file that recreates the `inventory` database; the database
 resides on a BYOC host with the domain of
 `usefully-excited-foxhound-iad.pgedge.io`. The commands are written to a plain
 text file named `inventory_backup`. For a complete list of pg_dump command line
-options, see the [documentation at the PostgreSQL
-website](https://www.postgresql.org/docs/current/app-pgdump.html).
+options, see the
+[documentation at the PostgreSQL website](https://www.postgresql.org/docs/current/app-pgdump.html).
 
 ## Using pgAdmin for Backups
 

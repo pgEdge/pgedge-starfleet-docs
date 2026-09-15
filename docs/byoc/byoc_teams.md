@@ -24,5 +24,6 @@ your team.
 When you invite a user to join your team, they are taken to the pgEdge Welcome
 window where they are prompted to provide a password. After providing a
 password, the new team member is taken to the main console page for your team,
-where all assets managed by the specified team are displayed. The `Pending
-Invitation` is removed, and the new member is listed in the `Members` table.
+where all assets managed by the specified team are displayed. The
+`Pending Invitation` is removed, and the new member is listed in the `Members`
+table.

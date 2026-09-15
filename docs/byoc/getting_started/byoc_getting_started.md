@@ -1,15 +1,14 @@
 # Getting Started with pgEdge Starfleet BYOC
 
-Getting started with pgEdge Starfleet BYOC is easy; simply navigate to [the
-pgEdge sign-in
-page](https://app.pgedge.com/login?plan=developer&screen_hint=signup) and
-follow the provided link to create an account, or log in with your Google or
-GitHub account.
+Getting started with pgEdge Starfleet BYOC is easy; simply navigate to
+[the pgEdge sign-in page](https://app.pgedge.com/login?plan=developer&screen_hint=signup)
+and follow the provided link to create an account, or log in with your Google
+or GitHub account.
 
 ![pgEdge Starfleet BYOC login](../images/cloud_login.png)
 
-If this is your first time logging in, you are welcomed to the free
-trial of pgEdge Starfleet BYOC.
+If this is your first time logging in, you are welcomed to the free trial of
+pgEdge Starfleet BYOC.
 
 ![pgEdge Starfleet BYOC free trial](../images/cloud_trial.png)
 
@@ -28,9 +27,8 @@ following:
 - A backup store provides storage for database backups and recovery.
 - An SSH key provides secure authentication to cluster resources.
 
-Before creating your first cluster, you need to link your cloud
-provider account with BYOC. Select the `Go to Cloud Accounts` button to
-get started.
+Before creating your first cluster, you need to link your cloud provider
+account with BYOC. Select the `Go to Cloud Accounts` button to get started.
 
 ![Linking an Account](../images/gs_link_cloud_account.png)
 
@@ -39,8 +37,8 @@ you will need to create an account with each provider, as well as a link to the
 provider-specific `Setup guide` for detailed information about linking your
 account.
 
-When you're ready to get started, select the `Link Cloud Account`
-button to choose your provider.
+When you're ready to get started, select the `Link Cloud Account` button to
+choose your provider.
 
 ![Selecting a Cloud Provider](../images/gs_select_provider.png)
 
@@ -50,8 +48,8 @@ information required by each provider to deploy on BYOC.
 ![Provide Cloud Provider details](../images/gs_account_details.png)
 
 If you're
-[deploying on AWS](../prerequisites/cloud_accounts/byoc_link_to_AWS.md),
-you can use the `Create Stack Wizard` to use a completed AWS CloudFormation
+[deploying on AWS](../prerequisites/cloud_accounts/byoc_link_to_AWS.md), you
+can use the `Create Stack Wizard` to use a completed AWS CloudFormation
 template to create an AWS role with the required permissions; use the link
 circled in red above to navigate to the wizard and retrieve your ARN.
 
@@ -68,8 +66,8 @@ your preferred provider.
 ![Create a Backup Store](../images/gs_backup_store.png)
 
 Select [Create Backup Store](../cluster/byoc_backup_store.md) to navigate to
-the `Create Backup Store` dialog; complete the dialog and click `Create
-Backup Store` to continue.
+the `Create Backup Store` dialog; complete the dialog and click
+`Create Backup Store` to continue.
 
 When you've finished defining the backup store, the store is displayed on the
 `Backup Stores` dialog, and the progress tracker advances, prompting you to
@@ -77,25 +75,22 @@ import an SSH key.
 
 ![Progress tracker](../images/gs_progress_two.png)
 
-Next, you'll [import an SSH key](../prerequisites/byoc_ssh_key.md). You
-can use the link on the progress tracker to navigate to an
-informational page with links to more information about importing
-keys.
+Next, you'll [import an SSH key](../prerequisites/byoc_ssh_key.md). You can use
+the link on the progress tracker to navigate to an informational page with
+links to more information about importing keys.
 
 ![Import an SSH Key](../images/gs_import_ssh_key.png)
 
-When you're ready, select the `Import SSH Key` button to advance to the
-import page. When you've finished importing an SSH key, the progress
-tracker advances and you can see the imported SSH key on the `SSH Keys`
-dialog.
+When you're ready, select the `Import SSH Key` button to advance to the import
+page. When you've finished importing an SSH key, the progress tracker advances
+and you can see the imported SSH key on the `SSH Keys` dialog.
 
 ![Progress tracker](../images/gs_progress_three.png)
 
-Next, you'll [create a cluster](../cluster/byoc_create_cluster.md). A
-cluster is a database container that can house one or more databases
-in one or more regions. Single-region clusters are not distributed;
-distributed clusters have databases
-in multiple regions.
+Next, you'll [create a cluster](../cluster/byoc_create_cluster.md). A cluster
+is a database container that can house one or more databases in one or more
+regions. Single-region clusters are not distributed; distributed clusters have
+databases in multiple regions.
 
 Use the link on the progress tracker to navigate to a page with more
 information about cluster creation and handy links.
@@ -108,18 +103,18 @@ cluster definition on the `Clusters` page.
 
 ![Progress tracker](../images/gs_progress_four.png)
 
-Next, you'll create a database. You can use the link on the progress
-tracker to navigate to the database creation page.
+Next, you'll create a database. You can use the link on the progress tracker to
+navigate to the database creation page.
 
 ![Select Create Database](../images/gs_create_database.png)
 
-When you're ready, select `Create Database` to create your new database
-and exit the progress tracker.
+When you're ready, select `Create Database` to create your new database and
+exit the progress tracker.
 
 ## pgEdge Resources
 
-Use the links in the lower-left corner of the console to access the
-following pgEdge resources:
+Use the links in the lower-left corner of the console to access the following
+pgEdge resources:
 
 - The `Community` link provides an invitation to the pgEdge Discord server.
 - The `Docs` link opens the pgEdge documentation website.

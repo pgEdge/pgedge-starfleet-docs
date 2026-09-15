@@ -54,8 +54,8 @@ db_url = "postgresql://user:password@db-host/dbname"
 engine = create_engine(db_url, pool_recycle=30)  # 30 seconds timeout
 ```
 
-**Docs:** [SQLAlchemy Connection
-Pooling](https://docs.sqlalchemy.org/en/20/core/pooling.html)
+**Docs:**
+[SQLAlchemy Connection Pooling](https://docs.sqlalchemy.org/en/20/core/pooling.html)
 
 #### Go (database/sql)
 
@@ -81,8 +81,8 @@ const pool = new Pool({
 });
 ```
 
-**Docs:** [pg Pooling
-Documentation](https://node-postgres.com/features/pooling)
+**Docs:**
+[pg Pooling Documentation](https://node-postgres.com/features/pooling)
 
 #### Java (HikariCP)
 
@@ -94,8 +94,8 @@ config.setMaxLifetime(30000); // Force reconnection every 30 seconds
 HikariDataSource ds = new HikariDataSource(config);
 ```
 
-**Docs:** [HikariCP
-Configuration](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby)
+**Docs:**
+[HikariCP Configuration](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby)
 
 ### Additional Considerations
 
@@ -133,8 +133,8 @@ should be tested and verified prior to moving any application into production.
 As an alternative to latency-based routing / DNS failover, you can configure
 your application with multiple hosts for it to connect to in the event that one
 host is unavailable. Any libraries or frameworks which are based on libpq
-should be able to leverage the [multiple hosts specified in a Connection
-URI](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-MULTIPLE-HOSTS).
+should be able to leverage the
+[multiple hosts specified in a Connection URI](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-MULTIPLE-HOSTS).
 If your application uses another framework or libary, you may need to implement
 custom logic to ensure similar logic.
 

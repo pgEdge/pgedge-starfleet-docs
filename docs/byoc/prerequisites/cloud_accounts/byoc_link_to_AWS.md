@@ -1,13 +1,12 @@
 # Linking an AWS Account
 
 To link an AWS provider account with your pgEdge Starfleet BYOC account, select
-the `Cloud Accounts` heading in the left navigation pane and then the `+ Link
-Cloud Account` button. The `Link Cloud Account` popup opens:
+the `Cloud Accounts` heading in the left navigation pane and then the
+`+ Link Cloud Account` button. The `Link Cloud Account` popup opens:
 
 ![Link Cloud Account dialog](../../images/link_cloud_account.png)
 
-On the `Link Cloud Account` popup, select the `AWS` icon to expand the
-dialog.
+On the `Link Cloud Account` popup, select the `AWS` icon to expand the dialog.
 
 ![Link Cloud Account dialog](../../images/link_aws_account.png)
 
@@ -29,10 +28,10 @@ provision resources in your account (using IAM cross-account trust policies to
 assume the role). This is the AWS-recommended approach.
 
 Before using the wizard to create an IAM role, open a browser tab and log in to
-your AWS account. Then, return to the console window and select the `Open the
-Create Stack Wizard` button. When the AWS `Quick create stack` window opens,
-the template is displayed, complete with the details you need to create an IAM
-role for replication management.
+your AWS account. Then, return to the console window and select the
+`Open the Create Stack Wizard` button. When the AWS `Quick create stack` window
+opens, the template is displayed, complete with the details you need to create
+an IAM role for replication management.
 
 ![AWS CloudFormation stack template](../../images/CF_create_stack_template.png)
 
@@ -55,9 +54,9 @@ No changes are required in the `CloudFormation Stack Permissions` section.
 
 ![CloudFormation stack capabilities](../../images/CF_stack_capabilities.png)
 
-Review the message in the `Capabilities` section, and check the box next to `I
-acknowledge that AWS CloudFormation might create IAM resources with custom
-names`. Then, select `Create stack`.
+Review the message in the `Capabilities` section, and check the box next to
+`I acknowledge that AWS CloudFormation might create IAM resources with custom names`.
+Then, select `Create stack`.
 
 ![AWS CloudFormation Stacks page](../../images/CF_stack_creation.png)
 
@@ -73,10 +72,10 @@ the page `Summary`.
 
 ![AWS IAM ARN](../../images/CF_IAM_ARN.png)
 
-Copy the role ARN, and return to the console. Add the role ARN to the `AWS IAM
-Role` field, specify a name for the account in the `Account Name` field, and a
-description of the account in the `Account Description` field. Select the `Link
-Account` button to finish linking your account.
+Copy the role ARN, and return to the console. Add the role ARN to the
+`AWS IAM Role` field, specify a name for the account in the `Account Name`
+field, and a description of the account in the `Account Description` field.
+Select the `Link Account` button to finish linking your account.
 
 With a linked account in place, you're ready to
 [create an Enterprise Edition cluster](../../cluster/byoc_create_cluster.md).
@@ -94,8 +93,9 @@ To create a new AWS key pair:
 ![AWS console creating a key pair](../../images/AWS_create_key_pair.png)
 
 On the AWS `Create key pair` window, provide a name for the key pair in the
-`Name` field; the other fields can be left to their defaults. Select `Create
-key pair` to create the key pair and return to the main `Key pairs` window.
+`Name` field; the other fields can be left to their defaults. Select
+`Create key pair` to create the key pair and return to the main `Key pairs`
+window.
 
 You can now use the AWS key pair when defining a cluster that is provisioned on
 AWS.
@@ -116,9 +116,9 @@ scroll down to the `AWS Regions` table.
 
 To enable a region for use with pgEdge Starfleet BYOC, check the box to the
 left of the region name, and select the `Enable` button. A popup will open,
-asking you to confirm that you wish to enable the region(s); select the `Enable
-regions` button to continue. Use the `refresh` button in the upper-right corner
-to update table to check the `Status` column.
+asking you to confirm that you wish to enable the region(s); select the
+`Enable regions` button to continue. Use the `refresh` button in the
+upper-right corner to update table to check the `Status` column.
 
 ## Deleting an Account Link
 

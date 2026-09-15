@@ -24,9 +24,9 @@ assigned roles:
 * `Service Account User`
 * `Storage Admin`
 
-To link a Google Cloud project with your BYOC account, select the `Cloud
-Accounts` heading in the navigation pane and then the `+ Link Cloud Account`
-button.
+To link a Google Cloud project with your BYOC account, select the
+`Cloud Accounts` heading in the navigation pane and then the
+`+ Link Cloud Account` button.
 
 ![Link Google Cloud Account popup](../../images/link_google_account.png)
 
@@ -36,8 +36,8 @@ To link a Google Cloud project:
 * Provide a user-friendly name in the `Account Name` field.
 * Add a description of the account in the `Account Description` field.
 
-Three pieces of Google-specific information are required to create a
-link to a Google account; you must provide:
+Three pieces of Google-specific information are required to create a link to a
+Google account; you must provide:
 
 * The Google `Project ID`. To locate the project ID, log in to the Google
   console, and use the resource selector drop-down (located in the upper-left
@@ -48,9 +48,9 @@ link to a Google account; you must provide:
 * The Google `Service Account`. The service account is used for
   machine-to-machine communication. It is referred to by its email address. To
   locate the service account email in the Google console, select your project
-  from the resource selector, navigate to `IAM & Admin`, then select `Service
-  Accounts` from the navigation panel. Choose your service account from the
-  list of service accounts displayed.
+  from the resource selector, navigate to `IAM & Admin`, then select
+  `Service Accounts` from the navigation panel. Choose your service account
+  from the list of service accounts displayed.
 
 * The Google `Provider`. The Workload Identity provider is used to create an
   OIDC connection between pgEdge Starfleet BYOC and your Google Cloud project.

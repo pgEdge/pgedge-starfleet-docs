@@ -14,15 +14,13 @@ console. When entered in a Terminal window, the connection string starts the
 first copy of psql it locates in your `$PATH` and authenticates with the
 permissions of the `admin` user.
 
-![Connecting to a database before creating
-tables](../images/pre_tables_conn.png)
+![Connecting to a database before creating tables](../images/pre_tables_conn.png)
 
 If your database has sample tables, the `Connect to your database` pane
 displays the connection strings for each node in your cluster, and the unique
 connection properties for each pgEdge-created user.
 
-![Connecting to a database after creating
-tables](../images/connect_to_your_database.png)
+![Connecting to a database after creating tables](../images/connect_to_your_database.png)
 
 Select a node (`n1`, `n2`, or `n3`) and a `User` to display the connection
 properties you can use to authenticate with your database on the selected node:

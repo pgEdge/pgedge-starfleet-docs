@@ -2,18 +2,17 @@
 
 pgEdge Starfleet BYOC databases can be deployed with an installed and
 configured MCP server, ready for connections. After deployment, use the
-`Services` dialog to open the `Add MCP Server` popup to add AI
-functionality to an existing cluster or to manage defined functionality.
+`Services` dialog to open the `Add MCP Server` popup to add AI functionality to
+an existing cluster or to manage defined functionality.
 
 ![The Services dialog](images/services.png)
 
 !!! note
 
-    If your BYOC cluster resides on a private network, you can expose a
-    port for connections by
-    [creating a public ingress](cluster/byoc_ingress.md).
-    An ingress into a private network is used only for services (like AI
-    tools), and does not accept Postgres database connections.
+    If your BYOC cluster resides on a private network, you can expose a port
+    for connections by [creating a public ingress](cluster/byoc_ingress.md). An
+    ingress into a private network is used only for services (like AI tools),
+    and does not accept Postgres database connections.
 
 ## Adding an MCP Server
 
@@ -28,8 +27,8 @@ optionally, the LLM:
 - Use the `Select Host` field to select the cluster host on which this MCP
   server will be provisioned and run.
 
-- Use the `Target Nodes` field to optionally select the database nodes this
-  MCP server connects to, in priority order. Defaults to all nodes.
+- Use the `Target Nodes` field to optionally select the database nodes this MCP
+  server connects to, in priority order. Defaults to all nodes.
 
 - Use the `Allow Writes?` toggle to optionally grant the MCP service read-write
   access (INSERT / UPDATE / DELETE) via the
@@ -38,10 +37,9 @@ optionally, the LLM:
   unexpected or unwanted modifications.
 
 - Use the `LLM Enabled?` toggle to optionally enable an LLM to generate
-  embeddings for the database. When the toggle is `on`, BYOC activates
-  the `generate_embedding` tool on the MCP server and requests LLM
-  provider credentials. To enable an LLM, provide the following
-  information:
+  embeddings for the database. When the toggle is `on`, BYOC activates the
+  `generate_embedding` tool on the MCP server and requests LLM provider
+  credentials. To enable an LLM, provide the following information:
 
     - Use the `Embedding Provider` field to select the provider used by the
       `generate_embedding` tool on the MCP server.
@@ -97,16 +95,16 @@ Use the fields on the `Add RAG Server` popup to describe the server:
 - Use the `Default Token Budget` field to set the maximum number of context
   tokens (500–128,000) the LLM can process per request.
 
-- Use the `Default Top N` field to set the number of results retrieved from
-  the vector store before they are trimmed to fit within the token budget.
+- Use the `Default Top N` field to set the number of results retrieved from the
+  vector store before they are trimmed to fit within the token budget.
 
 - Use the `Default Embedding LLM Provider` field to select the provider whose
   model will generate vector embeddings for queries and documents during
   retrieval.
 
-- Use the `Default Embedding LLM Model` field to specify the embedding model
-  to use. This must match the model used to generate any pre-existing
-  embeddings in the dataset.
+- Use the `Default Embedding LLM Model` field to specify the embedding model to
+  use. This must match the model used to generate any pre-existing embeddings
+  in the dataset.
 
 - Use the `Default Embedding LLM API Key` field to enter the API key for
   authenticating with the selected embedding provider.
@@ -164,16 +162,15 @@ delete the service.
 ### Using the RAG Server
 
 After adding a RAG Server to your cloud deployment, you can use the
-[pgEdge Docloader](https://docs.pgedge.com/pgedge-docloader/v1-0-0/)
-to load your documents into your database. The Docloader converts HTML,
-Markdown, and reStructuredText into a `documents` table:
+[pgEdge Docloader](https://docs.pgedge.com/pgedge-docloader/v1-0-0/) to load
+your documents into your database. The Docloader converts HTML, Markdown, and
+reStructuredText into a `documents` table:
 
 ```bash
 pgedge-docloader --config docloader.yml
 ```
 
-Once data is loaded, you can query your pipeline via the REST API. For
-example:
+Once data is loaded, you can query your pipeline via the REST API. For example:
 
 ```bash
 curl -X POST https://<your-rag-server-url>/v1/pipelines/my-docs/search \
@@ -181,9 +178,9 @@ curl -X POST https://<your-rag-server-url>/v1/pipelines/my-docs/search \
   -d '{"query": "How do I configure replication?"}'
 ```
 
-The RAG server retrieves the most relevant document chunks using hybrid
-search (vector similarity + BM25 keyword matching), then passes them to
-the LLM to generate a grounded answer.
+The RAG server retrieves the most relevant document chunks using hybrid search
+(vector similarity + BM25 keyword matching), then passes them to the LLM to
+generate a grounded answer.
 
 !!! note
 

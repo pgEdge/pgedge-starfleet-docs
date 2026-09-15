@@ -13,8 +13,8 @@ cluster:
 * `Key Vault Administrator`
 * `Key Vault Data Access Administrator`
 
-To assign a role, navigate to: `Resource Groups` -->
-`<Resource Group Name>` --> `IAM` --> `Add role assignment`.
+To assign a role, navigate to: `Resource Groups` --> `<Resource Group Name>`
+--> `IAM` --> `Add role assignment`.
 
 The following resource providers must be registered on the Azure Subscription
 to enable API access.
@@ -32,13 +32,13 @@ need to request Quota Increases under `All services` --> `Quotas` --> `Compute`
 to ensure that virtual machines can be successfully created in each location.
 
 To link an Azure account with your pgEdge Starfleet BYOC account, select the
-`Cloud Accounts` heading in the left navigation pane and then the `+ Link Cloud
-Account` button.
+`Cloud Accounts` heading in the left navigation pane and then the
+`+ Link Cloud Account` button.
 
 ![Link BYOC Account popup](../../images/link_cloud_account.png)
 
-On the `Link Cloud Account` dialog, select the `Azure` icon to expand
-the dialog.
+On the `Link Cloud Account` dialog, select the `Azure` icon to expand the
+dialog.
 
 ![Link Cloud Account popup](../../images/link_azure_account.png)
 

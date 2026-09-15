@@ -7,29 +7,28 @@ responsibilities by function rather than by privilege level:
 * `app` owns the database and everything your application builds.
 * `admin` has the server-wide privileges an operator needs.
 
-The `Connect` pane on the database page displays a tab for each role,
-showing the password associated with it.
+The `Connect` pane on the database page displays a tab for each role, showing
+the password associated with it.
 
-Your pgEdge Starfleet database starts as a single database, owned by `app`.
-The `admin` role exists to administer Postgres, including creating further
-roles and databases on the same server.
+Your pgEdge Starfleet database starts as a single database, owned by `app`. The
+`admin` role exists to administer Postgres, including creating further roles
+and databases on the same server.
 
 ## Understanding the `app` Role
 
-`app` owns the database. Connect as `app` to create tables, load data, and
-run your application and its migrations. `app` can also install the extensions
+`app` owns the database. Connect as `app` to create tables, load data, and run
+your application and its migrations. `app` can also install the extensions
 Postgres itself marks trusted, such as `pgcrypto`, and owns each one it
 installs.
 
 !!! hint
 
     Each Postgres object belongs to the role that creates the object; object
-    ownership is managed after creation with the SQL ALTER object_name
-    command.
+    ownership is managed after creation with the SQL ALTER object_name command.
 
-`app` is the recommended default role to own an application. The MCP and
-RAG servers also connect as `app`, so whatever your migrations and data
-imports add to the database, those servers can read.
+`app` is the recommended default role to own an application. The MCP and RAG
+servers also connect as `app`, so whatever your migrations and data imports add
+to the database, those servers can read.
 
 `app` holds no server-wide privilege: it cannot create roles or databases,
 cannot see what other sessions are running, cannot end another session, and
@@ -37,32 +36,32 @@ cannot install an extension on the pgEdge allowlist.
 
 ## Understanding the `admin` Role
 
-`admin` is for administering the database rather than for building your
-schema; it carries the privileges a database administrator needs day to
-day, without the superuser powers that could damage the database or reach
-the server it runs on. `admin` can:
+`admin` is for administering the database rather than for building your schema;
+it carries the privileges a database administrator needs day to day, without
+the superuser powers that could damage the database or reach the server it runs
+on. `admin` can:
 
 * read and change the data in every table, whoever owns it.
 * create roles and create databases.
 * see every session and the query it is running, and end a session.
 * run `VACUUM`, `ANALYZE`, `REINDEX`, and similar maintenance on any table.
 * create logical replication subscriptions.
-* install the extensions on the pgEdge allowlist, such as `vector`,
-  `postgis`, and `pg_cron`.
+* install the extensions on the pgEdge allowlist, such as `vector`, `postgis`,
+  and `pg_cron`.
 
-`admin` cannot read or write files on the server, run programs on it, or
-become a superuser.
+`admin` cannot read or write files on the server, run programs on it, or become
+a superuser.
 
 ## Creating Database Objects
 
-An object belongs to the role that creates it, so you should create tables
-and schemas as `app`. A table created as `admin` belongs to `admin`, and your
+An object belongs to the role that creates it, so you should create tables and
+schemas as `app`. A table created as `admin` belongs to `admin`, and your
 application, when connected as `app`, will not be able to alter or drop it.
 
-`admin` is a member of `app`, so `admin` can also create tables and schemas
-and install trusted extensions; anything it creates belongs to `admin`
-rather than to `app`. Schema work should therefore be performed as `app`,
-so that application objects remain owned by `app`.
+`admin` is a member of `app`, so `admin` can also create tables and schemas and
+install trusted extensions; anything it creates belongs to `admin` rather than
+to `app`. Schema work should therefore be performed as `app`, so that
+application objects remain owned by `app`.
 
 ## Comparing Role Capabilities
 
@@ -99,29 +98,28 @@ For details about reading and handling these credentials, see
 For details about replacing a password, see
 [Rotating Database Credentials](managed_rotate_credentials.md).
 
-The MCP and RAG servers connect to the database as `app`. As a result,
-each server can read and change whatever `app` can, and rotating the
-`app` password restarts both servers.
+The MCP and RAG servers connect to the database as `app`. As a result, each
+server can read and change whatever `app` can, and rotating the `app` password
+restarts both servers.
 
 ## Restricting the `app` Role
 
-`admin` can reduce the privileges available to `app`. For example,
-`admin` can:
+`admin` can reduce the privileges available to `app`. For example, `admin` can:
 
 * revoke a privilege previously granted to `app`.
 * reassign the owner of a table away from `app`.
 * restrict `app`'s access to a schema.
 
-Postgres permits these actions, and the pgEdge Starfleet platform enforces
-no additional restrictions to prevent or reverse them.
+Postgres permits these actions, and the pgEdge Starfleet platform enforces no
+additional restrictions to prevent or reverse them.
 
-Because the MCP and RAG servers authenticate to the database as `app`,
-revoking a privilege from `app` also revokes it from those servers.
+Because the MCP and RAG servers authenticate to the database as `app`, revoking
+a privilege from `app` also revokes it from those servers.
 
 ## Next Steps
 
-* [Installing Extensions](managed_extensions.md) describes which role
-  installs which extension and what the refusal message means.
+* [Installing Extensions](managed_extensions.md) describes which role installs
+  which extension and what the refusal message means.
 * [Loading Data into Your pgEdge Starfleet Database](managed_loading_data.md)
   describes the load order that uses both roles.
 * [Connecting to a pgEdge Starfleet Database](../connecting/managed_index.md)

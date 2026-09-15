@@ -15,9 +15,9 @@ and a `Rotate credentials` button. The `Password` is masked until you select
 the reveal control beside it.
 
 The `Connection string` and `psql command` blocks are shown on screen without
-the password. The copy button beside each block copies the same value
-with the password included, so the clipboard holds a live credential even
-though the screen does not display it.
+the password. The copy button beside each block copies the same value with the
+password included, so the clipboard holds a live credential even though the
+screen does not display it.
 
 For details about each role's capabilities and which role to use, see
 [Managing Database Roles](../using_database/managed_roles.md).
@@ -26,9 +26,8 @@ For details about each role's capabilities and which role to use, see
 
     Connect as `app` to create tables and load data.
 
-    Connect as `admin` to install an allowlisted extension or
-    perform server-wide administration, such as monitoring sessions or
-    creating roles.
+    Connect as `admin` to install an allowlisted extension or perform
+    server-wide administration, such as monitoring sessions or creating roles.
 
 ![Connecting to your database](../images/sf_connecting.png)
 
@@ -38,22 +37,22 @@ The psql client is distributed with PostgreSQL, and is available for download
 at the Postgres website. For more information about psql, see the Postgres
 documentation at: [psql](https://www.postgresql.org/docs/18/app-psql.html)
 
-If you have already installed a copy of psql, connection is simple. Each tab
-of the `Connect` pane (`Admin` or `Application`) displays a ready-to-use psql
+If you have already installed a copy of psql, connection is simple. Each tab of
+the `Connect` pane (`Admin` or `Application`) displays a ready-to-use psql
 connection string. For example:
 
 ```bash
 PGSSLMODE=require PGPASSWORD=<your-password> psql -U admin -h <your-domain> -p <your-port> -d <your-database>
 ```
 
-Select the copy icon next to the psql connection string to copy it, paste
-it directly into a terminal window, and press `Return` to connect.
+Select the copy icon next to the psql connection string to copy it, paste it
+directly into a terminal window, and press `Return` to connect.
 
 !!! hint
 
-    The `PGSSLMODE=require` environment variable is the shell-variable
-    spelling of the `sslmode=require` setting the `Connection string` block
-    carries in its URI. Both enforce the required TLS connection.
+    The `PGSSLMODE=require` environment variable is the shell-variable spelling
+    of the `sslmode=require` setting the `Connection string` block carries in
+    its URI. Both enforce the required TLS connection.
 
 If you start psql with a graphical prompt or icon (rather than the command
 line) you can use the individual values from the psql connection string to
@@ -89,10 +88,9 @@ psql that you've just installed is the first version in your PATH:
 
 `echo 'export PATH="/usr/local/opt/libpq/bin:$PATH"' >> ~/.zshrc`
 
-Then, to connect to a pgEdge Starfleet database, use the copy button to
-the right of the connection string in the `Connect` section to copy the
-psql connection string of your database, and paste the string into the
-`Terminal`.
+Then, to connect to a pgEdge Starfleet database, use the copy button to the
+right of the connection string in the `Connect` section to copy the psql
+connection string of your database, and paste the string into the `Terminal`.
 
 ![Copying a Connection String](../images/sf_copy_conn_string.png)
 

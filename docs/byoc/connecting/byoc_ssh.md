@@ -2,9 +2,9 @@
 
 To connect to a pgEdge Starfleet BYOC node with ssh, specify the complete path
 and name of your SSH private key in the connection string. You should always
-use the identity of the `pgedge` user when connecting to the `External IP
-Address` noted in the BYOC console. Use the following signature when
-connecting:
+use the identity of the `pgedge` user when connecting to the
+`External IP Address` noted in the BYOC console. Use the following signature
+when connecting:
 
 `ssh -i path_to_key_file/key_file_name.pem pgedge@external_IP_address`
 

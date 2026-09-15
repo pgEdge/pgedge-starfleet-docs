@@ -1,8 +1,9 @@
 # Using the Settings Dialog
 
 In the lower-left corner of the pgEdge Starfleet BYOC console you'll find a
-link to the `Settings` dialog; you can use the `Settings` dialog to [modify
-your profile](#the-profile-tab), create an [API client](#the-api-clients-tab),
+link to the `Settings` dialog; you can use the `Settings` dialog to
+[modify your profile](#the-profile-tab), create an
+[API client](#the-api-clients-tab),
 [obtain or set account information](#the-team-tab), or review your cluster
 nodes on a map.
 
@@ -22,8 +23,7 @@ drop-down menu (located in the upper-right corner of the screen):
     The email associated with the account cannot be modified.
 
 When you've finished, select `Save` to update your account with the name
-changes; use the `Reset` icon to return the fields to their previous
-values.
+changes; use the `Reset` icon to return the fields to their previous values.
 
 ## The API Clients Tab
 
@@ -32,27 +32,26 @@ Select the `API Clients` tab to view, manage, or create an API client.
 ![The API Clients tab](./images/api_clients_tab.png)
 
 You can use options accessed on the API Clients tab, to define and delete API
-clients.  To create an client, select the `Create API Client` icon. When the
+clients. To create an client, select the `Create API Client` icon. When the
 `Create API Client` popup opens:
 
-* Provide a user-friendly name for the API client in the
-  `API Client Name` field.
-* Provide a brief description of the API client in the `Description`
+* Provide a user-friendly name for the API client in the `API Client Name`
   field.
+* Provide a brief description of the API client in the `Description` field.
 
 Then, to create the API client, click the `Create` button.
 
 ![Register an API Client](./images/API_client.png)
 
-When you create an API client, you will be provided an `Auth ID` and `Auth
-Secret` that you can use when connecting to BYOC with the API, and the new
-client will be added to the `API Clients` list.
+When you create an API client, you will be provided an `Auth ID` and
+`Auth Secret` that you can use when connecting to BYOC with the API, and the
+new client will be added to the `API Clients` list.
 
 !!! warning
 
-    Be sure to copy your `Auth Secret` when it is displayed on the `Client
-    created` popup and store it in a safe place; the `Auth Secret` cannot
-    be retrieved once the popup is closed.
+    Be sure to copy your `Auth Secret` when it is displayed on the
+    `Client created` popup and store it in a safe place; the `Auth Secret`
+    cannot be retrieved once the popup is closed.
 
 ![API Client created](./images/API_client_created.png)
 
@@ -81,6 +80,6 @@ The Team tab displays information about your account:
   troubleshooting).
 * The `External ID` is used in the AWS IAM trust policy, when granting access
   to an AWS account for cluster provisioning.
-* Update the `Team Name` to match your team, division, or company name.
-  This name appears in invitation emails when you invite other people to
-  join your account.
+* Update the `Team Name` to match your team, division, or company name. This
+  name appears in invitation emails when you invite other people to join your
+  account.

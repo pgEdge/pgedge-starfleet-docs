@@ -28,12 +28,11 @@ For example, to load a CSV file named `customers.csv` (with a header row of
     PGSSLMODE=require psql -U app -h <your-domain> -p <your-port> -d <your-database>
     ```
 
-    See [Connecting with psql](../connecting/managed_psql.md) for
-    directions about finding the ready-to-use `psql command` for your
-    database.
+    See [Connecting with psql](../connecting/managed_psql.md) for directions
+    about finding the ready-to-use `psql command` for your database.
 
-2.  Create the target table on your database with a column for each field
-    in your CSV file:
+2.  Create the target table on your database with a column for each field in
+    your CSV file:
 
     ```sql
     CREATE TABLE public.customers (
@@ -80,8 +79,8 @@ Copy the `psql command` from each tab rather than assembling one; the
 `psql command` already carries the TLS setting as `PGSSLMODE=require`, and it
 fills the password in when you copy it.
 
-Keep both `psql command` values out of your shell history and out of
-any file you commit.
+Keep both `psql command` values out of your shell history and out of any file
+you commit.
 
 Create the dump on the source database with `pg_dump`:
 
@@ -193,9 +192,9 @@ Run the count as `app`, from the `psql command` on the `Application` tab:
 SELECT count(*) FROM rulebook_sections;
 ```
 
-Compare each table against the source. Neither the exit code nor the
-console status distinguishes a table left at zero rows from the tables
-that loaded successfully.
+Compare each table against the source. Neither the exit code nor the console
+status distinguishes a table left at zero rows from the tables that loaded
+successfully.
 
 ## Loading Documents for the RAG Server
 

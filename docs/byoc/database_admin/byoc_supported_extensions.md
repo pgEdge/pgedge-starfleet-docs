@@ -1,10 +1,11 @@
 # Using Extensions with pgEdge Starfleet BYOC
 
 pgEdge Starfleet BYOC databases include pre-installed PostgreSQL extensions.
-Before using an extension, you must [create the
-extension](https://www.postgresql.org/docs/current/extend-extensions.html) in
-each database where the extension will be used. To create an extension, invoke
-the following command on the [psql command line](../connecting/byoc_psql.md):
+Before using an extension, you must
+[create the extension](https://www.postgresql.org/docs/current/extend-extensions.html)
+in each database where the extension will be used. To create an extension,
+invoke the following command on the
+[psql command line](../connecting/byoc_psql.md):
 
 ```sql
 CREATE EXTENSION extension_name;
@@ -16,9 +17,8 @@ For example, to create the pgvector extension, use the following command:
 CREATE EXTENSION vector;
 ```
 
-To review a list of installed extensions, use the psql command line
-client to display the `shared_preload_libraries` parameter with the
-`SHOW` command:
+To review a list of installed extensions, use the psql command line client to
+display the `shared_preload_libraries` parameter with the `SHOW` command:
 
 ```sql
 accts=# SHOW shared_preload_libraries;
@@ -28,14 +28,14 @@ pg_stat_statements, pg_readonly, pg_failover_slots, spock, vector, postgis-3
 (1 row)
 ```
 
-For detailed information about using each extension, visit the project
-site links provided in the table.
+For detailed information about using each extension, visit the project site
+links provided in the table.
 
 ## pgEdge and Community Extensions
 
-The following table describes the pgEdge and community extensions
-available in pgEdge Starfleet BYOC. Extension names match the name used
-in `CREATE EXTENSION` statements:
+The following table describes the pgEdge and community extensions available in
+pgEdge Starfleet BYOC. Extension names match the name used in
+`CREATE EXTENSION` statements:
 
 | Extension | Version | Description |
 |-----------|---------|-------------|
@@ -58,10 +58,9 @@ in `CREATE EXTENSION` statements:
 
 ## PostgreSQL Contrib Modules
 
-pgEdge Starfleet BYOC databases also include the standard PostgreSQL
-contrib modules.
-The following table describes the available contrib modules and includes
-links for more information:
+pgEdge Starfleet BYOC databases also include the standard PostgreSQL contrib
+modules. The following table describes the available contrib modules and
+includes links for more information:
 
 | Extension | Version | Description |
 |-----------|---------|-------------|
@@ -117,10 +116,10 @@ links for more information:
 
 ## Coming Soon
 
-The following extensions are included in the pgEdge Starfleet BYOC
-container image but require `shared_preload_libraries` configuration
-changes that are not yet available through the pgEdge Starfleet BYOC
-interface. These extensions will be supported in a future update.
+The following extensions are included in the pgEdge Starfleet BYOC container
+image but require `shared_preload_libraries` configuration changes that are not
+yet available through the pgEdge Starfleet BYOC interface. These extensions
+will be supported in a future update.
 
 | Extension | Version | Description |
 |-----------|---------|-------------|

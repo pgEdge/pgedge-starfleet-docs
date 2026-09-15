@@ -12,8 +12,7 @@ CreateVpc, https response error StatusCode: 400, RequestID:
 075bf34e-e7bc-4780-9854-2b9615d6a85b, api error VpcLimitExceeded: The maximum
 number of VPCs has been reached.*
 
-![Terraform apply failed: Error: creating EC2
-VPC](./images/creating_EC2_VPC_fails.png)
+![Terraform apply failed: Error: creating EC2 VPC](./images/creating_EC2_VPC_fails.png)
 
 This error occurs when you have reached the maximum number of VPCs allocated
 for your region; by default, 5 VPCs are allocated. To increase the number of
@@ -24,5 +23,5 @@ menu in the upper-right corner:
 ![The Team Management page](./images/service_quotas.png)
 
 For more information about viewing and managing service quotas on AWS, please
-see the [AWS
-documentation](https://aws.amazon.com/getting-started/hands-on/request-service-quota-increase/).
+see the
+[AWS documentation](https://aws.amazon.com/getting-started/hands-on/request-service-quota-increase/).

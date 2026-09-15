@@ -2,7 +2,7 @@
 
 You can use the pgEdge Starfleet BYOC `Backups` page to review and manage
 database backups; the `Backups` page also provides access to links that allow
-you to perform an ad hoc backup or restore.  To open the `Backups` page, select
+you to perform an ad hoc backup or restore. To open the `Backups` page, select
 a database name in the navigation panel and select the `Backups` node from the
 navigation tree.
 
@@ -34,8 +34,8 @@ The `Backups` table displays the backups currently stored for the database:
 
 ![The Backups table](../images/backups_table.png)
 
-The columns displayed in the `Backups` table will vary depending on
-your [backup provider](../backup/byoc_backup_providers.md):
+The columns displayed in the `Backups` table will vary depending on your
+[backup provider](../backup/byoc_backup_providers.md):
 
 * Use the tabs across the top of the table to select the node for which you
   wish to see the backups.
@@ -59,7 +59,7 @@ your [backup provider](../backup/byoc_backup_providers.md):
 
 !!! tip
 
-    If a pgBackRest backup fails, details are written to the [tricorder log
-    files](../database_admin/byoc_logs.md).  pg_dump backups that fail to
-    complete are not displayed in the `Backups` table or written to log
+    If a pgBackRest backup fails, details are written to the
+    [tricorder log files](../database_admin/byoc_logs.md). pg_dump backups that
+    fail to complete are not displayed in the `Backups` table or written to log
     files.

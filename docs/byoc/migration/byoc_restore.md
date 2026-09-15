@@ -66,9 +66,9 @@ schema.
 
 The version of pg_restore that you use must be the same version as the database
 in which you are creating the schema or objects. pg_dump and pg_restore are
-part of the `postgresql` installer; visit the [PostgreSQL
-website](https://www.postgresql.org/download/) to download an installer or for
-installation instructions for your platform.
+part of the `postgresql` installer; visit the
+[PostgreSQL website](https://www.postgresql.org/download/) to download an
+installer or for installation instructions for your platform.
 
 To restore an archive on pgAdmin, right-click the name of the database in the
 `Object Explorer` panel and select `Restore...` from the context menu.
@@ -102,11 +102,9 @@ if it encounters an error. A common problem occurs when restoring an object
 that resides in the `public` schema; the schema already exists, so pgAdmin
 returns an error.
 
-![pgAdmin error from existing
-schema](../images/pgadmin_error_schema_exists.png)
+![pgAdmin error from existing schema](../images/pgadmin_error_schema_exists.png)
 
 You can avoid this problem when creating tables in the `public` schema by first
 dropping the schema, then recreating it when you restore the .tar file.
 
-![pgAdmin successfully restoring
-schema](../images/pgadmin_recreate_public_schema.png)
+![pgAdmin successfully restoring schema](../images/pgadmin_recreate_public_schema.png)

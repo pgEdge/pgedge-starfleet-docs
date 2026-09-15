@@ -59,25 +59,26 @@ The new database is also shown on a pane on the Databases page:
 
 The wizard displays a message when a step fails:
 
-* `Couldn't check billing status` is displayed with the body text: `We
-  couldn't confirm your billing status. Please retry before continuing.`. The
-  message includes a `Retry` button.
+* `Couldn't check billing status` is displayed with the body text:
+  `We couldn't confirm your billing status. Please retry before continuing.`.
+  The message includes a `Retry` button.
 
     The account requires a payment method before you can create a database;
-    continuing past an unconfirmed billing status risks a refusal at the end
-    of the wizard.
+    continuing past an unconfirmed billing status risks a refusal at the end of
+    the wizard.
 
-* `Something went wrong` is displayed with the body text: `Unable to start
-  checkout. Please try again.`  The message includes a `Back` button.
+* `Something went wrong` is displayed with the body text:
+  `Unable to start checkout. Please try again.` The message includes a `Back`
+  button.
 
     The payment step could not open a checkout session. If the API sends a
     message of its own, it will replace the body text.
 
-* `Confirmation failed` is displayed with the body text: `We couldn't confirm
-  your payment method.`
+* `Confirmation failed` is displayed with the body text:
+  `We couldn't confirm your payment method.`
 
     The panel also notes that the card may still have been saved, so check
     again in a moment before entering the card a second time.
 
-* `Couldn't create your database` means the create request itself failed.
-  The panel displays the reason, as well as `Try again` and `Back` buttons.
+* `Couldn't create your database` means the create request itself failed. The
+  panel displays the reason, as well as `Try again` and `Back` buttons.

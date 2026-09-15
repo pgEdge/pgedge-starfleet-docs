@@ -16,9 +16,9 @@ log file type:
   Engine. ACE logs are only available for customers that enable ACE monitoring.
 
 Use the `Auto refresh`/`Manual refresh` drop-down to specify if the log entries
-should update automatically (`Auto refresh`), or to pause updating (`Manual
-refresh`) for easier viewing. To manually refresh the log table's content,
-select the refresh button to the right of the drop-down.
+should update automatically (`Auto refresh`), or to pause updating
+(`Manual refresh`) for easier viewing. To manually refresh the log table's
+content, select the refresh button to the right of the drop-down.
 
 You can sort or search the log files using options in the top bar of the log
 table:

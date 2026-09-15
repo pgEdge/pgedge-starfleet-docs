@@ -1,8 +1,8 @@
 # Adding an Ingress to a Private Cluster
 
-When you create a private pgEdge Starfleet BYOC cluster, you restrict
-access to only those users on your local network.  You can define an
-ingress for users not on your network that exposes AI Tooling for use.
+When you create a private pgEdge Starfleet BYOC cluster, you restrict access to
+only those users on your local network. You can define an ingress for users not
+on your network that exposes AI Tooling for use.
 
 !!! note
 
@@ -17,11 +17,10 @@ drop-down menu.
 
 Complete the `Create Ingress` dialog; use the:
 
-* `Name` field to enter a name for the ingress. This name is used
-  to identify the ingress in the UI and API.
+* `Name` field to enter a name for the ingress. This name is used to identify
+  the ingress in the UI and API.
 
-* `Region` field to select the region where the ingress will be
-  created.
+* `Region` field to select the region where the ingress will be created.
 
 After completing the dialog, select the `+ Create Ingress` icon to create the
 defined ingress.

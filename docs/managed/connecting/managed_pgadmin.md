@@ -22,11 +22,11 @@ page:
 
 * Provide the name of your database in the `Maintenance database` field.
 
-* Replace the default `Username` with `app` when connecting for the first
-  time. The `app` user owns the database, so the tables and other objects it
-  creates belong to the role your application connects as. Use the `admin`
-  user to install an allowlisted extension, or for the server-wide work
-  described in [Managing Database Roles](../using_database/managed_roles.md).
+* Replace the default `Username` with `app` when connecting for the first time.
+  The `app` user owns the database, so the tables and other objects it creates
+  belong to the role your application connects as. Use the `admin` user to
+  install an allowlisted extension, or for the server-wide work described in
+  [Managing Database Roles](../using_database/managed_roles.md).
 
 * Enter the password associated with the user in the `Password` field.
 

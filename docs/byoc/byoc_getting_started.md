@@ -1,10 +1,9 @@
 # Getting Started with pgEdge Starfleet BYOC
 
-Getting started with pgEdge Starfleet BYOC is easy; simply navigate to [the
-pgEdge sign-in
-page](https://app.pgedge.com/login?plan=developer&screen_hint=signup) and
-follow the provided link to create an account, or log in with your Google or
-GitHub account.
+Getting started with pgEdge Starfleet BYOC is easy; simply navigate to
+[the pgEdge sign-in page](https://app.pgedge.com/login?plan=developer&screen_hint=signup)
+and follow the provided link to create an account, or log in with your Google
+or GitHub account.
 
 BYOC has two deployment options; you can deploy:
 

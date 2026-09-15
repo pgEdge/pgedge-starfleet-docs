@@ -54,9 +54,9 @@ with credentials for the `app` user. Each tab displays:
 
 Select the copy icon next to any field to copy its value.
 
-The two users have different permissions on the database. Connect as `app`
-to create tables and load data, and as `admin` to install an allowlisted
-extension or for server-wide work.
+The two users have different permissions on the database. Connect as `app` to
+create tables and load data, and as `admin` to install an allowlisted extension
+or for server-wide work.
 [Managing Database Roles](../using_database/managed_roles.md) describes what
 each one can do.
 
@@ -64,19 +64,19 @@ each one can do.
 
 The pane shows one of three messages in place of connection details:
 
-* `Couldn't load connection details. Please refresh and try again.` means
-  the pane could not read the per-role credentials. Refresh. A connection
-  string you already hold keeps working.
+* `Couldn't load connection details. Please refresh and try again.` means the
+  pane could not read the per-role credentials. Refresh. A connection string
+  you already hold keeps working.
 
-* `Connection details are unavailable.` means the pane has the database but
-  not enough of it to build a connection string, because the host, port or
-  database name is missing. A `failed` database reads this way. Wait for the
-  database to reach `Available` and reload.
+* `Connection details are unavailable.` means the pane has the database but not
+  enough of it to build a connection string, because the host, port or database
+  name is missing. A `failed` database reads this way. Wait for the database to
+  reach `Available` and reload.
 
-* `This database is <status> and is not available to connect right now.`
-  names a status the pane treats as not connectable: `deleting`,
-  `suspending`, `suspended`, `resuming`, or any status the console does not
-  recognize. Read the status against
+* `This database is <status> and is not available to connect right now.` names
+  a status the pane treats as not connectable: `deleting`, `suspending`,
+  `suspended`, `resuming`, or any status the console does not recognize. Read
+  the status against
   [Database Statuses](managed_activity_log.md#database-statuses).
 
 A database that is still being created shows a provisioning message instead.
@@ -85,10 +85,10 @@ A database that is still being created shows a provisioning message instead.
 
 For detailed information about:
 
-* installing the psql client and connecting to the database, see [Connecting
-  with psql](../connecting/managed_psql.md).
-* Postgres SQL commands, see the [Postgres
-  documentation](https://www.postgresql.org/docs/18/sql-commands.html).
+* installing the psql client and connecting to the database, see
+  [Connecting with psql](../connecting/managed_psql.md).
+* Postgres SQL commands, see the
+  [Postgres documentation](https://www.postgresql.org/docs/18/sql-commands.html).
 
 ## The AI Services Pane
 
@@ -99,8 +99,8 @@ on your Postgres database, including an MCP server and a RAG server. Select
 `Enable MCP` or `Enable RAG` to add a service; once a service is deployed,
 select its `Details` button to view connection details and manage it.
 
-For detailed information about enabling, configuring, and connecting to
-these services, see
+For detailed information about enabling, configuring, and connecting to these
+services, see
 [Enabling and Using the MCP Server](../serving_ai_content/managed_mcp.md) or
 [Enabling and Using the RAG Server](../serving_ai_content/managed_rag.md).
 
@@ -183,9 +183,9 @@ change the size of your database. For what each size gives you, see
 
 Two notifications can appear after you add a payment method.
 `Payment saved, but we could not refresh billing status.` means the card was
-saved and the console could not re-read the billing state afterwards, so
-reload the page. `Still unable to load billing status.` means a retry of that
-read failed again.
+saved and the console could not re-read the billing state afterwards, so reload
+the page. `Still unable to load billing status.` means a retry of that read
+failed again.
 
 ### Details
 
@@ -206,11 +206,11 @@ your database.
 Two messages replace the whole page:
 
 * `Couldn't load this database. Please try again shortly.` means the console
-  could not read the database record. The `Metrics`, `Logs` and `Backups`
-  pages read the same way. Reload the page. If it repeats, check the
-  Databases list, because a database that has been deleted reads this way
-  from a bookmarked URL.
+  could not read the database record. The `Metrics`, `Logs` and `Backups` pages
+  read the same way. Reload the page. If it repeats, check the Databases list,
+  because a database that has been deleted reads this way from a bookmarked
+  URL.
 
-* `Database not found` means the read succeeded and returned no record for
-  the database ID in the URL. Go back to the Databases list, and if you
-  expected the database to exist, check that you are in the right account.
+* `Database not found` means the read succeeded and returned no record for the
+  database ID in the URL. Go back to the Databases list, and if you expected
+  the database to exist, check that you are in the right account.
