@@ -6,5 +6,5 @@ managed/connecting/managed_index.md
 managed/using_console/managed_backups.md
 managed/using_console/managed_metrics.md
 managed/using_console/managed_logs.md
-managed/serving_ai_content/mcp.md
-managed/serving_ai_content/rag.md
+managed/serving_ai_content/managed_mcp.md
+managed/serving_ai_content/managed_rag.md

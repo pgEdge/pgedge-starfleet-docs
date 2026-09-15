@@ -96,16 +96,16 @@ nav:
     - Overview: managed/managed_index.md
     - managed/managed_creating_managed.md
     - Using the pgEdge Starfleet Console:
-      - "Using the pgEdge Starfleet Console: Overview": managed/using_console/console_overview.md
+      - "Using the pgEdge Starfleet Console: Overview": managed/using_console/managed_console_overview.md
       - Enabling AI Services:
-        - Enabling and Using the MCP Server: managed/serving_ai_content/mcp.md
-        - Enabling and Using the RAG Server: managed/serving_ai_content/rag.md
+        - Enabling and Using the MCP Server: managed/serving_ai_content/managed_mcp.md
+        - Enabling and Using the RAG Server: managed/serving_ai_content/managed_rag.md
       - Monitoring System Metrics: managed/using_console/managed_metrics.md
       - Reviewing the Log Files: managed/using_console/managed_logs.md
       - Restoring from Backup: managed/using_console/managed_backups.md
-      - Reviewing the Activity Log: managed/using_console/activity_log.md
-      - Managing Account Settings: managed/using_console/settings.md
-      - Managing Team Members: managed/using_console/team_management.md
+      - Reviewing the Activity Log: managed/using_console/managed_activity_log.md
+      - Managing Account Settings: managed/using_console/managed_settings.md
+      - Managing Team Members: managed/using_console/managed_team_management.md
       - Accessing Management Options with the Actions Menu: managed/using_console/managed_actions.md
     - Connecting to a pgEdge Starfleet Database:
       - managed/connecting/managed_index.md
@@ -113,11 +113,11 @@ nav:
       - Connecting with psql: managed/connecting/managed_psql.md
       - Connecting with pgAdmin: managed/connecting/managed_pgadmin.md
     - Using Your Database:
-      - Managing Database Roles: managed/using_database/roles.md
-      - Rotating Database Credentials: managed/using_database/rotate_credentials.md
-      - Selecting or Modifying the Database Size: managed/using_database/sizes.md
-      - Loading Data into Your pgEdge Starfleet Database: managed/using_database/loading_data.md
-      - Installing Extensions: managed/using_database/extensions.md
-      - ORM and Framework Guides: managed/using_database/orm_guides.md
+      - Managing Database Roles: managed/using_database/managed_roles.md
+      - Rotating Database Credentials: managed/using_database/managed_rotate_credentials.md
+      - Selecting or Modifying the Database Size: managed/using_database/managed_sizes.md
+      - Loading Data into Your pgEdge Starfleet Database: managed/using_database/managed_loading_data.md
+      - Installing Extensions: managed/using_database/managed_extensions.md
+      - ORM and Framework Guides: managed/using_database/managed_orm_guides.md
     - Community: managed/managed_community.md
     - Docs: managed/managed_docs_link.md

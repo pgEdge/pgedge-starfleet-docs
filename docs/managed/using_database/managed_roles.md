@@ -97,7 +97,7 @@ For details about reading and handling these credentials, see
 [Connecting with psql](../connecting/managed_psql.md).
 
 For details about replacing a password, see
-[Rotating Database Credentials](rotate_credentials.md).
+[Rotating Database Credentials](managed_rotate_credentials.md).
 
 The MCP and RAG servers connect to the database as `app`. As a result,
 each server can read and change whatever `app` can, and rotating the
@@ -120,9 +120,9 @@ revoking a privilege from `app` also revokes it from those servers.
 
 ## Next Steps
 
-* [Installing Extensions](extensions.md) describes which role
+* [Installing Extensions](managed_extensions.md) describes which role
   installs which extension and what the refusal message means.
-* [Loading Data into Your pgEdge Starfleet Database](loading_data.md)
+* [Loading Data into Your pgEdge Starfleet Database](managed_loading_data.md)
   describes the load order that uses both roles.
 * [Connecting to a pgEdge Starfleet Database](../connecting/managed_index.md)
   describes the clients and how each one takes the credentials.

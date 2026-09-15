@@ -17,9 +17,9 @@ role that created it, so a framework connected as `app` owns every table
 its migrations create and can alter or drop them later.
 
 For more information about the `Connect` pane, see
-[The Connect Pane](../using_console/console_overview.md#the-connect-pane).
+[The Connect Pane](../using_console/managed_console_overview.md#the-connect-pane).
 For more information about default role permissions, see
-[Managing Database Roles](roles.md).
+[Managing Database Roles](managed_roles.md).
 
 Every recipe below reads the connection string from `DATABASE_URL`. Put
 the string there via a secrets mechanism rather than an exported shell
@@ -61,7 +61,7 @@ Neither role is a superuser. An extension Postgres marks trusted, such as
 pgEdge allowlist, such as `vector`, `postgis`, or `pg_cron`, installs as
 `admin` only, and `app` is refused with `Must be superuser to create this
 extension`. The full table, the refusal messages, and the install order are
-in [Installing Extensions](extensions.md).
+in [Installing Extensions](managed_extensions.md).
 
 A migration run with the `Application` tab's string installs `pgcrypto`
 without trouble, because that string connects as the `app` role. A
@@ -228,15 +228,15 @@ servers; each server reads the password once at startup.
 
 * [Connecting to a pgEdge Starfleet Database](../connecting/managed_index.md)
   describes connecting with psql, pgAdmin, and the AI DBA Workbench.
-* [Managing Database Roles](roles.md) describes the two roles.
-* [Loading Data into Your pgEdge Starfleet Database](loading_data.md)
+* [Managing Database Roles](managed_roles.md) describes the two roles.
+* [Loading Data into Your pgEdge Starfleet Database](managed_loading_data.md)
   describes the first data load, which usually happens before the
   first migration.
-* [Installing Extensions](extensions.md) describes which role installs
+* [Installing Extensions](managed_extensions.md) describes which role installs
   which extension and what the refusal message means.
 * [Restoring from Backup](../using_console/managed_backups.md) describes
   restoring in place after a migration goes wrong.
-* [Enabling and Using the MCP Server](../serving_ai_content/mcp.md)
+* [Enabling and Using the MCP Server](../serving_ai_content/managed_mcp.md)
   describes the server that a rotation of `app` restarts.
 
 [prisma-pg]: https://www.prisma.io/docs/orm/overview/databases/postgresql

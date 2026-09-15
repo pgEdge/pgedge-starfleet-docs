@@ -8,7 +8,7 @@ Postgres database, and loading documents for the RAG server.
 You should load schema and data as the `app` user (the `Application` tab
 credentials), so that every object ends up owned by the role your application
 connects as. The `admin` user can insert data into tables that already exist.
-For what each role can do, see [Managing Database Roles](roles.md).
+For what each role can do, see [Managing Database Roles](managed_roles.md).
 
 ## Loading CSV Data with `\copy`
 
@@ -117,7 +117,7 @@ Loading a schema before the extensions it depends on exist fails on the first
 object that needs one.
 
 For which extension requires which role, see
-[Installing Extensions](extensions.md).
+[Installing Extensions](managed_extensions.md).
 
 `pg_dump` and `pg_restore` are ordinary Postgres clients, so the same
 connection requirements described in
@@ -202,6 +202,6 @@ that loaded successfully.
 The methods above load structured, relational data into tables. If you're
 loading unstructured documents (HTML, Markdown, or reStructuredText) to use
 with a RAG server, use `pgedge-docloader` instead. See
-[Using the RAG Server](../serving_ai_content/rag.md#using-the-rag-server).
+[Using the RAG Server](../serving_ai_content/managed_rag.md#using-the-rag-server).
 Because the docloader creates a `documents` table, configure it with the `app`
 user's connection details, not `admin`.

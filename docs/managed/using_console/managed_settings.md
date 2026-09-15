@@ -38,7 +38,7 @@ its value. When you change the `Team Name`, select `Save` to apply the
 change, or `Reset` to revert it.
 
 For information about inviting and managing team members, see
-[Managing Team Members](team_management.md).
+[Managing Team Members](managed_team_management.md).
 
 ## The API Clients Tab
 
@@ -77,4 +77,4 @@ change your billing details.
 
 This account-level billing is separate from the size and price of an
 individual database; for details about a specific database's size tier and
-price, see [Plan and Billing](console_overview.md#plan-and-billing).
+price, see [Plan and Billing](managed_console_overview.md#plan-and-billing).

@@ -127,11 +127,11 @@ connection.
     ![Adding a database server in the Workbench](../images/sf_add_database.png)
 
 2.  In the pgEdge Starfleet console, navigate to the
-    [`Connect`](../using_console/console_overview.md#the-connect-pane)
+    [`Connect`](../using_console/managed_console_overview.md#the-connect-pane)
     pane to find the values you'll need to connect to your database.
 
 3.  Complete the server definition using the values from the
-    [`Connect`](../using_console/console_overview.md#the-connect-pane) pane:
+    [`Connect`](../using_console/managed_console_overview.md#the-connect-pane) pane:
 
     * `Name` is a display name for this connection; when connected, the name
       is displayed in the left navigation pane of Workbench.
@@ -139,7 +139,7 @@ connection.
     * `Port` is the PostgreSQL listener port; enter `5432`.
     * `Username` is either `admin` or `app`; use the name that provides
       the permissions required (see
-      [Managing Database Roles](../using_database/roles.md)).
+      [Managing Database Roles](../using_database/managed_roles.md)).
     * `Password` is the corresponding `Password` value from the `Connect`
       pane.
     * `SSL Mode` must be set to `require`.

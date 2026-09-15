@@ -25,7 +25,7 @@ and still refuse the write.
 
 For the location of the `Connect` pane, see
 [Connecting with psql](../connecting/managed_psql.md). For the purpose of each
-role, see [Managing Database Roles](roles.md).
+role, see [Managing Database Roles](managed_roles.md).
 
 ## What Happens When You Confirm
 
@@ -41,7 +41,7 @@ Confirming does three things:
 * A `rotate-password-managed` task appears in the Activity Log for this
   database. The call returns no task ID, so find the task by pasting the
   database ID into the Activity Log's `Subject ID` filter. See
-  [Reviewing the Activity Log](../using_console/activity_log.md).
+  [Reviewing the Activity Log](../using_console/managed_activity_log.md).
 
 * The console re-reads every per-role credential, so the `Connect` pane shows
   the new password rather than a stale one for any role.
@@ -77,7 +77,7 @@ resume using the new password by the time the database reads
 
 Expect a short gap in service on both, and no change to your MCP client
 configuration. See
-[Enabling and Using the MCP Server](../serving_ai_content/mcp.md).
+[Enabling and Using the MCP Server](../serving_ai_content/managed_mcp.md).
 
 Rotating the `Admin` role does not restart them, because both servers
 connect as `app`.
@@ -128,7 +128,7 @@ another rotation until it is recovered.
 
 The pgEdge Cloud API authenticates with an API client, managed on the
 `API Clients` tab under `Settings`. See
-[The API Clients Tab](../using_console/settings.md#the-api-clients-tab).
+[The API Clients Tab](../using_console/managed_settings.md#the-api-clients-tab).
 
 A client's secret is returned once, at creation, and cannot be fetched again.
 The creation dialog says so directly: "Please copy the authentication ID and
@@ -152,12 +152,13 @@ itself:
 
 ## Next Steps
 
-* [Managing Database Roles](roles.md) describes the roles whose passwords these
-  are, and [Connecting with psql](../connecting/managed_psql.md) explains how
+* [Managing Database Roles](managed_roles.md) describes the roles
+  whose passwords these are, and
+  [Connecting with psql](../connecting/managed_psql.md) explains how
   to handle the password once you have it.
 
-* [Enabling and Using the MCP Server](../serving_ai_content/mcp.md)
+* [Enabling and Using the MCP Server](../serving_ai_content/managed_mcp.md)
   describes the server a rotation of the `Application` role restarts.
 
-* [Reviewing the Activity Log](../using_console/activity_log.md)
+* [Reviewing the Activity Log](../using_console/managed_activity_log.md)
   explains how to find the `rotate-password-managed` task.

@@ -57,7 +57,7 @@ Select the copy icon next to any field to copy its value.
 The two users have different permissions on the database. Connect as `app`
 to create tables and load data, and as `admin` to install an allowlisted
 extension or for server-wide work.
-[Managing Database Roles](../using_database/roles.md) describes what
+[Managing Database Roles](../using_database/managed_roles.md) describes what
 each one can do.
 
 ### When the Connect Pane Shows a Message Instead
@@ -77,7 +77,7 @@ The pane shows one of three messages in place of connection details:
   names a status the pane treats as not connectable: `deleting`,
   `suspending`, `suspended`, `resuming`, or any status the console does not
   recognize. Read the status against
-  [Database Statuses](activity_log.md#database-statuses).
+  [Database Statuses](managed_activity_log.md#database-statuses).
 
 A database that is still being created shows a provisioning message instead.
 
@@ -101,8 +101,8 @@ select its `Details` button to view connection details and manage it.
 
 For detailed information about enabling, configuring, and connecting to
 these services, see
-[Enabling and Using the MCP Server](../serving_ai_content/mcp.md) or
-[Enabling and Using the RAG Server](../serving_ai_content/rag.md).
+[Enabling and Using the MCP Server](../serving_ai_content/managed_mcp.md) or
+[Enabling and Using the RAG Server](../serving_ai_content/managed_rag.md).
 
 ## The Backups Pane
 
@@ -179,7 +179,7 @@ and configuration of your database.
 The `Plan & billing` pane displays the current size tier of your database and
 the price you'll be billed after any free trial ends. Select `Upgrade size` to
 change the size of your database. For what each size gives you, see
-[Selecting a Database Size](../using_database/sizes.md).
+[Selecting a Database Size](../using_database/managed_sizes.md).
 
 Two notifications can appear after you add a payment method.
 `Payment saved, but we could not refresh billing status.` means the card was

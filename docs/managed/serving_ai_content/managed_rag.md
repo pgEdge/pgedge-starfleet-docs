@@ -320,7 +320,7 @@ server can retrieve against it.
 4.  Populate the `embedding` column for each row. Before populating
     the column, enable the MCP server with `Generate embeddings` and
     `Allow writes` enabled (see
-    [Enabling the MCP Server](mcp.md#enabling-the-mcp-server)). If you
+    [Enabling the MCP Server](managed_mcp.md#enabling-the-mcp-server)). If you
     enable an AI client (like Claude Code), you can ask the interface
     to:
 

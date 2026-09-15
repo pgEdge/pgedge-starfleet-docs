@@ -38,7 +38,7 @@ against a database that is `creating`, `modifying`, `degraded`, or
 already busy with an earlier write.
 
 For the statuses and the task names, see
-[Reviewing the Activity Log](activity_log.md).
+[Reviewing the Activity Log](managed_activity_log.md).
 
 ## Restoring Your Database
 
@@ -130,5 +130,5 @@ again.
 
 ## Related Pages
 
-* [Reviewing the Activity Log](activity_log.md) describes the
+* [Reviewing the Activity Log](managed_activity_log.md) describes the
   statuses and the task names a restore moves through.
