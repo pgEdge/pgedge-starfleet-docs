@@ -111,7 +111,7 @@ cluster definition on the `Clusters` page.
 Next, you'll create a database. You can use the link on the progress
 tracker to navigate to the database creation page.
 
-![Select Import SSH Key](../images/gs_create_database.png)
+![Select Create Database](../images/gs_create_database.png)
 
 When you're ready, select `Create Database` to create your new database
 and exit the progress tracker.

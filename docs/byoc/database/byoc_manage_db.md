@@ -3,7 +3,7 @@
 Highlight a database name in the navigation tree to display detailed
 database information in the pgEdge Starfleet BYOC console.
 
-![pgEdge Database Console](../images/manage_db.png)
+![The database console](../images/manage_db.png)
 
 Console content is displayed in a series of panes that simplify
 database management; navigate to a pane to review information or perform
@@ -32,12 +32,12 @@ To change the name of a database that is displayed in the navigation pane,
 highlight the database name and select `Edit Display Name` from the `Actions`
 menu.
 
-![pgEdge Database Console](../images/actions_database.png)
+![Database Actions menu](../images/actions_database.png)
 
 When the `Change Display Name` popup opens, enter the new database name in the
 `Display Name` field and select `Apply`.
 
-![pgEdge Database Console](../images/edit_display_name.png)
+![The Change Display Name dialog](../images/edit_display_name.png)
 
 ## The Get Started Pane
 
@@ -73,7 +73,7 @@ the nodes in your cluster. Select a node tab (from across the top of the pane)
 and `User` (`app`, `app_read_only`, or `admin`) to access connection details
 for a specific node/user pair.
 
-![Users Pane](../images/connect_to_your_database.png)
+![The Connect to your database pane](../images/connect_to_your_database.png)
 
 For detailed information about using the connection information to connect
 to your database, see [Connecting](../connecting/byoc_index.md).
