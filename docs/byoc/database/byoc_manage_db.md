@@ -52,7 +52,7 @@ For detailed information about:
 * installing the psql client and connecting to the database, see
   [Connecting](../connecting/byoc_index.md).
 * moving a database object into your database, see
-  [Migrating to pgEdge Starfleet BYOC](../migration/index.md).
+  [Migrating to pgEdge Starfleet BYOC](../migration/byoc_index.md).
 * Postgres SQL commands, see the
 [Postgres documentation](https://www.postgresql.org/docs/16/sql-commands.html).
 

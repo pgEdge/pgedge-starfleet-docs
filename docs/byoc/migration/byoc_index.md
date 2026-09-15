@@ -34,5 +34,5 @@ database object to a pgEdge Starfleet BYOC database:
 
 For more details, see:
 
-* [Taking a Backup](./backup.md)
-* [Restoring a Backup](./restore.md)
+* [Taking a Backup](./byoc_backup.md)
+* [Restoring a Backup](./byoc_restore.md)

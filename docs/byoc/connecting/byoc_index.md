@@ -10,7 +10,7 @@ custom clients as well. All authenticating clients must:
 * use an SSH key when connecting.
 
 Additionally, you must open ports for connection when
-[creating your cluster](../cluster/create_cluster.md).
+[creating your cluster](../cluster/byoc_create_cluster.md).
 
 ## Connecting to a Cluster
 

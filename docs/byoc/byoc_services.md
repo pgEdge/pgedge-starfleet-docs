@@ -11,7 +11,7 @@ functionality to an existing cluster or to manage defined functionality.
 
     If your BYOC cluster resides on a private network, you can expose a
     port for connections by
-    [creating a public ingress](cluster/ingress.md).
+    [creating a public ingress](cluster/byoc_ingress.md).
     An ingress into a private network is used only for services (like AI 
     tools), and does not accept Postgres database connections.
     

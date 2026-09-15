@@ -79,7 +79,7 @@ description of the account in the `Account Description` field. Select the `Link
 Account` button to finish linking your account.
 
 With a linked account in place, you're ready to
-[create an Enterprise Edition cluster](../../cluster/create_cluster.md).
+[create an Enterprise Edition cluster](../../cluster/byoc_create_cluster.md).
 
 ## Creating an AWS Key Pair
 

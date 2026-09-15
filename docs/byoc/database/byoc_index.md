@@ -20,6 +20,6 @@ to:
 * Use the `Sort/Filter` controls to sort the displayed panes by database
   `status`, `age`, or `name`.
 * Use the `+ New Database` button to open a dialog that allows you to [define a
-  new database](create_db.md).
+  new database](byoc_create_db.md).
 * Double-click a database name in the navigation pane or select a database pane
   to navigate to a details page for the database.

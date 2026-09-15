@@ -49,7 +49,8 @@ information required by each provider to deploy on BYOC.
 
 ![Provide Cloud Provider details](../images/gs_account_details.png)
 
-If you're [deploying on AWS](../prerequisites/cloud_accounts/link_to_AWS.md),
+If you're
+[deploying on AWS](../prerequisites/cloud_accounts/byoc_link_to_AWS.md),
 you can use the `Create Stack Wizard` to use a completed AWS CloudFormation
 template to create an AWS role with the required permissions; use the link
 circled in red above to navigate to the wizard and retrieve your ARN.
@@ -66,7 +67,7 @@ your preferred provider.
 
 ![Create a Backup Store](../images/gs_backup_store.png)
 
-Select [Create Backup Store](../cluster/backup_store.md) to navigate to
+Select [Create Backup Store](../cluster/byoc_backup_store.md) to navigate to
 the `Create Backup Store` dialog; complete the dialog and click `Create
 Backup Store` to continue.
 
@@ -76,9 +77,10 @@ import an SSH key.
 
 ![Progress tracker](../images/gs_progress_two.png)
 
-Next, you'll [import an SSH key](../prerequisites/ssh_key.md). You can use the
-link on the progress tracker to navigate to an informational page with links to
-more information about importing keys.
+Next, you'll [import an SSH key](../prerequisites/byoc_ssh_key.md). You
+can use the link on the progress tracker to navigate to an
+informational page with links to more information about importing
+keys.
 
 ![Import an SSH Key](../images/gs_import_ssh_key.png)
 
@@ -89,9 +91,10 @@ dialog.
 
 ![Progress tracker](../images/gs_progress_three.png)
 
-Next, you'll [create a cluster](../cluster/create_cluster.md). A cluster is a
-database container that can house one or more databases in one or more regions.
-Single-region clusters are not distributed; distributed clusters have databases
+Next, you'll [create a cluster](../cluster/byoc_create_cluster.md). A
+cluster is a database container that can house one or more databases
+in one or more regions. Single-region clusters are not distributed;
+distributed clusters have databases
 in multiple regions.
 
 Use the link on the progress tracker to navigate to a page with more

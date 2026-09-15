@@ -35,7 +35,7 @@ The `Backups` table displays the backups currently stored for the database:
 ![The Backups table](../images/backups_table.png)
 
 The columns displayed in the `Backups` table will vary depending on
-your [backup provider](../backup/backup_providers.md):
+your [backup provider](../backup/byoc_backup_providers.md):
 
 * Use the tabs across the top of the table to select the node for which you
   wish to see the backups.

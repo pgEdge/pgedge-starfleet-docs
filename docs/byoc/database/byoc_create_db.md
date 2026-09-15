@@ -36,7 +36,7 @@ Use the fields in this section to customize the backup strategy; select the
 `edit` icon (a pencil) in the upper-right corner to modify backup settings.
 The default configuration defines a schedule that includes a daily full
 backup with hourly incremental backups. Use the `Add Configuration` button
-to [create a custom schedule](../backup/backup_providers.md) for the
+to [create a custom schedule](../backup/byoc_backup_providers.md) for the
 database.
 
 !!! note

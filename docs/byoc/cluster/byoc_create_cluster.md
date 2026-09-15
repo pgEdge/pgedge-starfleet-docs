@@ -3,7 +3,7 @@
 !!! info
 
     To create a cluster with pgEdge Starfleet BYOC, you must have a
-    [linked cloud provider account](../prerequisites/cloud_accounts/index.md).
+    [linked cloud provider account](../prerequisites/cloud_accounts/byoc_index.md).
 
 To create a cluster, navigate to the `Clusters` page and select the
 `+ New Cluster` button. When the `Create New Cluster` page opens,
@@ -12,7 +12,7 @@ provide a unique name for the cluster in the `Cluster Name` field.
 ![Provide a cluster name](../images/unique_cluster_name.png)
 
 Use the drop-down listbox in the `Cloud Account` field to select the
-[cloud provider account](../prerequisites/cloud_accounts/index.md)
+[cloud provider account](../prerequisites/cloud_accounts/byoc_index.md)
 used to provision the cluster.
 
 ![Select a cloud account](../images/cloud_account.png)
@@ -70,7 +70,7 @@ Specify the vendor-specific deployment details for the cluster.
   10 TB.
 
 - Use the `SSH Key` drop-down to select a key pair from the list of
-  [imported key pairs](../prerequisites/ssh_key.md). A key pair is
+  [imported key pairs](../prerequisites/byoc_ssh_key.md). A key pair is
   required to SSH to a cluster; without a key, connections to databases
   provisioned on the cluster are available, but SSH connections to the
   host are not.
@@ -85,7 +85,7 @@ As you define backup stores, remember that selecting backup stores near your
 cluster nodes will reduce network latency during the backup process. Use the
 drop-down field or select locations on the map to include a specific store.
 
-A [`Resource Tag`](resource_tag.md) is a user-defined key/value pair
+A [`Resource Tag`](byoc_resource_tag.md) is a user-defined key/value pair
 attached to a cluster definition. The tag is displayed under the cluster
 name on the `Clusters` page. Use tags to categorize cloud resources or
 search for resources used by specific teams or applications. For example,
@@ -97,7 +97,7 @@ and `Value`; the terms are displayed with a `/` delimiter.
 
 ![Adding a resource tag](../images/resource_tag_add.png)
 
-Define a [VPC association](vpc_assoc.md) to configure VPC peering and,
+Define a [VPC association](byoc_vpc_assoc.md) to configure VPC peering and,
 if needed, private zone routing between any defined VPCs and the pgEdge
 cluster network. Peering allows an application to connect seamlessly to
 any node across regions, enabling latency routing and DNS failover. VPC
@@ -108,7 +108,7 @@ access to the cluster.
 
 ![Define a VPC Association](../images/vpc_association.png)
 
-Use the [`Firewall Rules`](firewall.md) field to open ports on each node
+Use the [`Firewall Rules`](byoc_firewall.md) field to open ports on each node
 of the cluster for connections. Select the `+ Add Firewall Rule` icon to
 add a rule.
 

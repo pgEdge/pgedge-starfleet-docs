@@ -17,7 +17,8 @@ information about the selected cluster:
 - The `Cluster ID` associated with the cluster.
 - The name of the cloud provider account on which the cluster resides;
   select the account name to navigate to the details page for the account.
-- User-defined [resource tags](resource_tag.md) associated with the cluster.
+- User-defined [resource tags](byoc_resource_tag.md) associated with
+  the cluster.
 
 The cluster header also displays a set of informational panes that show
 the state of the cluster at a glance:
@@ -78,14 +79,15 @@ city in which the node resides.
 ![The cluster console Map tab](../images/overview_cluster_map.png)
 
 The `Overview` tab also displays the currently defined
-[Firewall Rules](firewall.md).
+[Firewall Rules](byoc_firewall.md).
 
 ![The cluster's firewall rules](../images/overview_firewall_rule.png)
 
 Select the `Manage Firewall Rules` button to open a dialog to
-[modify or create rules](firewall.md) for the cluster.
+[modify or create rules](byoc_firewall.md) for the cluster.
 
-The `Overview` tab also displays the current [VPC Associations](vpc_assoc.md).
+The `Overview` tab also displays the current
+[VPC Associations](byoc_vpc_assoc.md).
 
 ![The cluster's VPC associations](../images/overview_vpc_assoc.png)
 

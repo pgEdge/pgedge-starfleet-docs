@@ -43,44 +43,44 @@ nav:
   - Home: index.md
   - pgEdge Starfleet BYOC:
     - Cloud Edition - Overview: byoc/byoc_index.md
-    - Getting Started with pgEdge Cloud: byoc/getting_started/getting_started.md
+    - Getting Started with pgEdge Cloud: byoc/getting_started/byoc_getting_started.md
     - Prerequisites:
       - Linking and Managing your Cloud Provider Accounts:
-        - Managing Cloud Provider Accounts: byoc/prerequisites/cloud_accounts/index.md
-        - Linking an AWS Account: byoc/prerequisites/cloud_accounts/link_to_AWS.md
-        - Linking an Azure Account: byoc/prerequisites/cloud_accounts/link_to_Azure.md
-        - Linking a Google Account: byoc/prerequisites/cloud_accounts/link_to_Google.md
-      - Adding an SSH Key: byoc/prerequisites/ssh_key.md
+        - Managing Cloud Provider Accounts: byoc/prerequisites/cloud_accounts/byoc_index.md
+        - Linking an AWS Account: byoc/prerequisites/cloud_accounts/byoc_link_to_AWS.md
+        - Linking an Azure Account: byoc/prerequisites/cloud_accounts/byoc_link_to_Azure.md
+        - Linking a Google Account: byoc/prerequisites/cloud_accounts/byoc_link_to_Google.md
+      - Adding an SSH Key: byoc/prerequisites/byoc_ssh_key.md
     - Cluster Management:
-      - Reviewing your Cloud Clusters: byoc/cluster/index.md
-      - Creating a Cluster: byoc/cluster/create_cluster.md
-      - Managing a Cluster: byoc/cluster/manage_cluster.md
-      - Defining a Cluster's Backup Store: byoc/cluster/backup_store.md
-      - Managing Firewall Rules: byoc/cluster/firewall.md
-      - Using Resource Tags: byoc/cluster/resource_tag.md
-      - Managing VPC Associations: byoc/cluster/vpc_assoc.md
-      - Adding an Ingress to a Private Cluster: byoc/cluster/ingress.md
+      - Reviewing your Cloud Clusters: byoc/cluster/byoc_index.md
+      - Creating a Cluster: byoc/cluster/byoc_create_cluster.md
+      - Managing a Cluster: byoc/cluster/byoc_manage_cluster.md
+      - Defining a Cluster's Backup Store: byoc/cluster/byoc_backup_store.md
+      - Managing Firewall Rules: byoc/cluster/byoc_firewall.md
+      - Using Resource Tags: byoc/cluster/byoc_resource_tag.md
+      - Managing VPC Associations: byoc/cluster/byoc_vpc_assoc.md
+      - Adding an Ingress to a Private Cluster: byoc/cluster/byoc_ingress.md
     - Database Management:
-      - Reviewing your Databases: byoc/database/index.md
-      - Creating a Database: byoc/database/create_db.md
-      - Managing a Database: byoc/database/manage_db.md
+      - Reviewing your Databases: byoc/database/byoc_index.md
+      - Creating a Database: byoc/database/byoc_create_db.md
+      - Managing a Database: byoc/database/byoc_manage_db.md
     - Services: byoc/byoc_services.md
     - Metrics: byoc/database_admin/byoc_metrics.md
     - Logs: byoc/database_admin/byoc_logs.md
-    - Backups: byoc/database_admin/backup_details.md
+    - Backups: byoc/database_admin/byoc_backup_details.md
     - Managing Database Backups:
       - Reviewing Backup Details: byoc/backup/byoc_backups.md
-      - Backing up your Database: byoc/backup/backup_providers.md
-      - Restoring from Backup: byoc/backup/restore.md
+      - Backing up your Database: byoc/backup/byoc_backup_providers.md
+      - Restoring from Backup: byoc/backup/byoc_restore.md
     - Database and Cluster Administration:
       - Using the Actions Menu: byoc/mod_cluster/byoc_actions.md
-      - Adding a Database or Cluster Node: byoc/mod_cluster/add.md
-      - Dropping a Database, Node, or Cluster: byoc/mod_cluster/drop.md
-      - Using Postgres Extensions: byoc/database_admin/supported_extensions.md
+      - Adding a Database or Cluster Node: byoc/mod_cluster/byoc_add.md
+      - Dropping a Database, Node, or Cluster: byoc/mod_cluster/byoc_drop.md
+      - Using Postgres Extensions: byoc/database_admin/byoc_supported_extensions.md
     - Migrating to pgEdge Distributed Postgres (Cloud Edition):
-      - Overview - Using a Backup to Migrate into a Distributed Database: byoc/migration/index.md
-      - Taking a Backup: byoc/migration/backup.md
-      - Restoring from Backup: byoc/migration/restore.md
+      - Overview - Using a Backup to Migrate into a Distributed Database: byoc/migration/byoc_index.md
+      - Taking a Backup: byoc/migration/byoc_backup.md
+      - Restoring from Backup: byoc/migration/byoc_restore.md
     - Connecting to a Database:
       - Connecting to your Database or Cluster: byoc/connecting/byoc_index.md
       - Connecting with SSH: byoc/connecting/byoc_ssh.md

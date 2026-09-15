@@ -43,10 +43,10 @@ to create the store.
 
 ## Attaching a Backup Store to a Cluster
 
-You can attach multiple backup stores to each cluster [during cluster
-creation](../cluster/create_cluster.md#creating-a-cluster); before creating a
-cluster, define any available [backup stores](#defining-a-backup-store) you
-wish to use. Once defined, a store will be included in the list of available
+You can attach multiple backup stores to each cluster
+[during cluster creation](../cluster/byoc_create_cluster.md#creating-a-cluster);
+before creating a cluster, define any available
+[backup stores](#defining-a-backup-store) you wish to use. Once defined, a store will be included in the list of available
 stores on the `Backup Stores` drop-down.
 
 Then, to attach the store during cluster creation, select the backup store
