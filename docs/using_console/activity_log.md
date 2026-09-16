@@ -20,8 +20,8 @@ The Activity Log page displays the following columns:
 * `Task name` identifies the type of task for the table entry (for
   example, `create-managed`, `restore-managed`, or
   `update-managed-size`). The console shows the raw name the API gives
-  the task, with a tooltip that names it in plain language and says
-  what it is.
+  the task, with a tooltip that names it in plain language and explains
+  what it does.
 
 * `Subject kind` is the kind of resource the task acted on, one of
   `database`, `cluster`, or `ingress`.
@@ -77,34 +77,33 @@ console:
 * **`update-managed` cannot tell you which service changed.** Every services
   write shares it. To find out what changed, expand the row and read the steps,
   or read the `AI Services` pane.
-* **`update-managed-size` is the resize, not a generic update.** This task is
+* **`update-managed-size` is the resize, not a generic update.** This is
   the task behind the `Upgrade size` action described in
   [Accessing Management Options with the Actions Menu](actions.md#upgrading-the-size-tier).
 * **`backup-managed` can read `succeeded` while the backup is still pending.**
-  The task claims to have taken the backup, and its steps read
-  `Configuring System` then `Taking Backup` at 100 percent succeeded, while the
-  backup record it produced is still `pending`. Both reach a terminal state,
-  but not at the same time. Read the backup's own status on the `Backups` pane
-  rather than the task's.
+  The task claims to have taken the backup: its steps show
+  `Configuring System` then `Taking Backup`, both at 100 percent and marked
+  `succeeded`, while the backup record it produced is still `pending`. Both
+  reach a terminal state, but not at the same time. Read the backup's own
+  status on the `Backups` pane rather than the task's.
 
 ### What a Succeeded Task Means
 
-A task that reads `succeeded` means the status has been set. A
-succeeded task never sits beside a status the operation had not yet
-applied.
+A task that reads `succeeded` means the status has been set: there is no
+lag between the task succeeding and the console applying the resulting
+status change.
 
 A succeeded task does not say which status resulted, or whether the
 database is usable. Read the status badge for that.
 
-Delete is the exception. A succeeded delete removes the database
-record, so the database disappears from the list, and that
-disappearance is the confirmation. A delete that leaves the database
-behind is one whose task failed.
+Delete is the exception. A succeeded delete removes the database record,
+so the database disappears from the list, and that disappearance is the
+confirmation. If a delete leaves the database behind, its task failed.
 
 A services change is the other exception. A succeeded `update-managed`
-means the API-side work finished. The deployed server lags behind by
-roughly a minute or two for a configure, and around fifteen to twenty
-seconds for a first MCP enable.
+means the API-side work finished, but the deployed server itself takes
+longer to reflect the change: roughly a minute or two for a configure,
+and fifteen to twenty seconds for a first MCP enable.
 
 ## Database Statuses
 
@@ -119,7 +118,7 @@ the meaning of each value and the writes each one admits:
 | `modifying` | A restore, resize, services change, or credential rotation is in flight. | None of the five. Delete is admissible unless a billing provision is unfinished, which a resize reopens. |
 | `deleting` | Being torn down. | None, including delete. |
 | `failed` | The last operation failed. That covers a create, a teardown, a suspend or resume, or a restore that reported success without a committed cutover. The database record is kept either way. | None of the five. Delete is admissible. |
-| `degraded` | A resize failed after the database was already up. A failed credential rotation lands here too. | None of the five, whatever the console's buttons allow. See the note below. |
+| `degraded` | A resize failed after the database was already running. A failed credential rotation lands here too. | None of the five, whatever the console's buttons allow. See the note below. |
 | `suspending` | Being hibernated. | None of the five. |
 | `suspended` | Hibernated. | None of the five. |
 | `resuming` | Coming back from hibernation. | None of the five. |
@@ -136,11 +135,11 @@ because a database suspended by some other means still reports them.
 ### A `degraded` Database Shows Its Action Buttons Enabled
 
 The console treats `available` and `degraded` alike for `Rotate
-credentials`, the display-name edit, and deletion protection, and the
-API admits the five writes below only from `available`, so an action
-offered on a `degraded` database can still be refused. `Upgrade size`
-is the exception the console already gates, being offered only from
-`available`.
+credentials`, the display-name edit, and deletion protection. The API,
+however, admits the five writes below only from `available`, so an
+action offered on a `degraded` database can still be refused. `Upgrade
+size` is the exception the console already gates, being offered only
+from `available`.
 
 ### The Five Writes That Need Available
 
@@ -172,15 +171,15 @@ A status or a task name outside the two lists above can appear.
   beside the `-managed` ones, along with names such as `replicate` and
   `restore-from-pgdump`.
 
-* A status you do not recognize is not automatically an error. Read it,
-  and treat anything that is not `available` as a database that is not
-  ready for the five writes.
+* A status you do not recognize is not automatically an error. Treat
+  anything that is not `available` as a database that is not ready for
+  the five writes.
 
 ## Related Pages
 
 The following pages provide more detail on topics referenced above:
 
-* [Restoring from Backup](backups.md) describes the restore
-  this glossary keeps pointing at.
+* [Restoring from Backup](backups.md) describes the restore this page
+  keeps pointing at.
 * [Accessing Management Options with the Actions Menu](actions.md)
   describes the resize, the display-name edit, and deletion protection.
