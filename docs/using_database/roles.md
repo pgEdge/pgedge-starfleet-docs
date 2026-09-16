@@ -28,7 +28,7 @@ installs.
     command.
 
 `app` is the recommended default role to own an application. The MCP and
-RAG servers also connect as `app`, so whatever your migrations and data
+RAG Servers also connect as `app`, so whatever your migrations and data
 imports add to the database, those servers can read.
 
 `app` holds no server-wide privilege: it cannot create roles or databases,
@@ -99,7 +99,7 @@ For details about reading and handling these credentials, see
 For details about replacing a password, see
 [Rotating Database Credentials](rotate_credentials.md).
 
-The MCP and RAG servers connect to the database as `app`. As a result,
+The MCP and RAG Servers connect to the database as `app`. As a result,
 each server can read and change whatever `app` can, and rotating the
 `app` password restarts both servers.
 
@@ -115,10 +115,12 @@ each server can read and change whatever `app` can, and rotating the
 Postgres permits these actions, and the pgEdge Starfleet platform enforces
 no additional restrictions to prevent or reverse them.
 
-Because the MCP and RAG servers authenticate to the database as `app`,
+Because the MCP and RAG Servers authenticate to the database as `app`,
 revoking a privilege from `app` also revokes it from those servers.
 
 ## Next Steps
+
+These pages cover related tasks that build on the roles described here.
 
 * [Installing Extensions](extensions.md) describes which role
   installs which extension and what the refusal message means.

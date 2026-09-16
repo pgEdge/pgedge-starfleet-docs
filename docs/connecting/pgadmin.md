@@ -2,7 +2,7 @@
 
 To use the pgAdmin client to manage your pgEdge Starfleet database and the
 objects that reside on it, right-click on the `Servers` node in the pgAdmin
-client, and select `Register`, then `Server` from the context menu.
+client. Select `Register`, then `Server` from the context menu.
 
 ![Accessing pgAdmin](../images/sf_pgadmin_register_server.png)
 
@@ -23,12 +23,14 @@ page:
 * Provide the name of your database in the `Maintenance database` field.
 
 * Replace the default `Username` with `app` when connecting for the first
-  time. The `app` user owns the database, so the tables and other objects it
-  creates belong to the role your application connects as. Use the `admin`
-  user to install an allowlisted extension, or for the server-wide work
-  described in [Managing Database Roles](../using_database/roles.md).
+  time.
 
 * Enter the password associated with the user in the `Password` field.
+
+The `app` user owns the database, so the tables and other objects it
+creates belong to the role your application connects as. Use the `admin`
+user instead to install an allowlisted extension, or for the server-wide
+work described in [Managing Database Roles](../using_database/roles.md).
 
 ![The pgAdmin Parameters tab](../images/sf_pgadmin_register_parameters.png)
 

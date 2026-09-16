@@ -49,7 +49,7 @@ guide.
     then start the stack. Running `down -v` first guarantees a clean
     start, so PostgreSQL always initializes fresh with the password
     from step 2 instead of reusing a stale volume from an earlier
-    attempt; it's a no-op the first time you run this:
+    attempt; it is a no-op the first time you run this:
 
     ```bash
     export POSTGRES_PORT=15432
@@ -65,7 +65,8 @@ guide.
     docker compose -f examples/docker-compose.production.yml ps
     ```
 
-    If any service isn't `healthy`, review its log entries with the command:
+    If any service is not `healthy`, review its log entries with the
+    command:
 
     `docker compose -f examples/docker-compose.production.yml logs <service>`
 
@@ -117,7 +118,7 @@ guide.
 
 ## Connecting the Workbench to Your Database
 
-Once you're logged in, add your pgEdge Starfleet database as a monitored
+Once you are logged in, add your pgEdge Starfleet database as a monitored
 connection.
 
 1.  Select the `+` next to the `DATABASE SERVERS` heading in the left
@@ -125,9 +126,9 @@ connection.
 
     ![Adding a database server in the Workbench](../images/sf_add_database.png)
 
-2.  In the pgEdge Starfleet console, navigate to the
+2.  In the console, navigate to the
     [`Connect`](../using_console/console_overview.md#the-connect-pane)
-    pane to find the values you'll need to connect to your database.
+    pane to find the values you will need to connect to your database.
 
 3.  Complete the server definition using the values from the
     [`Connect`](../using_console/console_overview.md#the-connect-pane) pane:

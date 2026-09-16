@@ -5,11 +5,11 @@ page header, offers management options for your database:
 
 ![The Actions menu](../images/sf_actions_menu.png)
 
-* `Edit display name` — set an optional display name for your database.
-* `Upgrade size` — change the size tier of your database.
-* `Enable deletion protection`/`Disable deletion protection` — toggle
+* `Edit display name`: set an optional display name for your database.
+* `Upgrade size`: change the size tier of your database.
+* `Enable deletion protection`/`Disable deletion protection`: toggle
   deletion protection for your database.
-* `Delete database` — delete your database. This option is unavailable
+* `Delete database`: delete your database. This option is unavailable
   (protected) while deletion protection is enabled.
 
 ## Editing the Display Name
@@ -20,7 +20,7 @@ Select `Edit display name` from the `Actions` menu to open the
 ![The Edit display name popup](../images/sf_edit_display_name.png)
 
 The `Display Name` is optional, and is used to distinguish between multiple
-databases that share the same database name in the console UI; it doesn't
+databases that share the same database name in the console UI; it does not
 change the database's actual name (shown in the `Database name` field of the
 `Connect` pane). Enter a display name and select `Apply` to set it, or select
 `Reset` to revert to the last applied value. To remove a display name, apply
@@ -35,8 +35,8 @@ size and price, and the sizes you can upgrade to.
 ![The Upgrade size popup](../images/sf_actions_upgrade_size.png)
 
 Select the size you want to upgrade to, then select `Upgrade size` to confirm,
-or `Cancel` to close the popup without upgrading. Sizes only go up — you can
-upgrade again later, but a database can't be moved back to a smaller size.
+or `Cancel` to close the popup without upgrading. Sizes only go up. You can
+upgrade again later, but a database cannot be moved back to a smaller size.
 CPU, memory, and storage grow in place; the database restarts while the new
 size is applied, so expect a brief interruption.
 
@@ -85,7 +85,7 @@ instead of the literal text message below:
   edit is refused.
 
     This edit takes no hold on the database and succeeds against a
-    busy one, so a refusal here isn't caused by a busy database.
+    busy one, so a refusal here is not caused by a busy database.
     Check the name length against the field's limit.
 
 * `Could not update deletion protection.` is displayed when the
@@ -94,4 +94,3 @@ instead of the literal text message below:
     This one also takes no hold on the database, so retrying is
     reasonable. It stays changeable on a `Failed` database, because a
     protected failure has to be removable.
-
