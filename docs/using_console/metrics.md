@@ -119,15 +119,15 @@ write-ahead log (WAL) activity for your database.
 `Disk used` expresses storage in use as a percentage of total storage; storage
 in use plus storage still available.
 
-## How Far Behind the Charts Run
+## How Reporting Lag Affects Charts
 
-The newest point on a chart runs 1 to 2 minutes behind the clock. The lag moves
-around inside that band rather than settling on one figure. Samples are
-collected into buckets every 30 seconds, aligned to the top and the half of
-each minute.
+The newest point on a chart lags 1 to 2 minutes behind actual time. This lag
+varies within that range rather than remaining fixed at a single value. Samples
+are collected into buckets every 30 seconds, aligned to the start and midpoint
+of each minute.
 
-A change you make now is not on the chart now, so wait for the lag to pass
-before concluding that a query, an index, or a restart had no effect.
+A change made now does not appear on the chart immediately, so allow the lag to
+elapse before concluding that a query, an index, or a restart had no effect.
 
 !!! hint "Establishing a Minimum Time Range"
 
