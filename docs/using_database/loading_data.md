@@ -12,17 +12,17 @@ For what each role can do, see [Managing Database Roles](roles.md).
 
 ## Loading CSV Data with `\copy`
 
-Because pgEdge Starfleet is a managed service, you don't have access to the
+Because pgEdge Starfleet is a managed service, you do not have access to the
 database server's filesystem, so the server-side SQL
-`COPY ... FROM '/path/to/file'` command isn't available. You can use psql's
+`COPY ... FROM '/path/to/file'` command is not available. You can use psql's
 client-side `\copy` meta-command instead; `\copy` reads the file from your
 local machine and streams the data to the server over your existing connection.
 
 For example, to load a CSV file named `customers.csv` (with a header row of
 `id`, `name`, `email`) into a new `public.customers` table:
 
-1.  Connect with psql as `app` so you'll have sufficient permissions to create
-    a new table:
+1.  Connect with psql as `app` so you will have sufficient permissions to
+    create a new table:
 
     ```bash
     PGSSLMODE=require psql -U app -h <your-domain> -p <your-port> -d <your-database>
@@ -54,7 +54,7 @@ For example, to load a CSV file named `customers.csv` (with a header row of
     SELECT count(*) FROM public.customers;
     ```
 
-If you're loading into a table that already exists, you can skip step 2 and
+If you are loading into a table that already exists, you can skip step 2 and
 connect as either `admin` or `app` in step 1. `\copy` accepts the same options
 as the SQL `COPY` command. For the complete list of available options, see the
 Postgres documentation for
@@ -91,13 +91,13 @@ pg_dump --format=custom --file=mydata.dump "postgresql://user@oldhost:5432/olddb
 ### Understanding Why the Order Matters
 
 The `app` user owns the database, and an object belongs to the role that
-created it, so a schema loaded as `admin` ends up owned by a role your
-application never connects as.
+created it. A schema loaded as `admin` therefore ends up owned by a role
+your application never connects as.
 
-Extensions fall into two categories, based on which role can install them: an
-extension on the pgEdge allowlist installs as `admin` only, while an extension
-Postgres itself marks trusted installs as `app`, which then owns it and can
-drop it later.
+Extensions fall into two categories, based on which role can install them.
+An extension on the pgEdge allowlist installs as `admin` only. An extension
+Postgres itself marks trusted installs as `app`, which then owns the
+extension and can drop it later.
 
 A load that needs both kinds of extension therefore needs both connections, in
 this order:
@@ -135,9 +135,9 @@ pg_restore --schema-only --no-owner --no-acl --role=app \
 
 The `--no-owner` flag skips restoring the original ownership of dumped objects,
 and `--role=app` assigns ownership of restored objects to `app` instead. The
-roles that existed on the source database (other than `admin` and `app`) don't
-exist on your pgEdge Starfleet database. The data passes below carry the same
-`--no-owner` and `--no-acl` flags.
+roles that existed on the source database (other than `admin` and `app`) do
+not exist on your pgEdge Starfleet database. The data passes below carry
+the same `--no-owner` and `--no-acl` flags.
 
 Load the schema on its own, as above, and the data in the separate passes
 below. A one-shot restore of schema and data together runs into the foreign-key
@@ -197,7 +197,7 @@ that loaded successfully.
 
 ## Loading Documents for the RAG Server
 
-The methods above load structured, relational data into tables. If you're
+The methods above load structured, relational data into tables. If you are
 loading unstructured documents (HTML, Markdown, or reStructuredText) to use
 with a RAG server, use `pgedge-docloader` instead. See
 [Using the RAG Server](../serving_ai_content/rag.md#using-the-rag-server).
