@@ -11,6 +11,8 @@ console.
 
 ## The Database Header
 
+The database header sits at the top of the database's management page.
+
 ![Database Header](../images/sf_database_header.png)
 
 The database header displays:
@@ -90,10 +92,13 @@ For detailed information about:
 
 ## The AI Services Pane
 
+The `AI Services` pane lists the AI-related services available for your
+database.
+
 ![The AI Services pane](../images/sf_services.png)
 
 The `AI Services` pane displays icons you can use to deploy available services
-on your Postgres database, including an MCP server and a RAG server. Select
+on your Postgres database, including an MCP Server and a RAG Server. Select
 `Enable MCP` or `Enable RAG` to add a service; once a service is deployed,
 select its `Details` button to view connection details and manage it.
 
@@ -174,10 +179,10 @@ and configuration of your database.
 
 ### Plan and Billing
 
-The `Plan & billing` pane displays the current size tier of your database and
-the price you'll be billed after any free trial ends. Select `Upgrade size` to
-change the size of your database. For what each size gives you, see
-[Selecting a Database Size](../using_database/sizes.md).
+The `Plan & billing` pane displays the current size tier of your database
+and the price you will be billed after any free trial ends. Select
+`Upgrade size` to change the size of your database. For what each size
+gives you, see [Selecting a Database Size](../using_database/sizes.md).
 
 Two notifications can appear after you add a payment method.
 `Payment saved, but we could not refresh billing status.` means the card was
