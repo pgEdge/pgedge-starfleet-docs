@@ -14,10 +14,10 @@ one, and you cannot delete a backup or change how long one is kept.
 
 Each backup entry displays:
 
-* The backup ID.
-* A tag indicating whether the backup is a `hot` or `durable` backup.
-* The backup status (for example, `completed`).
-* How long ago the backup was taken, and how long it took to run.
+* the backup ID.
+* a tag indicating whether the backup is a `hot` or `durable` backup.
+* the backup status (for example, `completed`).
+* how long ago the backup was taken, and how long it took to run.
 
 ![The Backups page](../images/sf_backups_page.png)
 
@@ -32,7 +32,7 @@ status in this list rather than the outcome of its task in the Activity
 Log, because a `backup-managed` task can read `succeeded` while the
 backup record it produced is still `pending`.
 
-The database itself has to be `available`. A restore is one of five
+The database itself must be `available`. A restore is one of five
 Managed writes admissible only from that status, so it is refused
 against a database that is `creating`, `modifying`, `degraded`, or
 already busy with an earlier write.
@@ -42,13 +42,12 @@ For the statuses and the task names, see
 
 ## Restoring Your Database
 
-Select the `Restore` button, to the right of a backup, to restore your
-database to the selected backup. The `Restore from backup` popup opens,
-confirming the date and time of the backup you selected. The popup warns
-you that any changes made after that point in time are lost. The database
-keeps its name and connection details, and is briefly unavailable while
-the restore runs. A `hot` backup of the current data is taken first,
-before the restore begins.
+Select the `Restore` button (located to the right of a backup) to restore
+your database to the selected backup. The `Restore from backup` popup
+opens, confirming the date and time of the backup you selected. The
+database retains its name and connection details, and is briefly
+unavailable while the restore runs. The restore takes a `hot` backup of
+the current data before it begins.
 
 ![The Restore from backup popup](../images/sf_backups_restore.png)
 
@@ -57,8 +56,8 @@ restoring the database.
 
 **The restore happens in place.** The database keeps its ID and its
 connection details, so nothing your application holds needs changing
-afterwards. It replaces the current data, so anything written since the
-backup was taken is no longer in the database.
+afterwards. The restore replaces the current data, so anything written
+since the backup was taken is no longer in the database.
 
 The restore is asynchronous. The API answers with the database in
 status `modifying`, and the database recovers in the background, so the
@@ -73,7 +72,7 @@ progress bar and a checklist of restore steps:
 * `Provisioning Restored Database`
 * `Waiting for Database`
 
-Each step is checked off as it completes:
+The console checks off each step as it completes:
 
 ![The Restore in progress popup](../images/sf_backup_restoring.png)
 
@@ -86,14 +85,15 @@ In the Activity Log, the operation appears as `restore-managed`.
 ## The Backup Taken Before the Restore
 
 Before replacing anything, the restore takes a `hot` backup of the
-database as it stands, so a restore run by mistake can itself be
+database in its current state, so a restore run by mistake can itself be
 undone. That step is mandatory. If that backup cannot be taken, the
 restore fails rather than proceeding; an already-running backup causes
 the same failure.
 
 That refusal arrives on the restore's task rather than as an error on
 the request. The API has already accepted the restore and the database
-is already `modifying`, so the Activity Log is where it surfaces.
+is already `modifying`, so the Activity Log is where the refusal
+surfaces.
 
 Three things about that backup are easy to miss before you search for it:
 
@@ -125,8 +125,8 @@ backup described above.
 
 ## When a Restore Is Refused
 
-`Could not start the restore.` is a red notification meaning the restore
-request was refused. This text is the fallback message, and the console
+`Could not start the restore.` is a red notification meaning the API
+refused the restore request. This text is the fallback message, and the console
 shows the API's own message where it sends one. A restore needs the
 database `Available`, and only a completed backup can be restored from.
 Wait for `Available` and try again.
