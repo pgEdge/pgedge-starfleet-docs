@@ -27,9 +27,9 @@ Enter the email address of the person you want to invite in the
 `Member Email` field, and select `Invite` to send an email to the address,
 inviting the recipient to join your team.
 
-When you invite a user to join your team, they're taken to the pgEdge
-Starfleet welcome window, where they're prompted to provide a password. After
-providing a password, the new team member is taken to the main console page
-for your team, where all databases managed by the team are displayed. The
-`Pending Invitation` is removed, and the new member is listed in the
-`Members` table.
+When you invite a user to join your team, they are taken to the pgEdge
+Starfleet welcome window, where they are prompted to provide a password. After
+providing a password, the new team member is taken to the main console page for
+your team, where all databases managed by the team are displayed. The
+`Pending Invitation` is removed, and the new member is listed in the `Members`
+table.
