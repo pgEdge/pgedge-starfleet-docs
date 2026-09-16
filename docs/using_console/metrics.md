@@ -156,15 +156,16 @@ noted.
 ## Metrics During a Resize or Restore
 
 A resize or a restore moves the database onto new infrastructure, and both
-instances report for a while. During that handover, two samples can share one
-timestamp, one per instance.
+instances report metrics during the transition. During that handover, both
+instances can publish a sample for the same timestamp.
 
-The console groups the samples by instance before it computes anything, so a
-rate is never taken across the handover and the overlap is never counted twice.
+The console groups the samples by instance before computing anything, so it
+never computes a rate across the handover and never counts the overlap twice.
 
 The instance filter appears above the charts, with one button per instance and
 the primary marked, and each chart displays two lines with a legend. The
-instance still coming up reports blanks for a while, so its line starts sparse.
+instance still starting up reports no samples until it is ready, so its line
+has gaps at the start.
 
 Outside a resize or a restore, each chart displays a single line.
 
