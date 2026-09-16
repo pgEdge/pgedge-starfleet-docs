@@ -41,7 +41,8 @@ warning banner reports how many samples were affected and when the database was
 most recently unavailable.
 
 Live refresh runs at a different cadence for each time range; a wider range
-averages the metrics to keep the graph legible.
+averages the metrics to keep the graph legible. The following table shows
+the refresh cadence and point count for each time range:
 
 | Time range | Refresh | Points plotted |
 |------------|---------|----------------|
@@ -68,7 +69,7 @@ as one gap rather than as a downward spike.
 ## Resource Charts - Reference
 
 The `Resources` section displays charts that track the compute and connection
-resources used by your database.
+resources used by your database. The following table describes each chart:
 
 | Chart | Description | Source Metric | Metric Form |
 |-------|-------------|---------------|-------------|
@@ -85,7 +86,8 @@ the axis displays.
 ## Throughput Charts - Reference
 
 The `Throughput` section displays charts that track the amount of database
-activity, including transactions and row-level operations.
+activity, including transactions and row-level operations. The following
+table describes each chart:
 
 | Chart | Description | Source Metric | Metric Form |
 |-------|-------------|---------------|-------------|
@@ -106,7 +108,8 @@ line.
 ## Storage and WAL Charts - Reference
 
 The `Storage and WAL` section displays charts that track disk usage and
-write-ahead log (WAL) activity for your database.
+write-ahead log (WAL) activity for your database. The following table
+describes each chart:
 
 | Chart | Description | Source metric | Metric Form |
 |-------|-------------|---------------|-------------|
@@ -180,9 +183,9 @@ The page shows one of two messages in place of the charts:
 * `No metrics in this window` means the read succeeded and the time range held
   no samples. The hint under it names a database created moments ago, or an
   environment without observability, as the causes. Widen the time range. The
-  newest sample runs 1 to 2 minutes behind the clock, so a custom range of a
-  couple of minutes ending at now is empty, as the "Establishing a Minimum
-  Time Range" hint above describes.
+  newest sample runs 1 to 2 minutes behind the clock, so a custom range of
+  two minutes or less ending at now is empty, as the "Setting a Custom Time
+  Range" hint above describes.
 
 The first is a failed request and the second is an empty range. A database that
 cannot be read at all shows
