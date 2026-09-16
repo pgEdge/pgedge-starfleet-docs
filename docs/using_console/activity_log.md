@@ -45,12 +45,25 @@ drop-down to restrict the table to matching rows. Select the arrow
 between the column name and the filter drop-down to reverse the display
 order based on that column.
 
-The `Task name` filter offers a fixed list of names: `create`,
-`update`, `delete`, `restore`, `backup`, `restore-from-pgdump`,
-`restore-from-pgbackrest`, `update-backup-stores`, `add-nodes`,
-`remove-node`, `replicate`, `apply`, and `destroy`. None of the Managed
-task names below is in that list, so filter a Managed database's work
-by pasting its database ID into `Subject ID` rather than by name.
+The `Task name` filter offers a fixed list of names:
+
+* `create`
+* `update`
+* `delete`
+* `restore`
+* `backup`
+* `restore-from-pgdump`
+* `restore-from-pgbackrest`
+* `update-backup-stores`
+* `add-nodes`
+* `remove-node`
+* `replicate`
+* `apply`
+* `destroy`
+
+None of the Managed task names below is in that list, so filter a Managed
+database's work by pasting its database ID into `Subject ID` rather than
+by name.
 
 ## Managed Task Names
 
