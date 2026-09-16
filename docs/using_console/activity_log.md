@@ -71,24 +71,21 @@ the task names currently in use:
 
 ### Task Names That Do Not Match the Console
 
-#### `update-managed` Cannot Tell You Which Service Changed
+Some task names are easy to misread against what actually happened in the
+console:
 
-Every services write shares it. To find out what changed, expand the
-row and read the steps, or read the `AI Services` pane.
-
-#### `update-managed-size` Is the Resize, Not a Generic Update
-
-`update-managed-size` is not a generic size-related update. This task
-is the task behind the `Upgrade size` action described in
-[Accessing Management Options with the Actions Menu](actions.md#upgrading-the-size-tier).
-
-#### `backup-managed` Can Read `succeeded` While the Backup Is Still Pending
-
-The task claims to have taken the backup, and its steps read
-`Configuring System` then `Taking Backup` at 100 percent succeeded,
-while the backup record it produced is still `pending`. Both reach a
-terminal state, but not at the same time. Read the backup's own status
-on the `Backups` pane rather than the task's.
+* **`update-managed` cannot tell you which service changed.** Every services
+  write shares it. To find out what changed, expand the row and read the steps,
+  or read the `AI Services` pane.
+* **`update-managed-size` is the resize, not a generic update.** This task is
+  the task behind the `Upgrade size` action described in
+  [Accessing Management Options with the Actions Menu](actions.md#upgrading-the-size-tier).
+* **`backup-managed` can read `succeeded` while the backup is still pending.**
+  The task claims to have taken the backup, and its steps read
+  `Configuring System` then `Taking Backup` at 100 percent succeeded, while the
+  backup record it produced is still `pending`. Both reach a terminal state,
+  but not at the same time. Read the backup's own status on the `Backups` pane
+  rather than the task's.
 
 ### What a Succeeded Task Means
 
