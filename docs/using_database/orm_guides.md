@@ -1,9 +1,10 @@
 # ORM and Framework Guides
 
 This page discusses how to connect an ORM or a web framework to a pgEdge
-Starfleet database: where each one reads its Postgres URL, why the
-`sslmode=require` on the end of the string matters, and what happens when
-a generated migration runs `CREATE EXTENSION`.
+Starfleet database. For each framework, it covers where the framework reads
+its Postgres URL, why the `sslmode=require` on the end of the string
+matters, and what happens when a generated migration runs
+`CREATE EXTENSION`.
 
 Nothing in a pgEdge Starfleet connection string is unique to pgEdge, so no
 adapter, driver patch, or extra package is required for connection.
@@ -225,6 +226,8 @@ Rotating the `app` password also restarts the database's MCP and RAG
 servers; each server reads the password once at startup.
 
 ## Next Steps
+
+These pages cover related tasks that build on connecting an ORM or framework:
 
 * [Connecting to a pgEdge Starfleet Database](../connecting/index.md)
   describes connecting with psql, pgAdmin, and the AI DBA Workbench.
