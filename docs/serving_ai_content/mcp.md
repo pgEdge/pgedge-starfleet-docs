@@ -122,7 +122,7 @@ the others as they are.
 The connection endpoint appears in the `Connect to MCP Clients` panel only
 once the server reports `Running`. It is the database's own domain with
 `/mcp/v1` on the end. Until then the panel reads `Connection details appear
-here once the MCP server is running.` The endpoint carries no port in the
+here once the MCP server is running.` The endpoint includes no port in the
 ordinary case, because a Starfleet service is reached over HTTPS on port 443.
 
 ## Connecting a Client to the MCP Server
@@ -290,7 +290,7 @@ When using the MCP server:
 - Read what the agent proposes before approving it, in a client that shows
   tool calls before running them.
 - Be especially careful accessing tables that hold text written by other
-  users. Data you authored carries less of this potential risk than data
+  users. Data you authored poses less of this potential risk than data
   submitted by users.
 
 ## How Password Changes Affect the MCP Server
@@ -322,5 +322,5 @@ The `Services` page displays a message when something goes wrong:
 
     A services change needs the database in an `Available` state, and each
     service change writes one `update-managed` task, so the Activity
-    Log carries both failed and successful modification attempts.
+    Log records both failed and successful modification attempts.
 

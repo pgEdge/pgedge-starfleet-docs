@@ -45,8 +45,8 @@ For information about inviting and managing team members, see
 ![The API Clients tab](../images/sf_settings_api_clients.png)
 
 The `API Clients` tab lists the API clients on your account (`Name`,
-`Description`, and `Auth ID` columns), and is used to interact with the
-pgEdge Cloud API, a REST interface for managing your databases (and more).
+`Description`, and `Auth ID` columns), and is used to interact with the REST
+API that manages your databases (and more).
 
 To add an API client, select `Create API Client` in the upper-right
 corner of the tab. When the `Create API Client` popup opens:

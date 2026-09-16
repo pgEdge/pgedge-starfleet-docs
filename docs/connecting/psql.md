@@ -52,7 +52,7 @@ it directly into a terminal window, and press `Return` to connect.
 
     The `PGSSLMODE=require` environment variable is the shell-variable
     spelling of the `sslmode=require` setting the `Connection string` block
-    carries in its URI. Both enforce the required TLS connection.
+    includes in its URI. Both enforce the required TLS connection.
 
 If you start psql with a graphical prompt or icon (rather than the command
 line) you can use the individual values from the psql connection string to

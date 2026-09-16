@@ -38,7 +38,7 @@ cannot install an extension on the pgEdge allowlist.
 ## Understanding the `admin` Role
 
 `admin` is for administering the database rather than for building your
-schema; it carries the privileges a database administrator needs day to
+schema; it has the privileges a database administrator needs day to
 day, without the superuser powers that could damage the database or reach
 the server it runs on. `admin` can:
 

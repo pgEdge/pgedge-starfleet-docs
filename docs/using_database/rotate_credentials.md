@@ -3,7 +3,7 @@
 Rotating a database role's password replaces it with a new one the platform
 generates. The `Rotate credentials` button on the `Connect` pane triggers
 this, and for roughly ten seconds afterwards neither the old password nor
-the new one can be relied on. Your account carries one other credential,
+the new one can be relied on. Your account has one other credential,
 the API client secret, which is replaced rather than rotated.
 
 Rotation is not on the `Actions` menu. For the options that are, see
@@ -126,8 +126,8 @@ another rotation until it is recovered.
 
 ## The API Client Secret
 
-The pgEdge Cloud API authenticates with an API client, managed on the
-`API Clients` tab under `Settings`. See
+The REST API authenticates with an API client, managed on the `API Clients` tab
+under `Settings`. See
 [The API Clients Tab](../using_console/settings.md#the-api-clients-tab).
 
 A client's secret is returned once, at creation, and cannot be fetched again.

@@ -63,7 +63,7 @@ today.
 | `delete-managed` | Deleting a database. |
 | `suspend-managed` | Hibernating a database. |
 | `resume-managed` | Bringing a database back from hibernation. |
-| `update-managed-size` | The resize. The name carries `size` as an infix rather than the suffix the others use. |
+| `update-managed-size` | The resize. The name has `size` as an infix rather than the suffix the others use. |
 | `rotate-password-managed` | A role password rotation. |
 | `update-managed` | Every services change. An MCP enable, an MCP configure, a RAG enable, and a service removal all write this one name, so the name alone does not say which service changed. |
 | `restore-managed` | Restoring the database in place from a backup. |
@@ -165,7 +165,7 @@ status badge, wait for `available`, and try again.
 
 A status or a task name outside the two lists above can appear.
 
-* A tenant with older databases carries task names that are not in the
+* A tenant with older databases has task names that are not in the
   table above. Unsuffixed `create`, `update`, and `delete` appear
   beside the `-managed` ones, along with names such as `replicate` and
   `restore-from-pgdump`.

@@ -89,7 +89,7 @@ Three usages, all deliberate:
 
 CONTRIBUTING.md has the style rules. One thing it does not say:
 banned vocabulary, pgEdge-wide — synergy, leverage, paradigm shift,
-best-in-class, utilize, ensure, stakeholder alignment.
+best-in-class, utilize, stakeholder alignment, carries.
 
 ## Commits
 

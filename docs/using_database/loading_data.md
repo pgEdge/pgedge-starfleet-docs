@@ -76,7 +76,7 @@ Before you begin, gather the following:
   client installation.
 
 Copy the `psql command` from each tab rather than assembling one; the
-`psql command` already carries the TLS setting as `PGSSLMODE=require`, and it
+`psql command` already includes the TLS setting as `PGSSLMODE=require`, and it
 fills the password in when you copy it.
 
 Keep both `psql command` values out of your shell history and out of

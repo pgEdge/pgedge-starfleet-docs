@@ -49,11 +49,11 @@ In URI syntax, reserved characters are used as structural delimiters:
   - `/` separates the host/port from the path (database name).
   - `?` starts the query-string parameters.
 
-When Cloud encounters a password that contains special characters that are not
-encoded properly, the characters will cause a loop of round-trips instead of
-parsing into the correct connection string.
+When the console encounters a password that contains special characters that
+are not encoded properly, the characters will cause a loop of round-trips
+instead of parsing into the correct connection string.
 
-Cloud expects percent-encoding, like that used in the `Connection string`
+The console expects percent-encoding, like that used in the `Connection string`
 URI; the `psql command` block is formatted to connect with the correct values.
 
 If you read the password out of the `Password` field and assemble a URI
