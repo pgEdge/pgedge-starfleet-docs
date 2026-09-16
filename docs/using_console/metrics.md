@@ -129,19 +129,16 @@ of each minute.
 A change made now does not appear on the chart immediately, so allow the lag to
 elapse before concluding that a query, an index, or a restart had no effect.
 
-!!! hint "Establishing a Minimum Time Range"
+!!! hint "Setting a Custom Time Range"
 
     A range shorter than the lag ends before any published sample exists, so it
-    returns no data. One minute consistently returns empty, ninety seconds is
-    unreliable, and two minutes yields only one or two samples.
-
-    Select a range of three minutes or more: a three-minute range returns a
-    small number of samples, and a wider range returns more.
+    returns no data. Select a range of three minutes or more; a three-minute
+    range returns a small number of samples, and a wider range returns more.
 
     The console's shortest time-range button is `15m`, so this limitation
     applies only to a `Custom` range. A custom range of two minutes or less
-    ending at the current time returns empty, and the page then reads
-    `No metrics in this window`, the same message shown when a database has no
+    ending at the current time returns empty, and the page displays `No metrics
+    in this window`; this is the same message shown when a database has no
     metrics at all.
 
 ## Missing Metrics - Charts With No Data
