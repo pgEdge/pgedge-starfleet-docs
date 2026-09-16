@@ -5,8 +5,7 @@ recent entries from your database's log file. Each entry shows the
 timestamp, log level (for example, `LOG`), and message.
 
 The `Logs` page displays the Postgres engine log for your database.
-Records arrive newest first, and the page lists them in that order, so
-the newest line is at the top.
+Records arrive newest first, with the newest line displayed at the top.
 
 * Select `100`, `250`, `500`, or `1000` to control how many of the
   newest log lines are loaded.
@@ -20,19 +19,19 @@ the newest line is at the top.
   disabled while a `Custom` range is applied.
 
 * Select a severity button (for example, `log` or `fatal`) to filter
-  entries by level. Only the levels present in the loaded lines get a
-  button.
+  entries by level.
 
 * Use the copy and download icons (in the upper-right corner of the log
   table) to copy or download the lines currently shown.
 
-The severity buttons and the `Search messages` field filter the lines
-already loaded rather than fetching more, so raise the line count to
-reach further back. When new lines arrive while you are scrolled away
-from the top, a button appears counting them, and selecting it returns
-you to the newest line. `Load older lines`, at the foot of the table,
-extends the loaded history until the page reads
-`End of the loaded history`.
+!!! hint
+
+    The severity buttons and the `Search messages` field filter the lines
+    already loaded rather than fetching more, so raise the line count to reach
+    further back. When new lines arrive while you are scrolled away from the
+    top, a button appears counting them, and selecting it returns you to the
+    newest line. `Load older lines`, at the foot of the table, extends the
+    loaded history until the page reads `End of the loaded history`.
 
 ![The Logs page](../images/sf_logs_all.png)
 
