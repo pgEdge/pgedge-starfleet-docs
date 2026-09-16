@@ -160,23 +160,22 @@ noted.
 
 ## Metrics During a Resize or Restore
 
-A resize or a restore moves the database onto new infrastructure, and both
-instances report metrics during the transition. During that handover, both
-instances can publish a sample for the same timestamp.
-
-The console groups the samples by instance before computing anything, so it
-never computes a rate across the handover and never counts the overlap twice.
+A resize or a restore moves the database onto new infrastructure; during the
+transition, both instances report metrics. During the handover, both
+instances can publish a sample for the same timestamp. The console groups
+samples by instance before computing metrics, so it never computes a rate
+across the handover and never counts the overlap twice.
 
 The instance filter appears above the charts, with one button per instance and
 the primary marked, and each chart displays two lines with a legend. The
 instance still starting up reports no samples until it is ready, so its line
-has gaps at the start.
+displays gaps at the start.
 
 Outside a resize or a restore, each chart displays a single line.
 
-## When the Page Shows a Message Instead of Charts
+## When the Page Displays a Message Instead of Charts
 
-The page shows one of two messages in place of the charts:
+The page can show one of two messages in place of the charts:
 
 * `Couldn't load metrics` means the read failed, and the panel displays a
   `Retry` button. Use it. If it keeps failing while the database is
@@ -189,10 +188,10 @@ The page shows one of two messages in place of the charts:
   two minutes or less ending at now is empty, as the "Setting a Custom Time
   Range" hint above describes.
 
-The first is a failed request and the second is an empty range. A database that
-cannot be read at all shows
-`Couldn't load this database. Please try again shortly.` in place of the whole
-page instead.
+The first is a failed request and the second is an empty range. A database
+that cannot be read at all displays
+`Couldn't load this database. Please try again shortly.` in place of the
+whole page instead.
 
 ## Related Pages
 
