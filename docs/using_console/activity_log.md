@@ -61,14 +61,9 @@ The `Task name` filter offers a fixed list of names:
 * `apply`
 * `destroy`
 
-None of the Managed task names below is in that list, so filter a Managed
-database's work by pasting its database ID into `Subject ID` rather than
-by name.
-
-## Managed Task Names
-
-Every Managed operation writes a task. The following table describes
-the task names currently in use:
+The additional tasks listed below are used for Managed databases, and are
+not in the filter list. To filter a Managed database, paste the database ID
+into the `Subject ID`.
 
 | Task name | What it is |
 |-----------|------------|
@@ -88,10 +83,10 @@ Some task names are easy to misread against what actually happened in the
 console:
 
 * **`update-managed` cannot tell you which service changed.** Every services
-  write shares it. To find out what changed, expand the row and read the steps,
-  or read the `AI Services` pane.
-* **`update-managed-size` is the resize, not a generic update.** This is
-  the task behind the `Upgrade size` action described in
+  write shares this task type. To find out what changed, expand the row and
+  read the steps, or review the `AI Services` pane.
+* **`update-managed-size` refers to a resize, not a generic update.** This is
+  the task associated with the `Upgrade size` action described in
   [Accessing Management Options with the Actions Menu](actions.md#upgrading-the-size-tier).
 * **`backup-managed` can read `succeeded` while the backup is still pending.**
   The task claims to have taken the backup: its steps show
@@ -102,21 +97,19 @@ console:
 
 ### What a Succeeded Task Means
 
-A task that reads `succeeded` means the status has been set: there is no
-lag between the task succeeding and the console applying the resulting
-status change.
+A task that reads `succeeded` means the operation itself finished, and the
+console has already applied the resulting status change; there is no lag
+between the two. The task record itself does not say which status resulted, or
+whether the database is usable. Check the status badge for that.
 
-A succeeded task does not say which status resulted, or whether the
-database is usable. Read the status badge for that.
+Delete is the exception. A successful delete removes the database record, so
+the database disappears from the list, and the disappearance is the
+confirmation. If a delete leaves the database behind, the task failed.
 
-Delete is the exception. A succeeded delete removes the database record,
-so the database disappears from the list, and that disappearance is the
-confirmation. If a delete leaves the database behind, its task failed.
-
-A services change is the other exception. A succeeded `update-managed`
-means the API-side work finished, but the deployed server itself takes
-longer to reflect the change: roughly a minute or two for a configure,
-and fifteen to twenty seconds for a first MCP enable.
+A services change is the other exception. A succeeded `update-managed` means
+the API has finished its side of the change, but the deployed server itself
+takes longer to reflect it: roughly a minute or two for a configure, and
+fifteen to twenty seconds for a first MCP enable.
 
 ## Database Statuses
 
