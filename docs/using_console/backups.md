@@ -1,13 +1,13 @@
 # Restoring from Backup
 
 The `Backups` pane on your database's management page lists the backups
-taken of your database. Each backup is either a `hot` backup, the
-fastest to restore from, or a `durable` backup, kept apart from the
-database's own storage and slower to restore.
+taken of your database. Each backup is either a `hot` backup (the
+fastest to restore from) or a `durable` backup (kept apart from the
+database's own storage and slower to restore).
 
 A `hot` backup is taken daily on every database. A `durable` backup is
-taken daily as well, but only on a database that has the durable tier
-enabled for it.
+taken daily as well, but only on a database whose plan includes durable
+backups.
 
 Backups are taken on a schedule. The console has no button for taking
 one, and you cannot delete a backup or change how long one is kept.
@@ -44,11 +44,11 @@ For the statuses and the task names, see
 
 Select the `Restore` button, to the right of a backup, to restore your
 database to the selected backup. The `Restore from backup` popup opens,
-confirming the date and time of the backup you selected. The popup
-warns you that any changes made after that point in time are lost, and
-notes that the database keeps its name and connection details, and is
-briefly unavailable while the restore runs. A `hot` backup of
-the current data is taken first, before the restore begins.
+confirming the date and time of the backup you selected. The popup warns
+you that any changes made after that point in time are lost. The database
+keeps its name and connection details, and is briefly unavailable while
+the restore runs. A `hot` backup of the current data is taken first,
+before the restore begins.
 
 ![The Restore from backup popup](../images/sf_backups_restore.png)
 
@@ -61,9 +61,9 @@ afterwards. It replaces the current data, so anything written since the
 backup was taken is no longer in the database.
 
 The restore is asynchronous. The API answers with the database in
-status `modifying` and recovers in the background, so the console shows
-the database as `Modifying` while the restore runs. Wait for
-`Available`.
+status `modifying`, and the database recovers in the background, so the
+console shows the database as `Modifying` while the restore runs. Wait
+for `Available`.
 
 Once you confirm, a `Restore in progress` popup opens, showing a
 progress bar and a checklist of restore steps:
@@ -88,15 +88,14 @@ In the Activity Log, the operation appears as `restore-managed`.
 Before replacing anything, the restore takes a `hot` backup of the
 database as it stands, so a restore run by mistake can itself be
 undone. That step is mandatory. If that backup cannot be taken, the
-restore fails rather than proceeding, and a backup already running
-fails it too.
+restore fails rather than proceeding; an already-running backup causes
+the same failure.
 
 That refusal arrives on the restore's task rather than as an error on
 the request. The API has already accepted the restore and the database
 is already `modifying`, so the Activity Log is where it surfaces.
 
-Three things about that backup are easy to miss before you go looking for
-it:
+Three things about that backup are easy to miss before you search for it:
 
 ### The Pre-Restore Backup Does Not Appear in the List Immediately
 
@@ -116,9 +115,9 @@ afterwards, not as a restore point you can count on later.
 ## Backups Taken After a Restore
 
 On a database with durable backups, the restore also leaves a `durable`
-backup, taken from the restored database once it is up. That one
-records the state the restore produced, not the state it replaced, so
-it is not a way back.
+backup, taken from the restored database once it is available. That
+backup records the state the restore produced, not the state it
+replaced, so it is not a way back.
 
 Backups dated after a restore describe the restored database. The only
 route back to the state the restore replaced is the pre-restore `hot`
