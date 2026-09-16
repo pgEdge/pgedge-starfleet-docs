@@ -84,44 +84,36 @@ In the Activity Log, the operation appears as `restore-managed`.
 
 ## The Backup Taken Before the Restore
 
-Before replacing anything, the restore takes a `hot` backup of the
-database in its current state, so a restore run by mistake can itself be
-undone. That step is mandatory. If that backup cannot be taken, the
-restore fails rather than proceeding; an already-running backup causes
-the same failure.
+Before replacing anything, the restore takes a `hot` backup of the database in
+its current state, so a restore run by mistake can itself be undone. This step
+is mandatory: if the backup cannot be taken, either because it fails outright
+or because another backup is already running, the restore fails rather than
+proceeding.
 
-This failure does not appear as an error on the original restore
-request. By the time the pre-restore backup step runs, the API has
-already accepted the request, and the database is already `modifying`.
-The failure surfaces instead on the restore's task in the Activity Log.
+That failure never shows up as an error on the original restore request,
+because by the time the pre-restore backup runs, the API has already accepted
+the request and the database is already `modifying`. Instead, the failure
+surfaces on the restore's task in the Activity Log.
 
-Three things about that backup are easy to miss before you search for it:
+The pre-restore backup itself is easy to miss:
 
-### The Pre-Restore Backup Does Not Appear in the List Immediately
-
-The pre-restore backup surfaces in the `Backups` pane up to about a minute
-after the restore starts.
-
-### The Pre-Restore Backup Is Not Marked as Such
-
-In the list, the pre-restore backup is identical to any other `hot` backup.
-Identify it as the `hot` backup created at the moment the restore started.
-
-### The Pre-Restore Backup Is Not an Archive
-
-Treat the pre-restore backup as a way back from a mistake noticed shortly
-afterwards, not as a restore point you can count on later.
+* It does not appear in the `Backups` pane immediately; it can take up to a
+  minute after the restore starts.
+* Nothing marks it as the pre-restore backup, so identify it by timing: it is
+  the `hot` backup created at the moment the restore started.
+* It is not an archive. Treat it as a way back from a mistake caught shortly
+  afterward, not as a restore point you can rely on later.
 
 ## Backups Taken After a Restore
 
-On a database with durable backups, the restore also leaves a `durable`
-backup, taken from the restored database when it is available. That
-backup records the state the restore produced, not the state it
-replaced, so it is not a way back.
+On a database with durable backups, the restore also leaves a `durable` backup,
+taken from the restored database when it is available. This backup records the
+state the restore produced, not the state it replaced, so it does not provide a
+way back to the pre-restore data.
 
-Backups dated after a restore describe the restored database. The only
-route back to the state the restore replaced is the pre-restore `hot`
-backup described above.
+Backups dated after the restore all describe the restored database. The
+pre-restore `hot` backup remains the only route back to the state the restore
+replaced.
 
 ## When a Restore Is Refused
 
