@@ -12,6 +12,8 @@ expand it for a closer look.
 
 ## The Metrics Page Header
 
+The header sits at the top of the `Metrics` page.
+
 ![The Metrics page header](../images/sf_metrics_header.png)
 
 The header displays the name and status of the current database, followed by
@@ -193,6 +195,8 @@ cannot be read at all shows
 page instead.
 
 ## Related Pages
+
+The following pages cover related monitoring tasks:
 
 * [Reviewing the Activity Log](activity_log.md) describes the resize and the
   restore that put two instances on the charts.

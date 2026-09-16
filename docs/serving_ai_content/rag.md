@@ -17,6 +17,8 @@ patterns.
 
 ## Enabling the RAG Server
 
+Select the `AI Services` pane, then select `Enable RAG` to begin.
+
 ![Enabling the RAG Server](../images/sf_enable_rag_icon.png)
 
 To enable a RAG Server, select the `Enable RAG` icon in the RAG Server pane.

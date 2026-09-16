@@ -188,6 +188,8 @@ a header can use the same two values the panel shows.
 
 ## Example - Connecting the MCP Server to Claude Code
 
+Follow these steps to connect a deployed MCP Server to Claude Code:
+
 1.  The information you will need to connect the MCP Server to Claude Code
     is provided on the Services page. In the console, go to the
     `AI Services` pane, then select `Details` on your running MCP
