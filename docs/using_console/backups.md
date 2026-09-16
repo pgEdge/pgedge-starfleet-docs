@@ -115,7 +115,7 @@ afterwards, not as a restore point you can count on later.
 ## Backups Taken After a Restore
 
 On a database with durable backups, the restore also leaves a `durable`
-backup, taken from the restored database once it is available. That
+backup, taken from the restored database when it is available. That
 backup records the state the restore produced, not the state it
 replaced, so it is not a way back.
 
