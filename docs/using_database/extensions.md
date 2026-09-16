@@ -90,6 +90,8 @@ loading it under the wrong role.
 
 ## Next Steps
 
+These pages cover related tasks that build on installing extensions:
+
 * [Managing Database Roles](roles.md) describes what each of the two roles can
   do beyond installing extensions.
 
