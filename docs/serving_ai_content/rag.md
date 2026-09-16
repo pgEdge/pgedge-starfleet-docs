@@ -9,23 +9,23 @@ Select `Enable RAG` to deploy the server. Once the service is deployed, select
 the `Details` button to view details and manage it.
 
 The
-[pgEdge Postgres RAG server](https://docs.pgedge.com/pgedge-rag-server/v1-0-0/)
+[pgEdge RAG Server](https://docs.pgedge.com/pgedge-rag-server/v1-0-0/)
 is a simple API server used to perform Retrieval-Augmented Generation (RAG) of
 text based on content from a Postgres database using pgvector. Consider using
-a RAG server when you have a well-defined use case with predictable query
+a RAG Server when you have a well-defined use case with predictable query
 patterns.
 
 ## Enabling the RAG Server
 
-![Enabling the RAG server](../images/sf_enable_rag_icon.png)
+![Enabling the RAG Server](../images/sf_enable_rag_icon.png)
 
-To enable a RAG server, select the `Enable RAG` icon in the RAG Server pane.
+To enable a RAG Server, select the `Enable RAG` icon in the RAG Server pane.
 The button is active only while the database status is `Available`. On a
 database in any other status, hovering it shows `Database not available`.
 
-![Provide details about the RAG server](../images/sf_rag_details.png)
+![Provide details about the RAG Server](../images/sf_rag_details.png)
 
-When the `Enable RAG server` popup opens, provide details about the RAG server
+When the `Enable RAG Server` popup opens, provide details about the RAG Server
 deployment:
 
 * The `Default Token Budget` field sets the maximum number of context tokens
@@ -53,14 +53,15 @@ deployment:
 pgEdge Starfleet supports two embedding providers: `OpenAI` and `Voyage`.
 Starfleet does not provide infrastructure for self-hosted model serving,
 so Ollama is not offered; Anthropic does not provide an embedding model,
-so it isn't available either.
+so it is not available either.
 
 pgEdge Starfleet supports two completion providers: `Anthropic (Claude)`
 and `OpenAI`.
 
 When you select `OpenAI` for both the embedding provider and the completion
 provider, the two API key fields collapse into a single
-`Default OpenAI API Key` field, and the one value you enter is used for both.
+`Default OpenAI API Key` field. The one value you enter there is used for
+both providers.
 
 !!! note
 
@@ -70,9 +71,9 @@ provider, the two API key fields collapse into a single
     enable rather than reading the badge.
 
 Select `+Add Pipeline` to expand the dialog and define one or more pipelines
-used by the RAG server.
+used by the RAG Server.
 
-![Provide details about the RAG server](../images/sf_rag_pipeline.png)
+![Provide details about the RAG Server](../images/sf_rag_pipeline.png)
 
 For each pipeline, provide:
 
@@ -94,7 +95,7 @@ For each table in a pipeline, provide:
   that content, in the `Vector Column` field. A new table block starts at
   `embedding`.
 
-When you set default values for the RAG server, individual pipelines can omit
+When you set default values for the RAG Server, individual pipelines can omit
 the corresponding fields and inherit those defaults. A pipeline can also
 override specific fields while still inheriting the others. Use the `Override
 Default Values` toggle to expand the dialog and provide the pipeline-specific
@@ -142,12 +143,12 @@ Provide the following details:
   which instructs the model to answer questions based on the provided
   context.
 
-When you're finished, select the `Enable RAG server` button to deploy the RAG
-server.
+When you are finished, select the `Enable RAG Server` button to deploy the
+RAG Server.
 
 ![The deployed service](../images/sf_enable_rag_deployed.png)
 
-Enabling, configuring or disabling the RAG server is a services write, so it
+Enabling, configuring or disabling the RAG Server is a services write, so it
 requires the database to be `Available`, and it appears in the Activity Log as
 an `update-managed` task. Every services change shares that one task name, so
 the Activity Log cannot tell a RAG change from an MCP change.
@@ -157,24 +158,24 @@ Once enabled, the RAG Server pane updates to display:
 - A status badge. A `running` state reads `Running`. Every other state is
   shown as the raw value the API sent, in lower case, such as `failed` or
   `pending`.
-- A `Configure` button that opens the Configure RAG server dialog where you can
-  modify the RAG server deployment.
-- A `Disable` button that you can use to stop the RAG server.
+- A `Configure` button that opens the Configure RAG Server dialog where you can
+  modify the RAG Server deployment.
+- A `Disable` button that you can use to stop the RAG Server.
 
 !!! hint
 
-    Detailed information about the RAG server is also added to the `Services`
+    Detailed information about the RAG Server is also added to the `Services`
     page. Use the link to `Services` located under the database name in the
     navigation pane to access the page.
 
 ![RAG Server information is now displayed on the Services dialog](../images/sf_rag_services.png)
 
-You can disable the RAG server from either the Services page or the RAG Server
+You can disable the RAG Server from either the Services page or the RAG Server
 pane by selecting the `Disable` button.
 
 ![Disabling the RAG Server](../images/sf_rag_confirm_disable.png)
 
-Select the `Disable RAG Server` button to stop the RAG server.
+Select the `Disable RAG Server` button to stop the RAG Server.
 
 ## Understanding the Server State
 
@@ -186,12 +187,12 @@ the server itself is doing.
 * `Failed` is a reliable state that calls for action; a `Running` badge
   proves nothing on its own.
 
-The RAG server exposes no handshake, so query a pipeline to find out
+The RAG Server exposes no handshake, so query a pipeline to find out
 whether it is ready.
 
 ## Reviewing RAG Server Details
 
-Once the RAG server is running, its pane displays the server's status and
+Once the RAG Server is running, its pane displays the server's status and
 configuration:
 
 ![The RAG Server pane showing connection details](../images/sf_rag_connect_details.png)
@@ -233,7 +234,7 @@ curl -X POST https://<your-domain>/rag/v1/pipelines/my-docs \
   -d '{"query": "How do I configure replication?"}'
 ```
 
-The RAG server retrieves the most relevant document chunks using hybrid
+The RAG Server retrieves the most relevant document chunks using hybrid
 search (vector similarity + BM25 keyword matching), then passes them to
 the LLM to generate a grounded answer.
 
@@ -245,8 +246,8 @@ the LLM to generate a grounded answer.
 ## Example - Building a Custom Knowledgebase with the RAG Server
 
 This example walks through loading a set of Markdown documentation into
-your pgEdge Starfleet database and querying it through the RAG server.
-The RAG server only generates embeddings for incoming queries. The
+your pgEdge Starfleet database and querying it through the RAG Server.
+The RAG Server only generates embeddings for incoming queries. The
 `embedding` column on your table must be populated separately before the
 server can retrieve against it.
 
@@ -332,7 +333,7 @@ server can retrieve against it.
     Server, or select `Services` from the navigation pane. Under
     `Connect`, note the API base URL and the pipeline name.
 
-6.  If the RAG Server's pipeline isn't already configured to use this
+6.  If the RAG Server's pipeline is not already configured to use this
     table, select `Configure`, open the pipeline's table block under
     `Add Tables`, then set `Table Name` to `public.documents`,
     `Text Column` to `content`, and `Vector Column` to `embedding`.
@@ -346,7 +347,7 @@ server can retrieve against it.
       -d '{"query": "How do I configure replication?"}'
     ```
 
-8.  Verify the response: the RAG server returns a JSON payload with a
+8.  Verify the response: the RAG Server returns a JSON payload with a
     generated `answer` and the `sources` it retrieved, which should
     reference content from the documentation you loaded in step 3.
 
@@ -362,8 +363,8 @@ The `Services` page displays a message when something goes wrong:
     them, so this indicates a console read failure rather than an
     outage of the services themselves.
 
-* `Failed to update RAG server.` is displayed when a service change is
-  refused. It is the fallback text, shown when the API sends no message
+* `Failed to update RAG Server.` is displayed when a service change is
+  refused. This text is the fallback, shown when the API sends no message
   of its own.
 
     A services change needs the database in an `Available` state, and
