@@ -90,10 +90,10 @@ undone. That step is mandatory. If that backup cannot be taken, the
 restore fails rather than proceeding; an already-running backup causes
 the same failure.
 
-That refusal arrives on the restore's task rather than as an error on
-the request. The API has already accepted the restore and the database
-is already `modifying`, so the Activity Log is where the refusal
-surfaces.
+This failure does not appear as an error on the original restore
+request. By the time the pre-restore backup step runs, the API has
+already accepted the request, and the database is already `modifying`.
+The failure surfaces instead on the restore's task in the Activity Log.
 
 Three things about that backup are easy to miss before you search for it:
 
