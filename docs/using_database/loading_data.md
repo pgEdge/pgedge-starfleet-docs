@@ -3,7 +3,7 @@
 A pgEdge Starfleet database is a standard PostgreSQL database, so you can load
 data into it with any tool that works with Postgres over a libpq connection.
 This page discusses loading data with `psql`, restoring from an existing
-Postgres database, and loading documents for the RAG server.
+Postgres database, and loading documents for the RAG Server.
 
 You should load schema and data as the `app` user (the `Application` tab
 credentials), so that every object ends up owned by the role your application
@@ -199,7 +199,7 @@ that loaded successfully.
 
 The methods above load structured, relational data into tables. If you are
 loading unstructured documents (HTML, Markdown, or reStructuredText) to use
-with a RAG server, use `pgedge-docloader` instead. See
+with a RAG Server, use `pgedge-docloader` instead. See
 [Using the RAG Server](../serving_ai_content/rag.md#using-the-rag-server).
 Because the docloader creates a `documents` table, configure it with the `app`
 user's connection details, not `admin`.

@@ -317,7 +317,7 @@ server can retrieve against it.
         ```
 
 4.  Populate the `embedding` column for each row. Before populating
-    the column, enable the MCP server with `Generate embeddings` and
+    the column, enable the MCP Server with `Generate embeddings` and
     `Allow writes` enabled (see
     [Enabling the MCP Server](mcp.md#enabling-the-mcp-server)). If you
     enable an AI client (like Claude Code), you can ask the interface
@@ -359,7 +359,7 @@ The `Services` page displays a message when something goes wrong:
   text: `We could not load this database. Refresh the page to try
   again.`
 
-    The RAG and MCP servers keep running while the console cannot read
+    The RAG and MCP Servers keep running while the console cannot read
     them, so this indicates a console read failure rather than an
     outage of the services themselves.
 

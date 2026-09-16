@@ -313,7 +313,7 @@ The `Services` page displays a message when something goes wrong:
   text: `We could not load this database. Refresh the page to try
   again.`
 
-    The MCP and RAG servers keep running while the console cannot read
+    The MCP and RAG Servers keep running while the console cannot read
     them, so this indicates a console read failure rather than an outage of
     the services themselves.
 
