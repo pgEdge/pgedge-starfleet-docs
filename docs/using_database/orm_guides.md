@@ -84,7 +84,7 @@ datasource db {
 Set `DATABASE_URL` to the string the console provided. Prisma's own default is
 `sslmode=prefer`, which accepts a plain-text connection when TLS is not
 available, so the `sslmode=require` on the end of the console's string is what
-holds the connection encrypted.
+keeps the connection encrypted.
 
 The [Prisma PostgreSQL connector reference][prisma-pg] lists the other
 arguments Prisma reads from the query string.

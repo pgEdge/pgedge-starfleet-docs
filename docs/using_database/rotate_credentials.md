@@ -66,7 +66,7 @@ Wait for `Available` before switching anything over. The status badge on
 the same page is the signal.
 
 Rotation breaks any session still using the old password, so switch every
-client that holds the rotated role, not only the client used for testing.
+client using the rotated role, not only the client used for testing.
 
 ## Rotating the Application Role Restarts MCP and RAG
 

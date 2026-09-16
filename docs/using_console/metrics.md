@@ -141,11 +141,11 @@ before concluding that a query, an index, or a restart had no effect.
 ## Minimum Time Range
 
 A range shorter than the lag ends before any published sample exists,
-so it holds nothing. One minute always comes back empty, ninety seconds
-is unreliable, and two minutes holds only a sample or two.
+so it returns nothing. One minute always comes back empty, ninety
+seconds is unreliable, and two minutes yields only a sample or two.
 
-**Ask for three minutes or more.** A three-minute range holds a
-handful of samples, and a wider one holds more.
+**Ask for three minutes or more.** A three-minute range returns a
+handful of samples, and a wider one returns more.
 
 The console's shortest time-range button is `15m`, so this bites only
 through `Custom`. A custom range of a couple of minutes ending at now
