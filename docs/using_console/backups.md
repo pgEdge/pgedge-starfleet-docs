@@ -99,29 +99,18 @@ The pre-restore backup itself is easy to miss:
 
 * It does not appear in the `Backups` pane immediately; it can take up to a
   minute after the restore starts.
-* Nothing marks it as the pre-restore backup, so identify it by timing: it is
+* Nothing marks it as the pre-restore backup, so identify it by timing; it is
   the `hot` backup created at the moment the restore started.
 * It is not an archive. Treat it as a way back from a mistake caught shortly
   afterward, not as a restore point you can rely on later.
 
-## Backups Taken After a Restore
-
-On a database with durable backups, the restore also leaves a `durable` backup,
-taken from the restored database when it is available. This backup records the
-state the restore produced, not the state it replaced, so it does not provide a
-way back to the pre-restore data.
-
-Backups dated after the restore all describe the restored database. The
-pre-restore `hot` backup remains the only route back to the state the restore
-replaced.
-
 ## When a Restore Is Refused
 
-`Could not start the restore.` is a red notification meaning the API
-refused the restore request. This text is the fallback message, and the console
-shows the API's own message where it sends one. A restore needs the
-database `Available`, and only a completed backup can be restored from.
-Wait for `Available` and try again.
+`Could not start the restore.` is a notification meaning the API refused the
+restore request. This text is the fallback message, and the console shows the
+API's own message if it sends one. A restore requires the database to be
+`Available`, and you can restore only from a completed backup. Wait for
+`Available`, then try again.
 
 ## Related Pages
 
