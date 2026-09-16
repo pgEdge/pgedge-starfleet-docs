@@ -95,19 +95,23 @@ That refusal arrives on the restore's task rather than as an error on
 the request. The API has already accepted the restore and the database
 is already `modifying`, so the Activity Log is where it surfaces.
 
-Three things about that backup before you go looking for it:
+Three things about that backup are easy to miss before you go looking for
+it:
 
-* **It doesn't appear in the list immediately.** The pre-restore backup
-  surfaces in the `Backups` pane up to about a minute after the restore
-  starts.
+### The Pre-Restore Backup Does Not Appear in the List Immediately
 
-* **Nothing marks it as one.** In the list it is identical to any other
-  `hot` backup. Identify it as the `hot` backup created at the moment the
-  restore started.
+The pre-restore backup surfaces in the `Backups` pane up to about a minute
+after the restore starts.
 
-* **It isn't an archive.** Treat it as a way back from a mistake
-  noticed shortly afterwards, not as a restore point you can count on
-  later.
+### The Pre-Restore Backup Is Not Marked as Such
+
+In the list, the pre-restore backup is identical to any other `hot` backup.
+Identify it as the `hot` backup created at the moment the restore started.
+
+### The Pre-Restore Backup Is Not an Archive
+
+Treat the pre-restore backup as a way back from a mistake noticed shortly
+afterwards, not as a restore point you can count on later.
 
 ## Backups Taken After a Restore
 
@@ -123,12 +127,14 @@ backup described above.
 ## When a Restore Is Refused
 
 `Could not start the restore.` is a red notification meaning the restore
-request was refused. It is the fallback text, and the console shows the API's
-own message where it sends one. A restore needs the database `Available`, and
-only a completed backup can be restored from. Wait for `Available` and try
-again.
+request was refused. This text is the fallback message, and the console
+shows the API's own message where it sends one. A restore needs the
+database `Available`, and only a completed backup can be restored from.
+Wait for `Available` and try again.
 
 ## Related Pages
+
+The following pages cover related backup and restore tasks:
 
 * [Reviewing the Activity Log](activity_log.md) describes the
   statuses and the task names a restore moves through.

@@ -7,6 +7,8 @@ and manage billing. The page has four tabs: `Profile`, `Team`,
 
 ## The Profile Tab
 
+Select the `Profile` tab to review and update your account details.
+
 ![The Profile tab](../images/sf_settings_profile.png)
 
 The `Profile` tab displays the email address associated with your account
@@ -15,10 +17,12 @@ The `Profile` tab displays the email address associated with your account
 * Provide your first name in the `First name` field.
 * Provide your last name in the `Last name` field.
 
-When you've finished, select `Save` to update your account with the name
+When you have finished, select `Save` to update your account with the name
 changes; select `Reset` to return the fields to their previous values.
 
 ## The Team Tab
+
+Select the `Team` tab to review your account and manage team members.
 
 ![The Team tab](../images/sf_settings_team.png)
 
@@ -42,11 +46,13 @@ For information about inviting and managing team members, see
 
 ## The API Clients Tab
 
+Select the `API Clients` tab to manage the API clients on your account.
+
 ![The API Clients tab](../images/sf_settings_api_clients.png)
 
 The `API Clients` tab lists the API clients on your account (`Name`,
-`Description`, and `Auth ID` columns), and is used to interact with the
-pgEdge Cloud API, a REST interface for managing your databases (and more).
+`Description`, and `Auth ID` columns), and is used to interact with the REST
+API that manages your databases (and more).
 
 To add an API client, select `Create API Client` in the upper-right
 corner of the tab. When the `Create API Client` popup opens:
@@ -61,6 +67,8 @@ Select `Create` to create the API client, or `Cancel` to close the popup
 without creating one.
 
 ## The Billing Tab
+
+Select the `Billing` tab to review your subscription and payment status.
 
 ![The Billing tab](../images/sf_settings_billing.png)
 

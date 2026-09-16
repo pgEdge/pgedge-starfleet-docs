@@ -3,7 +3,7 @@
 Rotating a database role's password replaces it with a new one the platform
 generates. The `Rotate credentials` button on the `Connect` pane triggers
 this, and for roughly ten seconds afterwards neither the old password nor
-the new one can be relied on. Your account carries one other credential,
+the new one can be relied on. Your account has one other credential,
 the API client secret, which is replaced rather than rotated.
 
 Rotation is not on the `Actions` menu. For the options that are, see
@@ -31,7 +31,7 @@ role, see [Managing Database Roles](roles.md).
 
 The button opens a `Rotate credentials` dialog naming the Postgres user, with
 `Rotate credentials` and `Cancel`. Rotating the `Application` role adds a note
-about the MCP and RAG servers restarting.
+about the MCP and RAG Servers restarting.
 
 Confirming does three things:
 
@@ -66,11 +66,11 @@ Wait for `Available` before switching anything over. The status badge on
 the same page is the signal.
 
 Rotation breaks any session still using the old password, so switch every
-client that holds the rotated role, not only the client used for testing.
+client using the rotated role, not only the client used for testing.
 
 ## Rotating the Application Role Restarts MCP and RAG
 
-The MCP and RAG servers read the database's `app` password once, at
+The MCP and RAG Servers read the database's `app` password once, at
 startup, so a rotation of the `Application` role restarts them. They
 resume using the new password by the time the database reads
 `Available` again.
@@ -100,34 +100,40 @@ Then update every place the old password is saved. That includes:
 
 ## Rotation Refused
 
-**A refusal.** The console shows `Could not rotate credentials. Please try
-again.`, or the API's own message where it sends one. The API's rotation
-refusal reads `rotating a password requires the database to be available; it
-is busy with another operation`.
+### A Refusal
+
+The console shows `Could not rotate credentials. Please try again.`,
+or the API's own message where it sends one. The API's rotation
+refusal reads `rotating a password requires the database to be
+available; it is busy with another operation`.
 
 Waiting resolves this. A database already `Modifying` because of an
 earlier restore or resize refuses a rotation for the same reason.
 
-**An uncertain outcome.** If no notification arrives, do not select the
-button again. A rotation sends the new credential to the database before
-it waits for confirmation, and the database applies it independently, so
-a repeat risks replacing a credential that is already in place.
+### An Uncertain Outcome
 
-Read the Activity Log instead. Find the `rotate-password-managed` task for this
-database and compare its `Updated at` against the current time rather than
-against its `Created at`. A rotation completes in seconds, so a task still
-running whose `Updated at` is minutes old has stopped progressing. A task whose
-`Created at` and `Updated at` are equal finished inside the API's one-second
-timestamp resolution and is healthy.
+If no notification arrives, do not select the button again. A
+rotation sends the new credential to the database before it waits for
+confirmation, and the database applies it independently, so a repeat
+risks replacing a credential that is already in place.
 
-**A failure.** A rotation that fails leaves the database `Degraded`, with the
-new credential recorded but not applied, and a `Degraded` database is refused
-another rotation until it is recovered.
+Read the Activity Log instead. Find the `rotate-password-managed` task for
+this database and compare its `Updated at` against the current time rather
+than against its `Created at`. A rotation completes in seconds, so a task
+still running whose `Updated at` is minutes old has stopped progressing. A
+task whose `Created at` and `Updated at` are equal finished inside the
+API's one-second timestamp resolution and is healthy.
+
+### A Failure
+
+A rotation that fails leaves the database `Degraded`, with the new
+credential recorded but not applied, and a `Degraded` database is
+refused another rotation until it is recovered.
 
 ## The API Client Secret
 
-The pgEdge Cloud API authenticates with an API client, managed on the
-`API Clients` tab under `Settings`. See
+The REST API authenticates with an API client, managed on the `API Clients` tab
+under `Settings`. See
 [The API Clients Tab](../using_console/settings.md#the-api-clients-tab).
 
 A client's secret is returned once, at creation, and cannot be fetched again.
@@ -152,9 +158,11 @@ itself:
 
 ## Next Steps
 
-* [Managing Database Roles](roles.md) describes the roles whose passwords these
-  are, and [Connecting with psql](../connecting/psql.md) explains how
-  to handle the password once you have it.
+These pages cover related tasks that build on rotating credentials.
+
+* [Managing Database Roles](roles.md) describes the roles whose
+  passwords these are, and [Connecting with psql](../connecting/psql.md)
+  explains how to handle the password once you have it.
 
 * [Enabling and Using the MCP Server](../serving_ai_content/mcp.md)
   describes the server a rotation of the `Application` role restarts.

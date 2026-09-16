@@ -14,7 +14,7 @@ The following table shows what each size provides:
 | XL | 4 | 16 GB | 150 GB | 100 |
 
 `Connections` is the Postgres `max_connections` setting. Every client counts
-against the value, including the MCP and RAG servers, which connect to the
+against the value, including the MCP and RAG Servers, which connect to the
 database as `app` when enabled.
 
 `Storage` is the disk space available to the database. Used space counts
@@ -45,6 +45,8 @@ is `Available`. See
 [Upgrading the Size Tier](../using_console/actions.md#upgrading-the-size-tier).
 
 ## Next Steps
+
+These pages cover related tasks that build on database sizing.
 
 * [Deploying a Managed Database](../managed/creating_managed.md)
   describes using the create wizard.

@@ -1,8 +1,8 @@
 # Community
 
 Select `Community` in the navigation pane to open an invitation to pgEdge's
-Discord server in a new tab, where you can ask questions, share feedback, and
-connect with other pgEdge users.
+Discord server in a new tab. There, you can ask questions, share feedback,
+and connect with other pgEdge users.
 
 ![The pgEdge Discord invitation](images/sf_community_discord.png)
 

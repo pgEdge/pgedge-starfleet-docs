@@ -9,7 +9,7 @@ Select the `Create your first database` button to continue.
 
 ![Step one - name your database and choose regions](../images/sf_deploy_one.png)
 
-In the first step, you'll provide details about the database:
+In the first step, you will provide details about the database:
 
 - Provide a name for the database in the `Database name` field.
 - Use the `Region` drop-down to select the region in which the database will
@@ -20,9 +20,10 @@ After completing the dialog, click `Continue`.
 
 ![Step two - select features for your database](../images/sf_deploy_two.png)
 
-Next, you'll select deployment features:
+Next, you will select deployment features:
 
-- In the `SIZE` section, select the size of your resource bundle:
+- In the `SIZE` section, select the size of your resource bundle. The
+  following table describes the available sizes:
 
  | Size | vCPU | RAM | Storage | Connections | Price |
  |------|------|-----|---------|-------------|-------|
@@ -33,13 +34,14 @@ Next, you'll select deployment features:
   For details about functionality provided by each size, see 
   [Selecting a Database Size](../using_database/sizes.md).
 
-- The `ADD-ONS` section features a list of optional features for your database:
+- The `ADD-ONS` section features a list of optional features for your
+  database. The following table describes the available add-ons:
 
  | Feature | Description | Price |
  |---------|--------------|-------|
  | Point-in-time recovery | Restores your database to any second within the past 7 days. | +$15/mo |
  | Priority support | Provides a 1-hour response time through a dedicated support channel. | +$49/mo |
- | Guaranteed resources | Reserves dedicated CPU and RAM for your database, so performance isn't affected by bursting contention from other workloads. | +$40/mo |
+ | Guaranteed resources | Reserves dedicated CPU and RAM for your database, so performance is not affected by bursting contention from other workloads. | +$40/mo |
  | Extended retention | Retains backups and metrics for 30 days. | +$10/mo |
 
 Select the features that will be accessible to your database, and select
@@ -82,3 +84,18 @@ The wizard displays a message when a step fails:
 * `Couldn't create your database` means the create request itself failed.
   The panel displays the reason, as well as `Try again` and `Back` buttons.
 
+## Next Steps
+
+These pages cover related tasks that build on creating your database:
+
+* The [Selecting or Modifying the Database Size](../using_database/sizes.md)
+  document describes each size tier in detail.
+* The [Managing Database Roles](../using_database/roles.md) document
+  explains the `admin` and `app` roles your database includes.
+* The
+  [Loading Data into Your pgEdge Starfleet Database](../using_database/loading_data.md)
+  document explains how to load a schema and data into your new database.
+* The [Enabling and Using the MCP Server](../serving_ai_content/mcp.md)
+  document describes the MCP add-on.
+* The [Enabling and Using the RAG Server](../serving_ai_content/rag.md)
+  document describes the RAG add-on.

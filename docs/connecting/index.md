@@ -2,14 +2,14 @@
 
 Any client that can negotiate a connection using libpq can connect to the
 PostgreSQL database on pgEdge Starfleet; this applies to custom clients as
-well. Connections are made over TLS with password authentication. The connection
-string the console displays always includes `sslmode=require`, and Starfleet
-hosts serve TLS with a certificate that verifies, so `require` works from every
-client, and you may add a stricter mode.
+well. Connections are made over TLS with password authentication. The
+connection string the console displays always includes `sslmode=require`.
+Starfleet hosts serve TLS with a certificate that verifies, so `require`
+works from every client, and you may add a stricter mode.
 
-On clients with optional GSS encoding  (as shown in the pgAdmin client), you
-should set
-[encoding](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-GSSENCMODE)
+On clients with an optional `GSS encmode` setting (as shown in the pgAdmin
+client), you should set
+[encmode](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-GSSENCMODE)
 to `disable`.
 
 Every client connects as one of the database's two built-in roles, `admin` or
@@ -49,14 +49,14 @@ In URI syntax, reserved characters are used as structural delimiters:
   - `/` separates the host/port from the path (database name).
   - `?` starts the query-string parameters.
 
-When Cloud encounters a password that contains special characters that are not
-encoded properly, the characters will cause a loop of round-trips instead of
-parsing into the correct connection string.
+If a password contains special characters that are not encoded properly,
+the console cannot parse it correctly. Instead of building the correct
+connection string, the unencoded characters cause a loop of round-trips.
 
-Cloud expects percent-encoding, like that used in the `Connection string`
+The console expects percent-encoding, like that used in the `Connection string`
 URI; the `psql command` block is formatted to connect with the correct values.
 
-If you read the password out of the `Password` field and assemble a URI
+If you read the password from the `Password` field and assemble a URI
 yourself, you must encode it yourself, using the correct grammar as noted in
 [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986).
 
@@ -87,6 +87,8 @@ practices when using the password:
     [Rotating Database Credentials](../using_database/rotate_credentials.md).
 
 ## Next Steps
+
+The following pages cover related tasks for managing your database:
 
 * [Managing Database Roles](../using_database/roles.md) explains what
   the `admin` and `app` roles can each do, and which role to choose to

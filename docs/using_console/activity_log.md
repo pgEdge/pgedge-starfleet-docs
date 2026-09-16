@@ -23,10 +23,10 @@ The Activity Log page displays the following columns:
   the task, with a tooltip that names it in plain language and says
   what it is.
 
-* `Subject kind` is the kind of thing the task acted on, one of
+* `Subject kind` is the kind of resource the task acted on, one of
   `database`, `cluster`, or `ingress`.
-* `Subject ID` is the ID of that thing. For a Managed database, this is
-  the database ID shown in the `Details` pane.
+* `Subject ID` is the ID of that resource. For a Managed database,
+  this is the database ID shown in the `Details` pane.
 * `Status` indicates the state of the task. The values are `running`,
   `succeeded`, `queued`, and `failed`.
 * `Created at` is the timestamp at which the task started.
@@ -54,8 +54,8 @@ by pasting its database ID into `Subject ID` rather than by name.
 
 ## Managed Task Names
 
-Every Managed operation writes a task. These are the names in use
-today.
+Every Managed operation writes a task. The following table describes
+the task names currently in use:
 
 | Task name | What it is |
 |-----------|------------|
@@ -63,7 +63,7 @@ today.
 | `delete-managed` | Deleting a database. |
 | `suspend-managed` | Hibernating a database. |
 | `resume-managed` | Bringing a database back from hibernation. |
-| `update-managed-size` | The resize. The name carries `size` as an infix rather than the suffix the others use. |
+| `update-managed-size` | The resize. The name has `size` as an infix rather than the suffix the others use. |
 | `rotate-password-managed` | A role password rotation. |
 | `update-managed` | Every services change. An MCP enable, an MCP configure, a RAG enable, and a service removal all write this one name, so the name alone does not say which service changed. |
 | `restore-managed` | Restoring the database in place from a backup. |
@@ -71,20 +71,24 @@ today.
 
 ### Task Names That Do Not Match the Console
 
-**`update-managed` cannot tell you which service changed.** Every
-services write shares it. To find out what changed, expand the row and
-read the steps, or read the `AI Services` pane.
+#### `update-managed` Cannot Tell You Which Service Changed
 
-**`update-managed-size` is the resize**, not a generic size-related
-update. It is the task behind the `Upgrade size` action described in
+Every services write shares it. To find out what changed, expand the
+row and read the steps, or read the `AI Services` pane.
+
+#### `update-managed-size` Is the Resize, Not a Generic Update
+
+`update-managed-size` is not a generic size-related update. This task
+is the task behind the `Upgrade size` action described in
 [Accessing Management Options with the Actions Menu](actions.md#upgrading-the-size-tier).
 
-**`backup-managed` can read `succeeded` while the backup is still
-pending.** The task claims to have taken the backup, and its steps read
+#### `backup-managed` Can Read `succeeded` While the Backup Is Still Pending
+
+The task claims to have taken the backup, and its steps read
 `Configuring System` then `Taking Backup` at 100 percent succeeded,
 while the backup record it produced is still `pending`. Both reach a
-terminal state, just not together. Read the backup's own status on the
-`Backups` pane rather than the task's.
+terminal state, but not at the same time. Read the backup's own status
+on the `Backups` pane rather than the task's.
 
 ### What a Succeeded Task Means
 
@@ -92,8 +96,8 @@ A task that reads `succeeded` means the status has been set. A
 succeeded task never sits beside a status the operation had not yet
 applied.
 
-What it does not say is which status resulted, or that the database is
-usable. Read the status badge for that.
+A succeeded task does not say which status resulted, or whether the
+database is usable. Read the status badge for that.
 
 Delete is the exception. A succeeded delete removes the database
 record, so the database disappears from the list, and that
@@ -101,15 +105,15 @@ disappearance is the confirmation. A delete that leaves the database
 behind is one whose task failed.
 
 A services change is the other exception. A succeeded `update-managed`
-means the API-side work finished, and the deployed server lags behind,
-by roughly a minute or two for a configure, and around fifteen to
-twenty seconds for a first MCP enable.
+means the API-side work finished. The deployed server lags behind by
+roughly a minute or two for a configure, and around fifteen to twenty
+seconds for a first MCP enable.
 
 ## Database Statuses
 
 The status is the badge on the Databases list and on the database
-header. The API publishes nine values. The table gives the meaning of
-each and the writes each one admits.
+header. The API publishes nine values. The following table describes
+the meaning of each value and the writes each one admits:
 
 | Status | What it means | Which writes it admits |
 |--------|---------------|------------------------|
@@ -132,12 +136,13 @@ action for either on the Managed database pages, only a banner on a
 database that is already suspended. The last three statuses are listed
 because a database suspended by some other means still reports them.
 
-**A `degraded` database shows its action buttons enabled.** The console
-treats `available` and `degraded` alike for `Rotate credentials`, the
-display-name edit, and deletion protection, and the API admits the five
-writes below only from `available`. So an action offered on a
-`degraded` database can still be refused. `Upgrade size` is the
-exception the console already gates, being offered only from
+### A `degraded` Database Shows Its Action Buttons Enabled
+
+The console treats `available` and `degraded` alike for `Rotate
+credentials`, the display-name edit, and deletion protection, and the
+API admits the five writes below only from `available`, so an action
+offered on a `degraded` database can still be refused. `Upgrade size`
+is the exception the console already gates, being offered only from
 `available`.
 
 ### The Five Writes That Need Available
@@ -148,7 +153,7 @@ a database already `modifying` because of an earlier change:
 * Restore from a backup
 * Upgrade size
 * Any services change, meaning enabling, configuring, or disabling the
-  MCP or RAG server
+  MCP Server or RAG Server
 * Rotate credentials
 * Take a backup
 
@@ -165,7 +170,7 @@ status badge, wait for `available`, and try again.
 
 A status or a task name outside the two lists above can appear.
 
-* A tenant with older databases carries task names that are not in the
+* A tenant with older databases has task names that are not in the
   table above. Unsuffixed `create`, `update`, and `delete` appear
   beside the `-managed` ones, along with names such as `replicate` and
   `restore-from-pgdump`.
@@ -175,6 +180,8 @@ A status or a task name outside the two lists above can appear.
   ready for the five writes.
 
 ## Related Pages
+
+The following pages provide more detail on topics referenced above:
 
 * [Restoring from Backup](backups.md) describes the restore
   this glossary keeps pointing at.

@@ -54,7 +54,7 @@ The page shows one of these messages in place of the log table:
   further back rather than expecting a filter to fetch more.
 
 `Could not copy the log lines to your clipboard.` appears when the copy icon
-could not reach the clipboard, which is a browser permission or a non-secure
-context rather than anything about the database. Use the download icon
-instead, which writes the same lines to a text file.
+could not reach the clipboard. The cause is a browser permission or a
+non-secure context, rather than anything about the database. Use the
+download icon instead, which writes the same lines to a text file.
 

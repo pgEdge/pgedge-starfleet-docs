@@ -1,8 +1,8 @@
 # pgEdge Starfleet - Enterprise-Grade AI-First PostgreSQL
 
-pgEdge Starfleet is a Postgres cloud platform that combines the smooth
-developer experience and AI native tooling developers love with the deployment
-flexibility, security and reliability the enterprise demands.
+pgEdge Starfleet is a Postgres cloud platform that combines a smooth
+developer experience and AI native tooling with the deployment flexibility,
+security, and reliability the enterprise demands.
 
 
 ## What Makes pgEdge Starfleet Different?
@@ -10,13 +10,13 @@ flexibility, security and reliability the enterprise demands.
 pgEdge Starfleet stands apart from other Postgres cloud services with:
 
 - **Comprehensive agentic AI tooling**: pgEdge Starfleet includes the
-  Agentic AI Toolkit for Postgres.
+  pgEdge AI Toolkit.
 
-    - The MCP server supports both development and production use, and
+    - The MCP Server supports both development and production use, and
       connects directly to Claude Code, Claude Cowork, Cursor, Replit,
       and other agentic tooling.
 
-    - The RAG server builds retrieval-augmented generation and chatbot
+    - The RAG Server builds retrieval-augmented generation and chatbot
       applications entirely from data in Postgres, with the pgEdge
       Vectorizer extension keeping vector embeddings updated
       automatically as content changes.
@@ -28,7 +28,7 @@ pgEdge Starfleet stands apart from other Postgres cloud services with:
 
 - **Smooth developer experience**: pgEdge Starfleet offers a free trial
   with no credit card, deploys and connects a database in under two minutes,
-  and adds MCP and RAG servers and PostgREST access as needed, with flat,
+  and adds MCP and RAG Servers and PostgREST access as needed, with flat,
   predictable pricing.
 
 - **Control, monitoring, and management**: pgEdge Starfleet can be
@@ -43,9 +43,9 @@ pgEdge Starfleet stands apart from other Postgres cloud services with:
   Enterprise Postgres.
 
 - **Secure by default**: Database infrastructure is not open to the internet
-  by default; IP allowlisting restricts access, and the integrated MCP server
-  enforces security and governance guardrails, including truly read-only
-  connections.
+  by default; IP allowlisting restricts access, and the integrated MCP
+  Server enforces security and governance guardrails, including truly
+  read-only connections.
 
 - **Global scalability**: pgEdge Starfleet starts with a single Postgres
   instance, scales through progressively larger compute sizes, and
