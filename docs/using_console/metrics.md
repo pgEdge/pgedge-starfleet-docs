@@ -19,13 +19,13 @@ The header displays the name and status of the current database,
 followed by controls for the charts displayed below:
 
 * Use the time-range buttons (`15m`, `1h`, `6h`, `24h`, `7d`, or
-  `Custom`) to change the period displayed. The choice is remembered
-  per database.
+  `Custom`) to change the period displayed. The console remembers the
+  choice per database.
 
 * Use the row of buttons below the time-range buttons to display
   metrics for `All` reporting instances, or select a single instance to
-  display metrics for that one only. The primary is marked, and the row
-  appears only when more than one instance reports.
+  display metrics for that one only. The console marks the primary,
+  and the row appears only when more than one instance reports.
 
 * Toggle `Live` to enable or disable automatic updates. `Live` is on by
   default and refreshes on a cadence set by the time range. Applying a
@@ -68,7 +68,7 @@ the database published nothing for that sample.
 A **rate** plots the change since the previous sample divided by the
 seconds between the two. The first point of any rate series is always
 blank, because there is no previous sample to subtract, and a sample
-whose neighbour is missing is blank too. A counter that restarts at
+whose neighbor is missing is blank too. A counter that restarts at
 zero, which happens when the container restarts, produces a negative
 difference, which the console renders as one gap rather than as a
 downward spike.
@@ -86,8 +86,8 @@ connection resources used by your database.
 | Idle connections | The number of idle (inactive) client connections to the database. | `pg_stat_activity_idle`, same axis top | Level |
 | Waiting connections | The number of connections waiting for a lock or other resource to become available. | `pg_stat_activity_waiting`, same axis top | Level |
 
-Active, idle, and waiting are three separate charts of one number
-apiece, not slices of a total. Read them together against the
+Active, idle, and waiting are three separate charts, each showing a
+single value, not slices of a total. Read them together against the
 connection limit the axis displays.
 
 ## Throughput Charts - Reference
@@ -124,9 +124,9 @@ write-ahead log (WAL) activity for your database.
 | WAL size | The size of the write-ahead log (WAL). | `pg_wal_size_bytes` | Level |
 | WAL segments | The number of WAL segments currently retained. | `pg_wal_segments` | Level |
 
-`Disk used` is storage in use as a share of storage in use plus storage
-still available. `Database size` is the size of the Postgres database
-itself, so the two do not match.
+`Disk used` expresses storage in use as a percentage of total storage:
+storage in use plus storage still available. `Database size` is the
+size of the Postgres database itself, so the two do not match.
 
 ## How Far Behind the Charts Run
 
@@ -135,8 +135,9 @@ The lag moves around inside that band rather than settling on one
 figure. Samples are collected into buckets every 30 seconds, aligned to
 the top and the half of each minute.
 
-A change you make now is not on the chart now, so wait out the lag
-before concluding that a query, an index, or a restart had no effect.
+A change you make now is not on the chart now, so wait for the lag to
+pass before concluding that a query, an index, or a restart had no
+effect.
 
 ## Minimum Time Range
 
@@ -145,11 +146,11 @@ so it returns nothing. One minute always comes back empty, ninety
 seconds is unreliable, and two minutes yields only a sample or two.
 
 **Ask for three minutes or more.** A three-minute range returns a
-handful of samples, and a wider one returns more.
+small number of samples, and a wider one returns more.
 
-The console's shortest time-range button is `15m`, so this bites only
-through `Custom`. A custom range of a couple of minutes ending at now
-is the shape that comes back empty, and the page then reads
+The console's shortest time-range button is `15m`, so this applies
+only through `Custom`. A custom range of a couple of minutes ending at
+now is what returns empty, and the page then reads
 `No metrics in this window`, which is the same message a database with
 no metrics at all shows.
 
@@ -174,9 +175,9 @@ The console groups the samples by instance before it computes anything,
 so a rate is never taken across the handover and the overlap is never
 counted twice.
 
-What you see is the instance filter appearing above the charts, with
-one button per instance and the primary marked, and two lines on each
-chart with a legend. The instance still coming up reports blanks for a
+The instance filter appears above the charts, with one button per
+instance and the primary marked, and each chart displays two lines
+with a legend. The instance still coming up reports blanks for a
 while, so its line starts sparse.
 
 Outside a resize or a restore, each chart displays a single line.
