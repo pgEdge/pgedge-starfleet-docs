@@ -11,6 +11,8 @@ console.
 
 ## The Database Header
 
+The database header sits at the top of the database's management page.
+
 ![Database Header](../images/managed_database_header.png)
 
 The database header displays:
@@ -54,32 +56,30 @@ with credentials for the `app` user. Each tab displays:
 
 Select the copy icon next to any field to copy its value.
 
-The two users have different permissions on the database. Connect as `app` to
-create tables and load data, and as `admin` to install an allowlisted extension
-or for server-wide work.
+The two users have different permissions on the database. Connect as `app`
+to create tables and load data, and as `admin` to install an allowlisted
+extension or for server-wide work.
 [Managing Database Roles](../using_database/managed_roles.md) describes what
 each one can do.
 
-### When the Connect Pane Shows a Message Instead
+A database that is still being created may show a provisioning message
+instead:
 
-The pane shows one of three messages in place of connection details:
+* `Couldn't load connection details. Please refresh and try again.` indicates
+  that the server could not read the per-role credentials. Refresh the console
+  to retry; any connection string you already hold remains valid for login.
 
-* `Couldn't load connection details. Please refresh and try again.` means the
-  pane could not read the per-role credentials. Refresh. A connection string
-  you already hold keeps working.
+* `Connection details are unavailable.` indicates that the pane has a record of
+  the database but lacks the host, port, or database name required to build a
+  connection string. A database in the `failed` status displays this message.
+  Wait for the database to reach the `Available` status, then reload the page.
 
-* `Connection details are unavailable.` means the pane has the database but not
-  enough of it to build a connection string, because the host, port or database
-  name is missing. A `failed` database reads this way. Wait for the database to
-  reach `Available` and reload.
-
-* `This database is <status> and is not available to connect right now.` names
-  a status the pane treats as not connectable: `deleting`, `suspending`,
-  `suspended`, `resuming`, or any status the console does not recognize. Read
-  the status against
-  [Database Statuses](managed_activity_log.md#database-statuses).
-
-A database that is still being created shows a provisioning message instead.
+* `This database is <status> and is not available to connect right now.`
+  indicates that the database is in a status the pane does not treat as
+  connectable: `deleting`, `suspending`, `suspended`, `resuming`, or any status
+  the console does not recognize. See
+  [Database Statuses](managed_activity_log.md#database-statuses) for the
+  meaning of each status.
 
 ![Connecting to your database](../images/managed_connecting.png)
 
@@ -92,15 +92,18 @@ For detailed information about:
 
 ## The AI Services Pane
 
+The `AI Services` pane lists the AI-related services available for your
+database.
+
 ![The AI Services pane](../images/managed_services.png)
 
 The `AI Services` pane displays icons you can use to deploy available services
-on your Postgres database, including an MCP server and a RAG server. Select
+on your Postgres database, including an MCP Server and a RAG Server. Select
 `Enable MCP` or `Enable RAG` to add a service; once a service is deployed,
 select its `Details` button to view connection details and manage it.
 
-For detailed information about enabling, configuring, and connecting to these
-services, see
+For detailed information about enabling, configuring, and connecting to
+these services, see
 [Enabling and Using the MCP Server](../serving_ai_content/managed_mcp.md) or
 [Enabling and Using the RAG Server](../serving_ai_content/managed_rag.md).
 
@@ -176,16 +179,16 @@ and configuration of your database.
 
 ### Plan and Billing
 
-The `Plan & billing` pane displays the current size tier of your database and
-the price you'll be billed after any free trial ends. Select `Upgrade size` to
-change the size of your database. For what each size gives you, see
-[Selecting a Database Size](../using_database/managed_sizes.md).
+The `Plan & billing` pane displays the current size tier of your database
+and the price you will be billed after any free trial ends. Select
+`Upgrade size` to change the size of your database. For what each size
+gives you, see [Selecting a Database Size](../using_database/managed_sizes.md).
 
 Two notifications can appear after you add a payment method.
 `Payment saved, but we could not refresh billing status.` means the card was
-saved and the console could not re-read the billing state afterwards, so reload
-the page. `Still unable to load billing status.` means a retry of that read
-failed again.
+saved and the console could not re-read the billing state afterwards, so
+reload the page. `Still unable to load billing status.` means a retry of that
+read failed again.
 
 ### Details
 
@@ -206,11 +209,12 @@ your database.
 Two messages replace the whole page:
 
 * `Couldn't load this database. Please try again shortly.` means the console
-  could not read the database record. The `Metrics`, `Logs` and `Backups` pages
-  read the same way. Reload the page. If it repeats, check the Databases list,
-  because a database that has been deleted reads this way from a bookmarked
-  URL.
+  could not read the database record. The `Metrics`, `Logs` and `Backups`
+  pages read the same way. Reload the page. If it repeats, check the
+  Databases list, because a database that has been deleted reads this way
+  from a bookmarked URL.
 
-* `Database not found` means the read succeeded and returned no record for the
-  database ID in the URL. Go back to the Databases list, and if you expected
-  the database to exist, check that you are in the right account.
+* `Database not found` means the read succeeded and returned no record for
+  the database ID in the URL. Go back to the Databases list, and if you
+  expected the database to exist, check that you are in the right account.
+
