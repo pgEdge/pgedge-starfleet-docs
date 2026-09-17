@@ -78,8 +78,8 @@ instead:
   indicates that the database is in a status the pane does not treat as
   connectable: `deleting`, `suspending`, `suspended`, `resuming`, or any status
   the console does not recognize. See
-  [Database Statuses](managed_activity_log.md#database-statuses) for the
-  meaning of each status.
+  [Database Statuses](../using_database/managed_database_details.md#database-statuses)
+  for the meaning of each status.
 
 ![Connecting to your database](../images/managed_connecting.png)
 
@@ -182,7 +182,8 @@ and configuration of your database.
 The `Plan & billing` pane displays the current size tier of your database
 and the price you will be billed after any free trial ends. Select
 `Upgrade size` to change the size of your database. For what each size
-gives you, see [Selecting a Database Size](../using_database/managed_sizes.md).
+gives you, see
+[Managing Database Details](../using_database/managed_database_details.md).
 
 Two notifications can appear after you add a payment method.
 `Payment saved, but we could not refresh billing status.` means the card was
