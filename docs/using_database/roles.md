@@ -186,6 +186,16 @@ configuration. See
 Rotating the `Admin` role does not restart them, because both servers
 connect as `app`.
 
+!!! hint
+
+    The MCP Server reads the database's `app` password once, at startup.
+    Changing the `app` role's password therefore restarts the database's
+    MCP and RAG servers so they pick up the new password, causing a short
+    gap in service. Your client configuration does not change.
+
+    The updated password authenticates only when the database status
+    returns to `Available`; the old password may still work until then.
+
 ### Read the New Password Back
 
 The new password is not shown by the rotation itself.
