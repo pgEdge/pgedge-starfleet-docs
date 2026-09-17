@@ -43,11 +43,10 @@ the `Connect` pane instead of connection details.
 
 In URI syntax, reserved characters are used as structural delimiters:
 
-  - `@` separates the user (user:password) from the host.
-  - `:` separates the user from the password, and the host
-    from the port.
-  - `/` separates the host/port from the path (database name).
-  - `?` starts the query-string parameters.
+* `@` separates the user (user:password) from the host.
+* `:` separates the user from the password, and the host from the port.
+* `/` separates the host/port from the path (database name).
+* `?` starts the query-string parameters.
 
 If a password contains special characters that are not encoded properly,
 the console cannot parse it correctly. Instead of building the correct
@@ -62,8 +61,8 @@ yourself, you must encode it yourself, using the correct grammar as noted in
 
 !!! hint
 
-    Make sure you copy the whole string: a URI trimmed back to its host and
-    database could omit `sslmode=require`, preventing a connection.
+    Copy the whole string; a URI trimmed back to its host and database
+    could omit `sslmode=require`, preventing a connection.
 
 ### Managing a Password Safely
 

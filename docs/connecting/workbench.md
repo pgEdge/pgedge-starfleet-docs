@@ -41,15 +41,15 @@ guide.
     !!! hint
 
         `sed -i.bak` (rather than a bare `-i`) keeps this command portable
-        between macOS/BSD `sed`; the trailing `rm` removes
-        the backup file it creates.
+        between macOS/BSD `sed`. The trailing `rm` then removes the backup
+        file `sed -i.bak` creates.
 
 3.  Choose host ports that are unlikely to already be in use (`5432`,
     `8080`, and `3000` are common defaults for other local services),
     then start the stack. Running `down -v` first guarantees a clean
     start, so PostgreSQL always initializes fresh with the password
     from step 2 instead of reusing a stale volume from an earlier
-    attempt; it is a no-op the first time you run this:
+    attempt. This command is a no-op the first time you run it:
 
     ```bash
     export POSTGRES_PORT=15432
@@ -118,7 +118,7 @@ guide.
 
 ## Connecting the Workbench to Your Database
 
-Once you are logged in, add your pgEdge Starfleet database as a monitored
+When you are logged in, add your pgEdge Starfleet database as a monitored
 connection.
 
 1.  Select the `+` next to the `DATABASE SERVERS` heading in the left

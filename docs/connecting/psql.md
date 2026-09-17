@@ -20,24 +20,21 @@ with the password included, so the clipboard holds a live credential even
 though the screen does not display it.
 
 For details about each role's capabilities and which role to use, see
-[Managing Database Roles](../using_database/roles.md). 
+[Managing Database Roles](../using_database/roles.md).
 
 !!! hint
 
-    Connect as `app` to create tables and load data. 
-    
-    Connect as `admin` to install an allowlisted extension or
-    perform server-wide administration, such as monitoring sessions or
-    creating roles.
+    Connect as `app` to create tables and load data. Connect as `admin` to
+    install an allowlisted extension or perform server-wide administration,
+    such as monitoring sessions or creating roles.
 
 ![Connecting to your database](../images/sf_connecting.png)
-
 
 ## Using the psql Client
 
 The psql client is distributed with PostgreSQL, and is available for download
-at the Postgres website. For more information about psql, see the Postgres
-documentation at: [psql](https://www.postgresql.org/docs/18/app-psql.html)
+at the Postgres website. For more information about psql, see the
+[Postgres documentation](https://www.postgresql.org/docs/18/app-psql.html).
 
 If you have already installed a copy of psql, connection is simple. Each tab
 of the `Connect` pane (`Admin` or `Application`) displays a ready-to-use psql
@@ -55,7 +52,7 @@ it directly into a terminal window, and press `Return` to connect.
     includes in its URI. Both enforce the required TLS connection.
 
 If you start psql with a graphical prompt or icon (rather than the command
-line) you can use the individual values from the psql connection string to
+line), you can use the individual values from the psql connection string to
 authenticate:
 
 * When prompted for a `Server [localhost]`, provide the host name from the
@@ -79,19 +76,19 @@ and connection details for your server.
 
 ### On a Mac
 
-On a Mac, you can use `brew` to install psql at the command line. To install
-psql, open a `Terminal` window and enter:
+On a Mac, you can use `brew` to install psql at the command line. Open a
+`Terminal` window and enter:
 
 `brew install libpq`
 
-When `brew` completes, use the following command to ensure that the version
-of psql that you have just installed is the first version in your PATH:
+When `brew` completes, use the following command to ensure the newly
+installed version of psql is first in your PATH:
 
 `echo 'export PATH="/usr/local/opt/libpq/bin:$PATH"' >> ~/.zshrc`
 
 Then, to connect to a pgEdge Starfleet database, use the copy button to
-the right of the connection string in the `Connect` section to copy the
-psql connection string of your database, and paste the string into the
+the right of the connection string in the `Connect` pane to copy the
+psql connection string of your database, and paste it into the
 `Terminal`.
 
 ![Copying a Connection String](../images/sf_copy_conn_string.png)
