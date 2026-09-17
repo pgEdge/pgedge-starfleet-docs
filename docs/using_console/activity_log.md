@@ -77,8 +77,6 @@ into the `Subject ID`.
 | `restore-managed` | Restoring the database in place from a backup. |
 | `backup-managed` | A backup. Read the caution below before trusting its status. |
 
-### Task Names That Do Not Match the Console
-
 Some task names are easy to misread against what actually happened in the
 console:
 
@@ -100,7 +98,7 @@ console:
 A task that reads `succeeded` means the operation itself finished, and the
 console has already applied the resulting status change; there is no lag
 between the two. The task record itself does not say which status resulted, or
-whether the database is usable. Check the status badge for that.
+whether the database is usable.
 
 Delete is the exception. A successful delete removes the database record, so
 the database disappears from the list, and the disappearance is the
@@ -111,75 +109,15 @@ the API has finished its side of the change, but the deployed server itself
 takes longer to reflect it: roughly a minute or two for a configure, and
 fifteen to twenty seconds for a first MCP enable.
 
-## Database Statuses
+## Other Task Names You May See
 
-The status is the badge on the Databases list and on the database
-header. The API publishes nine values. The following table describes
-the meaning of each value and the writes each one admits:
+A task name outside the list above can appear for a tenant with older
+databases. Unsuffixed `create`, `update`, and `delete` appear beside the
+`-managed` ones, along with names such as `replicate` and
+`restore-from-pgdump`.
 
-| Status | What it means | Which writes it admits |
-|--------|---------------|------------------------|
-| `creating` | Being provisioned. Not yet usable. | None of the five writes below. Delete is admissible. |
-| `available` | Ready. The only status every write is admissible from. | All of them. |
-| `modifying` | A restore, resize, services change, or credential rotation is in flight. | None of the five. Delete is admissible unless a billing provision is unfinished, which a resize reopens. |
-| `deleting` | Being torn down. | None, including delete. |
-| `failed` | The last operation failed. That covers a create, a teardown, a suspend or resume, or a restore that reported success without a committed cutover. The database record is kept either way. | None of the five. Delete is admissible. |
-| `degraded` | A resize failed after the database was already running. A failed credential rotation lands here too. | None of the five, whatever the console's buttons allow. See the note below. |
-| `suspending` | Being hibernated. | None of the five. |
-| `suspended` | Hibernated. | None of the five. |
-| `resuming` | Coming back from hibernation. | None of the five. |
-
-`available` is the one to wait for. Check against it rather than
-against "not creating", because a database can reach `failed` or
-`degraded` without passing through `creating` again.
-
-Nothing in the console suspends or resumes a database. There is no
-action for either on the Managed database pages, only a banner on a
-database that is already suspended. The last three statuses are listed
-because a database suspended by some other means still reports them.
-
-### A `degraded` Database Shows Its Action Buttons Enabled
-
-The console treats `available` and `degraded` alike for `Rotate
-credentials`, the display-name edit, and deletion protection. The API,
-however, admits the five writes below only from `available`, so an
-action offered on a `degraded` database can still be refused. `Upgrade
-size` is the exception the console already gates, being offered only
-from `available`.
-
-### The Five Writes That Need Available
-
-Five operations are admissible only from `available`, including against
-a database already `modifying` because of an earlier change:
-
-* Restore from a backup
-* Upgrade size
-* Any services change, meaning enabling, configuring, or disabling the
-  MCP Server or RAG Server
-* Rotate credentials
-* Take a backup
-
-Everything else is looser. Editing the display name and switching
-deletion protection take no hold on the database and succeed against a
-busy one. Delete does not wait for a restore to finish.
-
-A write attempted from any other status is refused, and the console shows
-the API's message where it sends one. The message names the status the API
-wanted rather than the one it found, so read the current status from the
-status badge, wait for `available`, and try again.
-
-## Other Statuses and Task Names You May See
-
-A status or a task name outside the two lists above can appear.
-
-* A tenant with older databases has task names that are not in the
-  table above. Unsuffixed `create`, `update`, and `delete` appear
-  beside the `-managed` ones, along with names such as `replicate` and
-  `restore-from-pgdump`.
-
-* A status you do not recognize is not automatically an error. Treat
-  anything that is not `available` as a database that is not ready for
-  the five writes.
+For database statuses, and the writes each one admits, see
+[Database Statuses](../using_database/database_details.md#database-statuses).
 
 ## Related Pages
 
@@ -189,3 +127,5 @@ The following pages provide more detail on topics referenced above:
   keeps pointing at.
 * [Accessing Management Options with the Actions Menu](actions.md)
   describes the resize, the display-name edit, and deletion protection.
+* [Database Details](../using_database/database_details.md) describes
+  database sizes and statuses in full.
