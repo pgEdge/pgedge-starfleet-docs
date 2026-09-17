@@ -45,37 +45,24 @@ drop-down to restrict the table to matching rows. Select the arrow
 between the column name and the filter drop-down to reverse the display
 order based on that column.
 
-The `Task name` filter offers a fixed list of names:
+## Managed Task Names
 
-* `create`
-* `update`
-* `delete`
-* `restore`
-* `backup`
-* `restore-from-pgdump`
-* `restore-from-pgbackrest`
-* `update-backup-stores`
-* `add-nodes`
-* `remove-node`
-* `replicate`
-* `apply`
-* `destroy`
+Every Managed operation writes a task. The following table describes the
+task names currently in use:
 
-The additional tasks listed below are used for Managed databases, and are
-not in the filter list. To filter a Managed database, paste the database ID
-into the `Subject ID`.
+| Task name | Description |
+|-----------|-------------|
+| `create-managed` | This task provisions a new database. |
+| `delete-managed` | This task deletes a database. |
+| `suspend-managed` | This task hibernates a database. |
+| `resume-managed` | This task brings a database back from hibernation. |
+| `update-managed-size` | This task performs a resize. |
+| `rotate-password-managed` | This task rotates the password for a role. |
+| `update-managed` | This task represents every services change; an MCP enable, an MCP configure, a RAG enable, and a service removal all write this same name, so the name alone does not identify which service changed. |
+| `restore-managed` | This task restores the database in place from a backup. |
+| `backup-managed` | This task takes a backup; read the caution below before trusting its status. |
 
-| Task name | What it is |
-|-----------|------------|
-| `create-managed` | Provisioning a new database. |
-| `delete-managed` | Deleting a database. |
-| `suspend-managed` | Hibernating a database. |
-| `resume-managed` | Bringing a database back from hibernation. |
-| `update-managed-size` | The resize. The name has `size` as an infix rather than the suffix the others use. |
-| `rotate-password-managed` | A role password rotation. |
-| `update-managed` | Every services change. An MCP enable, an MCP configure, a RAG enable, and a service removal all write this one name, so the name alone does not say which service changed. |
-| `restore-managed` | Restoring the database in place from a backup. |
-| `backup-managed` | A backup. Read the caution below before trusting its status. |
+### Task Names That Do Not Match the Console
 
 Some task names are easy to misread against what actually happened in the
 console:
@@ -93,7 +80,7 @@ console:
   reach a terminal state, but not at the same time. Read the backup's own
   status on the `Backups` pane rather than the task's.
 
-### What a Succeeded Task Means
+### What Succeeded Does Not Tell You
 
 A task that reads `succeeded` means the operation itself finished, and the
 console has already applied the resulting status change; there is no lag
@@ -106,18 +93,8 @@ confirmation. If a delete leaves the database behind, the task failed.
 
 A services change is the other exception. A succeeded `update-managed` means
 the API has finished its side of the change, but the deployed server itself
-takes longer to reflect it: roughly a minute or two for a configure, and
-fifteen to twenty seconds for a first MCP enable.
-
-## Other Task Names You May See
-
-A task name outside the list above can appear for a tenant with older
-databases. Unsuffixed `create`, `update`, and `delete` appear beside the
-`-managed` ones, along with names such as `replicate` and
-`restore-from-pgdump`.
-
-For database statuses, and the writes each one admits, see
-[Database Statuses](../using_database/database_details.md#database-statuses).
+takes longer to reflect it; expect roughly a minute or two for a configure,
+and fifteen to twenty seconds for a first MCP enable.
 
 ## Related Pages
 
