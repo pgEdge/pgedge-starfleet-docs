@@ -2,11 +2,11 @@
 
 A restore replaces a pgEdge Starfleet Managed database's current data
 with the contents of a backup you choose, in the console.
-`hot` and `durable` name the two backup tiers. A `hot` backup stays
+`hot` and `durable` name the two backup kinds. A `hot` backup stays
 with the database and restores fastest. A `durable` backup goes to
 separate object storage and restores slower. A restore runs in
-place, so the database's identifier and the way you connect to it
-stay the same.
+place, so the database's name and connection details stay the
+same.
 
 ## Before You Start
 
@@ -25,16 +25,16 @@ that page.
 The `Backups` pane shows every backup made from the database. Each
 entry lists:
 
-- The backup's ID.
-- Its status, for example `completed`.
+- The backup's date and time.
 - A `hot` or `durable` tag.
-- The backup's duration.
-- The time since that backup ran.
+- Its status, for example `completed`.
+- How long ago the backup ran and how long it took, for example
+  `5 hours ago · took 11s`.
 
-![The Backups pane, listing entries by ID, status, tier tag, and
-time](../images/sf_backups_page.png)
+![The Backups pane, listing entries by date, hot or durable tag,
+status, and elapsed time](../images/sf_backups_page.png)
 
-Both tiers run on a schedule the platform sets, with no tier to turn
+Both kinds run on a schedule the platform sets, with nothing to turn
 on or off. A `hot` backup runs daily, stays with the database itself,
 and restores fastest. A `durable` backup also runs daily, is kept
 separately in object storage, and restores slower. The console
@@ -117,9 +117,9 @@ Do not rely on that backup as a lasting restore point.
 
 ## Understanding a Restore
 
-A restore runs in place. The database's identifier and the way you
-connect to it stay the same throughout, so nothing that connects to
-the database needs updating.
+A restore runs in place. The database's name and connection details
+stay the same throughout, so nothing that connects to the database
+needs updating.
 
 A restore overwrites the database's current contents with the
 contents of the selected backup. Anything written after that backup
