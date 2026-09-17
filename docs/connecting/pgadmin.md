@@ -1,8 +1,8 @@
 # Connecting with pgAdmin
 
-To use the pgAdmin client to manage your pgEdge Starfleet database and the
-objects that reside on it, right-click on the `Servers` node in the pgAdmin
-client. Select `Register`, then `Server` from the context menu.
+To manage your pgEdge Starfleet database and its objects with the pgAdmin
+client, right-click the `Servers` node, then select `Register`, then
+`Server` from the context menu.
 
 ![Accessing pgAdmin](../images/sf_pgadmin_register_server.png)
 
@@ -28,9 +28,9 @@ page:
 * Enter the password associated with the user in the `Password` field.
 
 The `app` user owns the database, so the tables and other objects it
-creates belong to the role your application connects as. Use the `admin`
-user instead to install an allowlisted extension, or for the server-wide
-work described in [Managing Database Roles](../using_database/roles.md).
+creates belong to `app`. Use the `admin` user instead to install an
+allowlisted extension, or for the server-wide work described in
+[Managing Database Roles](../using_database/roles.md).
 
 ![The pgAdmin Parameters tab](../images/sf_pgadmin_register_parameters.png)
 
@@ -38,17 +38,16 @@ Provide the following information on the `Parameters` tab:
 
 * Use the drop-down to the right of `SSL mode` to select `require`.
 
-* Use the `+` at the top of the parameter table to open a new row, and use the
-  drop-down list in the `Name` field to select `GSS encmode`. Set the `Value`
+* Use the `+` at the top of the parameter table to open a new row, and choose
+  `GSS encmode` from the `Name` field's drop-down list. Set the `Value` field
   to `disable`.
 
-Complete the other tabs in the `Register - Server` dialog specifying your
+Complete the other tabs in the `Register - Server` dialog, specifying your
 connection preferences, and select `Save`. The connection to your database is
 added to the `Servers` node in the `Object Explorer` pane, and the pgAdmin
 `Dashboard` displays current database activities.
 
 ![pgAdmin Connected](../images/sf_pgadmin_connected.png)
 
-For detailed information about using pgAdmin, you can review the pgAdmin
-documentation at:
-[https://www.pgadmin.org/docs/](https://www.pgadmin.org/docs/).
+For detailed information about using pgAdmin, see the
+[pgAdmin documentation](https://www.pgadmin.org/docs/).
