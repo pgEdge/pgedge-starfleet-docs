@@ -84,7 +84,7 @@ practices when using the password:
 
     Supply the string to your application through a secrets mechanism
     rather than a shell variable. To retire a password, see
-    [Rotating Database Credentials](../using_database/rotate_credentials.md).
+    [Rotating Database Credentials](../using_database/roles.md#rotating-database-credentials).
 
 ## Next Steps
 
@@ -97,6 +97,6 @@ The following pages cover related tasks for managing your database:
   installs which extension, and refusal messages.
 * [Loading Data into Your pgEdge Starfleet Database](../using_database/loading_data.md)
   discusses loading a schema and its data with each role, in order.
-* [Rotating Database Credentials](../using_database/rotate_credentials.md)
+* [Rotating Database Credentials](../using_database/roles.md#rotating-database-credentials)
   explains how to replace a password, and the window during which neither
   password is safe to use.
