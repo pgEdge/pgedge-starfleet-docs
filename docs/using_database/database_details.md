@@ -1,4 +1,4 @@
-# Database Details
+# Managing Database Details
 
 This page describes two properties of a Managed database: its size, and
 its status.

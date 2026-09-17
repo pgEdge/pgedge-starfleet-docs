@@ -182,7 +182,8 @@ and configuration of your database.
 The `Plan & billing` pane displays the current size tier of your database
 and the price you will be billed after any free trial ends. Select
 `Upgrade size` to change the size of your database. For what each size
-gives you, see [Database Details](../using_database/database_details.md).
+gives you, see
+[Managing Database Details](../using_database/database_details.md).
 
 Two notifications can appear after you add a payment method.
 `Payment saved, but we could not refresh billing status.` means the card was

@@ -32,7 +32,7 @@ Next, you will select deployment features:
  | XL | 4 vCPU | 16 GB RAM | 150 GB storage | 100 conns | $249/mo |
 
   For details about functionality provided by each size, see
-  [Database Details](../using_database/database_details.md).
+  [Managing Database Details](../using_database/database_details.md).
 
 - The `ADD-ONS` section features a list of optional features for your
   database. The following table describes the available add-ons:
@@ -88,8 +88,9 @@ The wizard displays a message when a step fails:
 
 These pages cover related tasks that build on creating your database:
 
-* The [Database Details](../using_database/database_details.md) document
-  describes each size tier, and the statuses a database moves through.
+* The [Managing Database Details](../using_database/database_details.md)
+  document describes each size tier, and the statuses a database moves
+  through.
 * The [Managing Database Roles](../using_database/roles.md) document
   explains the `admin` and `app` roles your database includes.
 * The

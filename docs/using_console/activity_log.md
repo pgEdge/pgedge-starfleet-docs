@@ -127,5 +127,5 @@ The following pages provide more detail on topics referenced above:
   keeps pointing at.
 * [Accessing Management Options with the Actions Menu](actions.md)
   describes the resize, the display-name edit, and deletion protection.
-* [Database Details](../using_database/database_details.md) describes
-  database sizes and statuses in full.
+* [Managing Database Details](../using_database/database_details.md)
+  describes database sizes and statuses in full.

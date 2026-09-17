@@ -41,7 +41,7 @@ CPU, memory, and storage grow in place; the database restarts while the new
 size is applied, so expect a brief interruption.
 
 For what each size gives you, see
-[Database Details](../using_database/database_details.md).
+[Managing Database Details](../using_database/database_details.md).
 
 ## Enabling and Disabling Deletion Protection
 
