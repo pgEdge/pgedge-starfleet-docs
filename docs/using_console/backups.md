@@ -104,13 +104,13 @@ The pre-restore backup itself is easy to miss:
 * It is not an archive. Treat it as a way back from a mistake caught shortly
   afterward, not as a restore point you can rely on later.
 
-## When a Restore Is Refused
+## Troubleshooting - When a Restore Is Refused
 
 `Could not start the restore.` is a notification meaning the API refused the
-restore request. This text is the fallback message, and the console shows the
+restore request. This text is the fallback message; the console shows the
 API's own message if it sends one. A restore requires the database to be
-`Available`, and you can restore only from a completed backup. Wait for
-`Available`, then try again.
+`Available`. Wait for the database to return to an `Available` status, then
+try again.
 
 ## Related Pages
 
