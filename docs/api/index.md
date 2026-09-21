@@ -5,15 +5,15 @@ other resources. Every request needs a bearer token, in JSON Web
 Token (JWT) format. Follow the steps below to generate a token, then
 send one request with it. [Interactive Reference](reference.md)
 lists every operation the API supports. [Using restish](restish.md)
-covers a command-line client built for this API.
+covers a command-line client built from the API description.
 
 ## Generating an Access Token
 
-An API client has an ID and a secret. This endpoint trades them for
-an access token.
+An API client has an ID and a secret. A token endpoint trades them
+for an access token.
 
-1. Select `Settings` in the navigation pane, then select the
-   `API Clients` tab.
+1. Select [`Settings`](../using_console/settings.md#the-api-clients-tab)
+   in the navigation pane, then select the `API Clients` tab.
 2. Select `Create API Client`.
 3. Type a name for the client in the `API Client Name` field, then
    select `Create`.
