@@ -9,7 +9,7 @@ covers a command-line client built for this API.
 
 ## Generating an Access Token
 
-An API client has an ID and a secret. The account API trades them for
+An API client has an ID and a secret. This endpoint trades them for
 an access token.
 
 1. Select `Settings` in the navigation pane, then select the
