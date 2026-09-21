@@ -1,8 +1,8 @@
 # Using restish
 
 restish is a command-line client for REST APIs. restish reads an
-API's OpenAPI file. restish builds a command from each one. Connect
-restish to the Managed API. Then run one command.
+API's OpenAPI file and builds a command for each operation in it.
+Connect restish to the Managed API. Then run one command.
 
 ## Before You Start
 
@@ -43,8 +43,8 @@ restish api set managed \
   'profiles.default.auth: {type: bearer, params: {token: env:PGEDGE_TOKEN}}'
 ```
 
-The access token expires after the seconds given in `expires_in`. A
-new token needs the earlier steps again.
+The access token expires after the seconds given in `expires_in`.
+Repeat the earlier steps to get a new token.
 
 ## Running a Command
 
