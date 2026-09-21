@@ -65,5 +65,9 @@ nav:
     - Loading Data into Your pgEdge Starfleet Database: using_database/loading_data.md
     - Installing Extensions: using_database/extensions.md
     - ORM and Framework Guides: using_database/orm_guides.md
+  - Using the Managed API:
+    - Overview: api/index.md
+    - Interactive Reference: api/reference.md
+    - Using restish: api/restish.md
   - Community: community.md
   - Docs: docs_link.md
