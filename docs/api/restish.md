@@ -20,10 +20,10 @@ Install restish and point it at the Managed API's OpenAPI file.
     brew install restish
     ```
 
-    For other install methods, see the restish
+    For other installation methods, see the restish
     [installation guide](https://rest.sh/docs/getting-started/install/).
 
-2. Verify the install:
+2. Verify the installation:
 
     ```bash
     restish --version
