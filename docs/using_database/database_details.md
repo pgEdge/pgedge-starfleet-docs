@@ -18,13 +18,18 @@ The following table shows what each size provides:
 | Large | 2 | 8 GB | 50 GB | 50 |
 | XL | 4 | 16 GB | 150 GB | 100 |
 
-`Connections` is the Postgres `max_connections` setting. Every client counts
-against the value, including the MCP and RAG Servers, which connect to the
-database as `app` when enabled.
+`Connections` is the number of simultaneous client connections included
+at that size. Postgres reserves a few connections above that number for
+its own maintenance work and for superuser access. `SHOW max_connections`
+therefore returns a higher figure than the table shows. Every client
+counts against the advertised `Connections` figure, including the MCP
+and RAG Servers, which connect to the database as `app` when enabled.
 
 `Storage` is the disk space available to the database. Used space counts
 against this value; the only way to increase the disk space is a size
-upgrade.
+upgrade. Postgres keeps its write-ahead log on that same disk, and the
+filesystem keeps its own bookkeeping there too. The space left for the
+database's own data is therefore less than the storage figure.
 
 Each size's price appears on the size step of the creation wizard, in the
 `Upgrade size` popup, and on the `Plan & billing` pane of the database
