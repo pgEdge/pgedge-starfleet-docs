@@ -1,9 +1,9 @@
 # Using restish
 
 restish is a command-line client for REST APIs; it reads an API's
-OpenAPI file and builds a command for each operation in it. This page
-walks through connecting restish to the Managed API, then running one
-command.
+OpenAPI file and builds a command for each operation the file
+describes. This page walks through connecting restish to the Managed
+API, then running one command.
 
 ## Before You Start
 
@@ -51,7 +51,8 @@ restish api set managed \
 ```
 
 Because the token is short-lived, exporting it for the current shell
-session is reasonable; avoid persisting it in a shell profile file.
+session is reasonable; avoid persisting the token in a shell profile
+file.
 
 The access token expires after the number of seconds specified in
 `expires_in`. Repeat the steps in

@@ -2,8 +2,8 @@
 
 pgEdge Starfleet Managed Database has a REST API for databases, backups, and
 other resources. Every request needs a bearer token in JSON Web Token
-(JWT) format. Follow the steps below to generate a token, then send
-one request with it.
+(JWT) format. Follow the steps below to generate a token, then send a
+request with the token.
 
 ## Generating an Access Token
 
