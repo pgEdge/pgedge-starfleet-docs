@@ -2,8 +2,8 @@
 
 restish is a command-line client for REST APIs; it reads an API's
 OpenAPI file and builds a command for each operation the file
-describes. This page walks through connecting restish to the Managed
-API, then running one command.
+describes. This page walks you through connecting restish to the
+Managed API, and running a command.
 
 ## Before You Start
 
