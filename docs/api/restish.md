@@ -1,9 +1,9 @@
 # Using restish
 
-restish is a command-line client for REST APIs. It reads an API's
-OpenAPI file and builds a command for each operation in it. This
-page walks you through connecting restish to the Managed API, and
-running a command.
+restish is a command-line client for REST APIs; it reads an API's
+OpenAPI file and builds one command per listed operation. The sections
+below cover connecting restish to pgEdge Starfleet Managed Database
+and running a command.
 
 ## Before You Start
 
@@ -99,8 +99,3 @@ restish managed list-managed-databases
     ```bash
     restish managed update-managed-database <database-id> < orders-db.json
     ```
-
-## Next Steps
-
-[Interactive Reference](reference.md) lists each operation the API
-supports, with the `operationId` behind each one.

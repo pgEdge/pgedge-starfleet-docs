@@ -1,7 +1,7 @@
 # Interactive Reference
 
 The Managed API publishes an OpenAPI file that lists every operation
-the API supports. This page renders that file live, below.
+it supports, rendered live below.
 
 To try an operation here, you need an access token; see
 [Generating an Access Token](index.md#generating-an-access-token).

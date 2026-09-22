@@ -2,8 +2,8 @@
 
 A pgEdge Starfleet database is a standard PostgreSQL database; you can load
 data into it with any tool designed for use with Postgres over a libpq
-connection. This page demonstrates loading data with `psql`, restoring from
-an existing Postgres database, and loading documents for the RAG Server.
+connection. The sections below cover loading data with `psql`, restoring from an
+existing Postgres database, and loading documents for the RAG Server.
 
 You should load schema and data as the `app` user (using the `Application`
 tab credentials for your connection), so that every object is owned by the

@@ -1,13 +1,14 @@
 # Using the Managed API
 
-pgEdge Starfleet Managed Database has a REST API for databases, backups, and
-other resources. Every request needs a bearer token in JSON Web Token
-(JWT) format. Follow the steps below to generate a token, then send a
-request with the token.
+pgEdge Starfleet Managed Database exposes a REST API for databases,
+backups, and other resources. Every request authenticates with a bearer
+token in JSON Web Token (JWT) format, issued by a dedicated token
+endpoint. The sections below cover generating that token and making an
+authenticated request.
 
 ## Generating an Access Token
 
-An API client has an ID and a secret. A token endpoint trades them
+An API client has an ID and a secret; a token endpoint exchanges them
 for an access token.
 
 1. Select [`Settings`](../using_console/settings.md#the-api-clients-tab)
@@ -36,7 +37,7 @@ for an access token.
 ## Making a Request
 
 Send each request to the Managed API base URL, `https://api.pgedge.com`,
-with the access token as a bearer token. Run this command to list every
+using the access token as a bearer token. Run this command to list every
 database the token's client can reach:
 
 ```bash
@@ -45,12 +46,3 @@ curl https://api.pgedge.com/managed/v1/databases \
 ```
 
 A working request returns a JSON array of database objects.
-
-## Next Steps
-
-The following pages cover the rest of the Managed API:
-
-* [Interactive Reference](reference.md) lists every field and
-  operation the Managed API supports.
-* [Using restish](restish.md) covers a command-line client built from
-  the API description.

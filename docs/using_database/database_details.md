@@ -1,7 +1,7 @@
 # Managing Database Details
 
-This page describes two properties of a pgEdge Starfleet Managed
-database: its size and its status.
+A pgEdge Starfleet Managed database exposes two properties that change
+over its lifetime: its size and its status.
 
 ## Database Sizes
 
