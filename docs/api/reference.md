@@ -5,7 +5,7 @@ the API supports. This page renders that file live, below.
 
 To try an operation here, you need an access token; see
 [Generating an Access Token](index.md#generating-an-access-token).
-Select `Authorize` and paste the token into the field.
+Select `Authorize`, then paste the token into the `AccessToken` field.
 
 <div id="swagger-ui"></div>
 
