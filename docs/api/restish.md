@@ -40,8 +40,8 @@ Install restish and point it at the Managed API's OpenAPI file.
 
 ## Authenticating restish
 
-Each request needs a bearer token. Set the profile to read it from
-`PGEDGE_TOKEN`, rather than storing it directly.
+Each request needs a bearer token; set the profile to read it from
+`PGEDGE_TOKEN` rather than storing it directly.
 
 ```bash
 export PGEDGE_TOKEN="<access-token>"
@@ -55,11 +55,12 @@ session is fine. Avoid keeping the token in a shell profile file.
 The access token expires after the seconds given in `expires_in`.
 Repeat the steps in
 [Generating an Access Token](index.md#generating-an-access-token) to
-get a new one.
+get a new token.
 
 ## Running a Command
 
-Each command's name comes from its `operationId`. For example:
+Each command's name comes from its `operationId`. The following table
+shows how an `operationId` maps to its restish command:
 
 | operationId | Command |
 |---|---|

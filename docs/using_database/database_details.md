@@ -99,7 +99,7 @@ when it is already `modifying` because of an earlier change:
 * Taking a backup
 
 Every other task has fewer restrictions. Editing the display name and
-switching deletion protection take no hold on the database and can
+switching deletion protection do not lock the database and can
 succeed while another task is in progress. Delete does not wait for a
 restore to finish.
 

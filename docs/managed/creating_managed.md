@@ -83,20 +83,3 @@ The wizard displays a message when a step fails:
 
 * `Couldn't create your database` means the create request itself failed.
   The panel displays the reason, as well as `Try again` and `Back` buttons.
-
-## Next Steps
-
-These pages cover related tasks that build on creating your database:
-
-* The [Managing Database Details](../using_database/database_details.md)
-  document describes each size tier, and the statuses a database moves
-  through.
-* The [Managing Database Roles](../using_database/roles.md) document
-  explains the `admin` and `app` roles your database includes.
-* The
-  [Loading Data into Your pgEdge Starfleet Database](../using_database/loading_data.md)
-  document explains how to load a schema and data into your new database.
-* The [Enabling and Using the MCP Server](../serving_ai_content/mcp.md)
-  document describes the MCP add-on.
-* The [Enabling and Using the RAG Server](../serving_ai_content/rag.md)
-  document describes the RAG add-on.

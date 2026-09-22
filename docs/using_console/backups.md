@@ -27,15 +27,15 @@ The `Restore` button is disabled on any backup whose status is not
 `completed`, and the tooltip on the disabled button says so. The API
 refuses any other restore point upfront.
 
-A backup that is still running is not a restore point yet. Read its
+A backup that is still running is not a restore point yet; read its
 status in this list rather than the outcome of its task in the Activity
 Log, because a `backup-managed` task can read `succeeded` while the
 backup record it produced is still `pending`.
 
 The database itself must be `available`. A restore is one of five
-Managed writes admissible only from that status, so it is refused
-against a database that is `creating`, `modifying`, `degraded`, or
-already busy with an earlier write.
+Managed tasks allowed only from that status, so it is refused against
+a database that is `creating`, `modifying`, `degraded`, or already
+busy with an earlier task.
 
 For the statuses and the task names, see
 [Reviewing the Activity Log](activity_log.md).
@@ -54,8 +54,8 @@ the current data before it begins.
 Select `Restore` to confirm, or `Cancel` to close the popup without
 restoring the database.
 
-**The restore happens in place.** The database keeps its ID and its
-connection details, so nothing your application holds needs changing
+The restore happens in place. The database keeps its ID and its
+connection details, so nothing your application uses needs changing
 afterwards. The restore replaces the current data, so anything written
 since the backup was taken is no longer in the database.
 
@@ -95,26 +95,19 @@ because by the time the pre-restore backup runs, the API has already accepted
 the request and the database is already `modifying`. Instead, the failure
 surfaces on the restore's task in the Activity Log.
 
-The pre-restore backup itself is easy to miss:
+The pre-restore backup itself is easy to miss, because:
 
-* It does not appear in the `Backups` pane immediately; it can take up to a
-  minute after the restore starts.
-* Nothing marks it as the pre-restore backup, so identify it by timing; it is
-  the `hot` backup created at the moment the restore started.
-* It is not an archive. Treat it as a way back from a mistake caught shortly
-  afterward, not as a restore point you can rely on later.
+* it does not appear in the `Backups` pane until up to a minute after
+  the restore starts.
+* nothing labels it as the pre-restore backup; the `hot` backup
+  created when the restore started is the one to look for.
+* it is not an archive, only a way back from a mistake caught shortly
+  afterward, not a restore point to rely on later.
 
 ## Troubleshooting - When a Restore Is Refused
 
 `Could not start the restore.` is a notification meaning the API refused the
 restore request. This text is the fallback message; the console shows the
 API's own message if it sends one. A restore requires the database to be
-`Available`. Wait for the database to return to an `Available` status, then
+`available`. Wait for the database to return to an `available` status, then
 try again.
-
-## Related Pages
-
-The following pages cover related backup and restore tasks:
-
-* [Reviewing the Activity Log](activity_log.md) describes the
-  statuses and the task names a restore moves through.

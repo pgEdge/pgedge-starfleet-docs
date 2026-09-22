@@ -1,9 +1,10 @@
 # Loading Data into Your pgEdge Starfleet Database
 
-A pgEdge Starfleet database is a standard PostgreSQL database; you can load
-data into it with any tool designed for use with Postgres over a libpq
-connection. The sections below cover loading data with `psql`, restoring from an
-existing Postgres database, and loading documents for the RAG Server.
+A pgEdge Starfleet database is a standard PostgreSQL database; you can
+load data into it with any tool designed for use with Postgres over a
+libpq connection. The sections below cover loading data with `psql`,
+restoring from an existing Postgres database, and loading documents
+for the RAG Server.
 
 You should load schema and data as the `app` user (using the `Application`
 tab credentials for your connection), so that every object is owned by the
@@ -54,10 +55,12 @@ For example, to load a CSV file named `customers.csv` (with a header row of
     SELECT count(*) FROM public.customers;
     ```
 
-If you are loading data into a table that already exists, you can skip step 2
-and connect as either `admin` or `app` in step 1. `\copy` accepts the same
-options as the SQL [`COPY`](https://www.postgresql.org/docs/current/sql-copy.html) command; see the linked Postgres documentation for
-the complete list of available options.
+If you are loading data into a table that already exists, you can
+skip step 2 and connect as either `admin` or `app` in step 1. `\copy`
+accepts the same options as the SQL
+[`COPY`](https://www.postgresql.org/docs/current/sql-copy.html)
+command; see the linked Postgres documentation for the complete list
+of available options.
 
 ## Restoring from a pg_dump Backup
 

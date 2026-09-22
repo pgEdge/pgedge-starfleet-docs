@@ -4,8 +4,8 @@ Any client that can negotiate a connection using libpq can connect to the
 PostgreSQL database on pgEdge Starfleet; this applies to custom clients as
 well. Connections are made over TLS with password authentication. The
 connection string the console displays always includes `sslmode=require`.
-Starfleet hosts serve TLS with a certificate that verifies, so `require`
-works from every client, and you may add a stricter mode.
+pgEdge Starfleet hosts serve TLS with a certificate that verifies, so
+`require` works from every client, and you may add a stricter mode.
 
 On clients with an optional `GSS encmode` setting (as shown in the pgAdmin
 client), you should set
@@ -49,8 +49,8 @@ In URI syntax, reserved characters are used as structural delimiters:
 * `?` starts the query-string parameters.
 
 If a password contains special characters that are not encoded properly,
-the console cannot parse it correctly. Instead of building the correct
-connection string, the unencoded characters cause a loop of round-trips.
+the console cannot parse it correctly, and the resulting connection
+string is malformed.
 
 The console expects percent-encoding, like that used in the `Connection string`
 URI; the `psql command` block is formatted to connect with the correct values.
@@ -68,34 +68,19 @@ yourself, you must encode it yourself, using the correct grammar as noted in
 
 The connection string on your clipboard, connection strings built from your
 password, and the `Password` field itself (when revealed) all contain a
-working database password in clear text. Observe password-handling best
-practices when using the password:
+working database password in clear text. These password-handling
+practices keep a credential from leaking:
 
-* Do not echo the connection string in a terminal. Scrollback outlives the
-  session, and shell history files outlive the terminal.
-* Do not pass the password as a command-line argument. Argument lists are
-  visible in `ps` on a shared host.
-* Ensure that your password is not written to application/CI log files. A
-  job running under a shell trace writes the password into build output,
-  which may be retained in an unsafe location.
+* not echoing the connection string in a terminal, since scrollback
+  outlives the session and shell history files outlive the terminal.
+* not passing the password as a command-line argument, since argument
+  lists are visible in `ps` on a shared host.
+* not writing the password to application or CI log files, since a job
+  running under a shell trace can write the password into build output
+  that may be retained in an unsafe location.
 
 !!! hint
 
     Supply the string to your application through a secrets mechanism
     rather than a shell variable. To retire a password, see
     [Rotating Database Credentials](../using_database/roles.md#rotating-database-credentials).
-
-## Next Steps
-
-The following pages cover related tasks for managing your database:
-
-* [Managing Database Roles](../using_database/roles.md) explains what
-  the `admin` and `app` roles can each do, and which role to choose to
-  accomplish tasks.
-* [Installing Extensions](../using_database/extensions.md) discusses which role
-  installs which extension, and refusal messages.
-* [Loading Data into Your pgEdge Starfleet Database](../using_database/loading_data.md)
-  discusses loading a schema and its data with each role, in order.
-* [Rotating Database Credentials](../using_database/roles.md#rotating-database-credentials)
-  explains how to replace a password, and the window during which neither
-  password is safe to use.

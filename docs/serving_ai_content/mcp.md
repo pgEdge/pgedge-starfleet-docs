@@ -132,7 +132,7 @@ clients:
 
 - [Claude Code](https://code.claude.com/docs/en/overview) shows a JSON block
   with `"type": "http"`, the endpoint as its URL, and an `Authorization`
-  header carrying the bearer token. Add it to `.mcp.json` at your project
+  header, its value the bearer token. Add it to `.mcp.json` at your project
   root, or merge it into your user or project MCP config.
 - [Cursor](https://cursor.com/en-US/docs) shows the same JSON without the
   `type` field. Add it to `.cursor/mcp.json` in the repository for one
@@ -140,7 +140,7 @@ clients:
   everywhere.
 - [OpenAI Codex](https://openai.com/codex/) shows a TOML block declaring an
   `mcp_servers.pgedge_postgres` table with the endpoint as its URL, and an
-  `mcp_servers.pgedge_postgres.http_headers` sub-table carrying the
+  `mcp_servers.pgedge_postgres.http_headers` sub-table with the
   `Authorization` header. Append it to `~/.codex/config.toml`. The header
   block embeds the token directly, so it works however Codex is launched.
 - [Replit](https://docs.replit.com/getting-started/intro-replit) has no file
@@ -277,7 +277,7 @@ your data.
 Anything the agent reads becomes text within its context window, and text
 in a table row can be interpreted as an instruction rather than as data. A
 support ticket, a user profile, a product description, or a comment field
-can carry wording directed at the agent rather than at a person. The agent
+can embed wording directed at the agent rather than at a person. The agent
 has no reliable way to distinguish between the two.
 
 When using the MCP Server:
@@ -286,12 +286,12 @@ When using the MCP Server:
   that cannot write cannot damage your data.
 - Disable `Allow writes` again once the task that required write or
   delete access is complete.
-- Treat a write-enabled agent as a user holding the `app` role's
+- Treat a write-enabled agent as a user with the `app` role's
   privileges, not as a tool. Only enable write access on a database whose
   data you would be willing to expose to an untrusted client.
 - In a client that shows tool calls before executing them, review what
   the agent proposes before approving it.
-- Exercise particular caution when accessing tables that hold text
+- Exercise particular caution when accessing tables that contain text
   written by other users. Data you wrote yourself poses less risk than
   data submitted by other users.
 
