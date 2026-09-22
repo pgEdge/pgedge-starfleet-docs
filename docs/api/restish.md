@@ -1,9 +1,9 @@
 # Using restish
 
-restish is a command-line client for REST APIs; it reads an API's
-OpenAPI file and builds a command for each operation the file
-describes. This page walks you through connecting restish to the
-Managed API, and running a command.
+restish is a command-line client for REST APIs. It reads an API's
+OpenAPI file and builds a command for each operation in it. This
+page walks you through connecting restish to the Managed API, and
+running a command.
 
 ## Before You Start
 
@@ -40,9 +40,8 @@ Install restish and point it at the Managed API's OpenAPI file.
 
 ## Authenticating restish
 
-Each request needs a bearer token. Configure the profile's
-authentication to read the token from an environment variable, rather
-than storing it in the profile directly:
+Each request needs a bearer token. Set the profile to read it from
+`PGEDGE_TOKEN`, rather than storing it directly.
 
 ```bash
 export PGEDGE_TOKEN="<access-token>"
@@ -51,11 +50,10 @@ restish api set managed \
 ```
 
 Because the token is short-lived, exporting it for the current shell
-session is reasonable; avoid persisting the token in a shell profile
-file.
+session is fine. Avoid keeping the token in a shell profile file.
 
-The access token expires after the number of seconds specified in
-`expires_in`. Repeat the steps in
+The access token expires after the seconds given in `expires_in`.
+Repeat the steps in
 [Generating an Access Token](index.md#generating-an-access-token) to
 get a new one.
 
@@ -67,12 +65,40 @@ Each command's name comes from its `operationId`. For example:
 |---|---|
 | `ListManagedDatabases` | `list-managed-databases` |
 | `GetManagedDatabase` | `get-managed-database` |
+| `UpdateManagedDatabase` | `update-managed-database` |
 
 List every database the token's client can reach:
 
 ```bash
 restish managed list-managed-databases
 ```
+
+## Updating a Database from a File
+
+1. List your databases and note the `id` of the one to update:
+
+    ```bash
+    restish managed list-managed-databases
+    ```
+
+2. Write the fields to change to a file, named for the database.
+
+    ```bash
+    cat > orders-db.json <<'EOF'
+    {
+      "display_name": "Production Orders DB",
+      "deletion_protection": true
+    }
+    EOF
+    ```
+
+    Any field left out of the file keeps its current value.
+
+3. Apply the file against that database's `id`.
+
+    ```bash
+    restish managed update-managed-database <database-id> < orders-db.json
+    ```
 
 ## Next Steps
 
