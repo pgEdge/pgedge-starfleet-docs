@@ -39,14 +39,16 @@ CREATE EXTENSION hstore;
 
 The role required to install an extension varies by extension:
 
-* An extension on the pgEdge privileged-extension allowlist installs as
-  `admin`, and `app` is refused. The installed extension is owned by
-  `postgres` rather than by either role, which is what `\dx` shows afterwards.
+* an extension on the pgEdge privileged-extension allowlist installs
+  as `admin` only, and `app` is refused; the extension is owned by
+  `postgres` rather than by either role, which is what `\dx` shows
+  afterward.
+* an extension that Postgres itself marks trusted installs as either
+  role, because `admin` is a member of `app`, and the role that runs
+  the install owns the extension afterward.
 
-* An extension that Postgres itself marks trusted installs as either role,
-  because `admin` is a member of `app`. The role that runs the install owns
-  the extension afterwards. See
-  [Creating Database Objects](managed_roles.md#creating-database-objects).
+See [Creating Database Objects](managed_roles.md#creating-database-objects)
+for more on how role ownership works.
 
 For example, the following table lists the installation role and
 behavior for some popular extensions. This list is subject to change:
@@ -68,13 +70,13 @@ behavior for some popular extensions. This list is subject to change:
 
 To install an extension that the table does not list, attempt the
 installation and review the resulting message. A refused installation
-attempt returns `Must be superuser to create this extension`:
+attempt returns `Must be superuser to create this extension`; what
+that means depends on the role that attempted the install:
 
-* If you are connected as `app`, the extension is either allowlisted or
-  unavailable, so try again as `admin`.
-
-* An extension that returns the same message when connected as `admin`
-  cannot be installed by any role on the database.
+* connected as `app`, the extension is either allowlisted or
+  unavailable; try again as `admin`.
+* connected as `admin` and refused again, the extension cannot be
+  installed by any role on the database.
 
 ## Migration Considerations
 
@@ -94,8 +96,8 @@ trusted extension, install the allowlisted extension first:
     data.
 
 Loading a schema before its extensions exist causes the load to fail. See
-[Loading Data into Your pgEdge Starfleet Database](managed_loading_data.md)
-for the complete load sequence.
+[Loading Data into Your pgEdge Starfleet Database](managed_loading_data.md) for the
+complete load sequence.
 
 ### Extension Ownership in Migrations
 

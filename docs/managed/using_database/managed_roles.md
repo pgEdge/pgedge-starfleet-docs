@@ -1,7 +1,7 @@
 # Managing Database Roles
 
 Every pgEdge Starfleet database comes with two roles you can connect as,
-`admin` and `app`. They divide responsibilities by function rather than by
+`admin` and `app`; they divide responsibilities by function rather than by
 privilege level:
 
 * `app` owns the database and everything your application builds.
@@ -34,7 +34,7 @@ installs.
 RAG Servers also connect as `app`, so those servers can read whatever your
 migrations and data imports add to the database.
 
-`app` holds no server-wide privilege: it cannot create roles or databases,
+`app` has no server-wide privilege: it cannot create roles or databases,
 view other sessions, end another session, or install an extension on the
 pgEdge allowlist.
 
@@ -67,10 +67,10 @@ become a superuser.
 
 ## Creating Database Objects
 
-Your connected application will run as `app`; if a database object needs
-to be accessed by the application, the object should be created and owned
-by `app`. A table created as `admin` belongs to `admin` instead, and `app`
-has no access to it unless explicitly granted.
+Your connected application will run as `app`; create and own each
+database object the application needs as `app`. A table created as
+`admin` belongs to `admin` instead, and `app` has no access to it
+unless explicitly granted.
 
 `admin` is a member of `app`, so it can also create tables and schemas and
 install trusted extensions; anything it creates belongs to `admin` rather
@@ -124,9 +124,9 @@ underneath. Rotating from this tab modifies the credentials of the
 Postgres user named on it.
 
 The button is disabled while the database is provisioning; the console
-enables it only for a database that is `Available` or `Degraded`. The API
-allows a rotation only from databases in an `Available` state, so a
-`Degraded` database can offer the button and still refuse the write.
+enables it only for a database that is `available` or `degraded`. The API
+allows a rotation only from databases in an `available` state, so a
+`degraded` database can offer the button and still refuse the write.
 
 The button opens a `Rotate credentials` dialog naming the Postgres user, with
 `Rotate credentials` and `Cancel`. Rotating the `Application` role adds a note
@@ -134,20 +134,21 @@ about the MCP and RAG Servers restarting.
 
 Confirming does three things:
 
-* The API accepts the change and starts the work. The database state
-  changes to `Modifying`.
+* the API accepts the change, starts the work, and moves the database
+  state to `modifying`.
+* a `rotate-password-managed` task appears in the Activity Log for
+  this database.
+* the console re-reads every per-role credential, so the `Connect`
+  pane displays the new password rather than a stale one for any
+  role.
 
-* A `rotate-password-managed` task appears in the Activity Log for this
-  database. The call returns no task ID; to find the task ID, paste the
-  database ID into the Activity Log's `Subject ID` filter. See
-  [Reviewing the Activity Log](../using_console/managed_activity_log.md).
-
-* The console re-reads every per-role credential, so the `Connect` pane
-  displays the new password rather than a stale one for any role.
+The call returns no task ID; to find the task ID, paste the database
+ID into the Activity Log's `Subject ID` filter. See
+[Reviewing the Activity Log](../using_console/managed_activity_log.md).
 
 A successful password update displays `Rotated the password for <user>.`
 
-Wait until the database status returns to `Available` before switching
+Wait until the database status returns to `available` before switching
 anything over; the status badge on the database's overview page displays
 database availability. Rotation
 does not interrupt a session already connected, but any new connection
@@ -162,7 +163,7 @@ rotated role.
     gap in service. Your client configuration does not change.
 
     The updated password authenticates only when the database status
-    returns to `Available`; the old password may still work until then.
+    returns to `available`; the old password may still work until then.
 
 You can read or copy the new password from the `Password` field on the
 `Connect` pane. The `Connection string` and `psql command` rows are
@@ -176,7 +177,7 @@ working string without displaying the secret.
 The console displays `Could not rotate credentials. Please try again.`, or
 the API's own message when it sends one, such as `rotating a password
 requires the database to be available; it is busy with another
-operation`. Waiting resolves this; a database already `Modifying` from
+operation`. Waiting resolves this; a database already `modifying` from
 an earlier restore or resize refuses rotation for the same reason.
 
 ### If No Notification Arrives
@@ -192,15 +193,15 @@ one-second resolution and is healthy.
 
 ### If the Rotation Fails
 
-A failed rotation leaves the database `Degraded`, with the new
-credential recorded but not applied; a `Degraded` database refuses
+A failed rotation leaves the database `degraded`, with the new
+credential recorded but not applied; a `degraded` database refuses
 further rotations until recovered.
 
 The REST API authenticates with an API client, managed on the
 `API Clients` tab under `Settings`; see
 [The API Clients Tab](../using_console/managed_settings.md#the-api-clients-tab).
 A client's secret is returned once, at creation, and cannot be fetched
-again; both the `Auth ID` and `Auth Secret` carry copy buttons. Replacing
+again; both the `Auth ID` and `Auth Secret` have copy buttons. Replacing
 one is a full swap, not a rotation, so the old credential keeps working
 until the new one is proven:
 

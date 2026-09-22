@@ -82,8 +82,8 @@ resources used by your database. The following table describes each chart:
 | Waiting connections | The number of connections waiting for a lock or other resource to become available. | `pg_stat_activity_waiting`, same axis top | Level |
 
 Active, idle, and waiting are three separate charts, each showing a single
-value, not slices of a total. Read them together against the connection limit
-the axis displays.
+value, not slices of a total; read them together against the connection
+limit the axis displays.
 
 ## Throughput Charts - Reference
 
@@ -121,8 +121,8 @@ describes each chart:
 | WAL size | The size of the write-ahead log (WAL). | `pg_wal_size_bytes` | Level |
 | WAL segments | The number of WAL segments currently retained. | `pg_wal_segments` | Level |
 
-`Disk used` expresses storage in use as a percentage of total storage; storage
-in use plus storage still available.
+`Disk used` expresses storage in use as a percentage of total storage:
+storage in use plus storage still available.
 
 ## How Reporting Lag Affects Charts
 
@@ -178,25 +178,26 @@ Outside a resize or a restore, each chart displays a single line.
 The page can show one of two messages in place of the charts:
 
 * `Couldn't load metrics` means the read failed, and the panel displays a
-  `Retry` button. Use it. If it keeps failing while the database is
-  `Available`, the metrics store, not the database, is the failing component.
+  `Retry` button; select it. If retrying keeps failing while the database
+  is `Available`, the metrics store, not the database, is the failing
+  component.
 
-* `No metrics in this window` means the read succeeded and the time range held
-  no samples. The hint under it names a database created moments ago, or an
-  environment without observability, as the causes. Widen the time range. The
-  newest sample runs 1 to 2 minutes behind the clock, so a custom range of
-  two minutes or less ending at now is empty, as the "Setting a Custom Time
-  Range" hint above describes.
+* `No metrics in this window` means the read succeeded and the time range
+  held no samples. The hint under this message names a database created
+  moments ago, or an environment without observability, as the causes.
+  Widen the time range. The newest sample runs 1 to 2 minutes behind the
+  clock, so a custom range of two minutes or less ending at now is empty,
+  as the "Setting a Custom Time Range" hint above describes.
 
 The first is a failed request and the second is an empty range. A database
 that cannot be read at all displays
 `Couldn't load this database. Please try again shortly.` in place of the
-whole page instead.
+whole page.
 
 ## Related Pages
 
 The following pages cover related monitoring tasks:
 
-* [Reviewing the Activity Log](managed_activity_log.md) describes the resize
-  and the restore that put two instances on the charts.
+* [Reviewing the Activity Log](managed_activity_log.md) describes the resize and the
+  restore that put two instances on the charts.
 * [Restoring from Backup](managed_backups.md) describes the restore itself.

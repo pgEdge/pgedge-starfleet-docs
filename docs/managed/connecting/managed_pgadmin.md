@@ -13,19 +13,13 @@ The `Register - Server` dialog opens:
 When prompted, provide authentication details on the pgAdmin `Connection` tab.
 To find connection information for your database, highlight the database name
 in the navigation panel, and review the `Connect` pane shown on the `Database`
-page:
+page; complete the `Connection` tab from those values:
 
-* Provide the value shown in the `Domain` field in the `Host name/address`
-  field.
-
-* Provide the port from the `Connection string` in the `Port` field.
-
-* Provide the name of your database in the `Maintenance database` field.
-
-* Replace the default `Username` with `app` when connecting for the first
-  time.
-
-* Enter the password associated with the user in the `Password` field.
+* `Host name/address` takes the value shown in the `Domain` field.
+* `Port` takes the port from the `Connection string`.
+* `Maintenance database` takes the name of your database.
+* `Username` takes `app` when connecting for the first time.
+* `Password` takes the password associated with the user.
 
 The `app` user owns the database, so the tables and other objects it
 creates belong to `app`. Use the `admin` user instead to install an
@@ -34,13 +28,12 @@ allowlisted extension, or for the server-wide work described in
 
 ![The pgAdmin Parameters tab](../images/managed_pgadmin_register_parameters.png)
 
-Provide the following information on the `Parameters` tab:
+Set these values on the `Parameters` tab:
 
-* Use the drop-down to the right of `SSL mode` to select `require`.
-
-* Use the `+` at the top of the parameter table to open a new row, and choose
-  `GSS encmode` from the `Name` field's drop-down list. Set the `Value` field
-  to `disable`.
+* `SSL mode` is `require`, selected from the drop-down to its right.
+* `GSS encmode` is `disable`, added as a new row: select the `+` at the
+  top of the parameter table, choose `GSS encmode` from the `Name`
+  field's drop-down list, and set `Value` to `disable`.
 
 Complete the other tabs in the `Register - Server` dialog, specifying your
 connection preferences, and select `Save`. The connection to your database is

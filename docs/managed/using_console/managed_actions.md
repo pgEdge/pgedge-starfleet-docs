@@ -84,13 +84,13 @@ instead of the literal text message below:
 * `Could not update the database.` is displayed when a display-name
   edit is refused.
 
-    This edit takes no hold on the database and succeeds against a
+    This edit does not lock the database and succeeds against a
     busy one, so a refusal here is not caused by a busy database.
     Check the name length against the field's limit.
 
 * `Could not update deletion protection.` is displayed when the
   switch is refused.
 
-    This one also takes no hold on the database, so retrying is
-    reasonable. It stays changeable on a `Failed` database, because a
-    protected failure has to be removable.
+    This one also does not lock the database, so retrying is
+    reasonable. The switch stays changeable on a `Failed` database,
+    because a protected failure has to be removable.

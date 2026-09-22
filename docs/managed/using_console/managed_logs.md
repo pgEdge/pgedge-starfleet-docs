@@ -1,27 +1,22 @@
 # Reviewing the Log Files
 
-The `Logs` pane on your database's management page displays the most recent
-entries from your database's log file. Each entry shows the timestamp, log
-level (for example, `LOG`), and message.
+The `Logs` page displays the Postgres engine log for your database, with the
+newest line at the top; each entry shows the timestamp, log level (for
+example, `LOG`), and message.
 
-The `Logs` page displays the Postgres engine log for your database. Records
-arrive newest first, with the newest line displayed at the top.
+The page provides the following controls:
 
-* Select `100`, `250`, `500`, or `1000` to control how many of the newest log
-  lines are loaded.
-
-* Select `Live tail` to follow new log entries as they arrive, which fetches
-  new lines every 8 seconds, or select `Custom` to specify a fixed time range.
-
-* Use the `Search messages` field to filter entries by keyword.
-* Toggle `Live` to enable or disable automatic updates. `Live` is disabled
-  while a `Custom` range is applied.
-
-* Select a severity button (for example, `log` or `fatal`) to filter entries by
+* the `100`, `250`, `500`, and `1000` buttons control how many of the newest
+  log lines load.
+* `Live tail` follows new log entries as they arrive, fetching new lines
+  every 8 seconds; `Custom` specifies a fixed time range instead.
+* the `Search messages` field filters entries by keyword.
+* `Live` toggles automatic updates on or off, and is disabled while a
+  `Custom` range is applied.
+* a severity button (for example, `log` or `fatal`) filters entries by
   level.
-
-* Use the copy and download icons (in the upper-right corner of the log table)
-  to copy or download the lines currently shown.
+* the copy and download icons (in the upper-right corner of the log table)
+  copy or download the lines currently shown.
 
 !!! hint
 
@@ -50,7 +45,7 @@ The page shows one of these messages in place of the log table:
   apply only to the lines already loaded, so raise the line count to reach
   further back rather than expecting a filter to fetch more.
 
-* `Could not copy the log lines to your clipboard` is displayed when the copy
-  icon cannot reach the clipboard. The cause is a browser permission or a
-  non-secure context, rather than anything about the database. Use the download
-  icon instead, which writes the same lines to a text file.
+* `Could not copy the log lines to your clipboard` appears when the copy
+  icon cannot reach the clipboard. The cause is a browser-permission or
+  non-secure-context issue, rather than anything about the database. Use
+  the download icon instead, which writes the same lines to a text file.

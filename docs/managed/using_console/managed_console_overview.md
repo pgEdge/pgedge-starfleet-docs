@@ -1,8 +1,7 @@
 # Using the pgEdge Starfleet Console
 
-When you create a pgEdge Starfleet PostgreSQL database, the database name is
-displayed in the tree control on the left side of the console when the
-deployment completes.
+Once a pgEdge Starfleet PostgreSQL database finishes deploying, the console
+lists its name in the tree control on the left side of the screen.
 
 ![Displaying the currently deployed databases](../images/managed_tree_control.png)
 
@@ -17,16 +16,15 @@ The database header sits at the top of the database's management page.
 
 The database header displays:
 
-* The name of the database; next to the name, a dot indicates the status of the
-  database:
-    * A green dot indicates that the database is available for connections.
-    * A blue dot indicates that the database is being created.
-    * A red dot indicates that the database is not available.
-
-* The CPU size of the database.
-* The Memory used by the database.
-* The amount of storage allocated to the database.
-* The number of connections allocated for the database.
+* the name of the database, with a dot next to it indicating the database's
+  status:
+    * a green dot means the database is available for connections.
+    * a blue dot means the database is being created.
+    * a red dot means the database is not available.
+* the CPU size of the database.
+* the memory used by the database.
+* the amount of storage allocated to the database.
+* the number of connections allocated for the database.
 
 ## The Actions Context Menu
 
@@ -45,14 +43,14 @@ Below the header, the console displays the `Connect` pane; the pane includes an
 `Admin` tab with credentials for the `admin` user, and an `Application` tab
 with credentials for the `app` user. Each tab displays:
 
-* A ready-to-use `Connection string`.
-* A ready-to-use `psql command`; the command opens a psql session for the
+* a ready-to-use `Connection string`.
+* a ready-to-use `psql command`; the command opens a psql session for the
   selected `User` (`Admin` or `Application`) when invoked on the command line
   of a host with an installed psql client.
-* The `Database name` and `Domain` (host name) of the database.
-* The `User` connecting to the database; select `Rotate credentials` to
-  generate a new password for the user.
-* The `Password` for the user; select the eye icon to reveal it.
+* the `Database name` and `Domain` (host name) of the database.
+* the `User` connecting to the database, with a `Rotate credentials` control
+  that generates a new password for that user.
+* the `Password` for the user, with an eye icon that reveals it.
 
 Select the copy icon next to any field to copy its value.
 
@@ -83,12 +81,12 @@ instead:
 
 ![Connecting to your database](../images/managed_connecting.png)
 
-For detailed information about:
+See the following resources for more detail:
 
-* installing the psql client and connecting to the database, see
-  [Connecting with psql](../connecting/managed_psql.md).
-* Postgres SQL commands, see the
-  [Postgres documentation](https://www.postgresql.org/docs/18/sql-commands.html).
+* [Connecting with psql](../connecting/managed_psql.md) covers installing the psql
+  client and connecting to the database.
+* The [Postgres documentation](https://www.postgresql.org/docs/18/sql-commands.html)
+  covers Postgres SQL commands.
 
 ## The AI Services Pane
 
@@ -110,8 +108,8 @@ these services, see
 ## The Backups Pane
 
 The `Backups` pane displays a list of the backups taken of your database; each
-backup is either a `hot` backup (fast, short-term storage) or a `durable`
-backup (longer-term, resilient storage).
+backup is either a `hot` backup (the fastest to restore from) or a `durable`
+backup (kept apart from the database's own storage and slower to restore).
 
 ![The Backups pane](../images/managed_backups.png)
 
@@ -120,13 +118,13 @@ right side of the console, across from the `Backups` label.
 
 Each backup entry displays:
 
-* The backup ID.
-* A tag indicating whether the backup is a `hot` or `durable` backup.
-* The backup status (for example, `completed`).
-* How long ago the backup was taken.
+* the backup ID.
+* a tag indicating whether the backup is a `hot` or `durable` backup.
+* the backup status (for example, `completed`).
+* how long ago the backup was taken.
 
-Select the `Restore` button, to the right of a backup to restore the selected
-backup; select `View all` (in the upper-right corner of the pane) to see the
+Select the `Restore` button, to the right of a backup, to restore that
+backup; select `View All` (in the upper-right corner of the pane) to see the
 complete list of backups.
 
 For detailed information about the `Backups` page, see
@@ -180,21 +178,21 @@ and configuration of your database.
 ### Plan and Billing
 
 The `Plan & billing` pane displays the current size tier of your database
-and the price you will be billed after any free trial ends. Select
+and what you will pay after any free trial ends. Select
 `Upgrade size` to change the size of your database. For what each size
 gives you, see
 [Managing Database Details](../using_database/managed_database_details.md).
 
 Two notifications can appear after you add a payment method.
-`Payment saved, but we could not refresh billing status.` means the card was
-saved and the console could not re-read the billing state afterwards, so
+`Payment saved, but we could not refresh billing status.` means the console
+saved the card but could not re-read the billing state afterward, so
 reload the page. `Still unable to load billing status.` means a retry of that
 read failed again.
 
 ### Details
 
-The `Details` pane displays identifying and configuration information about
-your database.
+The `Details` pane displays identifying and configuration information about your
+database.
 
 | Field | Description |
 |-------|--------------|
@@ -210,10 +208,10 @@ your database.
 Two messages replace the whole page:
 
 * `Couldn't load this database. Please try again shortly.` means the console
-  could not read the database record. The `Metrics`, `Logs` and `Backups`
-  pages read the same way. Reload the page. If it repeats, check the
-  Databases list, because a database that has been deleted reads this way
-  from a bookmarked URL.
+  could not read the database record. The `Metrics`, `Logs`, and `Backups`
+  pages read the same way. Reload the page. If the error repeats, check
+  the Databases list, because a deleted database reads this way from a
+  bookmarked URL.
 
 * `Database not found` means the read succeeded and returned no record for
   the database ID in the URL. Go back to the Databases list, and if you
