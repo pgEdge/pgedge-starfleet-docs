@@ -6,7 +6,7 @@ This page discusses loading data with `psql`, restoring from an existing
 Postgres database, and loading documents for the RAG Server.
 
 You should load schema and data as the `app` user (the `Application` tab
-credentials), so that every object ends up owned by the role your application
+credentials), so that every object is owned by the role your application
 connects as. The `admin` user can insert data into tables that already exist.
 For what each role can do, see [Managing Database Roles](roles.md).
 
@@ -48,7 +48,7 @@ For example, to load a CSV file named `customers.csv` (with a header row of
     \copy public.customers (id, name, email) FROM 'customers.csv' WITH (FORMAT csv, HEADER true)
     ```
 
-4.  Verify the data loaded:
+4.  Verify that the data loaded:
 
     ```sql
     SELECT count(*) FROM public.customers;
@@ -72,8 +72,8 @@ Before you begin, gather the following:
 * a database reporting `Available` in the console.
 * both the `Admin` tab and the `Application` tab of its `Connect` pane, which
   give you two different users against the same host, port, and database.
-* a dump of the source database, and `psql` and `pg_restore` from a PostgreSQL
-  client installation.
+* a dump of the source database.
+* `psql` and `pg_restore` from a PostgreSQL client installation.
 
 Copy the `psql command` from each tab rather than assembling one; the
 `psql command` already includes the TLS setting as `PGSSLMODE=require`, and it
@@ -91,16 +91,16 @@ pg_dump --format=custom --file=mydata.dump "postgresql://user@oldhost:5432/olddb
 ### Understanding Why the Order Matters
 
 The `app` user owns the database, and an object belongs to the role that
-created it. A schema loaded as `admin` therefore ends up owned by a role
-your application never connects as.
+created it. A schema loaded as `admin` therefore is owned by a role your
+application never connects as.
 
 Extensions fall into two categories, based on which role can install them.
 An extension on the pgEdge allowlist installs as `admin` only. An extension
 Postgres itself marks trusted installs as `app`, which then owns the
 extension and can drop it later.
 
-A load that needs both kinds of extension therefore needs both connections, in
-this order:
+A load that needs both kinds of extension therefore requires both
+connections, in this order:
 
 1.  Connect with the `Admin` tab's details and install the allowlisted
     extensions the dump depends on, such as `vector`.
@@ -112,7 +112,7 @@ this order:
 
 4.  Still as `app`, load the data, in the passes described below.
 
-Loading a schema before the extensions it depends on exist fails on the first
+Loading a schema before its dependent extensions exist fails on the first
 object that needs one.
 
 For which extension requires which role, see
@@ -143,7 +143,7 @@ Load the schema on its own, as above, and the data in the separate passes
 below. A one-shot restore of schema and data together runs into the foreign-key
 problem described next.
 
-### Avoid Using `--disable-triggers`
+### Avoiding `--disable-triggers`
 
 `pg_restore --disable-triggers` cannot work on pgEdge Starfleet.
 
@@ -155,11 +155,11 @@ errors. Foreign keys therefore stay enforced for the whole load.
 
 `pg_restore` restores table data in the dump's table-of-contents order, not in
 the order of the `-t` flags. A child table can therefore be loaded before its
-parent, its `COPY` aborts on the foreign key, and `pg_restore` continues with
-the rest.
+parent, its `COPY` aborts on the foreign key, and `pg_restore` continues
+restoring the remaining tables.
 
-The result: `pg_restore` exits with status `1`, most tables are populated, and
-one table is silently left empty.
+As a result, `pg_restore` exits with status `1`; most tables are populated,
+but one table is silently left empty.
 
 ### Loading the Data Parent-First
 
@@ -176,14 +176,16 @@ pg_restore -d "$APP_URL" --data-only --no-owner --no-acl \
     -t rulebook_sections dump.pgc
 ```
 
-The alternative is to drop the foreign-key constraints as `app`, which owns the
-underlying tables, load in one pass, and add the constraints back afterwards.
+The alternative is to drop the foreign-key constraints as `app` (which owns
+the underlying tables), load the data in one pass, and add the constraints
+back afterward.
 
 ### Checking the Row Counts Afterwards
 
 Either way, count rows against the source when the load finishes. A
-`pg_restore` that exits 1 has still written everything that did not error, so
-"mostly succeeded" is not a result to act on.
+`pg_restore` that exits with status `1` has still written every row that
+did not error, so a partial success is not something you should treat as
+complete.
 
 Run the count as `app`, from the `psql command` on the `Application` tab:
 
@@ -203,3 +205,16 @@ with a RAG Server, use `pgedge-docloader` instead. See
 [Using the RAG Server](../serving_ai_content/rag.md#using-the-rag-server).
 Because the docloader creates a `documents` table, configure it with the `app`
 user's connection details, not `admin`.
+
+## Next Steps
+
+These pages cover related tasks that build on loading data:
+
+* [Managing Database Roles](roles.md) explains what each of the two
+  roles can do beyond loading data.
+* [Installing Extensions](extensions.md) describes which role installs
+  which extension and what the refusal message means.
+* [ORM and Framework Guides](orm_guides.md) describes connecting an ORM
+  or web framework after your data is loaded.
+* [Enabling and Using the RAG Server](../serving_ai_content/rag.md)
+  describes the server that uses documents loaded with `pgedge-docloader`.

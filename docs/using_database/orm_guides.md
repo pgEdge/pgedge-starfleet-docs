@@ -30,32 +30,32 @@ shell that sources the file.
 
 Keep the whole string, including its query string. The console always
 appends `sslmode=require`, and a URI trimmed back to its host and database
-silently drops that setting. Starfleet hosts serve TLS with a valid,
-CA-signed certificate, so `require` works from every client, and you may
-want to use a stricter mode instead.
+silently drops that setting. pgEdge Starfleet hosts serve TLS with a
+valid, CA-signed certificate, so `require` works from every client, and
+you may want to use a stricter mode instead.
 
 The console provides a URL, not discrete `PG*` values. A framework that
-wants separate host, port, user, and password parameters needs the
-string split into components, and the `Connect` pane shows each part on
-its own row. The Django section below uses the split form.
+requires separate host, port, user, and password parameters needs the
+string split into components, and the `Connect` pane displays each part
+on its own row. The Django section below uses the split form.
 
 ### Checking the String with psql
 
 Using the `Connect` pane's `psql command` block is the quickest way to
 test the string before implementing a framework. A row returned by a
 [`SELECT version()`](https://www.postgresql.org/docs/current/functions-info.html#FUNCTIONS-INFO-VERSION)
-query will let you know that the host details resolve, the TLS handshake
-completes, and the role can authenticate with the Postgres server. A
-framework that fails when the psql check succeeds is failing on its own
-configuration rather than on the database. See
+query confirms that the host details resolve, the TLS handshake
+completes, and the role can authenticate with the Postgres server. If a
+framework fails when the psql check succeeds, the problem lies in its
+own configuration rather than in the database. See
 [Connecting with psql](../connecting/psql.md).
 
 ## Extensions in Migrations
 
-`CREATE EXTENSION IF NOT EXISTS pgcrypto` is what most ORM migrations ship,
-and on pgEdge Starfleet it succeeds when run as `app`, which then owns
-the extension and can drop it in a later migration. `vector` is the
-other way around: only `admin` can install it.
+Most ORM migrations include `CREATE EXTENSION IF NOT EXISTS pgcrypto`,
+which on pgEdge Starfleet succeeds when run as `app`, and `app` then owns
+the extension and can drop it in a later migration. The reverse is true
+for `vector`, which only `admin` can install.
 
 Neither role is a superuser. An extension Postgres marks trusted, such as
 `pgcrypto`, `citext`, or `hstore`, installs as `app`. An extension on the
@@ -65,10 +65,11 @@ extension`. The full table, the refusal messages, and the install order are
 in [Installing Extensions](extensions.md).
 
 A migration run with the `Application` tab's string installs `pgcrypto`
-without trouble, because that string connects as the `app` role. A
+successfully, because that string connects as the `app` role. A
 migration that also needs an allowlisted extension such as `vector`,
-`postgis`, or `pg_cron` fails, because `app` cannot install those.
-Install those manually on the `Admin` tab before running the migration.
+`postgis`, or `pg_cron` fails, because `app` cannot install it.
+Install that extension manually on the `Admin` tab before running the
+migration.
 
 ## Prisma
 
@@ -119,14 +120,14 @@ export default defineConfig({
 Both read the same variable, so one env file covers the application and the
 migration tool, and both connect as `app`. The
 [Drizzle Postgres guide][drizzle-pg] describes the driver alternatives.
-A Drizzle migration carrying `CREATE EXTENSION pgcrypto` works using
-that shared `DATABASE_URL`. An allowlisted extension has to be
-installed on the `Admin` tab first.
+A Drizzle migration containing `CREATE EXTENSION pgcrypto` works using
+that shared `DATABASE_URL`. An allowlisted extension must be installed
+on the `Admin` tab first.
 
 ## Django
 
 Django reads discrete parameters from the `DATABASES` setting rather than a
-URL, so the string has to be split or parsed. The split version reads the
+URL, so the string must be split or parsed. The split version reads the
 parts of the console's string from the standard `PG*` environment variables,
 which every libpq client also honors:
 
@@ -145,7 +146,7 @@ DATABASES = {
 ```
 
 Django's Postgres backend passes `OPTIONS` to the driver's connection
-constructor, which is why the TLS setting sits there rather than beside the
+constructor; the TLS setting therefore sits there rather than beside the
 host.
 
 Keep the `sslmode` entry, because it is the split-parameter form of the
@@ -215,15 +216,15 @@ succeeds. An allowlisted extension needs the `Admin` tab first.
 
 ## After a Password Rotation
 
-A string an application already holds stops working when someone selects
-`Rotate credentials` on the `Application` tab of the `Connect` pane. The
-new password does not authenticate until the database returns to
-`Available`, and the old one may still work in that window, so switch
-the application over once the status reads `Available` rather than
-immediately.
+A string an application already holds no longer functions when someone
+selects `Rotate credentials` on the `Application` tab of the `Connect`
+pane. The new password does not authenticate until the database returns
+to `Available`, and the old one may still work in that window, so
+switch the application over when the status displays `Available` rather
+than immediately.
 
 Rotating the `app` password also restarts the database's MCP and RAG
-servers; each server reads the password once at startup.
+Servers; each server reads the password once at startup.
 
 ## Next Steps
 
@@ -238,7 +239,7 @@ These pages cover related tasks that build on connecting an ORM or framework:
 * [Installing Extensions](extensions.md) describes which role installs
   which extension and what the refusal message means.
 * [Restoring from Backup](../using_console/backups.md) describes
-  restoring in place after a migration goes wrong.
+  restoring in place after a migration fails.
 * [Enabling and Using the MCP Server](../serving_ai_content/mcp.md)
   describes the server that a rotation of `app` restarts.
 

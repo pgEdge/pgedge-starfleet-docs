@@ -55,8 +55,8 @@ The status is the badge on the Databases list and on the database
 header. The API publishes nine values. The following table describes
 the meaning of each value and the writes each one admits:
 
-| Status | What it means | Which writes it admits |
-|--------|---------------|------------------------|
+| Status | Description | Admissible Writes |
+|--------|--------------|--------------------|
 | `creating` | Being provisioned. Not yet usable. | None of the five writes below. Delete is admissible. |
 | `available` | Ready. The only status every write is admissible from. | All of them. |
 | `modifying` | A restore, resize, services change, or credential rotation is in flight. | None of the five. Delete is admissible unless a billing provision is unfinished, which a resize reopens. |
@@ -68,13 +68,13 @@ the meaning of each value and the writes each one admits:
 | `resuming` | Coming back from hibernation. | None of the five. |
 
 `available` is the one to wait for. Check against it rather than
-against "not creating", because a database can reach `failed` or
-`degraded` without passing through `creating` again.
+against the mere absence of `creating`, because a database can reach
+`failed` or `degraded` without passing through `creating` again.
 
-Nothing in the console suspends or resumes a database. There is no
-action for either on the Managed database pages, only a banner on a
-database that is already suspended. The last three statuses are listed
-because a database suspended by some other means still reports them.
+The Managed database pages provide no control to suspend or resume a
+database; only a banner appears on a database that is already
+suspended. The last three statuses are listed because a database
+suspended by some other means still reports them.
 
 A status you do not recognize is not automatically an error. Treat
 anything that is not `available` as a database that is not ready for
@@ -86,13 +86,13 @@ The console treats `available` and `degraded` alike for `Rotate
 credentials`, the display-name edit, and deletion protection. The API,
 however, admits the five writes below only from `available`, so an
 action offered on a `degraded` database can still be refused. `Upgrade
-size` is the exception the console already gates, being offered only
+size` is the exception; the console already gates it, offering it only
 from `available`.
 
 ### The Five Writes That Need Available
 
-Five operations are admissible only from `available`, including against
-a database already `modifying` because of an earlier change:
+Five operations are admissible only from `available`, including when
+the database is already `modifying` because of an earlier change:
 
 * Restore from a backup
 * Upgrade size
@@ -101,14 +101,15 @@ a database already `modifying` because of an earlier change:
 * Rotate credentials
 * Take a backup
 
-Everything else is looser. Editing the display name and switching
-deletion protection take no hold on the database and succeed against a
-busy one. Delete does not wait for a restore to finish.
+Every other operation has fewer restrictions. Editing the display name
+and switching deletion protection take no hold on the database and
+succeed while another operation is in progress. Delete does not wait
+for a restore to finish.
 
-A write attempted from any other status is refused, and the console shows
-the API's message where it sends one. The message names the status the API
-wanted rather than the one it found, so read the current status from the
-status badge, wait for `available`, and try again.
+A write attempted from any other status is refused, and the console
+displays the API's message where it sends one. The message names the
+status the API wanted rather than the one it found, so read the current
+status from the status badge, wait for `available`, and try again.
 
 ## Next Steps
 
@@ -119,7 +120,7 @@ These pages cover related tasks that build on database details.
 * [Accessing Management Options with the Actions Menu](../using_console/actions.md)
   describes upgrading your resources.
 * [Monitoring System Metrics](../using_console/metrics.md) details the
-  `CPU`, `Memory`, `Disk used` and `Active connections` charts which show the
-  current resources in use.
+  `CPU`, `Memory`, `Disk used`, and `Active connections` charts that show
+  the current resources in use.
 * [Reviewing the Activity Log](../using_console/activity_log.md) describes
   the task names a status change moves through.
