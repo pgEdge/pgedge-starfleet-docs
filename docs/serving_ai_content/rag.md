@@ -67,10 +67,10 @@ for both providers.
 
 !!! note
 
-    Neither the console nor the platform checks an API key when you enable the
-    server. A server carrying a bad key still reaches `Running`, and the bad
-    key surfaces only when a pipeline query fails. Check the key before
-    enabling the server rather than relying on the status badge.
+    Neither the console nor the platform checks an API key when you enable
+    the server. A server configured with a bad key still reaches `Running`,
+    and the bad key surfaces only when a pipeline query fails. Check the
+    key before enabling the server rather than relying on the status badge.
 
 Select `+Add Pipeline` to expand the dialog and define one or more pipelines
 used by the RAG Server.
@@ -216,7 +216,7 @@ Select `Configure` to change these settings, or `Disable` to stop the server.
 
 The API base URL is your database's own domain with `/rag/v1` appended to it,
 and a pipeline is one segment below it; a query is a `POST` to
-`https://<your-domain>/rag/v1/pipelines/<pipeline-name>` carrying a JSON body.
+`https://<your-domain>/rag/v1/pipelines/<pipeline-name>` with a JSON body.
 A pipeline name that the server does not recognize answers `404`.
 
 After adding a RAG Server to your database, you can use the
@@ -265,7 +265,7 @@ the server can retrieve results from it.
       -h <your-domain> -p <your-port> -d <your-database>
     ```
 
-2.  Create a table to hold the documentation content, with a
+2.  Create a table to store the documentation content, with a
     `pgvector` column sized for your embedding model:
 
     ```sql

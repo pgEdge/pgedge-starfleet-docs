@@ -6,18 +6,18 @@ navigation panel or navigate to the database's main page in the console. Below
 the header of the database page, the console displays the `Connect` pane. The
 pane displays one tab per built-in role:
 
-* an `Admin` tab with credentials for the `admin` user
-* an `Application` tab with credentials for the `app` user
+* an `Admin` tab with credentials for the `admin` user.
+* an `Application` tab with credentials for the `app` user.
 
-Each tab displays a `Connection string`, a ready-to-use `psql command`, the
-`Database name`, `Domain`, `User`, and `Password` values used to build them,
-and a `Rotate credentials` button. The `Password` is masked until you select
-the reveal control beside it.
+Each tab displays a `Connection string`, a ready-to-use `psql command`, and
+a `Rotate credentials` button, built from that tab's `Database name`,
+`Domain`, `User`, and `Password` values. The console masks the `Password`
+until you select the reveal control beside it.
 
-The `Connection string` and `psql command` blocks are shown on screen without
-the password. The copy button beside each block copies the same value
-with the password included, so the clipboard holds a live credential even
-though the screen does not display it.
+The `Connect` pane shows the `Connection string` and `psql command` blocks
+on screen without the password. The copy button beside each block copies
+the same value with the password included, so the clipboard contains a
+live credential even though the screen does not display it.
 
 For details about each role's capabilities and which role to use, see
 [Managing Database Roles](../using_database/roles.md).
@@ -52,27 +52,23 @@ it directly into a terminal window, and press `Return` to connect.
     includes in its URI. Both enforce the required TLS connection.
 
 If you start psql with a graphical prompt or icon (rather than the command
-line), you can use the individual values from the psql connection string to
-authenticate:
+line), respond to each prompt with the matching connection-string value,
+then press `Return`:
 
-* When prompted for a `Server [localhost]`, provide the host name from the
-  connection string (the value shown in the `Domain` field) and press
-  `Return`.
-* When prompted for a `Database [postgres]`, provide the database name from the
-  connection string (the value shown in the `Database name` field) and press
-  `Return`.
-* When prompted for a `Port [5432]`, enter the port shown in the
-  connection string and press `Return`. Use the port from the connection
-  string rather than assuming the Postgres default.
-* When prompted for a `Username [postgres]`, provide the `User` value from the
-  `Connect` pane, and press `Return`. In this example, the user is `admin`.
-* When prompted for the `Password`, provide the `Password` value from the
-  `Connect` pane.
+* `Server [localhost]` takes the host name from the connection string,
+  the value shown in the `Domain` field.
+* `Database [postgres]` takes the database name from the connection
+  string, the value shown in the `Database name` field.
+* `Port [5432]` takes the port from the connection string, not the
+  Postgres default.
+* `Username [postgres]` takes the `User` value from the `Connect` pane;
+  in this example, the user is `admin`.
+* `Password` takes the `Password` value from the `Connect` pane.
 
 ## Installing psql and Connecting
 
-To install psql on your local system, follow the platform-specific installation
-and connection details for your server.
+To install psql on your local system, follow the platform-specific
+instructions below.
 
 ### On a Mac
 

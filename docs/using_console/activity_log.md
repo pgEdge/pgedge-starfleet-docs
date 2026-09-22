@@ -20,8 +20,8 @@ The Activity Log page displays the following columns:
 * `Task name` identifies the type of task for the table entry (for
   example, `create-managed`, `restore-managed`, or
   `update-managed-size`). The console shows the raw name the API gives
-  the task, with a tooltip that names it in plain language and explains
-  what it does.
+  the task, with a tooltip that names the task in plain language and
+  explains what it does.
 
 * `Subject kind` is the kind of resource the task acted on, one of
   `database`, `cluster`, or `ingress`.
@@ -75,10 +75,11 @@ console:
   [Accessing Management Options with the Actions Menu](actions.md#upgrading-the-size-tier).
 * **`backup-managed` can read `succeeded` while the backup is still pending.**
   The task claims to have taken the backup: its steps show
-  `Configuring System` then `Taking Backup`, both at 100 percent and marked
-  `succeeded`, while the backup record it produced is still `pending`. Both
-  reach a terminal state, but not at the same time. Read the backup's own
-  status on the `Backups` pane rather than the task's.
+  `Configuring System` then `Taking Backup`, both at 100 percent and
+  marked `succeeded`. The backup record the task produced is still
+  `pending`. Both reach a terminal state, but not at the same time.
+  Read the backup's own status on the `Backups` pane rather than the
+  task's.
 
 ### What Succeeded Does Not Tell You
 
@@ -95,14 +96,3 @@ A services change is the other exception. A succeeded `update-managed` means
 the API has finished its side of the change, but the deployed server itself
 takes longer to reflect it; expect roughly a minute or two for a configure,
 and fifteen to twenty seconds for a first MCP enable.
-
-## Related Pages
-
-The following pages provide more detail on topics referenced above:
-
-* [Restoring from Backup](backups.md) describes the restore this page
-  keeps pointing at.
-* [Accessing Management Options with the Actions Menu](actions.md)
-  describes the resize, the display-name edit, and deletion protection.
-* [Managing Database Details](../using_database/database_details.md)
-  describes database sizes and statuses in full.

@@ -1,7 +1,7 @@
 # Managing Database Details
 
-This page describes two properties of a pgEdge Starfleet Managed
-database: its size and its status.
+A pgEdge Starfleet Managed database exposes two properties that change
+over its lifetime: its size and its status.
 
 ## Database Sizes
 
@@ -99,7 +99,7 @@ when it is already `modifying` because of an earlier change:
 * Taking a backup
 
 Every other task has fewer restrictions. Editing the display name and
-switching deletion protection take no hold on the database and can
+switching deletion protection do not lock the database and can
 succeed while another task is in progress. Delete does not wait for a
 restore to finish.
 

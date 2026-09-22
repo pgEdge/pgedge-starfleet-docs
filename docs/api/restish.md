@@ -1,9 +1,9 @@
 # Using restish
 
-restish is a command-line client for REST APIs. It reads an API's
-OpenAPI file and builds a command for each operation in it. This
-page walks you through connecting restish to the Managed API, and
-running a command.
+restish is a command-line client for REST APIs; it reads an API's
+OpenAPI file and builds one command per listed operation. The sections
+below cover connecting restish to pgEdge Starfleet Managed Database
+and running a command.
 
 ## Before You Start
 
@@ -40,8 +40,8 @@ Install restish and point it at the Managed API's OpenAPI file.
 
 ## Authenticating restish
 
-Each request needs a bearer token. Set the profile to read it from
-`PGEDGE_TOKEN`, rather than storing it directly.
+Each request needs a bearer token; set the profile to read it from
+`PGEDGE_TOKEN` rather than storing it directly.
 
 ```bash
 export PGEDGE_TOKEN="<access-token>"
@@ -55,11 +55,12 @@ session is fine. Avoid keeping the token in a shell profile file.
 The access token expires after the seconds given in `expires_in`.
 Repeat the steps in
 [Generating an Access Token](index.md#generating-an-access-token) to
-get a new one.
+get a new token.
 
 ## Running a Command
 
-Each command's name comes from its `operationId`. For example:
+Each command's name comes from its `operationId`. The following table
+shows how an `operationId` maps to its restish command:
 
 | operationId | Command |
 |---|---|
@@ -99,8 +100,3 @@ restish managed list-managed-databases
     ```bash
     restish managed update-managed-database <database-id> < orders-db.json
     ```
-
-## Next Steps
-
-[Interactive Reference](reference.md) lists each operation the API
-supports, with the `operationId` behind each one.
