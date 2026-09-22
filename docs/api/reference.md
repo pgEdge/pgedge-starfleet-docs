@@ -1,11 +1,11 @@
 # Interactive Reference
 
 The Managed API publishes an OpenAPI file that lists every operation
-the API supports, read live below.
+the API supports. This page renders that file live, below.
 
-An access token is required to try an operation here, from
+To try an operation here, you need an access token; see
 [Generating an Access Token](index.md#generating-an-access-token).
-Select **Authorize** and paste the token in.
+Select `Authorize` and paste the token into the field.
 
 <div id="swagger-ui"></div>
 

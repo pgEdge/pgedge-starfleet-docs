@@ -1,23 +1,29 @@
 # Using restish
 
-restish is a command-line client for REST APIs. restish reads an
-API's OpenAPI file and builds a command for each operation in it.
-Connect restish to the Managed API. Then run one command.
+restish is a command-line client for REST APIs; it reads an API's
+OpenAPI file and builds a command for each operation in it. This page
+walks through connecting restish to the Managed API, then running one
+command.
 
 ## Before You Start
 
-An access token is required, from
+To follow this page, you need an access token; see
 [Generating an Access Token](index.md#generating-an-access-token).
 
 ## Connecting to the Managed API
 
-1. Install restish:
+Install restish and point it at the Managed API's OpenAPI file.
+
+1. Install restish with Homebrew:
 
     ```bash
     brew install restish
     ```
 
-2. Confirm the install:
+    For other install methods, see the restish
+    [installation guide](https://rest.sh/docs/getting-started/install/).
+
+2. Verify the install:
 
     ```bash
     restish --version
@@ -34,8 +40,9 @@ An access token is required, from
 
 ## Authenticating restish
 
-Each request needs a bearer token. Set the token as the profile's
-auth. Read the token from an environment variable:
+Each request needs a bearer token. Configure the profile's
+authentication to read the token from an environment variable, rather
+than storing it in the profile directly:
 
 ```bash
 export PGEDGE_TOKEN="<access-token>"
@@ -43,19 +50,24 @@ restish api set managed \
   'profiles.default.auth: {type: bearer, params: {token: env:PGEDGE_TOKEN}}'
 ```
 
-The access token expires after the seconds given in `expires_in`.
-Repeat the earlier steps to get a new token.
+Because the token is short-lived, exporting it for the current shell
+session is reasonable; avoid persisting it in a shell profile file.
+
+The access token expires after the number of seconds specified in
+`expires_in`. Repeat the steps in
+[Generating an Access Token](index.md#generating-an-access-token) to
+get a new one.
 
 ## Running a Command
 
-Each command's name comes from its `operationId`:
+Each command's name comes from its `operationId`. For example:
 
 | operationId | Command |
 |---|---|
 | `ListManagedDatabases` | `list-managed-databases` |
 | `GetManagedDatabase` | `get-managed-database` |
 
-List each database the token can reach:
+List every database the token's client can reach:
 
 ```bash
 restish managed list-managed-databases
