@@ -3,7 +3,7 @@
 Once a pgEdge Starfleet PostgreSQL database finishes deploying, the console
 lists its name in the tree control on the left side of the screen.
 
-![Displaying the currently deployed databases](../images/sf_tree_control.png)
+![Displaying the currently deployed databases](../images/managed_tree_control.png)
 
 Select the database name to navigate to the database management page of the
 console.
@@ -12,7 +12,7 @@ console.
 
 The database header sits at the top of the database's management page.
 
-![Database Header](../images/sf_database_header.png)
+![Database Header](../images/managed_database_header.png)
 
 The database header displays:
 
@@ -32,10 +32,10 @@ The `Actions` drop-down (on the right-hand side of the header) offers
 management options for your database, including editing the display name,
 upgrading the size tier, and enabling deletion protection.
 
-![The Actions menu](../images/sf_actions_menu.png)
+![The Actions menu](../images/managed_actions_menu.png)
 
 For detailed information about options available through the `Actions` menu,
-see [Accessing Management Options with the Actions Menu](actions.md).
+see [Accessing Management Options with the Actions Menu](managed_actions.md).
 
 ## The Connect Pane
 
@@ -57,7 +57,7 @@ Select the copy icon next to any field to copy its value.
 The two users have different permissions on the database. Connect as `app`
 to create tables and load data, and as `admin` to install an allowlisted
 extension or for server-wide work.
-[Managing Database Roles](../using_database/roles.md) describes what
+[Managing Database Roles](../using_database/managed_roles.md) describes what
 each one can do.
 
 A database that is still being created may show a provisioning message
@@ -76,14 +76,14 @@ instead:
   indicates that the database is in a status the pane does not treat as
   connectable: `deleting`, `suspending`, `suspended`, `resuming`, or any status
   the console does not recognize. See
-  [Database Statuses](../using_database/database_details.md#database-statuses)
+  [Database Statuses](../using_database/managed_database_details.md#database-statuses)
   for the meaning of each status.
 
-![Connecting to your database](../images/sf_connecting.png)
+![Connecting to your database](../images/managed_connecting.png)
 
 See the following resources for more detail:
 
-* [Connecting with psql](../connecting/psql.md) covers installing the psql
+* [Connecting with psql](../connecting/managed_psql.md) covers installing the psql
   client and connecting to the database.
 * The [Postgres documentation](https://www.postgresql.org/docs/18/sql-commands.html)
   covers Postgres SQL commands.
@@ -93,7 +93,7 @@ See the following resources for more detail:
 The `AI Services` pane lists the AI-related services available for your
 database.
 
-![The AI Services pane](../images/sf_services.png)
+![The AI Services pane](../images/managed_services.png)
 
 The `AI Services` pane displays icons you can use to deploy available services
 on your Postgres database, including an MCP Server and a RAG Server. Select
@@ -102,8 +102,8 @@ select its `Details` button to view connection details and manage it.
 
 For detailed information about enabling, configuring, and connecting to
 these services, see
-[Enabling and Using the MCP Server](../serving_ai_content/mcp.md) or
-[Enabling and Using the RAG Server](../serving_ai_content/rag.md).
+[Enabling and Using the MCP Server](../serving_ai_content/managed_mcp.md) or
+[Enabling and Using the RAG Server](../serving_ai_content/managed_rag.md).
 
 ## The Backups Pane
 
@@ -111,7 +111,7 @@ The `Backups` pane displays a list of the backups taken of your database; each
 backup is either a `hot` backup (the fastest to restore from) or a `durable`
 backup (kept apart from the database's own storage and slower to restore).
 
-![The Backups pane](../images/sf_backups.png)
+![The Backups pane](../images/managed_backups.png)
 
 To review a complete list of available backups, select `View All` from the
 right side of the console, across from the `Backups` label.
@@ -128,7 +128,7 @@ backup; select `View All` (in the upper-right corner of the pane) to see the
 complete list of backups.
 
 For detailed information about the `Backups` page, see
-[Restoring from Backup](backups.md).
+[Restoring from Backup](managed_backups.md).
 
 ## The Metrics Pane
 
@@ -136,32 +136,32 @@ The `Metrics` pane displays live graphs of current database activity, including
 `Transactions` (transactions per second) and `Tuples returned` (rows returned
 per second).
 
-![The Metrics pane](../images/sf_metrics.png)
+![The Metrics pane](../images/managed_metrics.png)
 
 Select `Open metrics` (in the upper-right corner of the `Metrics` pane) to see
 detailed metrics for your database.
 
 For detailed information about the `Metrics` page, see
-[Monitoring System Metrics](metrics.md).
+[Monitoring System Metrics](managed_metrics.md).
 
 ## The Logs Pane
 
 The `Logs` pane displays the most recent entries from your database's log file;
 each entry shows the timestamp, log level (for example, `LOG`), and message.
 
-![The Logs pane](../images/sf_logs.png)
+![The Logs pane](../images/managed_logs.png)
 
 Select `View logs` (in the upper-right corner of the pane) to see the complete,
 searchable log for your database.
 
 For detailed information about the `Logs` page, see
-[Reviewing the Log Files](logs.md).
+[Reviewing the Log Files](managed_logs.md).
 
 ## Read Replicas and Branching
 
 The `Primary` badge identifies the current database as a primary node.
 
-![Read replicas and branching](../images/sf_read_replicas_branching.png)
+![Read replicas and branching](../images/managed_read_replicas_branching.png)
 
 The `Read replicas & branching` pane previews upcoming functionality for
 scaling read traffic with read replicas and spinning up copy-on-write branches
@@ -173,7 +173,7 @@ disabled until it becomes available.
 The `Plan & billing` and `Details` panes display the size tier, billing status,
 and configuration of your database.
 
-![Summary panes](../images/sf_summary.png)
+![Summary panes](../images/managed_summary.png)
 
 ### Plan and Billing
 
@@ -181,7 +181,7 @@ The `Plan & billing` pane displays the current size tier of your database
 and what you will pay after any free trial ends. Select
 `Upgrade size` to change the size of your database. For what each size
 gives you, see
-[Managing Database Details](../using_database/database_details.md).
+[Managing Database Details](../using_database/managed_database_details.md).
 
 Two notifications can appear after you add a payment method.
 `Payment saved, but we could not refresh billing status.` means the console

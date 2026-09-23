@@ -8,7 +8,7 @@ Postgres installed.
 
     Use the `psql command` displayed on the `Application` tab of the
     `Connect` pane to connect with psql and query the extensions; see
-    [Connecting with psql](../connecting/psql.md) to find the pane and
+    [Connecting with psql](../connecting/managed_psql.md) to find the pane and
     copy the command.
 
 To find the list of extensions available, connect with a Postgres client
@@ -47,7 +47,7 @@ The role required to install an extension varies by extension:
   role, because `admin` is a member of `app`, and the role that runs
   the install owns the extension afterward.
 
-See [Creating Database Objects](roles.md#creating-database-objects)
+See [Creating Database Objects](managed_roles.md#creating-database-objects)
 for more on how role ownership works.
 
 For example, the following table lists the installation role and
@@ -96,7 +96,7 @@ trusted extension, install the allowlisted extension first:
     data.
 
 Loading a schema before its extensions exist causes the load to fail. See
-[Loading Data into Your pgEdge Starfleet Database](loading_data.md) for the
+[Loading Data into Your pgEdge Starfleet Database](managed_loading_data.md) for the
 complete load sequence.
 
 ### Extension Ownership in Migrations

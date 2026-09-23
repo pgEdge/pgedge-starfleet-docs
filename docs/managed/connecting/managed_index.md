@@ -14,17 +14,17 @@ to `disable`.
 
 Every client connects as one of the database's two built-in roles, `admin` or
 `app`. Which one to use depends on the job, and
-[Managing Database Roles](../using_database/roles.md) describes the split.
+[Managing Database Roles](../using_database/managed_roles.md) describes the split.
 
 The documentation includes instructions for installing and connecting with
 the following commonly used clients:
 
-* [Connecting with the AI DBA Workbench](workbench.md) describes how to
+* [Connecting with the AI DBA Workbench](managed_workbench.md) describes how to
   install the pgEdge AI DBA Workbench, then connect it to your database for
   monitoring, alerting, and AI-assisted diagnostics.
-* [Connecting with psql](psql.md) describes how to connect with psql, the
+* [Connecting with psql](managed_psql.md) describes how to connect with psql, the
   command-line client distributed with PostgreSQL.
-* [Connecting with pgAdmin](pgadmin.md) describes how to register your
+* [Connecting with pgAdmin](managed_pgadmin.md) describes how to register your
   database as a server in the pgAdmin graphical client.
 
 ## While the Database Is Still Being Created
@@ -83,4 +83,4 @@ practices keep a credential from leaking:
 
     Supply the string to your application through a secrets mechanism
     rather than a shell variable. To retire a password, see
-    [Rotating Database Credentials](../using_database/roles.md#rotating-database-credentials).
+    [Rotating Database Credentials](../using_database/managed_roles.md#rotating-database-credentials).

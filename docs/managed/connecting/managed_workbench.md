@@ -114,7 +114,7 @@ guide.
     using the `CLIENT_PORT` set in step 3), and log in with the
     credentials you configured in the previous step.
 
-    ![Logging in to the Workbench](../images/sf_workbench_login.png)
+    ![Logging in to the Workbench](../images/managed_workbench_login.png)
 
 ## Connecting the Workbench to Your Database
 
@@ -124,14 +124,14 @@ connection.
 1.  Select the `+` next to the `DATABASE SERVERS` heading in the left
     navigation panel. The Workbench adds a new server definition entry.
 
-    ![Adding a database server in the Workbench](../images/sf_add_database.png)
+    ![Adding a database server in the Workbench](../images/managed_add_database.png)
 
 2.  In the console, navigate to the
-    [`Connect`](../using_console/console_overview.md#the-connect-pane)
+    [`Connect`](../using_console/managed_console_overview.md#the-connect-pane)
     pane to find the values you will need to connect to your database.
 
 3.  Complete the server definition using the values from the
-    [`Connect`](../using_console/console_overview.md#the-connect-pane) pane:
+    [`Connect`](../using_console/managed_console_overview.md#the-connect-pane) pane:
 
     * `Name` is a display name for this connection; when connected,
       Workbench displays it in the left navigation pane.
@@ -139,19 +139,19 @@ connection.
     * `Port` is the PostgreSQL listener port; enter `5432`.
     * `Username` is either `admin` or `app`; use the name that provides
       the permissions required (see
-      [Managing Database Roles](../using_database/roles.md)).
+      [Managing Database Roles](../using_database/managed_roles.md)).
     * `Password` is the corresponding `Password` value from the `Connect`
       pane.
     * `SSL Mode` must be set to `require`.
 
-    ![The completed Workbench server definition](../images/sf_completed_wb_connection.png)
+    ![The completed Workbench server definition](../images/managed_completed_wb_connection.png)
 
 4.  Save the server definition. The Workbench adds the database to the
     cluster navigator and begins collecting metrics. To view statistical
     metrics and manage your pgEdge Starfleet database, select the
     database name in the left navigation pane:
 
-    ![The Workbench console showing the connected database](../images/sf_workbench_console.png)
+    ![The Workbench console showing the connected database](../images/managed_workbench_console.png)
 
 For more information about configuring and using
 [AI DBA Workbench](https://docs.pgedge.com/ai-dba-workbench/v1-0-0/)

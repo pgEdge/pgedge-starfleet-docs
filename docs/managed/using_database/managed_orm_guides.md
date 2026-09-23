@@ -44,7 +44,7 @@ query confirms that the host details resolve, the TLS handshake
 completes, and the role can authenticate with the Postgres server. If a
 framework fails when the psql check succeeds, the problem lies in its
 own configuration rather than in the database. See
-[Connecting with psql](../connecting/psql.md).
+[Connecting with psql](../connecting/managed_psql.md).
 
 ## Extensions in Migrations
 
@@ -57,7 +57,7 @@ Neither role is a superuser. An extension Postgres marks trusted, such as
 `pgcrypto`, `citext`, or `hstore`, installs as `app`. An extension on the
 pgEdge allowlist, such as `vector`, `postgis`, or `pg_cron`, installs as
 `admin` only, and `app` is refused with `Must be superuser to create this
-extension`. See [Installing Extensions](extensions.md) for the full table,
+extension`. See [Installing Extensions](managed_extensions.md) for the full table,
 refusal messages, and install order.
 
 A migration run with the `Application` tab's string installs `pgcrypto`

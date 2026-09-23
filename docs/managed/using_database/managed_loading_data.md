@@ -10,7 +10,7 @@ You should load schema and data as the `app` user (using the `Application`
 tab credentials for your connection), so that every object is owned by the
 role your application connects as. The `admin` user can insert data into
 tables that already exist. For more information about each role, see
-[Managing Database Roles](roles.md).
+[Managing Database Roles](managed_roles.md).
 
 ## Loading CSV Data with `\copy`
 
@@ -28,7 +28,7 @@ For example, to load a CSV file named `customers.csv` (with a header row of
     PGSSLMODE=require psql -U app -h <your-domain> -p <your-port> -d <your-database>
     ```
 
-    See [Connecting with psql](../connecting/psql.md) for detailed
+    See [Connecting with psql](../connecting/managed_psql.md) for detailed
     information about finding the ready-to-use `psql command` for your
     database.
 
@@ -118,7 +118,7 @@ Loading a schema before its dependent extensions exist fails on the first
 object that needs one.
 
 For more information about extension ownership, see
-[Installing Extensions](extensions.md).
+[Installing Extensions](managed_extensions.md).
 
 ### Restoring the Schema's Dump File
 
@@ -198,7 +198,7 @@ that loaded successfully.
 The methods above load structured, relational data into tables. If you are
 loading unstructured documents (HTML, Markdown, or reStructuredText) to use
 with a RAG Server, use `pgedge-docloader` instead. See
-[Using the RAG Server](../serving_ai_content/rag.md#using-the-rag-server).
+[Using the RAG Server](../serving_ai_content/managed_rag.md#using-the-rag-server).
 Since the docloader creates a `documents` table, configure the docloader
 with the `app` user's connection details, not `admin`.
 
