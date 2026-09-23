@@ -39,7 +39,7 @@ theme:
         name: Switch to system preference
 
 nav:
-  - pgEdge Starfleet Managed Postgres:
+  - pgEdge Starfleet Managed Database:
     - Overview: index.md
   - managed/creating_managed.md
   - Using the pgEdge Starfleet Console:
