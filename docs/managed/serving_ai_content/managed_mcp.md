@@ -307,6 +307,14 @@ When using the MCP Server:
     The updated password authenticates only when the database status
     returns to `Available`; the old password may still work until then.
 
+## Using the MCP Server on a Branch
+
+A branch of your database runs its own MCP server, with its own MCP token.
+The source database's token does not work against the branch, so an MCP
+client needs the branch's own token. Select `Copy branch token` on the
+branch's page to copy it. See
+[Creating and Managing Branches](../using_console/managed_branches.md).
+
 ## Troubleshooting - When the Services Page Shows an Error
 
 The `Services` page displays a message when something goes wrong:

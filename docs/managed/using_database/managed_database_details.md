@@ -61,6 +61,10 @@ restart it when the new size takes effect. This option is available
 only while the database status is `available`. See
 [Upgrading the Size Tier](../using_console/managed_actions.md#upgrading-the-size-tier).
 
+A database cannot be resized while it has branches, because each branch
+keeps the size it was created with. See
+[Understanding Branches](managed_branches.md).
+
 ## Database Statuses
 
 The database status appears in the badge on the Databases list and on

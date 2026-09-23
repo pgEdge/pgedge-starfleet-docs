@@ -19,9 +19,11 @@ pgEdge Starfleet stands apart from other Postgres cloud services with:
       Vectorizer extension keeping vector embeddings updated
       automatically as content changes.
 
-- true copy-on-write database branching for parallel agentic experiments
-  and for separate development, testing, and staging databases, without
-  replacing the Postgres storage layer with a proprietary alternative.
+- true copy-on-write
+  [database branching](using_database/managed_branches.md) for parallel
+  agentic experiments and for separate development, testing, and staging
+  databases, without replacing the Postgres storage layer with a
+  proprietary alternative.
 
 - a smooth developer experience, with a free trial requiring no credit
   card, a database that deploys and connects in under two minutes, and

@@ -32,6 +32,11 @@ Select `Upgrade size` from the `Actions` menu to change the size tier of your
 database. The `Upgrade size` popup opens, showing your database's current
 size and price, and the sizes you can upgrade to.
 
+`Upgrade size` is disabled while the database has branches, because a
+branch keeps the size it was created with. Delete the database's branches
+first, then upgrade the size. See
+[Understanding Branches](../using_database/managed_branches.md).
+
 ![The Upgrade size popup](../images/managed_actions_upgrade_size.png)
 
 Select the size you want to upgrade to, then select `Upgrade size` to confirm,
@@ -59,6 +64,10 @@ While deletion protection is enabled, `Delete database` is unavailable
 Select `Delete database` from the `Actions` menu to permanently delete your
 database. This option is unavailable while deletion protection is enabled; see
 [Enabling and Disabling Deletion Protection](#enabling-and-disabling-deletion-protection).
+
+Delete the database's branches first, because the console does not delete
+a database that still has branches. Branches have no backups. See
+[Creating and Managing Branches](managed_branches.md).
 
 ## Troubleshooting - When an Action Is Refused
 
