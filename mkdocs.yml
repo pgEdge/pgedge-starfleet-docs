@@ -62,6 +62,7 @@ nav:
   - Using Your Database:
     - Managing Database Roles: managed/using_database/managed_roles.md
     - Managing Database Details: managed/using_database/managed_database_details.md
+    - Understanding Branches: managed/using_database/managed_branches.md
     - Loading Data into Your pgEdge Starfleet Database: managed/using_database/managed_loading_data.md
     - Installing Extensions: managed/using_database/managed_extensions.md
     - ORM and Framework Guides: managed/using_database/managed_orm_guides.md
