@@ -19,11 +19,13 @@ The following table shows what each size provides:
 | XL | 4 | 16 GB | 150 GB | 100 |
 
 `Connections` is the number of simultaneous client connections included
-at that size. Postgres reserves a few connections above that number for
-its own maintenance work and for superuser access. `SHOW max_connections`
-therefore returns a higher figure than the table shows. Every client
-counts against the advertised `Connections` figure, including the MCP
-and RAG Servers, which connect to the database as `app` when enabled.
+at the selected size. Querying the
+[`max_connections`](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-MAX-CONNECTIONS)
+parameter returns a higher value than the table shows, since Postgres
+reserves connections for the server and maintenance workers. Each
+connected client counts against the advertised `Connections` figure,
+including the MCP and RAG Servers, which connect as `app` when
+enabled.
 
 `Storage` is the disk space available to the database. Used space counts
 against this value; the only way to increase the disk space is a size
