@@ -30,12 +30,10 @@ Servers.
     parameter returns a higher value than the table shows, because Postgres
     reserves connections for the server and maintenance workers. 
 
-`Storage` is the disk space available to the database. Used space counts
-against this value; the only way to increase the disk space is a size
-upgrade. Postgres stores the write-ahead log on the same disk used for
-data storage, and the filesystem reserves space there for its own
-metadata. The storage figure therefore overstates what remains for the
-database's own data.
+`Storage` is the disk space available to the database. All resources
+count against this value, including your data, the Postgres write-ahead log,
+and the system metadata. The only way to increase the disk space is a
+size upgrade.
 
 Each size's price appears on the size step of the creation wizard, in the
 `Upgrade size` popup, and on the `Plan & billing` pane of the database
