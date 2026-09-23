@@ -32,9 +32,10 @@ Servers.
 
 `Storage` is the disk space available to the database. Used space counts
 against this value; the only way to increase the disk space is a size
-upgrade. Postgres keeps its write-ahead log on that same disk, and the
-filesystem keeps its own bookkeeping there too. The space left for the
-database's own data is therefore less than the storage figure.
+upgrade. Postgres stores the write-ahead log on the same disk used for
+data storage, and the filesystem reserves space there for its own
+metadata. The storage figure therefore overstates what remains for the
+database's own data.
 
 Each size's price appears on the size step of the creation wizard, in the
 `Upgrade size` popup, and on the `Plan & billing` pane of the database
