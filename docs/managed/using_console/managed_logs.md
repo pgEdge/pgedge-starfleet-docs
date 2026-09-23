@@ -27,7 +27,7 @@ The page provides the following controls:
     newest line. `Load older lines`, at the foot of the table, extends the
     loaded history until the page reads `End of the loaded history`.
 
-![The Logs page](../images/sf_logs_all.png)
+![The Logs page](../images/managed_logs_all.png)
 
 ## When the Page Shows a Message Instead of Lines
 

@@ -8,7 +8,7 @@ and running a command.
 ## Before You Start
 
 To follow this page, you need an access token; see
-[Generating an Access Token](index.md#generating-an-access-token).
+[Generating an Access Token](managed_index.md#generating-an-access-token).
 
 ## Connecting to the Managed API
 
@@ -54,7 +54,7 @@ session is fine. Avoid keeping the token in a shell profile file.
 
 The access token expires after the seconds given in `expires_in`.
 Repeat the steps in
-[Generating an Access Token](index.md#generating-an-access-token) to
+[Generating an Access Token](managed_index.md#generating-an-access-token) to
 get a new token.
 
 ## Running a Command

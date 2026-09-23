@@ -59,7 +59,7 @@ Allocated resource sizes can only be increased. Use the `Upgrade size`
 option on the `Actions` menu to move the database to a larger size and
 restart it when the new size takes effect. This option is available
 only while the database status is `available`. See
-[Upgrading the Size Tier](../using_console/actions.md#upgrading-the-size-tier).
+[Upgrading the Size Tier](../using_console/managed_actions.md#upgrading-the-size-tier).
 
 ## Database Statuses
 

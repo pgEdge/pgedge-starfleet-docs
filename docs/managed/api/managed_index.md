@@ -11,7 +11,7 @@ authenticated request.
 An API client has an ID and a secret; a token endpoint exchanges them
 for an access token.
 
-1. Select [`Settings`](../using_console/settings.md#the-api-clients-tab)
+1. Select [`Settings`](../using_console/managed_settings.md#the-api-clients-tab)
    in the navigation pane, then select the `API Clients` tab.
 2. Select `Create API Client`.
 3. Type a name for the client in the `API Client Name` field, then

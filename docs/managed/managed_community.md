@@ -4,6 +4,6 @@ Select `Community` in the navigation pane to open an invitation to pgEdge's
 Discord server in a new tab. There, you can ask questions, share feedback,
 and connect with other pgEdge users.
 
-![The pgEdge Discord invitation](images/sf_community_discord.png)
+![The pgEdge Discord invitation](images/managed_community_discord.png)
 
 Select `Accept Invite` to join the server.

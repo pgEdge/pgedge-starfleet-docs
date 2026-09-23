@@ -9,7 +9,7 @@ and manage billing. The page has four tabs: `Profile`, `Team`,
 
 Select the `Profile` tab to review and update your account details.
 
-![The Profile tab](../images/sf_settings_profile.png)
+![The Profile tab](../images/managed_settings_profile.png)
 
 The `Profile` tab displays the email address associated with your account
 (read-only), and lets you update the names associated with your account:
@@ -24,7 +24,7 @@ changes; select `Reset` to return the fields to their previous values.
 
 Select the `Team` tab to review your account and manage team members.
 
-![The Team tab](../images/sf_settings_team.png)
+![The Team tab](../images/managed_settings_team.png)
 
 The `Team` tab displays information about your account:
 
@@ -42,13 +42,13 @@ its value. When you change the `Team Name`, select `Save` to apply the
 change, or `Reset` to revert it.
 
 For information about inviting and managing team members, see
-[Managing Team Members](team_management.md).
+[Managing Team Members](managed_team_management.md).
 
 ## The API Clients Tab
 
 Select the `API Clients` tab to manage the API clients on your account.
 
-![The API Clients tab](../images/sf_settings_api_clients.png)
+![The API Clients tab](../images/managed_settings_api_clients.png)
 
 The `API Clients` tab lists the API clients on your account (`Name`,
 `Description`, and `Auth ID` columns), and you use it to interact with the
@@ -57,7 +57,7 @@ REST API that manages your databases, backups, and other resources.
 To add an API client, select `Create API Client` in the upper-right
 corner of the tab; the `Create API Client` popup opens.
 
-![The Create API Client popup](../images/sf_settings_api_client_create.png)
+![The Create API Client popup](../images/managed_settings_api_client_create.png)
 
 The popup collects:
 
@@ -72,7 +72,7 @@ saving it.
 
 Select the `Billing` tab to review your subscription and payment status.
 
-![The Billing tab](../images/sf_settings_billing.png)
+![The Billing tab](../images/managed_settings_billing.png)
 
 The `Billing` tab displays your account-level subscription and payment
 status:
@@ -87,4 +87,4 @@ change your billing details.
 
 This account-level billing is separate from the size and price of an
 individual database; for details about a specific database's size tier and
-price, see [Plan and Billing](console_overview.md#plan-and-billing).
+price, see [Plan and Billing](managed_console_overview.md#plan-and-billing).

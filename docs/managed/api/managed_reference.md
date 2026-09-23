@@ -4,7 +4,7 @@ The Managed API publishes an OpenAPI file that lists every operation
 it supports, rendered live below.
 
 To try an operation here, you need an access token; see
-[Generating an Access Token](index.md#generating-an-access-token).
+[Generating an Access Token](managed_index.md#generating-an-access-token).
 Select `Authorize`, then paste the token into the `AccessToken` field.
 
 <style>

@@ -20,7 +20,7 @@ the same value with the password included, so the clipboard contains a
 live credential even though the screen does not display it.
 
 For details about each role's capabilities and which role to use, see
-[Managing Database Roles](../using_database/roles.md).
+[Managing Database Roles](../using_database/managed_roles.md).
 
 !!! hint
 
@@ -28,7 +28,7 @@ For details about each role's capabilities and which role to use, see
     install an allowlisted extension or perform server-wide administration,
     such as monitoring sessions or creating roles.
 
-![Connecting to your database](../images/sf_connecting.png)
+![Connecting to your database](../images/managed_connecting.png)
 
 ## Using the psql Client
 
@@ -87,7 +87,7 @@ the right of the connection string in the `Connect` pane to copy the
 psql connection string of your database, and paste it into the
 `Terminal`.
 
-![Copying a Connection String](../images/sf_copy_conn_string.png)
+![Copying a Connection String](../images/managed_copy_conn_string.png)
 
 Press `Return` to connect to the server with the psql client.
 

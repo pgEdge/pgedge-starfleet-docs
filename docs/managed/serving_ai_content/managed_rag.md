@@ -3,7 +3,7 @@
 The `AI Services` pane on your database's management page displays icons you
 can use to deploy available services on your database.
 
-![The AI Services pane](../images/sf_services.png)
+![The AI Services pane](../images/managed_services.png)
 
 Select `Enable RAG` to deploy the server. When the service is deployed, select
 the `Details` button to manage the server.
@@ -18,14 +18,14 @@ Server when you have a well-defined use case with predictable query patterns.
 
 Select the `AI Services` pane, then select `Enable RAG` to begin.
 
-![Enabling the RAG Server](../images/sf_enable_rag_icon.png)
+![Enabling the RAG Server](../images/managed_enable_rag_icon.png)
 
 To enable a RAG Server, select the `Enable RAG` icon in the RAG Server pane.
 The button is active only while the database status is `Available`. On a
 database in any other status, hovering over the button shows
 `Database not available`.
 
-![Provide details about the RAG Server](../images/sf_rag_details.png)
+![Provide details about the RAG Server](../images/managed_rag_details.png)
 
 When the `Enable RAG Server` popup opens, provide details about the RAG Server
 deployment:
@@ -75,7 +75,7 @@ for both providers.
 Select `+Add Pipeline` to expand the dialog and define one or more pipelines
 used by the RAG Server.
 
-![Provide details about the RAG Server](../images/sf_rag_pipeline.png)
+![Provide details about the RAG Server](../images/managed_rag_pipeline.png)
 
 For each pipeline, provide:
 
@@ -104,7 +104,7 @@ override specific fields while still inheriting the others. Use the `Override
 Default Values` toggle to expand the dialog and provide the pipeline-specific
 values you want to override:
 
-![The Override Default Values dialog](../images/sf_rag_override.png)
+![The Override Default Values dialog](../images/managed_rag_override.png)
 
 Optionally, provide the following details:
 
@@ -131,7 +131,7 @@ Optionally, provide the following details:
 Use the `Advanced Settings` toggle to expand the dialog and configure hybrid
 search, vector weighting, and a custom system prompt for the pipeline:
 
-![The Advanced Settings dialog](../images/sf_rag_advanced.png)
+![The Advanced Settings dialog](../images/managed_rag_advanced.png)
 
 Provide the following details:
 
@@ -149,7 +149,7 @@ Provide the following details:
 When you are finished, select the `Enable RAG Server` button to deploy the
 RAG Server.
 
-![The deployed service](../images/sf_enable_rag_deployed.png)
+![The deployed service](../images/managed_enable_rag_deployed.png)
 
 Enabling, configuring, or disabling the RAG Server requires the database to
 be `Available`, and appears in the Activity Log as an `update-managed` task.
@@ -171,12 +171,12 @@ When enabled, the RAG Server pane updates to display:
     Server. To open it, select `Services` under the database name in the
     navigation pane.
 
-![RAG Server information is now displayed on the Services dialog](../images/sf_rag_services.png)
+![RAG Server information is now displayed on the Services dialog](../images/managed_rag_services.png)
 
 You can disable the RAG Server from either the `Services` page or the RAG
 Server pane by selecting the `Disable` button.
 
-![Disabling the RAG Server](../images/sf_rag_confirm_disable.png)
+![Disabling the RAG Server](../images/managed_rag_confirm_disable.png)
 
 Select the `Disable RAG Server` button to stop the RAG Server.
 
@@ -198,7 +198,7 @@ it is ready.
 When the RAG Server is running, its pane displays the server's status and
 configuration:
 
-![The RAG Server pane showing connection details](../images/sf_rag_connect_details.png)
+![The RAG Server pane showing connection details](../images/managed_rag_connect_details.png)
 
 * `Pipelines` shows how many pipelines are configured, and their names.
 * `Embedding model` shows the configured embedding provider and model
@@ -256,7 +256,7 @@ the server can retrieve results from it.
 
 1.  Connect with `psql` as the `app` user, using the connection string
     from the `Application` tab of your database's `Connect` pane (see
-    [Connecting with psql](../connecting/psql.md)). The `app` user owns
+    [Connecting with psql](../connecting/managed_psql.md)). The `app` user owns
     the database and can create tables, while the `admin` user cannot.
     For example:
 
@@ -319,7 +319,7 @@ the server can retrieve results from it.
         ```
 
 4.  Populate the `embedding` column for each row. Before populating the column,
-    [enable the MCP Server](mcp.md#enabling-the-mcp-server) with `Generate
+    [enable the MCP Server](managed_mcp.md#enabling-the-mcp-server) with `Generate
     embeddings` and `Allow writes` turned on. If you connect an AI client (such
     as Claude Code), you can ask it to:
 

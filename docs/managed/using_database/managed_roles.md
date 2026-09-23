@@ -144,7 +144,7 @@ Confirming does three things:
 
 The call returns no task ID; to find the task ID, paste the database
 ID into the Activity Log's `Subject ID` filter. See
-[Reviewing the Activity Log](../using_console/activity_log.md).
+[Reviewing the Activity Log](../using_console/managed_activity_log.md).
 
 A successful password update displays `Rotated the password for <user>.`
 
@@ -199,7 +199,7 @@ further rotations until recovered.
 
 The REST API authenticates with an API client, managed on the
 `API Clients` tab under `Settings`; see
-[The API Clients Tab](../using_console/settings.md#the-api-clients-tab).
+[The API Clients Tab](../using_console/managed_settings.md#the-api-clients-tab).
 A client's secret is returned once, at creation, and cannot be fetched
 again; both the `Auth ID` and `Auth Secret` have copy buttons. Replacing
 one is a full swap, not a rotation, so the old credential keeps working
