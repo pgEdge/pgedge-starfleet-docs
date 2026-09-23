@@ -1,10 +1,11 @@
 # Understanding Branches
 
-A branch gives you a separate database that starts with your real data, so
-you can test against it and leave the original unchanged. This feature is
-called Fast Branching. The database you copy is the branch's source database,
-or its parent. pgEdge assigns every branch a name, which the console calls the
-assigned name. To create, connect to or delete a branch, see
+A branch gives you a separate pgEdge Starfleet Managed database that starts
+with your real data, so you can test against it and leave the original
+unchanged. This feature is called Fast Branching. The database you copy is the
+branch's source database, which the console labels `Parent`. pgEdge assigns
+every branch a name, which the console calls the assigned name. To create,
+connect to or delete a branch, see
 [Creating and Managing Branches](../using_console/managed_branches.md).
 
 ## Copying a Database into a Branch
@@ -24,13 +25,18 @@ create it:
 | Setting | On the branch |
 |---------|---------------|
 | Size | The same size as the source at creation. |
+| Region | The same region as the source. |
 | Postgres version | The same version as the source. |
 | Database name and user | The same database name and user name as the source. |
-| Services | The AI services the source was running, with the same configuration. |
-| Network access | Either a copy of the source's allowlist rules, or rules you set for the branch. |
+| Services | The MCP server and RAG server the source was running, with the same configuration. |
+| Network access for Postgres | Either a copy of the source's allowlist rules, or rules you set for the branch. |
 
 Each of these settings is decided at creation. A later change to the source
-database, such as a resize or a new allowlist rule, does not change the branch.
+database, such as a new allowlist rule, does not change the branch.
+
+The network access you choose covers connections to Postgres only. The MCP
+server and RAG server on a branch keep the allowlists they had on the source
+database.
 
 ## Credentials a Branch Receives
 
@@ -39,9 +45,11 @@ branch's hostname, so every branch has a different address from its
 source.
 
 The branch has its own password, which is different from the source
-database's password. Copy the password from the branch's own page.
+database's password. Select the copy icon beside `Password` on the branch's
+page to copy it.
 
-An MCP server on the branch has its own MCP token. The source's MCP token
+If the source runs an MCP server, the branch's MCP server has its own MCP
+token. The source's MCP token
 does not work against the branch, so an MCP client needs the branch's own
 token. A RAG server on the branch uses the same API tokens as the source,
 so an existing RAG integration keeps working without new tokens.
@@ -58,7 +66,9 @@ are not available on a branch, with what to do instead:
 - A branch has no backups. After a branch is deleted, its data cannot be
   restored. Create a new branch from the source instead.
 - A branch cannot be promoted to replace its source database. Copy the
-  data you need from the branch to the source yourself.
+  data you need into the source database, as
+  [Loading Data into Your pgEdge Starfleet Database](managed_loading_data.md)
+  describes.
 - A branch cannot be branched again. Create each branch from the source
   database.
 - A branch's services cannot be added, changed or removed. Change the
@@ -78,6 +88,9 @@ branch's page. The following table describes each status:
 | `resuming` | The branch is coming back from hibernation. |
 | `deleting` | Deletion of the branch has been requested. Billing for the branch has already stopped. |
 | `failed` | The branch could not be created. Delete the branch and create a new one. |
+
+The console shows a status badge with a capital letter, such as `Creating`
+or `Failed`. An `available` branch shows no status badge.
 
 A branch becomes `suspended` when the subscription is unpaid or has
 expired. Settling the subscription resumes the branch.
@@ -122,7 +135,9 @@ A source database with branches has three restrictions:
   each branch keeps the size it was created with. Delete the source's
   branches first, then resize the source database.
 - Delete a database's branches before you delete the database. The
-  console does not delete a database that still has branches.
+  `Delete Database` dialog says that the branches are deleted with the
+  database, but the console does not delete a database that still has
+  branches.
 - A branch cannot be created while a payment on the subscription is
   overdue, or while the source database's status is not `available`.
 

@@ -309,7 +309,8 @@ When using the MCP Server:
 
 ## Using the MCP Server on a Branch
 
-A branch of your database runs its own MCP server, with its own MCP token.
+If your database runs the MCP server, a branch of the database runs its own
+MCP server, with its own MCP token.
 The source database's token does not work against the branch, so an MCP
 client needs the branch's own token. Select `Copy branch token` on the
 branch's page to copy it. See

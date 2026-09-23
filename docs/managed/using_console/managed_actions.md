@@ -66,7 +66,9 @@ database. This option is unavailable while deletion protection is enabled; see
 [Enabling and Disabling Deletion Protection](#enabling-and-disabling-deletion-protection).
 
 Delete the database's branches first, because the console does not delete
-a database that still has branches. Branches have no backups. See
+a database that still has branches. The `Delete Database` dialog says that
+the branches are deleted with the database, but the database is not deleted
+while it has branches. Branches have no backups. See
 [Creating and Managing Branches](managed_branches.md).
 
 ## Troubleshooting - When an Action Is Refused
