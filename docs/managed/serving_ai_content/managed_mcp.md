@@ -309,11 +309,13 @@ When using the MCP Server:
 
 ## Using the MCP Server on a Branch
 
-If your database runs the MCP server, a branch of the database runs its own
-MCP server, with its own MCP token.
-The source database's token does not work against the branch, so an MCP
-client needs the branch's own token. Select `Copy branch token` on the
-branch's page to copy it. See
+If your database runs the MCP server, a branch of the database runs its own MCP
+server, with its own address and a separate MCP token. The source database's
+address and token do not work against the branch, so an MCP client needs the
+branch's own token and address. Select `Copy branch token` on the branch's page
+to copy the token. The branch's MCP server copies this server's allowlist when
+the branch is created, and that copy cannot be changed, so add a client's
+address here before you create the branch. See
 [Creating and Managing Branches](../using_console/managed_branches.md).
 
 ## Troubleshooting - When the Services Page Shows an Error

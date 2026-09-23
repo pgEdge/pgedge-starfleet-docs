@@ -114,11 +114,13 @@ The `Connect` pane on the branch's page shows the following details:
 The `ALLOWED IP RANGES` list shows the branch's network access, marked
 `FIXED AT CREATION`. The list is read-only.
 
-The `Services` pane shows the MCP server and RAG server the branch copied
-from the source database. If the branch has an MCP server, an MCP client
-needs the branch's own MCP token, because the source's MCP token does not
-work against the branch. Select `Copy branch token` in the `Services` pane,
-and give the client that token.
+The `Services` pane shows the MCP server and RAG server the branch copied from
+the source database. If the branch has an MCP server, that server has its own
+address and a separate MCP token. The source's address and token do not work
+against the branch. Select `Copy branch token` in the `Services` pane, and give
+the client that token. The branch's page does not show the MCP server's
+address, so read the address from the branch's details in the Managed API, as
+[Using the Managed API](../api/managed_index.md) describes.
 
 ![The branch page](../images/managed_branch_details.png)
 
@@ -227,9 +229,16 @@ so delete that branch when its status is `available`.
 ### The MCP Client Is Rejected by the Branch
 
 An MCP client that works against the source database is refused by the
-branch. The client is using the source's MCP token, which does not work
-against the branch. Select `Copy branch token` on the branch's page, and
-give the client the branch's own token.
+branch. The branch's MCP server has its own address and token, and the
+source's do not work against it. Give the client the branch's own address,
+and select `Copy branch token` on the branch's page to give it the branch's
+own token.
+
+A client that is still refused with the branch's own token is connecting
+from an address the branch's MCP server does not allow. The branch copied
+the source's MCP allowlist when the branch was created, and that copy cannot
+be changed. Add the client's address to the source database's MCP server
+allowlist, then create a new branch and delete this one.
 
 ### Upgrade Size Is Disabled on the Source Database
 

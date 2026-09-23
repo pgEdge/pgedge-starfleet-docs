@@ -48,11 +48,11 @@ The branch has its own password, which is different from the source
 database's password. Select the copy icon beside `Password` on the branch's
 page to copy it.
 
-If the source runs an MCP server, the branch's MCP server has its own MCP
-token. The source's MCP token
-does not work against the branch, so an MCP client needs the branch's own
-token. A RAG server on the branch uses the same API tokens as the source,
-so an existing RAG integration keeps working without new tokens.
+If the source runs an MCP server, the branch's MCP server has its own address
+and a separate MCP token. The source's address and MCP token do not work
+against the branch, so an MCP client needs the branch's own address and token.
+A RAG server on the branch uses the same API tokens as the source, so an
+existing RAG integration keeps working without new tokens.
 
 ## Changes a Branch Does Not Accept
 
