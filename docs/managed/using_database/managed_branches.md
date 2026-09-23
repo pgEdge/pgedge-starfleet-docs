@@ -1,21 +1,20 @@
 # Understanding Branches
 
-A branch gives you a full copy of a database to test against, without
-changing the database itself. This feature is called Fast Branching. The
-database you copy is the branch's source database, or its parent. pgEdge
-assigns every branch a name, which the console calls the assigned name. To
-create, connect to or delete a branch, see
+A branch gives you a separate database that starts with your real data, so
+you can test against it and leave the original unchanged. This feature is
+called Fast Branching. The database you copy is the branch's source database,
+or its parent. pgEdge assigns every branch a name, which the console calls the
+assigned name. To create, connect to or delete a branch, see
 [Creating and Managing Branches](../using_console/managed_branches.md).
 
 ## Copying a Database into a Branch
 
-A branch is a copy-on-write copy of the source database, taken at the
-moment you create the branch. The branch starts with the source's data as
-it stood at that moment.
+Creating a branch copies the source database by copy-on-write. The branch
+starts with the source's data as it stood when you created the branch.
 
-After that moment, the branch and its source are independent. A change
-you make on the branch never reaches the source database. A change made on
-the source database never reaches the branch.
+From then on, the branch and its source are independent. Nothing you
+change on the branch reaches the source database. A change made on the source
+database never reaches the branch.
 
 ## Settings a Branch Copies from Its Source
 
@@ -30,9 +29,8 @@ create it:
 | Services | The AI services the source was running, with the same configuration. |
 | Network access | Either a copy of the source's allowlist rules, or rules you set for the branch. |
 
-Each setting is set once, when the branch is created. A later change to
-the source database, such as a resize or a new allowlist rule, does not
-change the branch.
+Each of these settings is decided at creation. A later change to the source
+database, such as a resize or a new allowlist rule, does not change the branch.
 
 ## Credentials a Branch Receives
 

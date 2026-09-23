@@ -50,6 +50,7 @@ nav:
     - Monitoring System Metrics: managed/using_console/managed_metrics.md
     - Reviewing the Log Files: managed/using_console/managed_logs.md
     - Restoring from Backup: managed/using_console/managed_backups.md
+    - Creating and Managing Branches: managed/using_console/managed_branches.md
     - Reviewing the Activity Log: managed/using_console/managed_activity_log.md
     - Managing Account Settings: managed/using_console/managed_settings.md
     - Managing Team Members: managed/using_console/managed_team_management.md
