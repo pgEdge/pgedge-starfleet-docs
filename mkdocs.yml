@@ -42,8 +42,8 @@ theme:
 nav:
   - Home: index.md
   - pgEdge Starfleet BYOC:
-    - Cloud Edition - Overview: byoc/byoc_index.md
-    - Getting Started with pgEdge Cloud: byoc/getting_started/byoc_getting_started.md
+    - Overview: byoc/byoc_index.md
+    - Getting Started with pgEdge Starfleet BYOC: byoc/getting_started/byoc_getting_started.md
     - Prerequisites:
       - Linking and Managing your Cloud Provider Accounts:
         - Managing Cloud Provider Accounts: byoc/prerequisites/cloud_accounts/byoc_index.md
@@ -77,7 +77,7 @@ nav:
       - Adding a Database or Cluster Node: byoc/mod_cluster/byoc_add.md
       - Dropping a Database, Node, or Cluster: byoc/mod_cluster/byoc_drop.md
       - Using Postgres Extensions: byoc/database_admin/byoc_supported_extensions.md
-    - Migrating to pgEdge Distributed Postgres (Cloud Edition):
+    - Migrating into pgEdge Starfleet BYOC:
       - Overview - Using a Backup to Migrate into a Distributed Database: byoc/migration/byoc_index.md
       - Taking a Backup: byoc/migration/byoc_backup.md
       - Restoring from Backup: byoc/migration/byoc_restore.md
@@ -92,7 +92,7 @@ nav:
     - Settings: byoc/byoc_settings.md
     - Team Resources: byoc/byoc_teams.md
     - Troubleshooting: byoc/byoc_troubleshooting.md
-  - pgEdge Starfleet Managed Postgres:
+  - pgEdge Starfleet Managed Database:
     - Overview: managed/managed_index.md
     - managed/managed_creating_managed.md
     - Using the pgEdge Starfleet Console:

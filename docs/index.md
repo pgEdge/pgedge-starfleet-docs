@@ -5,14 +5,14 @@ two ways: as a fully managed service, or inside your own cloud account. This
 page describes the different features of each platform, and directs you to the
 right set of docs for your deployment.
 
-## pgEdge Starfleet Managed Postgres
+## pgEdge Starfleet Managed Database
 
-pgEdge Starfleet Managed Postgres is a fully managed Postgres offering; pgEdge
+pgEdge Starfleet Managed Database is a fully managed Postgres offering; pgEdge
 runs and operates the infrastructure for you on pgEdge-managed cloud resources.
 Choose Managed when you want a database running in minutes without operating
 any infrastructure yourself.
 
-Every pgEdge Starfleet Managed Postgres database is configured with:
+Every pgEdge Starfleet Managed Database is configured with:
 
 * automatic daily backups.
 * an MCP server, so AI agents and MCP-aware tools can query your schema over an
@@ -23,7 +23,7 @@ Every pgEdge Starfleet Managed Postgres database is configured with:
   metering.
 
 For setup, usage, and reference material, see the
-[pgEdge Starfleet Managed Postgres documentation](managed/managed_index.md).
+[pgEdge Starfleet Managed Database documentation](managed/managed_index.md).
 
 ## pgEdge Starfleet BYOC
 
