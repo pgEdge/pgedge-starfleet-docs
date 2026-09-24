@@ -157,16 +157,10 @@ searchable log for your database.
 For detailed information about the `Logs` page, see
 [Reviewing the Log Files](managed_logs.md).
 
-## Read Replicas and Branching
+## Branches
 
-The `Primary` badge identifies the current database as a primary node.
-
-![Read replicas and branching](../images/managed_read_replicas_branching.png)
-
-The `Read replicas & branching` pane previews upcoming functionality for
-scaling read traffic with read replicas and spinning up copy-on-write branches
-of your database. This functionality is still in development, and will remain
-disabled until it becomes available.
+The `Branches` pane lists the branches of your database, and lets you
+create one. See [Creating and Managing Branches](managed_branches.md).
 
 ## Summary Panes
 
