@@ -28,7 +28,7 @@ Servers.
     Querying the PostgreSQL
     [`max_connections`](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-MAX-CONNECTIONS)
     parameter returns a higher value than the table shows, because Postgres
-    reserves connections for the server and maintenance workers. 
+    reserves connections for the server and maintenance workers.
 
 `Storage` is the disk space available to the database. All resources
 count against this value, including your data, the Postgres write-ahead log,
@@ -121,4 +121,3 @@ and the console displays the API's message. The message names the
 status the API wanted rather than the one it found, so read the
 current status from the status badge, wait for `available`, and try
 again.
-

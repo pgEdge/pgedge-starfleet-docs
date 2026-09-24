@@ -201,4 +201,3 @@ with a RAG Server, use `pgedge-docloader` instead. See
 [Using the RAG Server](../serving_ai_content/managed_rag.md#using-the-rag-server).
 Since the docloader creates a `documents` table, configure the docloader
 with the `app` user's connection details, not `admin`.
-

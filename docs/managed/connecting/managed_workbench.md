@@ -131,7 +131,8 @@ connection.
     pane to find the values you will need to connect to your database.
 
 3.  Complete the server definition using the values from the
-    [`Connect`](../using_console/managed_console_overview.md#the-connect-pane) pane:
+    [`Connect`](../using_console/managed_console_overview.md#the-connect-pane)
+    pane:
 
     * `Name` is a display name for this connection; when connected,
       Workbench displays it in the left navigation pane.
