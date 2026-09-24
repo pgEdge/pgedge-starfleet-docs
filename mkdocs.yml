@@ -50,6 +50,7 @@ nav:
     - Monitoring System Metrics: managed/using_console/managed_metrics.md
     - Reviewing the Log Files: managed/using_console/managed_logs.md
     - Restoring from Backup: managed/using_console/managed_backups.md
+    - Creating and Managing Branches: managed/using_console/managed_branches.md
     - Reviewing the Activity Log: managed/using_console/managed_activity_log.md
     - Managing Account Settings: managed/using_console/managed_settings.md
     - Managing Team Members: managed/using_console/managed_team_management.md
@@ -63,6 +64,7 @@ nav:
     - Managing Database Roles: managed/using_database/managed_roles.md
     - Managing Database Details: managed/using_database/managed_database_details.md
     - Controlling Network Access: managed/using_database/managed_network_access.md
+    - Understanding Branches: managed/using_database/managed_branches.md
     - Loading Data into Your pgEdge Starfleet Database: managed/using_database/managed_loading_data.md
     - Installing Extensions: managed/using_database/managed_extensions.md
     - ORM and Framework Guides: managed/using_database/managed_orm_guides.md
