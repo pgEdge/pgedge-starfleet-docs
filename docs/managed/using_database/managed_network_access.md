@@ -34,8 +34,7 @@ displays a warning, and `Add` stays disabled until you select
 A new database starts in a closed state, unless you allow a range in the
 `Network access` step of the create wizard. A new MCP server or RAG
 server also starts in a closed state, even when the database allows ranges.
-A database created before allowlists defaulted to closed can still be
-open, with the range `0.0.0.0/0`.
+A database can also be open, with the range `0.0.0.0/0`.
 
 An open allowlist leaves the password as the only protection for the
 endpoint. Add the ranges you connect from, and then remove the
@@ -88,12 +87,12 @@ complete. The change affects new connections only, and connections
 that are already open stay open until the connected session ends.
 
 When the allowlist is closed, the `Connect` pane displays `Add my current
-IP` with your detected IP address. Select `Add my current IP` to add
+IP` with your current IP address. Select `Add my current IP` to add
 your current address as a range labeled `My laptop`.
 
 ![The Connect pane with no allowed ranges](../images/managed_allowlist_deny_all.png)
 
-Your detected IP address may differ from the address a server or CI
+Your current IP address may differ from the address a server or CI
 runner connects from. Add a separate range for every address that
 needs to connect.
 
@@ -103,7 +102,7 @@ The MCP server and RAG server allowlists are on the `Services` page,
 and a summary is on each server's card in the `AI Services` pane. When
 a server allowlist has no range, the card displays two controls:
 
-- `Add my IP`, which adds your detected IP address as a range
+- `Add my IP`, which adds your current IP address as a range
   labeled `My IP`.
 - `Range`, which opens the server's section of the `Services` page
   so you can select `Add a range`.
@@ -167,12 +166,12 @@ client connects from. The database allowlist does not apply to the
 server. Add a range for the address in the server's section of the
 `Services` page.
 
-### A Server Card Reads `Running, but unreachable - no ranges allowed.`
+### A Server Card Reads `Running, but unreachable — no ranges allowed.`
 
 The server is running, and its allowlist is closed. Select `Add my IP`,
 or select `Range` to add a range for another address.
 
-### The Form Reports `IPv6 is not supported - this endpoint is reachable over IPv4 only`
+### The Form Reports `IPv6 is not supported — this endpoint is reachable over IPv4 only`
 
 The endpoint accepts IPv4 connections only. Enter the IPv4 address or
 range you connect from. When your network uses IPv6 only, connect
