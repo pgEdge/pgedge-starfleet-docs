@@ -2,6 +2,7 @@
 
 [![Build docs](https://github.com/pgEdge/pgedge-starfleet-docs/actions/workflows/build-docs.yml/badge.svg)](https://github.com/pgEdge/pgedge-starfleet-docs/actions/workflows/build-docs.yml)
 [![Console links](https://github.com/pgEdge/pgedge-starfleet-docs/actions/workflows/console-links.yml/badge.svg)](https://github.com/pgEdge/pgedge-starfleet-docs/actions/workflows/console-links.yml)
+[![Lint](https://github.com/pgEdge/pgedge-starfleet-docs/actions/workflows/lint.yml/badge.svg)](https://github.com/pgEdge/pgedge-starfleet-docs/actions/workflows/lint.yml)
 
 This repo contains the docs for pgEdge Starfleet.
 
@@ -64,6 +65,20 @@ python3 -m venv .venv
 letting pip resolve them instead would build the docs against a
 dependency set the console never runs.
 
+Then install the commit hooks. `pre-commit` is deliberately not in
+`requirements.txt`, which has to stay byte-identical to the console's
+`docs-requirements.txt`, so install it separately:
+
+```bash
+python3 -m pip install pre-commit
+pre-commit install
+```
+
+The hooks run markdownlint, yamllint and gitleaks over the files you
+touch. The `Lint` check runs the same hooks over the whole tree on
+every pull request, so skipping this step moves the failure rather
+than avoiding it.
+
 ### Building the Site
 
 To build a static copy of the site into the `site/` directory:
@@ -97,7 +112,7 @@ browser.
 The `docs/` directory mirrors the site's navigation hierarchy (see `nav:`
 in `mkdocs.yml`). Filenames are lowercase; prose wraps at 79 characters.
 
-```
+```text
 docs/
   index.md                        Overview
   community.md                    Community

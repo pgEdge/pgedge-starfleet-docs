@@ -12,17 +12,33 @@ first change.
    `fix/short-description` for a correction
 2. Create the virtualenv and install the pinned dependencies, per the
    README
-3. Preview your change with `.venv/bin/mkdocs serve`
-4. Confirm `.venv/bin/mkdocs build --strict` passes
-5. Open a pull request
+3. Install the commit hooks, per the README
+4. Preview your change with `.venv/bin/mkdocs serve`
+5. Confirm `.venv/bin/mkdocs build --strict` passes
+6. Open a pull request
 
-Both checks, `Build docs` and `Console links`, run on every pull
-request and have to pass before merge.
+Three checks run on every pull request and have to pass before merge:
+`Build docs`, `Console links` and `Lint`.
+
+## Local Checks
+
+`pre-commit` runs markdownlint, yamllint and gitleaks on the files you
+touch, and trims trailing whitespace. Run it over the whole tree with
+`pre-commit run --all-files`. The `Lint` check runs exactly that, so
+a clean local run is a green check.
+
+The markdown rules are in `.markdownlint.yaml` and the YAML rules in
+`.yamllint.yaml`. CodeRabbit reads both, but ignores the wrapping and
+blank-line rules by design, so `Lint` rather than the review comments
+is what holds you to the style below. CodeRabbit also checks prose
+with LanguageTool, which has no local counterpart; expect grammar
+comments a clean hook run will not have warned you about.
 
 ## Writing Style
 
 - Wrap prose at 79 characters. Table rows, fenced code blocks and bare
-  URLs are exempt; do not break one to fit the limit.
+  URLs are exempt; do not break one to fit the limit. `MD013` in
+  `.markdownlint.yaml` knows the exemptions and `Lint` enforces it.
 - Filenames under `docs/` are lowercase, with underscores rather than
   hyphens, matching the tree already there.
 - A new page has to be added to `nav:` in `mkdocs.yml`, in the position
