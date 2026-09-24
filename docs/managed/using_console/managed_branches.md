@@ -113,10 +113,28 @@ The `Connect` pane on the branch's page displays the following details:
 The `ALLOWED IP RANGES` list displays the branch's network access, marked
 `FIXED AT CREATION`. The list is read-only.
 
-The `Services` pane displays the MCP server and RAG server the branch
-copied from the source database. If the branch has an MCP server,
-that server has a different address and a separate MCP token; the
-source's address and token do not work against the branch.
+The `Services` pane displays the MCP server and RAG server the branch copied
+from the source database. Each server's card lists the ranges that can reach
+it, after `Allowed:`, or warns that no range can reach it. A card displays its
+server's address, and the controls that use the address, only while the
+server's status is `Running`.
+
+If the branch has an MCP server, that server has its own address and a
+separate MCP token. The source's address and token do not work against the
+branch. The MCP server's card displays the branch's own details:
+
+- `Endpoint` displays the address of the branch's MCP server.
+- `Bearer token` displays the branch's MCP token. Select the eye icon to
+  reveal the token, or the copy icon to copy it.
+- `Client setup` displays the configuration for the MCP client you choose,
+  filled in with the branch's endpoint and token.
+
+For the configuration each client needs, see
+[Enabling and Using the MCP Server](../serving_ai_content/managed_mcp.md#connecting-a-client-to-the-mcp-server).
+
+The RAG server's card displays `API base URL`, the address of the branch's RAG
+server. Select `View pipelines` to display a `curl` command for each pipeline,
+which queries that pipeline on the branch.
 
 ![The branch page](../images/managed_branch_details.png)
 
@@ -234,9 +252,8 @@ blocks the delete, so delete that branch when its status is
 
 The branch refuses an MCP client that works against the source
 database. The branch's MCP server has its own address and token, and the
-source's do not work against it. Give the client the branch's own address,
-and select `Copy branch token` on the branch's page to give it the branch's
-own token.
+source's do not work against it. Give the client the `Endpoint` and
+`Bearer token` from the MCP server's card on the branch's page.
 
 A client the branch still refuses, despite using its own token, is
 connecting from an address its MCP server does not allow. The branch copied
