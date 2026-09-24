@@ -98,16 +98,16 @@ file as `admin` instead, `admin` will own the tables and other objects the
 file creates, and your application will not have the correct access to them.
 
 Extensions fall into two categories, based on which role can install them.
-An extension on the pgEdge allowlist installs as `admin` only. An extension
-Postgres itself marks trusted installs as `app`.
+A few supported extensions, such as `vector`, install as `admin` only. The
+other supported extensions that need installing install as `app`.
 
 A load that needs both kinds of extension therefore requires both
 connections, in this order:
 
-1.  Connect with the `Admin` tab's details and install the allowlisted
+1.  Connect with the `Admin` tab's details and install the `admin`-only
     extensions the dump depends on, such as `vector`.
 
-2.  Connect with the `Application` tab's details and install the trusted ones,
+2.  Connect with the `Application` tab's details and install the rest,
     such as `pgcrypto`.
 
 3.  Still as `app`, load the schema.
@@ -118,7 +118,7 @@ Loading a schema before its dependent extensions exist fails on the first
 object that needs one.
 
 For more information about extension ownership, see
-[Installing Extensions](managed_extensions.md).
+[Installing Supported Extensions on a pgEdge Starfleet Managed Database](managed_extensions.md).
 
 ### Restoring the Schema's Dump File
 

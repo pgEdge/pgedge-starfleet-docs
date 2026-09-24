@@ -30,7 +30,8 @@ you connect from. For more information, see
 !!! hint
 
     Connect as `app` to create tables and load data. Connect as `admin` to
-    install an allowlisted extension or perform server-wide administration,
+    install a supported extension `app` cannot install, such as `vector`,
+    or perform server-wide administration,
     such as monitoring sessions or creating roles.
 
 ![Connecting to your database](../images/managed_connecting.png)

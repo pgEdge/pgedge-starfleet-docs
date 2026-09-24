@@ -15,9 +15,7 @@ pgEdge Starfleet stands apart from other Postgres cloud services with:
       and other agentic tooling.
 
     - The RAG Server builds retrieval-augmented generation and chatbot
-      applications entirely from data in Postgres, with the pgEdge
-      Vectorizer extension keeping vector embeddings updated
-      automatically as content changes.
+      applications entirely from data in Postgres.
 
 - true copy-on-write
   [database branching](using_database/managed_branches.md) for parallel

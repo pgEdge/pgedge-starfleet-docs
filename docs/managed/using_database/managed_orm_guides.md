@@ -53,16 +53,16 @@ which on pgEdge Starfleet succeeds when run as `app`, and `app` then owns
 the extension and can drop it in a later migration. The reverse is true
 for `vector`, which only `admin` can install.
 
-Neither role is a superuser. An extension Postgres marks trusted, such as
-`pgcrypto`, `citext`, or `hstore`, installs as `app`. An extension on the
-pgEdge allowlist, such as `vector`, `postgis`, or `pg_cron`, installs as
-`admin` only, and `app` is refused with `Must be superuser to create this
-extension`. See [Installing Extensions](managed_extensions.md) for the full table,
-refusal messages, and install order.
+Neither role is a superuser. Most supported extensions, such as
+`pgcrypto`, `citext`, or `hstore`, install as `app`. A few, such as
+`vector` or `postgis`, install as `admin` only, and `app` is refused
+with `Must be superuser to create this extension`. See
+[Installing Supported Extensions on a pgEdge Starfleet Managed Database](managed_extensions.md)
+for the full table, refusal messages, and install order.
 
 A migration run with the `Application` tab's string installs `pgcrypto`
 successfully, since that string connects as `app`. A migration that also
-needs an allowlisted extension such as `vector`, `postgis`, or `pg_cron`
+needs an `admin`-only extension such as `vector` or `postgis`
 fails, because `app` cannot install it; connect with the `Admin` tab's
 credentials and install that extension manually first.
 
@@ -118,7 +118,7 @@ the application and the migration tool, and both connect as `app`. The
 [Drizzle Postgres guide][drizzle-pg] describes the driver alternatives.
 A Drizzle migration containing `CREATE EXTENSION pgcrypto` works with that
 shared `DATABASE_URL`. Connect with the `Admin` tab's credentials to
-install an allowlisted extension first.
+install an `admin`-only extension first.
 
 ## Django
 
@@ -161,7 +161,7 @@ The [Django databases reference][django-db] describes the remaining
 `DATABASES` options Django's Postgres backend accepts. A Django migration
 whose operations include `CREATE EXTENSION pgcrypto` runs as `app` and
 succeeds. Connect with the `Admin` tab's credentials to install an
-allowlisted extension first.
+`admin`-only extension first.
 
 ## Ruby on Rails
 
@@ -180,7 +180,7 @@ production:
 
 The [Rails configuration guide][rails-db] describes how the two sources are
 merged. A Rails migration that enables `pgcrypto` runs as `app` and succeeds.
-A migration that enables an allowlisted extension does not, so connect
+A migration that enables an `admin`-only extension does not, so connect
 with the `Admin` tab's credentials and install it before running
 `db:migrate`.
 
@@ -211,7 +211,7 @@ context.config.set_main_option(
 The [Alembic tutorial][alembic-tut] describes the rest of that file. An
 Alembic revision issuing `CREATE EXTENSION pgcrypto` runs as `app` and
 succeeds. Connect with the `Admin` tab's credentials to install an
-allowlisted extension first.
+`admin`-only extension first.
 
 ## After a Password Rotation
 
