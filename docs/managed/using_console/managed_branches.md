@@ -1,17 +1,13 @@
 # Creating and Managing Branches
 
-You can create a branch of a database from the console, connect to the
-branch, and delete the branch when you are finished with it. Each branch
-contains a database's data from the moment you create the branch. The
-database you copy is the branch's source database. Each branch has a
-label, which is its display name if you gave it one, and its assigned name
-otherwise. For how branches behave, see
-[Understanding Branches](../using_database/managed_branches.md).
+When you create a branch, you create a separate database that
+contains the source database's data at the moment of creation. You
+can modify data on the branch without changes cascading through to
+the data on the source database.
 
 You can manage branches from the database page of the source
-database. Select the database under `Databases` in the navigation
-pane to open its page. Before you create a branch, ensure that the
-following conditions are met:
+database. Before you create a branch, ensure that the following
+conditions are met:
 
 - The source database's status must be `available`.
 - A branch's network access is set once, when you create the branch,
