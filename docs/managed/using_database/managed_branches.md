@@ -1,11 +1,12 @@
 # Understanding Branches
 
-A branch gives you a separate pgEdge Starfleet Managed database that starts
-with your real data, so you can test against it and leave the original
-unchanged. This feature is called Fast Branching. The database you copy is the
-branch's source database, which the console labels `Parent`. pgEdge assigns
-every branch a name, which the console calls the assigned name. To create,
-connect to or delete a branch, see
+A branch gives you a separate pgEdge Starfleet Managed database that
+starts with your real data, so you can test against it and leave the
+original unchanged. This feature is called *Fast Branching*. The
+database you copy is the branch's source database, which the console
+calls its parent. pgEdge assigns every branch a name, which the
+console calls the assigned name. To create, connect to or delete a
+branch, see
 [Creating and Managing Branches](../using_console/managed_branches.md).
 
 ## Copying a Database into a Branch
@@ -14,8 +15,8 @@ Creating a branch copies the source database by copy-on-write. The branch
 starts with the source's data as it stood when you created the branch.
 
 From then on, the branch and its source are independent. Nothing you
-change on the branch reaches the source database. A change made on the source
-database never reaches the branch.
+change on the branch reaches the source. Nothing you change on the
+source reaches the branch.
 
 ## Settings a Branch Copies from Its Source
 
@@ -31,8 +32,9 @@ create it:
 | Services | The MCP server and RAG server the source was running, with the same configuration. |
 | Network access for Postgres | Either a copy of the source's allowlist rules, or rules you set for the branch. |
 
-Each of these settings is decided at creation. A later change to the source
-database, such as a new allowlist rule, does not change the branch.
+Creating the branch fixes each of these settings. A later change to
+the source database, such as a new allowlist rule, does not change
+the branch.
 
 The network access you choose covers connections to Postgres only. The MCP
 server and RAG server on a branch keep the allowlists they had on the source
@@ -63,8 +65,8 @@ are not available on a branch, with what to do instead:
   source, because the new branch copies the new size.
 - A branch's network access cannot be changed. Create a new branch with
   the rules you need.
-- A branch has no backups. After a branch is deleted, its data cannot be
-  restored. Create a new branch from the source instead.
+- A branch has no backups, so deleting one loses its data for good.
+  Create a new branch from the source instead.
 - A branch cannot be promoted to replace its source database. Copy the
   data you need into the source database, as
   [Loading Data into Your pgEdge Starfleet Database](managed_loading_data.md)
@@ -109,20 +111,20 @@ A branch stops counting toward the limit as soon as you request its
 deletion. You can create another branch while the deleted branch is still
 being removed.
 
-A branch can have a display name of up to 25 characters. The display name
-is optional and is shown only in the console. A branch without a display
-name is shown by its assigned name.
+A branch can have a display name of up to 25 characters. The display
+name is optional, and the console shows it only there. A branch
+without a display name shows its assigned name instead.
 
 ## Billing for Branches
 
-A branch is billed by the hour, which is different from its source
-database's monthly billing. The branch's charges are added to your
-existing subscription, so creating a branch needs no separate checkout.
+pgEdge bills a branch by the hour, unlike its source database's
+monthly billing. pgEdge adds the branch's charges to your existing
+subscription, so creating a branch needs no separate checkout.
 
 Billing for a branch follows its status:
 
 - Billing starts when the branch's status becomes `available`.
-- Billing is paused while the branch is `suspended`.
+- Billing pauses while the branch is `suspended`.
 - Billing stops as soon as you request the branch's deletion.
 
 Your invoice shows the final charge for each branch.
@@ -135,13 +137,8 @@ A source database with branches has three restrictions:
   each branch keeps the size it was created with. Delete the source's
   branches first, then resize the source database.
 - Delete a database's branches before you delete the database. The
-  `Delete Database` dialog says that the branches are deleted with the
-  database, but the console does not delete a database that still has
-  branches.
+  `Delete Database` dialog says deleting the database also deletes the
+  branches, but the console refuses to delete a database that still
+  has branches.
 - A branch cannot be created while a payment on the subscription is
   overdue, or while the source database's status is not `available`.
-
-## Next Steps
-
-To create your first branch, see
-[Creating and Managing Branches](../using_console/managed_branches.md).
