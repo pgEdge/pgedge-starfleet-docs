@@ -9,6 +9,8 @@ MD013:
   line_length: 79
   tables: false
   code_blocks: false
+  # A heading cannot wrap, and some quote a console message.
+  headings: false
 
 # Off because the tree was written this way throughout. Turning one on
 # rewrites every page and changes nothing a reader sees. Only MD030

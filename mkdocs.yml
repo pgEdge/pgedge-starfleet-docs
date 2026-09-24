@@ -43,7 +43,8 @@ nav:
     - Overview: managed/managed_index.md
   - managed/managed_creating_managed.md
   - Using the pgEdge Starfleet Console:
-    - "Using the pgEdge Starfleet Console: Overview": managed/using_console/managed_console_overview.md
+    - "Using the pgEdge Starfleet Console: Overview":
+        managed/using_console/managed_console_overview.md
     - Enabling AI Services:
       - Enabling and Using the MCP Server: managed/serving_ai_content/managed_mcp.md
       - Enabling and Using the RAG Server: managed/serving_ai_content/managed_rag.md
@@ -65,7 +66,8 @@ nav:
     - Managing Database Details: managed/using_database/managed_database_details.md
     - Controlling Network Access: managed/using_database/managed_network_access.md
     - Understanding Branches: managed/using_database/managed_branches.md
-    - Loading Data into Your pgEdge Starfleet Database: managed/using_database/managed_loading_data.md
+    - Loading Data into Your pgEdge Starfleet Database:
+        managed/using_database/managed_loading_data.md
     - Installing Supported Extensions: managed/using_database/managed_extensions.md
     - ORM and Framework Guides: managed/using_database/managed_orm_guides.md
   - Using the Managed API:

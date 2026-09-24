@@ -46,7 +46,9 @@ If you have already installed a copy of psql, connection is simple. Each tab
 of the `Connect` pane (`Admin` or `Application`) displays a ready-to-use psql
 connection string. For example:
 
-`PGSSLMODE=require PGPASSWORD=<your-password> psql -U admin -h <your-domain> -p <your-port> -d <your-database>`
+```bash
+PGSSLMODE=require PGPASSWORD=<your-password> psql -U admin -h <your-domain> -p <your-port> -d <your-database>
+```
 
 Select the copy icon next to the psql connection string to copy it, paste
 it directly into a terminal window, and press `Return` to connect.
