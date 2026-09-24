@@ -55,8 +55,8 @@ with credentials for the `app` user. Each tab displays:
 Select the copy icon next to any field to copy its value.
 
 The two users have different permissions on the database. Connect as `app`
-to create tables and load data, and as `admin` to install an allowlisted
-extension or for server-wide work.
+to create tables and load data, and as `admin` to install a supported
+extension `app` cannot install, such as `vector`, or for server-wide work.
 [Managing Database Roles](../using_database/managed_roles.md) describes what
 each one can do.
 

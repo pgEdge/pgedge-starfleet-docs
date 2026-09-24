@@ -22,8 +22,9 @@ page; complete the `Connection` tab from those values:
 * `Password` takes the password associated with the user.
 
 The `app` user owns the database, so the tables and other objects it
-creates belong to `app`. Use the `admin` user instead to install an
-allowlisted extension, or for the server-wide work described in
+creates belong to `app`. Use the `admin` user instead to install a
+supported extension `app` cannot install, such as `vector`, or for the
+server-wide work described in
 [Managing Database Roles](../using_database/managed_roles.md).
 
 ![The pgAdmin Parameters tab](../images/managed_pgadmin_register_parameters.png)

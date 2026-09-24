@@ -26,17 +26,18 @@ starts with.
 ## The `app` Role
 
 `app` owns the database; connect as `app` to create tables, load data, and
-run your application and its migrations. `app` can also install any
-extension Postgres marks trusted, such as `pgcrypto`, and owns each one it
-installs.
+run your application and its migrations. `app` can also install most
+supported extensions, such as `pgcrypto`, and owns each one it installs.
+[Installing Supported Extensions on a pgEdge Starfleet Managed Database](managed_extensions.md)
+lists which role installs each extension.
 
 `app` is the recommended default role to own an application. The MCP and
 RAG Servers also connect as `app`, so those servers can read whatever your
 migrations and data imports add to the database.
 
 `app` has no server-wide privilege: it cannot create roles or databases,
-view other sessions, end another session, or install an extension on the
-pgEdge allowlist.
+view other sessions, end another session, or install an extension such as
+`vector` or `postgis`, which only `admin` can install.
 
 `admin` can reduce the privileges available to `app`:
 
@@ -59,8 +60,8 @@ runs on. `admin` can:
 * view every session and its running query, and end any session.
 * run `VACUUM`, `ANALYZE`, `REINDEX`, and similar maintenance on any table.
 * create logical replication subscriptions.
-* install the extensions on the pgEdge allowlist, such as `vector` and
-  `postgis`.
+* install the supported extensions `app` cannot install, such as `vector`
+  and `postgis`.
 
 `admin` cannot read or write files on the server, run programs on it, or
 become a superuser.
@@ -73,9 +74,9 @@ database object the application needs as `app`. A table created as
 unless explicitly granted.
 
 `admin` is a member of `app`, so it can also create tables and schemas and
-install trusted extensions; anything it creates belongs to `admin` rather
-than `app`. Perform schema work as `app` instead, so application objects
-remain owned by `app`.
+install the extensions `app` installs; anything it creates belongs to
+`admin` rather than `app`. Perform schema work as `app` instead, so
+application objects remain owned by `app`.
 
 ## Comparing Role Capabilities
 
@@ -92,8 +93,8 @@ The following table compares the two roles:
 | End another session | Yes | No |
 | Run maintenance on any table | Yes | Tables it owns |
 | Create logical replication subscriptions | Yes | No |
-| Install trusted extensions | Yes | Yes |
-| Install allowlisted extensions | Yes | No |
+| Install extensions such as `pgcrypto` | Yes | Yes |
+| Install extensions such as `vector` and `postgis` | Yes | No |
 | Read or write files on the server | No | No |
 
 ## Finding the `app` or `admin` Credentials

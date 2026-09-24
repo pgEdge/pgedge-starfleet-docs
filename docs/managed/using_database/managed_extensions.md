@@ -23,6 +23,8 @@ the page header.
 The database must show the `available` status. The database's IP
 allowlist must also include the address of your machine, or psql
 cannot reach the database.
+[Controlling Network Access](managed_network_access.md) describes how
+to add that address.
 
 You need psql on the machine you connect from.
 [Connecting with psql](../connecting/managed_psql.md) describes how to
