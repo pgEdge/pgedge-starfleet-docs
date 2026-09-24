@@ -5,8 +5,6 @@ OpenAPI file and builds one command per listed operation. The sections
 below cover connecting restish to pgEdge Starfleet Managed Database
 and running a command.
 
-## Before You Start
-
 To follow this page, you need an access token; see
 [Generating an Access Token](managed_index.md#generating-an-access-token).
 
