@@ -19,12 +19,13 @@ Select `Edit display name` from the `Actions` menu to open the
 
 ![The Edit display name popup](../images/managed_edit_display_name.png)
 
-The `Display Name` is optional, and is used to distinguish between multiple
-databases that share the same database name in the console UI; it does not
-change the database's actual name (shown in the `Database name` field of the
-`Connect` pane). Enter a display name and select `Apply` to set it, or select
-`Reset` to revert to the last applied value. To remove a display name, apply
-an empty value; select `Cancel` to close the popup without making changes.
+The `Display Name` is optional; use the display name to distinguish
+between multiple databases that share the same database name in the
+console UI, and it does not change the database's actual name (shown
+in the `Database name` field of the `Connect` pane). Enter a display name
+and select `Apply` to set it, or select `Reset` to revert to the
+last applied value. To remove a display name, apply an empty value;
+select `Cancel` to close the popup without making changes.
 
 ## Upgrading the Size Tier
 
@@ -33,7 +34,7 @@ database. The `Upgrade size` popup opens, showing your database's current
 size and price, and the sizes you can upgrade to.
 
 `Upgrade size` is disabled while the database has branches, because a
-branch keeps the size it was created with. Delete the database's branches
+branch retains the size it was created with. Delete the database's branches
 first, then upgrade the size. See
 [Understanding Branches](../using_database/managed_branches.md).
 
@@ -42,10 +43,10 @@ first, then upgrade the size. See
 Select the size you want to upgrade to, then select `Upgrade size` to confirm,
 or `Cancel` to close the popup without upgrading. Sizes only go up. You can
 upgrade again later, but a database cannot be moved back to a smaller size.
-CPU, memory, and storage grow in place; the database restarts while the new
-size is applied, so expect a brief interruption.
+CPU, memory, and storage grow in place; the database restarts while
+the console applies the new size, so expect a brief interruption.
 
-For what each size gives you, see
+For what each size provides, see
 [Managing Database Details](../using_database/managed_database_details.md).
 
 ## Enabling and Disabling Deletion Protection
@@ -56,8 +57,9 @@ lower-right corner of the window confirms that protection is enabled. To
 disable deletion protection, select `Disable deletion protection` from the
 menu.
 
-While deletion protection is enabled, `Delete database` is unavailable
-(protected); disable deletion protection before deleting the database.
+While deletion protection is enabled, `Delete database` is
+unavailable; disable deletion protection before deleting the
+database.
 
 ## Deleting the Database
 
@@ -65,43 +67,37 @@ Select `Delete database` from the `Actions` menu to permanently delete your
 database. This option is unavailable while deletion protection is enabled; see
 [Enabling and Disabling Deletion Protection](#enabling-and-disabling-deletion-protection).
 
-Delete the database's branches first, because the console does not delete
-a database that still has branches. The `Delete Database` dialog says that
-the branches are deleted with the database, but the database is not deleted
-while it has branches. Branches have no backups. See
-[Creating and Managing Branches](managed_branches.md).
-
 ## Troubleshooting - When an Action Is Refused
 
 The `Actions` menu displays a red notification when a request is refused.
 If the API supplies a message of its own, the console displays that
 instead of the literal text message below:
 
-* `Could not resize the database.` is displayed when a resize is
-  refused.
+* The console displays `Could not resize the database.` when it
+  refuses a resize.
 
-    A resize needs the database in an `Available` state, and sizes
-    only go up.
+    A resize requires the database to be in an `available` state;
+    note that database sizes can only increase.
 
-* `Could not delete the database.` is displayed when a delete is
-  refused.
+* The console displays `Could not delete the database.` when it
+  refuses a delete.
 
     Deletion protection is the common cause; the menu item reads
-    `Delete database (protected)` until you turn it off. The other
+    `Delete database (protected)` until you disable it. The other
     cause is a database that was created seconds ago, or one still
     resizing, with an unfinished billing provision. Wait and try
     again.
 
-* `Could not update the database.` is displayed when a display-name
-  edit is refused.
+* The console displays `Could not update the database.` when it
+  refuses a display-name edit.
 
     This edit does not lock the database and succeeds against a
-    busy one, so a refusal here is not caused by a busy database.
+    busy one, so a busy database does not explain a refusal here.
     Check the name length against the field's limit.
 
-* `Could not update deletion protection.` is displayed when the
-  switch is refused.
+* The console displays `Could not update deletion protection.` when
+  it refuses the switch.
 
-    This one also does not lock the database, so retrying is
+    This action also does not lock the database, so retrying is
     reasonable. The switch stays changeable on a `Failed` database,
-    because a protected failure has to be removable.
+    because a protected failure must be removable.
