@@ -257,7 +257,7 @@ the server can retrieve results from it.
 1.  Connect with `psql` as the `app` user, using the connection string
     from the `Application` tab of your database's `Connect` pane (see
     [Connecting with psql](../connecting/managed_psql.md)). The `app` user owns
-    the database and can create tables, while the `admin` user cannot.
+    the database, so the tables it creates belong to `app`.
     For example:
 
     ```bash
@@ -266,11 +266,13 @@ the server can retrieve results from it.
     ```
 
 2.  Create a table to store the documentation content, with a
-    `pgvector` column sized for your embedding model:
+    `pgvector` column sized for your embedding model. `app` cannot
+    install the `vector` extension, so install `vector` first with the
+    `Admin` tab's connection string, as
+    [Installing Supported Extensions on a pgEdge Starfleet Managed Database](../using_database/managed_extensions.md)
+    describes. Then run the following as `app`:
 
     ```sql
-    CREATE EXTENSION IF NOT EXISTS vector;
-
     CREATE TABLE documents (
         id SERIAL PRIMARY KEY,
         title TEXT,

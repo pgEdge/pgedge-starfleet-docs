@@ -118,7 +118,7 @@ Loading a schema before its dependent extensions exist fails on the first
 object that needs one.
 
 For more information about extension ownership, see
-[Installing Extensions](managed_extensions.md).
+[Installing Supported Extensions on a pgEdge Starfleet Managed Database](managed_extensions.md).
 
 ### Restoring the Schema's Dump File
 

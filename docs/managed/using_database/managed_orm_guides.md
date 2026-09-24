@@ -55,14 +55,15 @@ for `vector`, which only `admin` can install.
 
 Neither role is a superuser. An extension Postgres marks trusted, such as
 `pgcrypto`, `citext`, or `hstore`, installs as `app`. An extension on the
-pgEdge allowlist, such as `vector`, `postgis`, or `pg_cron`, installs as
+pgEdge allowlist, such as `vector` or `postgis`, installs as
 `admin` only, and `app` is refused with `Must be superuser to create this
-extension`. See [Installing Extensions](managed_extensions.md) for the full table,
-refusal messages, and install order.
+extension`. See
+[Installing Supported Extensions on a pgEdge Starfleet Managed Database](managed_extensions.md)
+for the full table, refusal messages, and install order.
 
 A migration run with the `Application` tab's string installs `pgcrypto`
 successfully, since that string connects as `app`. A migration that also
-needs an allowlisted extension such as `vector`, `postgis`, or `pg_cron`
+needs an allowlisted extension such as `vector` or `postgis`
 fails, because `app` cannot install it; connect with the `Admin` tab's
 credentials and install that extension manually first.
 

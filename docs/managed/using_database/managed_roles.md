@@ -59,8 +59,8 @@ runs on. `admin` can:
 * view every session and its running query, and end any session.
 * run `VACUUM`, `ANALYZE`, `REINDEX`, and similar maintenance on any table.
 * create logical replication subscriptions.
-* install the extensions on the pgEdge allowlist, such as `vector`,
-  `postgis`, and `pg_cron`.
+* install the extensions on the pgEdge allowlist, such as `vector` and
+  `postgis`.
 
 `admin` cannot read or write files on the server, run programs on it, or
 become a superuser.
