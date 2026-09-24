@@ -40,7 +40,7 @@ includes the following details:
 
 Select a branch's label to open the branch's page. To review the
 limits for each plan, see
-[Understanding Branches](../using_database/managed_branches.md#limits-on-branches).
+[Understanding Branches](../using_database/managed_branches.md#billing-for-branches).
 
 ## Creating a Branch
 
