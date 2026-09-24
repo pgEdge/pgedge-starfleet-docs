@@ -54,6 +54,13 @@ with credentials for the `app` user. Each tab displays:
 
 Select the copy icon next to any field to copy its value.
 
+The `ALLOWED IP RANGES` list at the bottom of the pane shows the database
+allowlist, and the badge at the top of the pane shows how many ranges are
+allowed. When the allowlist has no range, the pane shows `No IP addresses
+are allowed` above the connection details, and no client can connect with
+the connection string. For more information, see
+[Controlling Network Access](../using_database/managed_network_access.md).
+
 The two users have different permissions on the database. Connect as `app`
 to create tables and load data, and as `admin` to install an allowlisted
 extension or for server-wide work.
@@ -99,6 +106,12 @@ The `AI Services` pane displays icons you can use to deploy available services
 on your Postgres database, including an MCP Server and a RAG Server. Select
 `Enable MCP` or `Enable RAG` to add a service; once a service is deployed,
 select its `Details` button to view connection details and manage it.
+
+Each server has its own allowlist, shown on its card. A new server starts
+with no ranges, and a running server's card reads `Running, but unreachable
+— no ranges allowed.` until its allowlist has a range. For more information,
+see
+[Controlling Network Access](../using_database/managed_network_access.md).
 
 For detailed information about enabling, configuring, and connecting to
 these services, see

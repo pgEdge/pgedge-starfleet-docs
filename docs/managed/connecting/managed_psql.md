@@ -22,6 +22,11 @@ live credential even though the screen does not display it.
 For details about each role's capabilities and which role to use, see
 [Managing Database Roles](../using_database/managed_roles.md).
 
+psql can connect only from an address on the database allowlist. Check that
+the `ALLOWED IP RANGES` list on the `Connect` pane has a range for the address
+you connect from. For more information, see
+[Controlling Network Access](../using_database/managed_network_access.md).
+
 !!! hint
 
     Connect as `app` to create tables and load data. Connect as `admin` to

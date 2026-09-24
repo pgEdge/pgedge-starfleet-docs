@@ -1,59 +1,112 @@
 # Deploying a Managed Database
 
-After authenticating with pgEdge Starfleet, a dialog guides you through
-creating your first database:
+The create wizard sets up a pgEdge Starfleet Managed database in a series
+of wizard steps. When the account has no database yet, the console opens
+a welcome dialog:
 
 ![Welcome to pgEdge Starfleet](images/managed_cloud_welcome.png)
 
-Select the `Create your first database` button to continue.
+Select `Create your first database` to open the wizard. To create
+another database later, select `New Database` in the navigation pane.
 
-![Step one - name your database and choose regions](images/managed_deploy_one.png)
+The wizard lists its steps on the left. The `Account` step is complete
+when the wizard opens, and shows the account the database is created
+in.
 
-In the first step, you will provide details about the database:
+## Choosing the Name, Region and Version
 
-- Provide a name for the database in the `Database name` field.
-- Use the `Region` drop-down to select the region in which the database will
-  deploy.
-- Choose the Postgres version that your hosted database will use.
+The `Region & version` wizard step sets the values that cannot be
+changed after the database is created:
 
-After completing the dialog, click `Continue`.
+![The Region and version wizard step](images/managed_deploy_one.png)
 
-![Step two - select features for your database](images/managed_deploy_two.png)
+1. In the `Database name` field, enter the name of the database.
 
-Next, you will select deployment features:
+    The name appears in the connection string and cannot be changed
+    later. The name uses lowercase letters and digits only, starts with
+    a letter, and has up to 50 characters.
 
-- In the `SIZE` section, select the size of your resource bundle. The
-  following table describes the available sizes:
+2. Optionally, in the `Display name` field, enter a label for the
+   console.
 
- | Size | vCPU | RAM | Storage | Connections | Price |
- |------|------|-----|---------|-------------|-------|
- | Small | 1 vCPU | 2 GB RAM | 25 GB storage | 20 conns | Free trial, then $25/mo |
- | Large | 2 vCPU | 8 GB RAM | 50 GB storage | 50 conns | $99/mo |
- | XL | 4 vCPU | 16 GB RAM | 150 GB storage | 100 conns | $249/mo |
+    The display name is shown in the console only, can be edited later,
+    and has up to 25 characters. When the field is blank, the console
+    shows the database name.
 
-  For details about functionality provided by each size, see
-  [Managing Database Details](using_database/managed_database_details.md).
+3. From the `Region` drop-down, select the region the database runs in.
 
-- The `ADD-ONS` section features a list of optional features for your
-  database. The following table describes the available add-ons:
+4. From the `PostgreSQL version` drop-down, select the Postgres version.
 
- | Feature | Description | Price |
- |---------|--------------|-------|
- | Point-in-time recovery | Restores your database to any second within the past 7 days. | +$15/mo |
- | Priority support | Provides a 1-hour response time through a dedicated support channel. | +$49/mo |
- | Guaranteed resources | Reserves dedicated CPU and RAM for your database, so performance is not affected by bursting contention from other workloads. | +$40/mo |
- | Extended retention | Retains backups and metrics for 30 days. | +$10/mo |
+5. Select `Continue`.
 
-Select the features that will be accessible to your database, and select
-`Create Database`.
+## Choosing a Size
 
-![Step three - deploy your database](images/managed_deploy_three.png)
+The `Size & add-ons` wizard step sets the resources for the database:
 
-When your database is ready, the console opens to an information page showing
-your database features, and connection details. The database name is selected
-in the navigation pane (on the left side of the console).
+![The Size and add-ons wizard step](images/managed_deploy_two.png)
 
-The new database is also shown on a pane on the Databases page:
+Each size has these resources:
+
+| Size | vCPU | RAM | Storage | Connections |
+|------|------|-----|---------|-------------|
+| Small | 1 vCPU | 2 GB | 25 GB | 20 |
+| Large | 2 vCPU | 8 GB | 50 GB | 50 |
+| XL | 4 vCPU | 16 GB | 150 GB | 100 |
+
+Every size includes daily backups, metrics, and the MCP and RAG servers.
+A database can move to a larger size later, but not to a smaller one.
+For details about each size, see
+[Managing Database Details](using_database/managed_database_details.md).
+
+1. In the `SIZE` section, select a size.
+
+2. Select `Continue`.
+
+## Choosing Who Can Connect
+
+The `Network access` wizard step sets which IP ranges can connect to
+Postgres. A new database refuses every connection until its allowlist
+has a range:
+
+![The Network access wizard step](images/managed_deploy_network.png)
+
+1. Select one of the two options:
+
+    - `Allow specific IP ranges` admits only the ranges you add. When
+      the console can read the IPv4 address you connect from, it
+      selects `Allow my current IP address`, which adds that address,
+      labeled `My laptop`.
+    - `Deny everything for now` creates the database with no ranges, so
+      nothing can connect until you add one.
+
+2. To admit another address or network, enter a label and an IP address
+   or CIDR block under `Add another range`, then select `Add`.
+
+    Add a range for each server, CI runner or network that connects to
+    the database.
+
+3. Select `Create database`.
+
+    When the account needs a payment method, the button reads
+    `Continue to payment`, and a `Payment` wizard step follows.
+
+This wizard step sets the database allowlist only. A new MCP server or
+RAG server starts with no ranges of its own. For how allowlists work,
+and how to change one later, see
+[Controlling Network Access](using_database/managed_network_access.md).
+
+## Waiting for the Database
+
+The `Launch` wizard step shows a progress bar and a step list while the
+database is created:
+
+![The Launch wizard step while the database is created](images/managed_deploy_three.png)
+
+When the database is ready, the console opens the database page, with
+its connection details. The database name is selected in the navigation
+pane.
+
+The new database is also shown on the Databases page:
 
 ![The new database pane on the Databases page](images/managed_database_page.png)
 

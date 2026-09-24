@@ -16,6 +16,13 @@ Every client connects as one of the database's two built-in roles, `admin` or
 `app`. Which one to use depends on the job, and
 [Managing Database Roles](../using_database/managed_roles.md) describes the split.
 
+A client can connect only from an address on the database allowlist. A new
+database allows no address until you add a range, and the MCP Server and RAG
+Server each have an allowlist of their own. When psql reports `SSL error:
+unexpected eof while reading`, the address you connect from has no range. For
+how to add one, see
+[Controlling Network Access](../using_database/managed_network_access.md).
+
 The documentation includes instructions for installing and connecting with
 the following commonly used clients:
 

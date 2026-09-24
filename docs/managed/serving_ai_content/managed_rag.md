@@ -164,6 +164,15 @@ When enabled, the RAG Server pane updates to display:
 - A `Configure` button that opens the `Configure RAG Server` dialog, where you
   can modify the RAG Server deployment.
 - A `Disable` button that you can use to stop the RAG Server.
+- The server's allowlist, under `ALLOWED`. A new RAG Server allows no
+  ranges, and when the server is running, the pane reads `Running, but
+  unreachable — no ranges allowed.`
+
+The RAG Server refuses every client connection until its allowlist has a
+range. The database allowlist does not apply to the RAG Server. Select
+`Add my IP` to add the address the console sees you connecting from, or
+select `Range` to add another range. For more information, see
+[Controlling Network Access](../using_database/managed_network_access.md).
 
 !!! hint
 
