@@ -73,6 +73,15 @@ Once enabled, the MCP Server pane updates to display:
 - A `Details` button that takes you to the `Services` page, where you will
   find information about connecting to MCP clients.
 - A `Disable` button that you can use to stop the MCP Server.
+- The server's allowlist, under `ALLOWED`. A new MCP Server allows no
+  ranges, and when the server is running, the pane reads `Running, but
+  unreachable — no ranges allowed.`
+
+The MCP Server refuses every client connection until its allowlist has a
+range. The database allowlist does not apply to the MCP Server. Select
+`Add my IP` to add the address the console sees you connecting from, or
+select `Range` to add another range. For more information, see
+[Controlling Network Access](../using_database/managed_network_access.md).
 
 ![Disabling the MCP Server](../images/managed_mcp_confirm_disable.png)
 
@@ -306,6 +315,17 @@ When using the MCP Server:
 
     The updated password authenticates only when the database status
     returns to `Available`; the old password may still work until then.
+
+## Using the MCP Server on a Branch
+
+If your database runs the MCP server, a branch of the database runs its own MCP
+server, with its own address and a separate MCP token. The source database's
+address and token do not work against the branch, so an MCP client needs the
+branch's own token and address. Select `Copy branch token` on the branch's page
+to copy the token. The branch's MCP server copies this server's allowlist when
+the branch is created, and that copy cannot be changed, so add a client's
+address here before you create the branch. See
+[Creating and Managing Branches](../using_console/managed_branches.md).
 
 ## Troubleshooting - When the Services Page Shows an Error
 

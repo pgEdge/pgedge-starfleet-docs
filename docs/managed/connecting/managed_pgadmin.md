@@ -26,6 +26,11 @@ creates belong to `app`. Use the `admin` user instead to install an
 allowlisted extension, or for the server-wide work described in
 [Managing Database Roles](../using_database/managed_roles.md).
 
+pgAdmin can connect only from an address on the database allowlist. Check
+that the `ALLOWED IP RANGES` list on the `Connect` pane has a range for the
+address pgAdmin connects from. For more information, see
+[Controlling Network Access](../using_database/managed_network_access.md).
+
 ![The pgAdmin Parameters tab](../images/managed_pgadmin_register_parameters.png)
 
 Set these values on the `Parameters` tab:

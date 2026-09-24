@@ -18,13 +18,22 @@ The following table shows what each size provides:
 | Large | 2 | 8 GB | 50 GB | 50 |
 | XL | 4 | 16 GB | 150 GB | 100 |
 
-`Connections` is the Postgres `max_connections` setting. Every client counts
-against the value, including the MCP and RAG Servers, which connect to the
-database as `app` when enabled.
+`Connections` is the number of simultaneous client connections included
+at the selected size. Each connected client counts against the
+`Connections` figure listed in the table, including the MCP and RAG
+Servers.
 
-`Storage` is the disk space available to the database. Used space counts
-against this value; the only way to increase the disk space is a size
-upgrade.
+!!! hint
+
+    Querying the PostgreSQL
+    [`max_connections`](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-MAX-CONNECTIONS)
+    parameter returns a higher value than the table shows, because Postgres
+    reserves connections for the server and maintenance workers. 
+
+`Storage` is the disk space available to the database. All resources
+count against this value, including your data, the Postgres write-ahead log,
+and the system metadata. The only way to increase the disk space is a
+size upgrade.
 
 Each size's price appears on the size step of the creation wizard, in the
 `Upgrade size` popup, and on the `Plan & billing` pane of the database
@@ -51,6 +60,10 @@ option on the `Actions` menu to move the database to a larger size and
 restart it when the new size takes effect. This option is available
 only while the database status is `available`. See
 [Upgrading the Size Tier](../using_console/managed_actions.md#upgrading-the-size-tier).
+
+A database cannot be resized while it has branches, because each branch
+keeps the size it was created with. See
+[Understanding Branches](managed_branches.md).
 
 ## Database Statuses
 
