@@ -8,16 +8,16 @@ manage pending or expired invitations.
 
 The `Team` page displays two tables:
 
-* the `Pending Invitations` table lists invitations that have not been
+- the `Pending Invitations` table lists invitations that have not been
   accepted:
-    * `Email` is the address to which an invitation was sent.
-    * `Status` shows how long until the invitation expires (for example,
+    - `Email` is the address to which an invitation was sent.
+    - `Status` displays how long until the invitation expires (for example,
       `Expires in 6 days`).
-    * `Action` opens a menu you can use to delete the invitation.
-* the `Members` table lists the current members of your team:
-    * `Email` is the member's address.
-    * `Role` is the member's role (for example, `Standard`).
-    * `Action` opens a menu you can use to remove the member from the team.
+    - `Action` opens a menu you can use to delete the invitation.
+- the `Members` table lists the current members of your team:
+    - `Email` is the member's address.
+    - `Role` is the member's role (for example, `Standard`).
+    - `Action` opens a menu you can use to remove the member from the team.
 
 To invite a team member to join your team, select `Add Team Member` in the
 upper-right corner of the `Team` page; the `Invite Team Member` popup
