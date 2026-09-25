@@ -20,3 +20,7 @@ MD007: false
 MD030: false
 MD046: false
 MD060: false
+
+# A bold line on its own is a label kept out of the page's contents
+# list on purpose, as troubleshooting entries use it.
+MD036: false
