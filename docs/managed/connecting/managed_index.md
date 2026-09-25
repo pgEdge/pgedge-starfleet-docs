@@ -7,14 +7,15 @@ connection string the console displays always includes `sslmode=require`.
 pgEdge Starfleet hosts serve TLS with a certificate that verifies, so
 `require` works from every client, and you may add a stricter mode.
 
-On clients with an optional `GSS encmode` setting (as shown in the pgAdmin
-client), you should set
+On clients with an optional `GSS encmode` setting (as displayed in the
+pgAdmin client), you should set
 [encmode](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-GSSENCMODE)
 to `disable`.
 
 Every client connects as one of the database's two built-in roles, `admin` or
 `app`. Which one to use depends on the job, and
-[Managing Database Roles](../using_database/managed_roles.md) describes the split.
+[Managing Database Roles](../using_database/managed_roles.md)
+describes the split.
 
 A client can connect only from an address on the database allowlist. A new
 database allows no address until you add a range, and the MCP Server and RAG
@@ -26,12 +27,12 @@ how to add one, see
 The documentation includes instructions for installing and connecting with
 the following commonly used clients:
 
-* [Connecting with the AI DBA Workbench](managed_workbench.md) describes how to
+- [Connecting with the AI DBA Workbench](managed_workbench.md) describes how to
   install the pgEdge AI DBA Workbench, then connect it to your database for
   monitoring, alerting, and AI-assisted diagnostics.
-* [Connecting with psql](managed_psql.md) describes how to connect with psql, the
-  command-line client distributed with PostgreSQL.
-* [Connecting with pgAdmin](managed_pgadmin.md) describes how to register your
+- [Connecting with psql](managed_psql.md) describes how to connect with
+  psql, the command-line client distributed with PostgreSQL.
+- [Connecting with pgAdmin](managed_pgadmin.md) describes how to register your
   database as a server in the pgAdmin graphical client.
 
 ## While the Database Is Still Being Created
@@ -50,10 +51,10 @@ the `Connect` pane instead of connection details.
 
 In URI syntax, reserved characters are used as structural delimiters:
 
-* `@` separates the user (user:password) from the host.
-* `:` separates the user from the password, and the host from the port.
-* `/` separates the host/port from the path (database name).
-* `?` starts the query-string parameters.
+- `@` separates the user (user:password) from the host.
+- `:` separates the user from the password, and the host from the port.
+- `/` separates the host/port from the path (database name).
+- `?` starts the query-string parameters.
 
 If a password contains special characters that are not encoded properly,
 the console cannot parse it correctly, and the resulting connection
@@ -78,11 +79,11 @@ password, and the `Password` field itself (when revealed) all contain a
 working database password in clear text. These password-handling
 practices keep a credential from leaking:
 
-* not echoing the connection string in a terminal, since scrollback
+- not echoing the connection string in a terminal, since scrollback
   outlives the session and shell history files outlive the terminal.
-* not passing the password as a command-line argument, since argument
+- not passing the password as a command-line argument, since argument
   lists are visible in `ps` on a shared host.
-* not writing the password to application or CI log files, since a job
+- not writing the password to application or CI log files, since a job
   running under a shell trace can write the password into build output
   that may be retained in an unsafe location.
 
