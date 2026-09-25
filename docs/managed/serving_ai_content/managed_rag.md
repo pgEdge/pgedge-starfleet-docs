@@ -22,7 +22,7 @@ Select the `AI Services` pane, then select `Enable RAG` to begin.
 
 To enable a RAG Server, select the `Enable RAG` icon in the RAG Server pane.
 The button is active only while the database status is `Available`. On a
-database in any other status, hovering over the button shows
+database in any other status, hovering over the button displays
 `Database not available`.
 
 ![Provide details about the RAG Server](../images/managed_rag_details.png)
@@ -30,25 +30,25 @@ database in any other status, hovering over the button shows
 When the `Enable RAG Server` popup opens, provide details about the RAG Server
 deployment:
 
-* The `Default Token Budget` field sets the maximum number of context tokens
+- The `Default Token Budget` field sets the maximum number of context tokens
   allowed for the LLM (500 - 128,000). The default value is `1000`.
-* The `Default Top N` field sets the maximum number of results to retrieve
+- The `Default Top N` field sets the maximum number of results to retrieve
   before token-budget trimming. The default value is `10`.
-* The `Default Embedding LLM Provider` field selects the provider used for
+- The `Default Embedding LLM Provider` field selects the provider used for
   query and document embeddings during retrieval.
-* The `Default Embedding LLM Model` field selects the embedding model to use.
+- The `Default Embedding LLM Model` field selects the embedding model to use.
   Available models depend on the selected provider (for example,
   `text-embedding-3-small` for OpenAI). This must match the model used to
   generate any pre-existing embeddings.
-* The `Default Embedding LLM API Key` field provides the API key required for
+- The `Default Embedding LLM API Key` field provides the API key required for
   the selected embedding provider.
-* The `Default Completion LLM Provider` field selects the provider used for
+- The `Default Completion LLM Provider` field selects the provider used for
   answer generation.
-* The `Default Completion LLM Model` field selects the completion model to use.
+- The `Default Completion LLM Model` field selects the completion model to use.
   Select a suggested model, or enter your own.
-* The `Default Completion LLM API Key` field provides the API key required for
+- The `Default Completion LLM API Key` field provides the API key required for
   the selected completion LLM provider.
-* The `Add Pipelines` field defines one or more pipelines. Each pipeline has
+- The `Add Pipelines` field defines one or more pipelines. Each pipeline has
   its own tables, can override the default values, and is queried at
   `/rag/v1/pipelines/<name>`.
 
@@ -79,22 +79,22 @@ used by the RAG Server.
 
 For each pipeline, provide:
 
-* A unique name in the `Name` field. Only lowercase letters, digits, hyphens,
+- A unique name in the `Name` field. Only lowercase letters, digits, hyphens,
   and underscores are allowed. The console strips any other character as you
   type.
-* At least one table, under `Add Tables`. A pipeline retrieves across every
+- At least one table, under `Add Tables`. A pipeline retrieves across every
   table you add to it, and the `Add Table` button appends another. Each table
   is its own collapsible block, and a block can be removed as long as more
   than one remains.
 
 For each table in a pipeline, provide:
 
-* The name of the table or view to use, in the `Table Name` field. Qualify
+- The name of the table or view to use, in the `Table Name` field. Qualify
   the name with its schema, for example `public.documents`.
-* The name of the column containing the text content to be indexed and
+- The name of the column containing the text content to be indexed and
   searched, in the `Text Column` field. A new table block defaults to
   `content`.
-* The name of the column containing the vector embeddings (using pgvector) for
+- The name of the column containing the vector embeddings (using pgvector) for
   that content, in the `Vector Column` field. A new table block defaults to
   `embedding`.
 
@@ -108,24 +108,24 @@ values you want to override:
 
 Optionally, provide the following details:
 
-* The `Token Budget` field overrides the maximum number of context tokens
+- The `Token Budget` field overrides the maximum number of context tokens
   allowed for the LLM for this pipeline.
-* The `Top N` field overrides the maximum number of results to retrieve before
+- The `Top N` field overrides the maximum number of results to retrieve before
   token-budget trimming for this pipeline.
-* The `Embedding LLM Provider` field overrides the provider used for query
+- The `Embedding LLM Provider` field overrides the provider used for query
   and document embeddings during retrieval for this pipeline (`OpenAI` or
   `Voyage`).
 
-* The `Embedding LLM Model` field overrides the embedding model to use for this
+- The `Embedding LLM Model` field overrides the embedding model to use for this
   pipeline.
-* The `Embedding LLM API Key` field overrides the API key used for the selected
+- The `Embedding LLM API Key` field overrides the API key used for the selected
   embedding provider for this pipeline.
-* The `Completion LLM Provider` field overrides the provider used for answer
+- The `Completion LLM Provider` field overrides the provider used for answer
   generation for this pipeline (`Anthropic (Claude)` or `OpenAI`).
 
-* The `Completion LLM Model` field overrides the completion model to use for
+- The `Completion LLM Model` field overrides the completion model to use for
   this pipeline.
-* The `Completion LLM API Key` field overrides the API key used for the
+- The `Completion LLM API Key` field overrides the API key used for the
   selected completion LLM provider for this pipeline.
 
 Use the `Advanced Settings` toggle to expand the dialog and configure hybrid
@@ -135,13 +135,13 @@ search, vector weighting, and a custom system prompt for the pipeline:
 
 Provide the following details:
 
-* The `Hybrid Search` toggle combines vector similarity with BM25 full-text
+- The `Hybrid Search` toggle combines vector similarity with BM25 full-text
   search. When disabled, search uses pure vector similarity. Hybrid search is
   enabled by default.
-* The `Vector Weight` slider sets the balance between keyword and vector
+- The `Vector Weight` slider sets the balance between keyword and vector
   relevance, from `0.0` (pure keyword relevance) to `1.0` (pure vector
   similarity). The default value is `0.5`.
-* The `System Prompt` field provides custom instructions for answer
+- The `System Prompt` field provides custom instructions for answer
   generation. Leave the field empty to use the server's built-in default
   prompt, which instructs the model to answer questions based on the
   provided context.
@@ -158,9 +158,9 @@ tell a RAG change from an MCP change.
 
 When enabled, the RAG Server pane updates to display:
 
-- A status badge. A `running` state reads `Running`. Every other state is
-  shown as the raw value the API sent, in lower case, such as `failed` or
-  `pending`.
+- A status badge. A `running` state reads `Running`. Every other state
+  displays as the raw value the API sent, in lower case, such as `failed`
+  or `pending`.
 - A `Configure` button that opens the `Configure RAG Server` dialog, where you
   can modify the RAG Server deployment.
 - A `Disable` button that you can use to stop the RAG Server.
@@ -168,8 +168,8 @@ When enabled, the RAG Server pane updates to display:
   ranges, and when the server is running, the pane reads `Running, but
   unreachable — no ranges allowed.`
 
-The RAG Server refuses every client connection until its allowlist has a
-range. The database allowlist does not apply to the RAG Server. Select
+The database allowlist does not apply to the RAG Server; the RAG Server
+will refuse client connections until a range is provided. Select
 `Add my IP` to add the address the console sees you connecting from, or
 select `Range` to add another range. For more information, see
 [Controlling Network Access](../using_database/managed_network_access.md).
@@ -177,26 +177,29 @@ select `Range` to add another range. For more information, see
 !!! hint
 
     The `Services` page also displays detailed information about the RAG
-    Server. To open it, select `Services` under the database name in the
+    Server; to open it, select `Services` under the database name in the
     navigation pane.
 
 ![RAG Server information is now displayed on the Services dialog](../images/managed_rag_services.png)
+
+### Disabling the RAG Server
 
 You can disable the RAG Server from either the `Services` page or the RAG
 Server pane by selecting the `Disable` button.
 
 ![Disabling the RAG Server](../images/managed_rag_confirm_disable.png)
 
-Select the `Disable RAG Server` button to stop the RAG Server.
+When the popup opens, select the `Disable RAG Server` button to stop the
+RAG Server.
 
-## Understanding the Server State
+## RAG Server State
 
 The `state` badge on the RAG Server pane is not a readiness signal. The
 state changes to `running` when the deployment completes, regardless of
 what the server is doing.
 
-* `Running` means the deployment completed, not that the server answers.
-* `Failed` is a reliable state that requires attention; a `Running` badge
+- `Running` means the deployment completed, not that the server answers.
+- `Failed` is a reliable state that requires attention; a `Running` badge
   proves nothing on its own.
 
 The RAG Server exposes no handshake; query a pipeline to determine whether
@@ -209,14 +212,14 @@ configuration:
 
 ![The RAG Server pane showing connection details](../images/managed_rag_connect_details.png)
 
-* `Pipelines` shows how many pipelines are configured, and their names.
-* `Embedding model` shows the configured embedding provider and model
+- `Pipelines` displays how many pipelines are configured, and their names.
+- `Embedding model` displays the configured embedding provider and model
   (for example, `openai · text-embedding-3-small`).
-* `Completion model` shows the configured completion provider and model
+- `Completion model` displays the configured completion provider and model
   (for example, `anthropic · claude-sonnet-4-6`).
-* `Retrieval` shows the token budget and the Top N result count used
+- `Retrieval` displays the token budget and the Top N result count used
   during search.
-* The `Connect` section provides the API base URL and a ready-to-use
+- The `Connect` section provides the API base URL and a ready-to-use
   `curl` command for querying a pipeline.
 
 Select `Configure` to change these settings, or `Disable` to stop the server.
@@ -263,7 +266,7 @@ Server. The RAG Server only generates embeddings for incoming queries;
 the `embedding` column on your table must be populated separately before
 the server can retrieve results from it.
 
-1.  Connect with `psql` as the `app` user, using the connection string
+1. Connect with `psql` as the `app` user, using the connection string
     from the `Application` tab of your database's `Connect` pane (see
     [Connecting with psql](../connecting/managed_psql.md)). The `app` user owns
     the database, so the tables it creates belong to `app`.
@@ -274,7 +277,7 @@ the server can retrieve results from it.
       -h <your-domain> -p <your-port> -d <your-database>
     ```
 
-2.  Create a table to store the documentation content, with a
+2. Create a table to store the documentation content, with a
     `pgvector` column sized for your embedding model. `app` cannot
     install the `vector` extension, so install `vector` first with the
     `Admin` tab's connection string, as
@@ -294,7 +297,7 @@ the server can retrieve results from it.
     CREATE INDEX ON documents USING ivfflat (embedding vector_cosine_ops);
     ```
 
-3.  Use the
+3. Use the
     [pgEdge Docloader](https://docs.pgedge.com/pgedge-docloader/v1-0-0/)
     to load your documentation's Markdown files into the `documents`
     table. Point `--source` at the folder containing your docs. Reuse
@@ -317,7 +320,7 @@ the server can retrieve results from it.
 
     !!! note
 
-        `pgedge-docloader` is an open-source command-line tool. Install
+        `pgedge-docloader` is an open-source command-line tool; install
         it by cloning and building the
         [pgEdge Docloader](https://github.com/pgEdge/pgedge-docloader)
         repository:
@@ -329,27 +332,28 @@ the server can retrieve results from it.
         make install
         ```
 
-4.  Populate the `embedding` column for each row. Before populating the column,
-    [enable the MCP Server](managed_mcp.md#enabling-the-mcp-server) with `Generate
-    embeddings` and `Allow writes` turned on. If you connect an AI client (such
-    as Claude Code), you can ask it to:
+4. Populate the `embedding` column for each row. Before populating the
+    column,
+    [enable the MCP Server](managed_mcp.md#enabling-the-mcp-server) with
+    `Generate embeddings` and `Allow writes` turned on. If you connect an
+    AI client (such as Claude Code), you can ask it to:
 
     - find the rows in `documents` where `embedding IS NULL`.
     - call `generate_embedding` on each row's `content` to compute a
       vector.
     - `UPDATE` that row, storing the vector in its `embedding` column.
 
-5.  Navigate to the RAG Server details page. In the console, open the
+5. Navigate to the RAG Server details page. In the console, open the
     `AI Services` pane and select `Details` on your running RAG
     Server, or select `Services` from the navigation pane. Under
     `Connect`, note the API base URL and the pipeline name.
 
-6.  If the RAG Server's pipeline is not already configured to use this
+6. If the RAG Server's pipeline is not already configured to use this
     table, select `Configure`, open the pipeline's table block under
     `Add Tables`, then set `Table Name` to `public.documents`,
     `Text Column` to `content`, and `Vector Column` to `embedding`.
 
-7.  Query the pipeline with a question that your documentation should
+7. Query the pipeline with a question that your documentation should
     answer:
 
     ```bash
@@ -358,23 +362,21 @@ the server can retrieve results from it.
       -d '{"query": "How do I configure replication?"}'
     ```
 
-The response is a JSON payload with a generated `answer` and the `sources`
-it retrieved, which should reference content from the documentation you
-loaded in step 3.
+The response is a JSON payload with a generated `answer` and the
+`sources` the RAG Server retrieved, which should reference content
+from the documentation you loaded in step 3.
 
-## Troubleshooting - When the Services Page Shows an Error
+## Troubleshooting
 
-The `Services` page displays a message when something goes wrong:
-
-* `Unable to load services` appears in a red panel with the body text:
+- **`Unable to load services`** appears in a red panel with the body text:
   `We could not load this database. Refresh the page to try again.`
 
     The RAG and MCP Servers keep running while the console cannot read
     them, so this indicates a console read failure rather than an
     outage of the services themselves.
 
-* `Failed to update RAG Server.` appears when a service change is
-  refused. This is the fallback text, shown when the API sends no
+- **`Failed to update RAG Server.`** appears when a service change is
+  refused. This is the fallback text, displayed when the API sends no
   message of its own.
 
     A service change requires the database to be in an `Available`
