@@ -10,8 +10,8 @@ Select `Create your first database` to open the wizard. To create
 another database later, select `New Database` in the navigation pane.
 
 The wizard lists its steps on the left. The `Account` step is complete
-when the wizard opens, and shows the account the database is created
-in.
+when the wizard opens, and displays the account the database is
+created in.
 
 ## Choosing the Name, Region and Version
 
@@ -29,9 +29,9 @@ changed after the database is created:
 2. Optionally, in the `Display name` field, enter a label for the
    console.
 
-    The display name is shown in the console only, can be edited later,
-    and has up to 25 characters. When the field is blank, the console
-    shows the database name.
+    The console displays the display name only there. You can edit
+    the display name later, and it has up to 25 characters. When the
+    field is blank, the console displays the database name instead.
 
 3. From the `Region` drop-down, select the region the database runs in.
 
@@ -97,8 +97,8 @@ and how to change one later, see
 
 ## Waiting for the Database
 
-The `Launch` wizard step shows a progress bar and a step list while the
-database is created:
+The `Launch` wizard step displays a progress bar and a step list while
+the database is created:
 
 ![The Launch wizard step while the database is created](images/managed_deploy_three.png)
 
@@ -106,33 +106,43 @@ When the database is ready, the console opens the database page, with
 its connection details. The database name is selected in the navigation
 pane.
 
-The new database is also shown on the Databases page:
+The new database also appears on the Databases page:
 
 ![The new database pane on the Databases page](images/managed_database_page.png)
 
-## Troubleshooting - When the Wizard Cannot Continue
+## Troubleshooting
 
-The wizard displays a message when a step fails:
+The following entries describe the message the wizard displays when a
+step fails, and what to do.
 
-* `Couldn't check billing status` is displayed with the body text: `We
-  couldn't confirm your billing status. Please retry before continuing.`. The
-  message includes a `Retry` button.
+### The Wizard Cannot Confirm Billing Status
 
-    The account requires a payment method before you can create a database;
-    continuing past an unconfirmed billing status risks a refusal at the end
-    of the wizard.
+The wizard displays `Couldn't check billing status`, with the body
+text `We couldn't confirm your billing status. Please retry before
+continuing.`, and a `Retry` button.
 
-* `Something went wrong` is displayed with the body text: `Unable to start
-  checkout. Please try again.`  The message includes a `Back` button.
+The account requires a payment method before you can create a
+database; continuing past an unconfirmed billing status risks a
+refusal at the end of the wizard.
 
-    The payment step could not open a checkout session. If the API sends a
-    message of its own, it will replace the body text.
+### The Wizard Cannot Start Checkout
 
-* `Confirmation failed` is displayed with the body text: `We couldn't confirm
-  your payment method.`
+The wizard displays `Something went wrong`, with the body text
+`Unable to start checkout. Please try again.`, and a `Back` button.
 
-    The panel also notes that the card may still have been saved, so check
-    again in a moment before entering the card a second time.
+The payment step could not open a checkout session. If the API sends
+a message of its own, it replaces the body text.
 
-* `Couldn't create your database` means the create request itself failed.
-  The panel displays the reason, as well as `Try again` and `Back` buttons.
+### The Wizard Cannot Confirm the Payment Method
+
+The wizard displays `Confirmation failed`, with the body text
+`We couldn't confirm your payment method.`
+
+The panel also notes that the card may still have been saved, so
+check again in a moment before entering the card a second time.
+
+### The Database Creation Request Fails
+
+The wizard displays `Couldn't create your database` when the create
+request itself fails. The panel displays the reason, as well as
+`Try again` and `Back` buttons.
