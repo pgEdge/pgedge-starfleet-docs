@@ -119,7 +119,7 @@ nav:
       - Controlling Network Access: managed/using_database/managed_network_access.md
       - Understanding Branches: managed/using_database/managed_branches.md
       - Loading Data into Your pgEdge Starfleet Database: managed/using_database/managed_loading_data.md
-      - Installing Extensions: managed/using_database/managed_extensions.md
+      - Installing Supported Extensions: managed/using_database/managed_extensions.md
       - ORM and Framework Guides: managed/using_database/managed_orm_guides.md
     - Using the Managed API:
       - Overview: managed/api/managed_index.md

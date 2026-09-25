@@ -198,6 +198,6 @@ whole page.
 
 The following pages cover related monitoring tasks:
 
-* [Reviewing the Activity Log](managed_activity_log.md) describes the resize and the
-  restore that put two instances on the charts.
+* [Reviewing the Activity Log](managed_activity_log.md) describes the resize
+  and the restore that put two instances on the charts.
 * [Restoring from Backup](managed_backups.md) describes the restore itself.

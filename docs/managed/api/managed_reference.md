@@ -7,6 +7,7 @@ To try an operation here, you need an access token; see
 [Generating an Access Token](managed_index.md#generating-an-access-token).
 Select `Authorize`, then paste the token into the `AccessToken` field.
 
+<!-- markdownlint-disable MD013 MD033 -->
 <style>
   /* One known server, described above; the title/version/license
      block duplicates this page's own prose. Match product-ui's
