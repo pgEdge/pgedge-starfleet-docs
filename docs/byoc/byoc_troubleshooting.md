@@ -1,6 +1,6 @@
 # Troubleshooting pgEdge Starfleet BYOC Issues
 
-**Terraform apply failed: Error: creating EC2 VPC**
+## Terraform apply failed: Error: creating EC2 VPC
 
 When spinning up a cluster, if you encounter an error with the text:
 

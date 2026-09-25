@@ -89,7 +89,7 @@ password associated with one of the identities (`app`, `app_read_only`, or
 
 ![Password management options](../images/password.png)
 
-### Password Management
+### Password Field Options
 
 You can use options in the `Password` field to manage the password assigned to
 the `app` user:

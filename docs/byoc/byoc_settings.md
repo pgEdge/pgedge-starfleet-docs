@@ -63,7 +63,7 @@ the selected client(s).
 
 ![API Client deleted](./images/API_client_deleted.png)
 
-**API Documentation**
+### API Documentation
 
 Use the `pgEdge Starfleet BYOC API` link below the table to access the API
 documentation.
