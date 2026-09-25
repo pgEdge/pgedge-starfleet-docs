@@ -112,37 +112,28 @@ The new database also appears on the Databases page:
 
 ## Troubleshooting
 
-The following entries describe the message the wizard displays when a
-step fails, and what to do.
+The wizard displays a message when a step fails:
 
-### The Wizard Cannot Confirm Billing Status
+- `Couldn't check billing status`, with the body text `We couldn't
+  confirm your billing status. Please retry before continuing.`,
+  and a `Retry` button.
 
-The wizard displays `Couldn't check billing status`, with the body
-text `We couldn't confirm your billing status. Please retry before
-continuing.`, and a `Retry` button.
+    The account requires a payment method before you can create a
+    database; continuing past an unconfirmed billing status risks a
+    refusal at the end of the wizard.
 
-The account requires a payment method before you can create a
-database; continuing past an unconfirmed billing status risks a
-refusal at the end of the wizard.
+- `Something went wrong`, with the body text `Unable to start
+  checkout. Please try again.`, and a `Back` button.
 
-### The Wizard Cannot Start Checkout
+    The payment step could not open a checkout session. If the API
+    sends a message of its own, it replaces the body text.
 
-The wizard displays `Something went wrong`, with the body text
-`Unable to start checkout. Please try again.`, and a `Back` button.
+- `Confirmation failed`, with the body text `We couldn't confirm
+  your payment method.`
 
-The payment step could not open a checkout session. If the API sends
-a message of its own, it replaces the body text.
+    The panel also notes that the card may still have been saved, so
+    check again in a moment before entering the card a second time.
 
-### The Wizard Cannot Confirm the Payment Method
-
-The wizard displays `Confirmation failed`, with the body text
-`We couldn't confirm your payment method.`
-
-The panel also notes that the card may still have been saved, so
-check again in a moment before entering the card a second time.
-
-### The Database Creation Request Fails
-
-The wizard displays `Couldn't create your database` when the create
-request itself fails. The panel displays the reason, as well as
-`Try again` and `Back` buttons.
+- `Couldn't create your database`, when the create request itself
+  fails. The panel displays the reason, as well as `Try again` and
+  `Back` buttons.
