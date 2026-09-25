@@ -1,4 +1,5 @@
 site_name: pgEdge Starfleet (Preview)
+copyright: Copyright &copy; 2023 - 2026, pgEdge, Inc.
 use_directory_urls: false
 
 extra_css:
@@ -17,6 +18,7 @@ theme:
 
   features:
     - navigation.top
+    - navigation.tabs
     - navigation.indexes
     - toc.follow
     - content.code.copy
@@ -39,40 +41,90 @@ theme:
         name: Switch to system preference
 
 nav:
+  - Home: index.md
+  - pgEdge Starfleet BYOC:
+    - Overview: byoc/byoc_index.md
+    - Getting Started with pgEdge Starfleet BYOC: byoc/getting_started/byoc_getting_started.md
+    - Prerequisites:
+      - Linking and Managing your Cloud Provider Accounts:
+        - Managing Cloud Provider Accounts: byoc/prerequisites/cloud_accounts/byoc_index.md
+        - Linking an AWS Account: byoc/prerequisites/cloud_accounts/byoc_link_to_AWS.md
+        - Linking an Azure Account: byoc/prerequisites/cloud_accounts/byoc_link_to_Azure.md
+        - Linking a Google Account: byoc/prerequisites/cloud_accounts/byoc_link_to_Google.md
+      - Adding an SSH Key: byoc/prerequisites/byoc_ssh_key.md
+    - Cluster Management:
+      - Reviewing your Cloud Clusters: byoc/cluster/byoc_index.md
+      - Creating a Cluster: byoc/cluster/byoc_create_cluster.md
+      - Managing a Cluster: byoc/cluster/byoc_manage_cluster.md
+      - Defining a Cluster's Backup Store: byoc/cluster/byoc_backup_store.md
+      - Managing Firewall Rules: byoc/cluster/byoc_firewall.md
+      - Using Resource Tags: byoc/cluster/byoc_resource_tag.md
+      - Managing VPC Associations: byoc/cluster/byoc_vpc_assoc.md
+      - Adding an Ingress to a Private Cluster: byoc/cluster/byoc_ingress.md
+    - Database Management:
+      - Reviewing your Databases: byoc/database/byoc_index.md
+      - Creating a Database: byoc/database/byoc_create_db.md
+      - Managing a Database: byoc/database/byoc_manage_db.md
+    - Services: byoc/byoc_services.md
+    - Metrics: byoc/database_admin/byoc_metrics.md
+    - Logs: byoc/database_admin/byoc_logs.md
+    - Backups: byoc/database_admin/byoc_backup_details.md
+    - Managing Database Backups:
+      - Reviewing Backup Details: byoc/backup/byoc_backups.md
+      - Backing up your Database: byoc/backup/byoc_backup_providers.md
+      - Restoring from Backup: byoc/backup/byoc_restore.md
+    - Database and Cluster Administration:
+      - Using the Actions Menu: byoc/mod_cluster/byoc_actions.md
+      - Adding a Database or Cluster Node: byoc/mod_cluster/byoc_add.md
+      - Dropping a Database, Node, or Cluster: byoc/mod_cluster/byoc_drop.md
+      - Using Postgres Extensions: byoc/database_admin/byoc_supported_extensions.md
+    - Migrating into pgEdge Starfleet BYOC:
+      - Overview - Using a Backup to Migrate into a Distributed Database: byoc/migration/byoc_index.md
+      - Taking a Backup: byoc/migration/byoc_backup.md
+      - Restoring from Backup: byoc/migration/byoc_restore.md
+    - Connecting to a Database:
+      - Connecting to your Database or Cluster: byoc/connecting/byoc_index.md
+      - Connecting with SSH: byoc/connecting/byoc_ssh.md
+      - Connecting with psql: byoc/connecting/byoc_psql.md
+      - Connecting with pgAdmin: byoc/connecting/byoc_pgadmin.md
+      - Connecting a Custom Client: byoc/connecting/byoc_custom_client.md
+      - Best Practices for Managing Connections: byoc/connecting/byoc_best_practices.md
+    - Reviewing the Activity Log: byoc/byoc_tasks.md
+    - Settings: byoc/byoc_settings.md
+    - Team Resources: byoc/byoc_teams.md
+    - Troubleshooting: byoc/byoc_troubleshooting.md
   - pgEdge Starfleet Managed Database:
     - Overview: managed/managed_index.md
-  - managed/managed_creating_managed.md
-  - Using the pgEdge Starfleet Console:
-    - "Using the pgEdge Starfleet Console: Overview":
-        managed/using_console/managed_console_overview.md
-    - Enabling AI Services:
-      - Enabling and Using the MCP Server: managed/serving_ai_content/managed_mcp.md
-      - Enabling and Using the RAG Server: managed/serving_ai_content/managed_rag.md
-    - Monitoring System Metrics: managed/using_console/managed_metrics.md
-    - Reviewing the Log Files: managed/using_console/managed_logs.md
-    - Restoring from Backup: managed/using_console/managed_backups.md
-    - Creating and Managing Branches: managed/using_console/managed_branches.md
-    - Reviewing the Activity Log: managed/using_console/managed_activity_log.md
-    - Managing Account Settings: managed/using_console/managed_settings.md
-    - Managing Team Members: managed/using_console/managed_team_management.md
-    - Accessing Management Options with the Actions Menu: managed/using_console/managed_actions.md
-  - Connecting to a pgEdge Starfleet Database:
-    - managed/connecting/managed_index.md
-    - Connecting with the AI DBA Workbench: managed/connecting/managed_workbench.md
-    - Connecting with psql: managed/connecting/managed_psql.md
-    - Connecting with pgAdmin: managed/connecting/managed_pgadmin.md
-  - Using Your Database:
-    - Managing Database Roles: managed/using_database/managed_roles.md
-    - Managing Database Details: managed/using_database/managed_database_details.md
-    - Controlling Network Access: managed/using_database/managed_network_access.md
-    - Understanding Branches: managed/using_database/managed_branches.md
-    - Loading Data into Your pgEdge Starfleet Database:
-        managed/using_database/managed_loading_data.md
-    - Installing Supported Extensions: managed/using_database/managed_extensions.md
-    - ORM and Framework Guides: managed/using_database/managed_orm_guides.md
-  - Using the Managed API:
-    - Overview: managed/api/managed_index.md
-    - Interactive Reference: managed/api/managed_reference.md
-    - Using restish: managed/api/managed_restish.md
-  - Community: managed/managed_community.md
-  - Docs: managed/managed_docs_link.md
+    - managed/managed_creating_managed.md
+    - Using the pgEdge Starfleet Console:
+      - "Using the pgEdge Starfleet Console: Overview": managed/using_console/managed_console_overview.md
+      - Enabling AI Services:
+        - Enabling and Using the MCP Server: managed/serving_ai_content/managed_mcp.md
+        - Enabling and Using the RAG Server: managed/serving_ai_content/managed_rag.md
+      - Monitoring System Metrics: managed/using_console/managed_metrics.md
+      - Reviewing the Log Files: managed/using_console/managed_logs.md
+      - Restoring from Backup: managed/using_console/managed_backups.md
+      - Creating and Managing Branches: managed/using_console/managed_branches.md
+      - Reviewing the Activity Log: managed/using_console/managed_activity_log.md
+      - Managing Account Settings: managed/using_console/managed_settings.md
+      - Managing Team Members: managed/using_console/managed_team_management.md
+      - Accessing Management Options with the Actions Menu: managed/using_console/managed_actions.md
+    - Connecting to a pgEdge Starfleet Database:
+      - managed/connecting/managed_index.md
+      - Connecting with the AI DBA Workbench: managed/connecting/managed_workbench.md
+      - Connecting with psql: managed/connecting/managed_psql.md
+      - Connecting with pgAdmin: managed/connecting/managed_pgadmin.md
+    - Using Your Database:
+      - Managing Database Roles: managed/using_database/managed_roles.md
+      - Managing Database Details: managed/using_database/managed_database_details.md
+      - Controlling Network Access: managed/using_database/managed_network_access.md
+      - Understanding Branches: managed/using_database/managed_branches.md
+      - Loading Data into Your pgEdge Starfleet Database: managed/using_database/managed_loading_data.md
+      - Installing Supported Extensions: managed/using_database/managed_extensions.md
+      - ORM and Framework Guides: managed/using_database/managed_orm_guides.md
+    - Using the Managed API:
+      - Overview: managed/api/managed_index.md
+      - Interactive Reference: managed/api/managed_reference.md
+      - Using restish: managed/api/managed_restish.md
+    - Community: managed/managed_community.md
+    - Docs: managed/managed_docs_link.md
