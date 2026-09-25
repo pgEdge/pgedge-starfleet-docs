@@ -12,14 +12,14 @@ The `Register - Server` dialog opens:
 
 When prompted, provide authentication details on the pgAdmin `Connection` tab.
 To find connection information for your database, highlight the database name
-in the navigation panel, and review the `Connect` pane shown on the `Database`
-page; complete the `Connection` tab from those values:
+in the navigation panel, and review the `Connect` pane displayed on the
+`Database` page; complete the `Connection` tab from those values:
 
-* `Host name/address` takes the value shown in the `Domain` field.
-* `Port` takes the port from the `Connection string`.
-* `Maintenance database` takes the name of your database.
-* `Username` takes `app` when connecting for the first time.
-* `Password` takes the password associated with the user.
+- `Host name/address` takes the value displayed in the `Domain` field.
+- `Port` takes the port from the `Connection string`.
+- `Maintenance database` takes the name of your database.
+- `Username` takes `app` when connecting for the first time.
+- `Password` takes the password associated with the user.
 
 The `app` user owns the database, so the tables and other objects it
 creates belong to `app`. Use the `admin` user instead to install a
@@ -36,8 +36,8 @@ address pgAdmin connects from. For more information, see
 
 Set these values on the `Parameters` tab:
 
-* `SSL mode` is `require`, selected from the drop-down to its right.
-* `GSS encmode` is `disable`, added as a new row: select the `+` at the
+- `SSL mode` is `require`, selected from the drop-down to its right.
+- `GSS encmode` is `disable`, added as a new row: select the `+` at the
   top of the parameter table, choose `GSS encmode` from the `Name`
   field's drop-down list, and set `Value` to `disable`.
 
