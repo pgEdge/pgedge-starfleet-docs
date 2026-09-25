@@ -6,15 +6,15 @@ navigation panel or navigate to the database's main page in the console. Below
 the header of the database page, the console displays the `Connect` pane. The
 pane displays one tab per built-in role:
 
-* an `Admin` tab with credentials for the `admin` user.
-* an `Application` tab with credentials for the `app` user.
+- an `Admin` tab with credentials for the `admin` user.
+- an `Application` tab with credentials for the `app` user.
 
 Each tab displays a `Connection string`, a ready-to-use `psql command`, and
 a `Rotate credentials` button, built from that tab's `Database name`,
 `Domain`, `User`, and `Password` values. The console masks the `Password`
 until you select the reveal control beside it.
 
-The `Connect` pane shows the `Connection string` and `psql command` blocks
+The `Connect` pane displays the `Connection string` and `psql command` blocks
 on screen without the password. The copy button beside each block copies
 the same value with the password included, so the clipboard contains a
 live credential even though the screen does not display it.
@@ -63,15 +63,15 @@ If you start psql with a graphical prompt or icon (rather than the command
 line), respond to each prompt with the matching connection-string value,
 then press `Return`:
 
-* `Server [localhost]` takes the host name from the connection string,
-  the value shown in the `Domain` field.
-* `Database [postgres]` takes the database name from the connection
-  string, the value shown in the `Database name` field.
-* `Port [5432]` takes the port from the connection string, not the
+- `Server [localhost]` takes the host name from the connection string,
+  the value displayed in the `Domain` field.
+- `Database [postgres]` takes the database name from the connection
+  string, the value displayed in the `Database name` field.
+- `Port [5432]` takes the port from the connection string, not the
   Postgres default.
-* `Username [postgres]` takes the `User` value from the `Connect` pane;
+- `Username [postgres]` takes the `User` value from the `Connect` pane;
   in this example, the user is `admin`.
-* `Password` takes the `Password` value from the `Connect` pane.
+- `Password` takes the `Password` value from the `Connect` pane.
 
 ## Installing psql and Connecting
 
