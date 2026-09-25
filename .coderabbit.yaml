@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: "en-US"
+
+reviews:
+  profile: "chill"
+  auto_review:
+    enabled: true
+    drafts: false
+  high_level_summary: false
+  sequence_diagrams: false
+  related_issues: false
+  related_prs: false
+  poem: false
+  path_filters:
+    - "!docs/**/*.png"
+    - "!docs/**/*.ico"
+  # House rules a linter cannot see. What CONTRIBUTING.md already says
+  # reaches CodeRabbit through knowledge_base below, so it is not
+  # repeated here.
+  path_instructions:
+    - path: "docs/**/*.md"
+      instructions: |
+        - The product is "the pgEdge console", or "the console" bare.
+          Never "the pgEdge Starfleet console". A reviewer has already
+          flagged this the wrong way round.
+        - Flag this vocabulary: synergy, leverage, paradigm shift,
+          best-in-class, utilize, ensure, stakeholder alignment.
+    - path: ".github/workflows/**"
+      instructions: |
+        - Every action is pinned to a full commit SHA with its version
+          in a trailing comment, as `@<sha> # v7.0.1`. A floating tag
+          is a finding.
+        - Every workflow sets `permissions:` and every job sets
+          `timeout-minutes:`.
+  pre_merge_checks:
+    # Warning rather than error: the convention is new here and a
+    # blocked merge is a worse first impression than a comment.
+    title:
+      mode: warning
+      requirements: |
+        A conventional commit type, then a description: docs:, fix:,
+        chore: or feat:. 50 characters or fewer in total.
+  tools:
+    # Every tool CodeRabbit ships defaults to on. Listed here are the
+    # ones with files to act on in a docs tree, and the ones switched
+    # off because they would report on this repo without helping it.
+    markdownlint:
+      enabled: true
+    languagetool:
+      enabled: true
+    yamllint:
+      enabled: true
+    actionlint:
+      enabled: true
+    zizmor:
+      enabled: true
+    shellcheck:
+      enabled: true
+    gitleaks:
+      enabled: true
+    # requirements.txt is pinned to match product-ui's
+    # docs-requirements.txt; a CVE-driven bump here diverges them.
+    osvScanner:
+      enabled: false
+    # No application code or IaC here, and gitleaks covers secrets.
+    trufflehog:
+      enabled: false
+    checkov:
+      enabled: false
+    semgrep:
+      enabled: false
+
+chat:
+  auto_reply: true
+
+knowledge_base:
+  code_guidelines:
+    # CodeRabbit auto-detects CLAUDE.md and AGENTS.md, neither of which
+    # this repo has, and not CONTRIBUTING.md, which carries the whole
+    # house style. Name it or the review learns nothing.
+    filePatterns:
+      - "CONTRIBUTING.md"

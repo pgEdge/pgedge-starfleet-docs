@@ -1,0 +1,51 @@
+# These 8 pages are the ones #20 is renaming into docs/managed/ and
+# docs/byoc/; their whitespace fixes live on that branch instead of
+# here, so the old paths are exempt until #20 merges and removes them.
+# (?x) is Python re's verbose mode: whitespace and newlines below are
+# ignored, so the alternation can span lines within yamllint's max.
+exclude: |-
+  (?x)^(
+    docs/connecting/psql\.md
+    |docs/docs_link\.md
+    |docs/index\.md
+    |docs/managed/creating_managed\.md
+    |docs/serving_ai_content/mcp\.md
+    |docs/using_console/actions\.md
+    |docs/using_console/console_overview\.md
+    |docs/using_console/logs\.md
+  )$
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      # Two trailing spaces are a markdown line break, so keep them.
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.38.0
+    hooks:
+      - id: yamllint
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks
+
+  # Matches the version CodeRabbit ran as of 2026-09-10. It upgrades on
+  # its own schedule, so treat drift as expected. Rules live in
+  # .markdownlint.yaml.
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.23.2
+    hooks:
+      - id: markdownlint-cli2
+        # Provision node rather than use the contributor's: this hook's
+        # dependency tree needs 22.22+, and writers here are not node users.
+        language_version: '22.22.2'
+        # A licence and a PR template do not open with an H1,
+        # and MD041 is worth keeping for the pages that do.
+        exclude: ^(LICENSE\.md|\.github/PULL_REQUEST_TEMPLATE\.md)$

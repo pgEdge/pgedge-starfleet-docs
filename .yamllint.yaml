@@ -1,0 +1,23 @@
+# Read by the pre-commit hook, and by CodeRabbit for the rules it does
+# not ignore, which is truthy alone. Kept for what it catches that
+# nothing else does: a duplicate key in mkdocs.yml parses fine and the
+# last one silently wins.
+extends: default
+
+rules:
+  # Nothing here is a multi-document stream.
+  document-start: disable
+  # GitHub spells a workflow trigger `on:`, which yamllint reads as a
+  # boolean.
+  truthy:
+    check-keys: false
+  # A SHA-pinned action carries its version as ` # v7.0.1`.
+  comments:
+    min-spaces-from-content: 1
+  # A mkdocs nav nests a sub-list level with the key above it rather
+  # than indented past it, and the tree is written that way throughout.
+  indentation:
+    indent-sequences: whatever
+  # A nav label plus its path runs past 80.
+  line-length:
+    max: 100
