@@ -55,7 +55,7 @@ select `Create branch`. To create a branch:
 2. Optionally, enter a display name of up to 25 characters in
    `Display name`.
 
-    The console shows the display name only there. pgEdge assigns the
+    The display name appears only there. pgEdge assigns the
     branch's name, which is also its hostname, and the branch's page
     displays it when the branch is `available`.
 
@@ -172,9 +172,6 @@ branch stops counting toward your limit. The row displays `Deleting` until
 the branch is removed.
 
 ## Troubleshooting
-
-The following entries describe what you see when the console refuses a
-branch action, and what to do.
 
 ### Create Branch Is Disabled at the Branch Limit
 
