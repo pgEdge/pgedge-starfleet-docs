@@ -10,8 +10,6 @@ The `Metrics` page displays five headline tiles and nineteen charts, grouped
 into `Resources`, `Throughput`, and `Storage and WAL`. Select any chart to
 expand it for a closer look.
 
-## The Metrics Page Header
-
 The header sits at the top of the `Metrics` page.
 
 ![The Metrics page header](../images/managed_metrics_header.png)
@@ -19,15 +17,15 @@ The header sits at the top of the `Metrics` page.
 The header displays the name and status of the current database, followed by
 controls for the charts displayed below:
 
-* Use the time-range buttons (`15m`, `1h`, `6h`, `24h`, `7d`, or `Custom`) to
+- Use the time-range buttons (`15m`, `1h`, `6h`, `24h`, `7d`, or `Custom`) to
   change the period displayed. The console remembers the choice per database.
 
-* Use the row of buttons below the time-range buttons to display metrics for
+- Use the row of buttons below the time-range buttons to display metrics for
   `All` reporting instances, or select a single instance to display metrics for
   that one only. The console marks the primary, and the row appears only when
   more than one instance reports.
 
-* Toggle `Live` to enable or disable automatic updates. `Live` is on by default
+- Toggle `Live` to enable or disable automatic updates. `Live` is on by default
   and refreshes on a cadence set by the time range. Applying a `Custom` range
   disables the `Live` control. When `Live` is enabled, the header displays how
   long ago the charts were last updated. Select the refresh icon to update the
@@ -43,7 +41,7 @@ warning banner reports how many samples were affected and when the database was
 most recently unavailable.
 
 Live refresh runs at a different cadence for each time range; a wider range
-averages the metrics to keep the graph legible. The following table shows
+averages the metrics to keep the graph legible. The following table displays
 the refresh cadence and point count for each time range:
 
 | Time range | Refresh | Points plotted |
@@ -56,17 +54,18 @@ the refresh cadence and point count for each time range:
 
 ## Understanding Metrics - Levels vs. Rates
 
-Every chart plots metrics as either a level or a rate.
+Every chart plots metrics as either a level or a rate:
 
-A **level** plots the value as the database reported it. A blank means the
-database published no metrics for that sample.
+- A **level** plots the value as the database reported it. A blank means
+  the database published no metrics for that sample.
 
-A **rate** plots the change since the previous sample, divided by the number of
-seconds between the two. The first point of any rate series is always blank,
-because there is no previous sample to subtract, and a sample whose neighbor is
-missing is also blank. A counter that restarts at zero, which happens when the
-container restarts, produces a negative difference, which the console renders
-as one gap rather than as a downward spike.
+- A **rate** plots the change since the previous sample, divided by the
+  number of seconds between the two. The first point of any rate series
+  is always blank, because there is no previous sample to subtract, and
+  a sample whose neighbor is missing is also blank. A counter that
+  restarts at zero, which happens when the container restarts, produces
+  a negative difference, which the console renders as one gap rather
+  than as a downward spike.
 
 ## Resource Charts - Reference
 
@@ -104,7 +103,7 @@ table describes each chart:
 | Network out | The amount of network traffic sent by the database per second. | `network_transmit_bytes_total` | Rate |
 
 `Cache hit ratio` is blank rather than zero when neither hits nor reads moved
-between two samples, so an idle database shows gaps here rather than a flat
+between two samples, so an idle database displays gaps here rather than a flat
 line.
 
 ## Storage and WAL Charts - Reference
@@ -136,23 +135,23 @@ elapse before concluding that a query, an index, or a restart had no effect.
 
 !!! hint "Setting a Custom Time Range"
 
-    A range shorter than the lag ends before any published sample exists, so it
-    returns no data. Select a range of three minutes or more; a three-minute
+    A range shorter than the lag will end before any sample can publish, so it
+    returns no data. Select a range of three minutes or more: a three-minute
     range returns a small number of samples, and a wider range returns more.
 
-    The console's shortest time-range button is `15m`, so this limitation
-    applies only to a `Custom` range. A custom range of two minutes or less
-    ending at the current time returns empty, and the page displays `No metrics
-    in this window`; this is the same message shown when a database has no
-    metrics at all.
+    Only a `Custom` range can be this short, because the console's shortest
+    preset button is `15m`. A custom range of two minutes or less, ending
+    at the current time, always returns empty and displays `No metrics in
+    this window`, the same message a database with no metrics
+    displays.
 
 ## Missing Metrics - Charts With No Data
 
-A metric with no value anywhere in the time range is left out of the response
-entirely rather than sent as blank. The console renders no chart for a metric
-for which it received no sample, and nothing on the page marks the absence. A
-narrow range therefore shows fewer charts than a wide range, with no error
-noted.
+A metric with no value in the time range is left out of the response
+entirely rather than sent as blank. The console does not render a chart
+for a metric for which it received no sample, and nothing on the page
+marks the absence. A narrow range therefore displays fewer charts than
+a wide range, with no error noted.
 
 !!! hint
 
@@ -173,31 +172,17 @@ displays gaps at the start.
 
 Outside a resize or a restore, each chart displays a single line.
 
-## When the Page Displays a Message Instead of Charts
+## Troubleshooting
 
-The page can show one of two messages in place of the charts:
-
-* `Couldn't load metrics` means the read failed, and the panel displays a
-  `Retry` button; select it. If retrying keeps failing while the database
+- **`Couldn't load metrics`** means the read failed, and the panel displays a
+  `Retry` button; select it. If retrying continues to fail while the database
   is `Available`, the metrics store, not the database, is the failing
   component.
 
-* `No metrics in this window` means the read succeeded and the time range
+- **`No metrics in this window`** means the read succeeded and the time range
   held no samples. The hint under this message names a database created
   moments ago, or an environment without observability, as the causes.
-  Widen the time range. The newest sample runs 1 to 2 minutes behind the
-  clock, so a custom range of two minutes or less ending at now is empty,
-  as the "Setting a Custom Time Range" hint above describes.
+  Widen the time range to allow additional time to capture metrics.
 
-The first is a failed request and the second is an empty range. A database
-that cannot be read at all displays
-`Couldn't load this database. Please try again shortly.` in place of the
-whole page.
-
-## Related Pages
-
-The following pages cover related monitoring tasks:
-
-* [Reviewing the Activity Log](managed_activity_log.md) describes the resize
-  and the restore that put two instances on the charts.
-* [Restoring from Backup](managed_backups.md) describes the restore itself.
+- **`Couldn't load this database. Please try again shortly.`** appears in
+  place of the whole page when the database cannot be read at all.

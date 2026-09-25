@@ -12,10 +12,11 @@ Select the `Profile` tab to review and update your account details.
 ![The Profile tab](../images/managed_settings_profile.png)
 
 The `Profile` tab displays the email address associated with your account
-(read-only), and lets you update the names associated with your account:
+(read-only), and allows you to update the names associated with your
+account:
 
-* the `First name` field.
-* the `Last name` field.
+- the `First name` field.
+- the `Last name` field.
 
 When you have finished, select `Save` to update your account with the name
 changes; select `Reset` to return the fields to their previous values.
@@ -28,11 +29,11 @@ Select the `Team` tab to review your account and manage team members.
 
 The `Team` tab displays information about your account:
 
-* the `Tenant ID` is a read-only identifier for your account; provide it
+- the `Tenant ID` is a read-only identifier for your account; provide it
   when contacting pgEdge support (if needed for troubleshooting).
-* the `External ID` is a read-only identifier value.
-* the `Plan` field displays your current plan type (for example, `Managed`).
-* the `Team Name` field displays the name of your team as it appears in the
+- the `External ID` is a read-only identifier value.
+- the `Plan` field displays your current plan type (for example, `Managed`).
+- the `Team Name` field displays the name of your team as it appears in the
   pgEdge web interface; you can change this to align with your team,
   organization, or company name. This name appears in invitation emails when
   you invite other people to join your account.
@@ -51,8 +52,9 @@ Select the `API Clients` tab to manage the API clients on your account.
 ![The API Clients tab](../images/managed_settings_api_clients.png)
 
 The `API Clients` tab lists the API clients on your account (`Name`,
-`Description`, and `Auth ID` columns), and you use it to interact with the
-REST API that manages your databases, backups, and other resources.
+`Description`, and `Auth ID` columns); you use an API client to interact
+with the REST API that manages your databases, backups, and other
+resources.
 
 To add an API client, select `Create API Client` in the upper-right
 corner of the tab; the `Create API Client` popup opens.
@@ -61,9 +63,9 @@ corner of the tab; the `Create API Client` popup opens.
 
 The popup collects:
 
-* a descriptive name for the API client, in the `API Client Name` field
+- a descriptive name for the API client, in the `API Client Name` field
   (required).
-* a brief description of the API client, in the `Description` field.
+- a brief description of the API client, in the `Description` field.
 
 Select `Create` to add the client, or `Cancel` to close the popup without
 saving it.
@@ -77,9 +79,9 @@ Select the `Billing` tab to review your subscription and payment status.
 The `Billing` tab displays your account-level subscription and payment
 status:
 
-* the `Subscription` field displays your current plan (for example,
+- the `Subscription` field displays your current plan (for example,
   `Free trial`).
-* the `Payment method` field indicates whether a payment method is on file.
+- the `Payment method` field indicates whether a payment method is on file.
 
 Select `Open billing portal` to open the secure Stripe billing portal in a
 new tab, where you can view and download invoices, update your card, and

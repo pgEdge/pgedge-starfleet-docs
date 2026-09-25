@@ -2,35 +2,36 @@
 
 When you start a task in the console (for example, deploying a database
 or restoring from a backup), the console adds the task to the table on
-the `Activity Log` page. The Activity Log page organizes console
+the `Activity Log` page. The Activity Log organizes console
 activity into a table that you can sort and filter.
 
-The console also displays a task progress bar on the main console page
-for the related database.
+!!! hint
 
-Select `show details` on the progress bar to display additional
-information about the task in progress. Each point on the task bar
-corresponds to an event detail. To close the task bar, select the `X`
-in its upper-right corner.
+    The console also displays a task progress bar on the main console
+    page for the related database. Select `show details` on the
+    progress bar to display additional information about the task in
+    progress. Each point on the task bar corresponds to an event
+    detail. To close the task bar, select the `X` in its upper-right
+    corner.
 
 ![Reviewing the Activity Log](../images/managed_activity_log.png)
 
 The Activity Log page displays the following columns:
 
-* `Task name` identifies the type of task for the table entry (for
+- `Task name` identifies the type of task for the table entry (for
   example, `create-managed`, `restore-managed`, or
-  `update-managed-size`). The console shows the raw name the API gives
+  `update-managed-size`). The console displays the raw name the API gives
   the task, with a tooltip that names the task in plain language and
   explains what it does.
 
-* `Subject kind` is the kind of resource the task acted on, one of
+- `Subject kind` is the kind of resource the task acted on, one of
   `database`, `cluster`, or `ingress`.
-* `Subject ID` is the ID of that resource. For a Managed database,
-  this is the database ID shown in the `Details` pane.
-* `Status` indicates the state of the task. The values are `running`,
+- `Subject ID` is the ID of that resource. For a Managed database,
+  this is the database ID displayed in the `Details` pane.
+- `Status` indicates the state of the task. The values are `running`,
   `succeeded`, `queued`, and `failed`.
-* `Created at` is the timestamp at which the task started.
-* `Updated at` is the timestamp at which the console last updated the
+- `Created at` is the timestamp at which the task started.
+- `Updated at` is the timestamp at which the console last updated the
   task.
 
 Use the arrow to the left of a `Task name` to expand the task
@@ -62,24 +63,15 @@ task names currently in use:
 | `restore-managed` | This task restores the database in place from a backup. |
 | `backup-managed` | This task takes a backup; read the caution below before trusting its status. |
 
-### Task Names That Do Not Match the Console
-
 Some task names are easy to misread against what actually happened in the
 console:
 
-* **`update-managed` cannot tell you which service changed.** Every services
+- **`update-managed` cannot tell you which service changed.** Every services
   write shares this task type. To find out what changed, expand the row and
   read the steps, or review the `AI Services` pane.
-* **`update-managed-size` refers to a resize, not a generic update.** This is
+- **`update-managed-size` refers to a resize, not a generic update.** This is
   the task associated with the `Upgrade size` action described in
   [Accessing Management Options with the Actions Menu](managed_actions.md#upgrading-the-size-tier).
-* **`backup-managed` can read `succeeded` while the backup is still pending.**
-  The task claims to have taken the backup: its steps show
-  `Configuring System` then `Taking Backup`, both at 100 percent and
-  marked `succeeded`. The backup record the task produced is still
-  `pending`. Both reach a terminal state, but not at the same time.
-  Read the backup's own status on the `Backups` pane rather than the
-  task's.
 
 ### What Succeeded Does Not Tell You
 
@@ -88,11 +80,22 @@ console has already applied the resulting status change; there is no lag
 between the two. The task record itself does not say which status resulted, or
 whether the database is usable.
 
-Delete is the exception. A successful delete removes the database record, so
-the database disappears from the list, and the disappearance is the
-confirmation. If a delete leaves the database behind, the task failed.
+Delete is an exception to this behavior: a successful delete removes the
+database record, so its disappearance from the list confirms success. If
+a delete leaves the database behind, the task failed.
 
-A services change is the other exception. A succeeded `update-managed` means
-the API has finished its side of the change, but the deployed server itself
-takes longer to reflect it; expect roughly a minute or two for a configure,
-and fifteen to twenty seconds for a first MCP enable.
+A services change is the other exception: a succeeded `update-managed`
+means the API has finished its side of the change, but the deployed
+server itself takes longer to reflect it. Expect roughly a minute or
+two for a configure, and fifteen to twenty seconds for a first MCP
+enable.
+
+!!! warning
+
+    `backup-managed` can read `succeeded` while the backup is still
+    pending. The task claims to have taken the backup: its steps show
+    `Configuring System` then `Taking Backup`, both at 100 percent and
+    marked `succeeded`. The backup record the task produced is still
+    `pending`. Both reach a terminal state, but not at the same time.
+    Read the backup's own status on the `Backups` pane rather than the
+    task's.

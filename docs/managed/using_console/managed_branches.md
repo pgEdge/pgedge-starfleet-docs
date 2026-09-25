@@ -55,7 +55,7 @@ select `Create branch`. To create a branch:
 2. Optionally, enter a display name of up to 25 characters in
    `Display name`.
 
-    The console shows the display name only there. pgEdge assigns the
+    The display name appears only there. pgEdge assigns the
     branch's name, which is also its hostname, and the branch's page
     displays it when the branch is `available`.
 
@@ -173,101 +173,79 @@ the branch is removed.
 
 ## Troubleshooting
 
-The following entries describe what you see when the console refuses a
-branch action, and what to do.
+- **`You've used all 5 branches for this database.`** appears in the
+  `Create branch` button's tooltip on a paying subscription, once the
+  database has reached the branch limit for your plan. Delete a branch
+  you no longer need to free its slot.
 
-### Create Branch Is Disabled at the Branch Limit
+    On a trial, hovering over the disabled button displays a card with
+    an `Add a payment method` link, stating that trials allow 3 branches
+    per database. Select `Add a payment method` to allow 5 branches per
+    database, or delete a branch to free its slot.
 
-The `Create branch` button is disabled because the database has reached the
-branch limit for your plan. For a paying subscription, the button's tooltip
-reads `You've used all 5 branches for this database.` Delete a branch you no
-longer need to free its slot.
+    ![The Create branch button disabled at the branch limit](../images/managed_branch_at_limit.png)
 
-![The Create branch button disabled at the branch limit](../images/managed_branch_at_limit.png)
+- **`Branching is blocked while this subscription is past due.`** appears
+  as a banner in the `Branches` pane when the subscription has an unpaid
+  invoice. Select `Review billing` in the banner, and settle the invoice
+  to create branches again.
 
-On a trial, hovering over the button displays a card with an
-`Add a payment method` link, stating that trials allow 3 branches per
-database. Select `Add a payment method` to allow 5 branches per database, or
-delete a branch to free its slot.
+- **`Nothing can reach this branch`** appears on the branch's page when
+  the branch was created with no allowed network ranges. Since network
+  access cannot be changed afterward, create a new branch with the
+  ranges you need, then delete this branch.
 
-### Create Branch Is Disabled While a Payment Is Overdue
+- **`This branch is suspended`** appears on the branch's page when the
+  subscription is unpaid or has expired; the branch is hibernated and
+  cannot be reached, and billing for it is paused. Select
+  `Review billing` and settle the subscription to resume the branch.
 
-The `Branches` pane displays a banner reading
-`Branching is blocked while this subscription is past due.` The
-subscription has an unpaid invoice. Select `Review billing` in the banner,
-and settle the invoice to create branches again.
+- **`Provisioning…`** appears in the branch's row where `Delete`
+  normally does, and confirming `Delete branch` on the branch's page
+  displays an error in the dialog, while a branch's status is
+  `creating`. Delete the branch when its status is `available`.
 
-### Create Branch Is Disabled Because the Source Is Not Available
+- **The `Create branch` button in the dialog stays disabled** when the
+  source database has no allowlist rules to copy, or when
+  `Set rules just for this branch` has no range added; a branch created
+  that way could never be reached. Add at least one range, then select
+  `Create branch`.
 
-The tooltip says the source database must be available first, and
-names its current status. A branch copies the source as it stands, so the
-source database must be `available`. Create the branch when the source
-database's status returns to `available`.
+- **A branch `failed` status** means the branch could not be created.
+  Delete the branch and create a new one.
 
-### Create Branch Is Disabled in the Network Access Section
+- The `Create branch` button's tooltip says **the source database must
+  be available first**, and names its current status, when a branch copies
+  the source as it stands and the source database is not yet
+  `available`. Create the branch when the source database's status
+  returns to `available`.
 
-The `Create branch` button in the dialog stays disabled. The source
-database has no allowlist rules to copy, or the option
-`Set rules just for this branch` has no range. A branch created that way
-could never be reached.
-Add at least one range, then select `Create branch`.
+- **The source database remains** after you select `Delete Database`. The
+  dialog says deleting the database also deletes its branches, but the
+  console refuses to delete a database that still has branches,
+  including one whose only branches have `failed` or are still
+  `creating`. Delete each branch first, then delete the database.
 
-### Nothing Can Reach the Branch
+- **The branch refuses an MCP client** that works against the source
+  database, because the branch's MCP server has its own address and
+  token, and the source's do not work against it. Give the client the
+  `Endpoint` and `Bearer token` from the MCP server's card on the
+  branch's page.
 
-The branch's page displays `Nothing can reach this branch`. The branch
-was created with no allowed network ranges, and its network access
-cannot be changed. Create a new branch with the ranges you need, then
-delete this branch.
+    A client the branch still refuses, despite using its own token, is
+    connecting from an address its MCP server does not allow. The
+    branch copied the source's MCP allowlist when the branch was
+    created, and that copy cannot be changed. Add the client's address
+    to the source database's MCP server allowlist, then create a new
+    branch and delete this one.
 
-### The Branch Shows a Failed Status
+- **`Upgrade size` is disabled** on the source database's `Actions` menu and
+  in its `Plan & billing` pane, because a database cannot be resized
+  while it has branches; each branch keeps the size it was created
+  with. Delete the database's branches first, then resize the database.
 
-The branch's status is `failed`. The branch could not be created. Delete
-the branch and create a new one.
+    A database whose only branches are `failed` displays `Upgrade size`
+    enabled, but the platform refuses the resize until you delete those
+    branches.
 
-### The Branch Is Suspended
-
-The branch's page displays `This branch is suspended`. The subscription is
-unpaid or has expired, so the branch is hibernated and cannot be reached.
-Billing for the branch is paused. Select `Review billing` and settle the
-subscription to resume the branch.
-
-### A Branch Cannot Be Deleted While It Is Being Created
-
-The branch's row displays `Provisioning…` where `Delete` normally appears. On
-the branch's page, confirming `Delete branch` displays an error in the dialog.
-A branch whose status is `creating` cannot be deleted. Delete the branch
-when its status is `available`.
-
-### The Source Database Is Not Deleted
-
-After you select `Delete Database`, the source database remains. The
-dialog says deleting the database also deletes the branches, but the
-console refuses to delete a database that still has branches. Delete
-each of the database's branches first, including any `failed` branch,
-then delete the database. A branch whose status is `creating` also
-blocks the delete, so delete that branch when its status is
-`available`.
-
-### The MCP Client Is Rejected by the Branch
-
-The branch refuses an MCP client that works against the source
-database. The branch's MCP server has its own address and token, and the
-source's do not work against it. Give the client the `Endpoint` and
-`Bearer token` from the MCP server's card on the branch's page.
-
-A client the branch still refuses, despite using its own token, is
-connecting from an address its MCP server does not allow. The branch copied
-the source's MCP allowlist when the branch was created, and that copy cannot
-be changed. Add the client's address to the source database's MCP server
-allowlist, then create a new branch and delete this one.
-
-### Upgrade Size Is Disabled on the Source Database
-
-`Upgrade size` is disabled on the source database's `Actions` menu and in
-its `Plan & billing` pane. A database cannot be resized while it has
-branches, because each branch keeps the size it was created with. Delete
-the database's branches first, then resize the database. A database whose
-only branches are `failed` displays `Upgrade size` enabled, but the platform
-refuses the resize until you delete those branches.
-
-![The Actions menu with Upgrade size disabled](../images/managed_branch_resize_blocked.png)
+    ![The Actions menu with Upgrade size disabled](../images/managed_branch_resize_blocked.png)
