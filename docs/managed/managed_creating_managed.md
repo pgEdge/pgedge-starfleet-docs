@@ -10,8 +10,8 @@ Select `Create your first database` to open the wizard. To create
 another database later, select `New Database` in the navigation pane.
 
 The wizard lists its steps on the left. The `Account` step is complete
-when the wizard opens, and shows the account the database is created
-in.
+when the wizard opens, and displays the account the database is
+created in.
 
 ## Choosing the Name, Region and Version
 
@@ -29,9 +29,10 @@ changed after the database is created:
 2. Optionally, in the `Display name` field, enter a label for the
    console.
 
-    The display name is shown in the console only, can be edited later,
-    and has up to 25 characters. When the field is blank, the console
-    shows the database name.
+    The console displays the display name only; you can edit the
+    display name later, providing a name with a maximum length of 25
+    characters. If you leave the field blank the console displays the
+    database name.
 
 3. From the `Region` drop-down, select the region the database runs in.
 
@@ -39,7 +40,7 @@ changed after the database is created:
 
 5. Select `Continue`.
 
-## Choosing a Size
+## Selecting a Size
 
 The `Size & add-ons` wizard step sets the resources for the database:
 
@@ -54,7 +55,7 @@ Each size has these resources:
 | XL | 4 vCPU | 16 GB | 150 GB | 100 |
 
 Every size includes daily backups, metrics, and the MCP and RAG servers.
-A database can move to a larger size later, but not to a smaller one.
+A database can move to a larger size later, but cannot downsize.
 For details about each size, see
 [Managing Database Details](using_database/managed_database_details.md).
 
@@ -62,7 +63,7 @@ For details about each size, see
 
 2. Select `Continue`.
 
-## Choosing Who Can Connect
+## Specifying Who Can Connect
 
 The `Network access` wizard step sets which IP ranges can connect to
 Postgres. A new database refuses every connection until its allowlist
@@ -77,12 +78,12 @@ has a range:
       selects `Allow my current IP address`, which adds that address,
       labeled `My laptop`.
     - `Deny everything for now` creates the database with no ranges, so
-      nothing can connect until you add one.
+      nothing can connect until you add a connection range.
 
 2. To admit another address or network, enter a label and an IP address
    or CIDR block under `Add another range`, then select `Add`.
 
-    Add a range for each server, CI runner or network that connects to
+    Add a range for each server, CI runner, or network that connects to
     the database.
 
 3. Select `Create database`.
@@ -97,42 +98,43 @@ and how to change one later, see
 
 ## Waiting for the Database
 
-The `Launch` wizard step shows a progress bar and a step list while the
-database is created:
+The `Launch` wizard step displays a progress bar and a step list while
+the database is created:
 
 ![The Launch wizard step while the database is created](images/managed_deploy_three.png)
 
-When the database is ready, the console opens the database page, with
-its connection details. The database name is selected in the navigation
-pane.
+When the database is ready, the console opens to the database's page,
+displaying database configuration and connection details.
 
-The new database is also shown on the Databases page:
+For ease of navigation, the database name is displayed in the
+left-pane's navigation tree, and on the `Databases` page.
 
 ![The new database pane on the Databases page](images/managed_database_page.png)
 
-## Troubleshooting - When the Wizard Cannot Continue
+## Troubleshooting
 
 The wizard displays a message when a step fails:
 
-* `Couldn't check billing status` is displayed with the body text: `We
-  couldn't confirm your billing status. Please retry before continuing.`. The
-  message includes a `Retry` button.
+- **`Couldn't check billing status`**, with the body text `We
+  couldn't confirm your billing status. Please retry before
+  continuing.`, and a `Retry` button.
 
-    The account requires a payment method before you can create a database;
-    continuing past an unconfirmed billing status risks a refusal at the end
-    of the wizard.
+    The account requires a payment method before you can create a
+    database; continuing past an unconfirmed billing status risks a
+    refusal at the end of the wizard.
 
-* `Something went wrong` is displayed with the body text: `Unable to start
-  checkout. Please try again.`  The message includes a `Back` button.
+- **`Something went wrong`**, with the body text `Unable to start
+  checkout. Please try again.`, and a `Back` button.
 
-    The payment step could not open a checkout session. If the API sends a
-    message of its own, it will replace the body text.
+    The payment step could not open a checkout session. If the API
+    sends a message of its own, it replaces the body text.
 
-* `Confirmation failed` is displayed with the body text: `We couldn't confirm
+- **`Confirmation failed`**, with the body text `We couldn't confirm
   your payment method.`
 
-    The panel also notes that the card may still have been saved, so check
-    again in a moment before entering the card a second time.
+    The panel also notes that the card may still have been saved, so
+    check again in a moment before entering the card a second time.
 
-* `Couldn't create your database` means the create request itself failed.
-  The panel displays the reason, as well as `Try again` and `Back` buttons.
+- **`Couldn't create your database`**, when the create request itself
+  fails. The panel displays the reason, as well as `Try again` and
+  `Back` buttons.

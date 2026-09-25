@@ -1,12 +1,12 @@
 # pgEdge Starfleet - Enterprise-Grade AI-First PostgreSQL
 
 pgEdge Starfleet is a Postgres cloud platform that combines a smooth
-developer experience and AI native tooling with the deployment flexibility,
+developer experience and AI-native tooling with the deployment flexibility,
 security, and reliability the enterprise demands.
 
 ## What Makes pgEdge Starfleet Different?
 
-pgEdge Starfleet stands apart from other Postgres cloud services with:
+pgEdge Starfleet differs from other Postgres cloud services with:
 
 - comprehensive agentic AI tooling, provided by the pgEdge AI Toolkit:
 
