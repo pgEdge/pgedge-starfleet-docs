@@ -58,7 +58,7 @@ get a new token.
 ## Running a Command
 
 Each command's name comes from its `operationId`. The following table
-shows how an `operationId` maps to its restish command:
+displays how an `operationId` maps to its restish command:
 
 | operationId | Command |
 |---|---|
