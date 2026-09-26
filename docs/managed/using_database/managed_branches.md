@@ -7,7 +7,7 @@ against it, leaving the original unchanged. This feature is called
 database, which the console refers to as its parent. Each branch is
 assigned a unique name, and can also have a display name of up to 25
 characters; the display name is optional, and the console displays
-it only there. A branch without a display name shows its assigned
+it only there. A branch without a display name displays its assigned
 name instead. To create, connect to or delete a branch, see
 [Creating and Managing Branches](../using_console/managed_branches.md).
 
@@ -51,7 +51,7 @@ its source. The branch has its own password, which is unique from the source
 database's password. Select the copy icon beside `Password` on the
 branch's page to copy it.
 
-If the source runs an MCP server, the branch's MCP server will have
+If the source runs an MCP server, the branch's MCP server has
 a unique address and MCP token, so ensure that any connecting MCP
 client has the branch's own address and token.
 A RAG server on the branch uses the same API tokens as the source, so an

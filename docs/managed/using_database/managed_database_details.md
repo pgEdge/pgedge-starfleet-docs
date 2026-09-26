@@ -27,7 +27,7 @@ Servers.
 
     Querying the PostgreSQL
     [`max_connections`](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-MAX-CONNECTIONS)
-    parameter returns a higher value than the table shows, because Postgres
+    parameter returns a higher value than the table displays, because Postgres
     reserves connections for the server and maintenance workers.
 
 `Storage` is the disk space available to the database. All resources
@@ -46,10 +46,10 @@ The database header displays a badge with the resource size, and the
 `Memory`, `Storage`, and `Conns` figures in the header are live readings of
 current usage against the size's limits:
 
-* `CPU` and `Memory` compare the current load against their allotted
+- `CPU` and `Memory` compare the current load against their allotted
   capacity.
-* `Storage` compares used space against capacity.
-* `Conns` compares active connections against the connection limit.
+- `Storage` compares used space against capacity.
+- `Conns` compares active connections against the connection limit.
 
 The `Upgrade size` popup displays each size's allocated resources.
 
@@ -84,7 +84,7 @@ allows:
 | `suspended` | The database is hibernated. | None of the five tasks are allowed. |
 | `resuming` | The database is coming back from hibernation. | None of the five tasks are allowed. |
 
-When performing a task or spinning up a new database, you should wait for the
+When performing a task or creating a new database, you should wait for the
 `available` status rather than the mere absence of `creating`, because a
 database can reach `failed` or `degraded` without passing through `creating`
 again.
@@ -104,12 +104,12 @@ exception: the console offers it only when the database is
 Five tasks are allowed only when the database is `available`, even
 when it is already `modifying` because of an earlier change:
 
-* Restoring from a backup
-* Upgrading the size
-* Changing a service, meaning enabling, configuring, or disabling the
+- Restoring from a backup
+- Upgrading the size
+- Changing a service, meaning enabling, configuring, or disabling the
   MCP Server or RAG Server
-* Rotating credentials
-* Taking a backup
+- Rotating credentials
+- Taking a backup
 
 Every other task has fewer restrictions. Editing the display name and
 switching deletion protection do not lock the database and can
