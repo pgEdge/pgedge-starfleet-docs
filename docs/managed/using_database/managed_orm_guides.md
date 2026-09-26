@@ -3,7 +3,7 @@
 Every ORM and web framework connects to a pgEdge Starfleet database the same
 way: over a standard Postgres connection string. What differs by framework is
 where it reads that string, why `sslmode=require` at the end of it matters,
-and how a generated migration handles `CREATE EXTENSION`.
+and how a generated migration processes `CREATE EXTENSION`.
 
 Nothing in a pgEdge Starfleet connection string is unique to pgEdge, so you
 do not need an adapter, driver patch, or extra package to connect.

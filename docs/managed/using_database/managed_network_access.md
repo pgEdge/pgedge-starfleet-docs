@@ -148,48 +148,42 @@ connect to that endpoint.
 The platform refuses a connection from an address outside every
 range, before it reaches Postgres or the service.
 
-### psql Reports `SSL error: unexpected eof while reading`
+- **`SSL error: unexpected eof while reading`** from psql means the
+  database allowlist has no range for the address you connect from.
+  Postgres never receives the connection, so it never checks a
+  password. Add a range for the address, and connect again after the
+  banner reads `Network access update finished`.
 
-The database allowlist has no range for the address you connect from.
-Postgres never receives the connection, so it never checks a password. Add
-a range for the address, and connect again after the banner reads
-`Network access update finished`.
+    A message such as `password authentication failed` means the
+    connection reached Postgres. The allowlist is not the cause.
 
-A message such as `password authentication failed` means the
-connection reached Postgres. The allowlist is not the cause.
+- **An MCP client or RAG client is refused** when the database accepts
+  connections but the MCP server or RAG server refuses a client. The
+  server allowlist has no range for the address the client connects
+  from; the database allowlist does not apply to the server. Add a
+  range for the address in the server's section of the `Services`
+  page.
 
-### An MCP Client or RAG Client Is Refused
+- **`Running, but unreachable — no ranges allowed.`** on a server card
+  means the server is running, and its allowlist is closed. Select
+  `Add my IP`, or select `Range` to add a range for another address.
 
-When the database accepts connections but the MCP server or RAG server
-refuses a client, the server allowlist has no range for the address the
-client connects from. The database allowlist does not apply to the
-server. Add a range for the address in the server's section of the
-`Services` page.
+- **`IPv6 is not supported — this endpoint is reachable over IPv4
+  only`** means the endpoint accepts IPv4 connections only. Enter the
+  IPv4 address or range you connect from. When your network uses IPv6
+  only, connect through a network or VPN that has an IPv4 address.
 
-### A Server Card Reads `Running, but unreachable — no ranges allowed.`
+- **`Already allowed as <label>`** means the range is already in the
+  allowlist, under the label shown. The console compares saved
+  ranges, so a range written differently can still match. Use the
+  existing range, or edit it.
 
-The server is running, and its allowlist is closed. Select `Add my IP`,
-or select `Range` to add a range for another address.
+- **`This list already holds the maximum of 50 ranges. Remove one to
+  add another.`** means the allowlist has 50 ranges. Remove a range,
+  or replace several single addresses with one CIDR block that covers
+  them.
 
-### The Form Reports `IPv6 is not supported — this endpoint is reachable over IPv4 only`
-
-The endpoint accepts IPv4 connections only. Enter the IPv4 address or
-range you connect from. When your network uses IPv6 only, connect
-through a network or VPN that has an IPv4 address.
-
-### The Form Reports `Already allowed as <label>`
-
-The range is already in the allowlist, under the label shown. The
-console compares saved ranges, so a range written differently can
-still match. Use the existing range, or edit it.
-
-### The Form Reports `This list already holds the maximum of 50 ranges. Remove one to add another.`
-
-The allowlist has 50 ranges. Remove a range, or replace several
-single addresses with one CIDR block that covers them.
-
-### The List Reads `Ranges can only be changed while the database is available`
-
-The database is busy with another change, and the message names its
-status at the end. Wait until the status reads `available`, then
-make the change.
+- **`Ranges can only be changed while the database is available`**
+  means the database is busy with another change, and the message
+  names its status at the end. Wait until the status reads
+  `available`, then make the change.

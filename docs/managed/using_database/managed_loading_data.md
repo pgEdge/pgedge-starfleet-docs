@@ -21,7 +21,7 @@ the server over your existing connection.
 For example, to load a CSV file named `customers.csv` (with a header row of
 `id`, `name`, `email`) into a new `public.customers` table:
 
-1.  Connect with psql as `app` so you will have sufficient permissions to
+1. Connect with psql as `app` so you have sufficient permissions to
     create a new table:
 
     ```bash
@@ -32,7 +32,7 @@ For example, to load a CSV file named `customers.csv` (with a header row of
     information about finding the ready-to-use `psql command` for your
     database.
 
-2.  Create the target table on your database with a column for each field
+2. Create the target table on your database with a column for each field
     in your CSV file:
 
     ```sql
@@ -43,13 +43,13 @@ For example, to load a CSV file named `customers.csv` (with a header row of
     );
     ```
 
-3.  Load the CSV file with `\copy`:
+3. Load the CSV file with `\copy`:
 
     ```sql
     \copy public.customers (id, name, email) FROM 'customers.csv' WITH (FORMAT csv, HEADER true)
     ```
 
-4.  Verify that the data loaded:
+4. Verify that the data loaded:
 
     ```sql
     SELECT count(*) FROM public.customers;
@@ -69,11 +69,11 @@ the database's built-in roles, in a fixed order.
 
 Before you begin, gather:
 
-* a database with an `available` status.
-* the credentials on both the `Admin` tab and the `Application` tab of the
+- a database with an `available` status.
+- the credentials on both the `Admin` tab and the `Application` tab of the
   database `Connect` pane.
-* a backup of the source database, taken with `pg_dump`.
-* `psql` and `pg_restore` from a PostgreSQL client installation.
+- a backup of the source database, taken with `pg_dump`.
+- `psql` and `pg_restore` from a PostgreSQL client installation.
 
 !!! hint
 
@@ -94,8 +94,8 @@ pg_dump --format=custom --file=mydata.dump "postgresql://user@oldhost:5432/olddb
 
 Applications connect as `app`, and the `app` user owns the database and its
 objects, such as tables, views, and foreign keys. If you restore a `pg_dump`
-file as `admin` instead, `admin` will own the tables and other objects the
-file creates, and your application will not have the correct access to them.
+file as `admin` instead, `admin` owns the tables and other objects the
+file creates, and your application does not have the correct access to them.
 
 Extensions fall into two categories, based on which role can install them.
 A few supported extensions, such as `vector`, install as `admin` only. The
@@ -104,15 +104,15 @@ other supported extensions that need installing install as `app`.
 A load that needs both kinds of extension therefore requires both
 connections, in this order:
 
-1.  Connect with the `Admin` tab's details and install the `admin`-only
+1. Connect with the `Admin` tab's details and install the `admin`-only
     extensions the dump depends on, such as `vector`.
 
-2.  Connect with the `Application` tab's details and install the rest,
+2. Connect with the `Application` tab's details and install the rest,
     such as `pgcrypto`.
 
-3.  Still as `app`, load the schema.
+3. Still as `app`, load the schema.
 
-4.  Still as `app`, load the data, in the passes described below.
+4. Still as `app`, load the data, in the passes described below.
 
 Loading a schema before its dependent extensions exist fails on the first
 object that needs one.

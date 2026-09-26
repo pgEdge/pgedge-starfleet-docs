@@ -4,8 +4,8 @@ Every pgEdge Starfleet database comes with two roles you can connect as,
 `admin` and `app`; they divide responsibilities by function rather than by
 privilege level:
 
-* `app` owns the database and everything your application builds.
-* `admin` has the server-wide privileges an operator needs.
+- `app` owns the database and everything your application builds.
+- `admin` has the server-wide privileges an operator needs.
 
 Neither role is a Postgres superuser. The `Connect` pane on the database page
 displays a tab for each role, displaying the role's associated password. Your
@@ -41,9 +41,9 @@ view other sessions, end another session, or install an extension such as
 
 `admin` can reduce the privileges available to `app`:
 
-* revoke a privilege previously granted to `app`.
-* reassign a table's owner away from `app`.
-* restrict `app`'s access to a schema.
+- revoke a privilege previously granted to `app`.
+- reassign a table's owner away from `app`.
+- restrict `app`'s access to a schema.
 
 Because the MCP and RAG Servers authenticate as `app`, revoking a
 privilege from `app` also revokes it from those servers.
@@ -55,12 +55,12 @@ has the privileges a database administrator needs day-to-day, without the
 superuser powers that could damage the database or reach the server it
 runs on. `admin` can:
 
-* read and change the data in every table, regardless of ownership.
-* create roles and databases.
-* view every session and its running query, and end any session.
-* run `VACUUM`, `ANALYZE`, `REINDEX`, and similar maintenance on any table.
-* create logical replication subscriptions.
-* install the supported extensions `app` cannot install, such as `vector`
+- read and change the data in every table, regardless of ownership.
+- create roles and databases.
+- view every session and its running query, and end any session.
+- run `VACUUM`, `ANALYZE`, `REINDEX`, and similar maintenance on any table.
+- create logical replication subscriptions.
+- install the supported extensions `app` cannot install, such as `vector`
   and `postgis`.
 
 `admin` cannot read or write files on the server, run programs on it, or
@@ -102,10 +102,10 @@ The following table compares the two roles:
 The `Connect` pane on the database page provides an `Admin` tab and an
 `Application` tab. Each tab displays:
 
-* a connection string.
-* a ready-to-use psql command.
-* the password for that role.
-* a `Rotate credentials` button.
+- a connection string.
+- a ready-to-use psql command.
+- the password for that role.
+- a `Rotate credentials` button.
 
 The MCP and RAG Servers connect to the database as `app`. As a result,
 each server can read and change any database objects owned by `app`.
@@ -135,11 +135,11 @@ about the MCP and RAG Servers restarting.
 
 Confirming does three things:
 
-* the API accepts the change, starts the work, and moves the database
+- the API accepts the change, starts the work, and moves the database
   state to `modifying`.
-* a `rotate-password-managed` task appears in the Activity Log for
+- a `rotate-password-managed` task appears in the Activity Log for
   this database.
-* the console re-reads every per-role credential, so the `Connect`
+- the console re-reads every per-role credential, so the `Connect`
   pane displays the new password rather than a stale one for any
   role.
 
@@ -168,47 +168,43 @@ rotated role.
 
 You can read or copy the new password from the `Password` field on the
 `Connect` pane. The `Connection string` and `psql command` rows are
-updated with the new password; copying a connection string gives you a
+updated with the new password; copying a connection string provides a
 working string without displaying the secret.
 
-## Troubleshooting Password Rotations
+## Troubleshooting
 
-### If You Receive a Refusal
+- **`Could not rotate credentials. Please try again.`** appears, or
+  the API's own message when it sends one, such as `rotating a
+  password requires the database to be available; it is busy with
+  another operation`. Waiting resolves this; a database already
+  `modifying` from an earlier restore or resize refuses rotation for
+  the same reason.
 
-The console displays `Could not rotate credentials. Please try again.`, or
-the API's own message when it sends one, such as `rotating a password
-requires the database to be available; it is busy with another
-operation`. Waiting resolves this; a database already `modifying` from
-an earlier restore or resize refuses rotation for the same reason.
+- **If no notification arrives**, do not select the button again; a
+  rotation sends the new credential before confirming, so a repeat
+  risks replacing a credential already in place. Instead, check the
+  Activity Log: find the `rotate-password-managed` task and compare
+  its `Updated at` against the current time, not its `Created at`. A
+  rotation completes in seconds, so a task still running with an old
+  `Updated at` has stalled; equal `Created at` and `Updated at` values
+  mean it finished within the API's one-second resolution and is
+  healthy.
 
-### If No Notification Arrives
+- **A failed rotation** leaves the database `degraded`, with the new
+  credential recorded but not applied; a `degraded` database refuses
+  further rotations until recovered.
 
-If no notification arrives, do not select the button again; a rotation
-sends the new credential before confirming, so a repeat risks replacing
-a credential already in place. Instead, check the Activity Log: find the
-`rotate-password-managed` task and compare its `Updated at` against the
-current time, not its `Created at`. A rotation completes in seconds, so
-a task still running with an old `Updated at` has stalled; equal
-`Created at` and `Updated at` values mean it finished within the API's
-one-second resolution and is healthy.
+    The REST API authenticates with an API client, managed on the
+    `API Clients` tab under `Settings`; see
+    [The API Clients Tab](../using_console/managed_settings.md#the-api-clients-tab).
+    A client's secret is returned once, at creation, and cannot be
+    fetched again; both the `Auth ID` and `Auth Secret` have copy
+    buttons. Replacing one is a full swap, not a rotation, so the old
+    credential keeps working until the new one is proven:
 
-### If the Rotation Fails
-
-A failed rotation leaves the database `degraded`, with the new
-credential recorded but not applied; a `degraded` database refuses
-further rotations until recovered.
-
-The REST API authenticates with an API client, managed on the
-`API Clients` tab under `Settings`; see
-[The API Clients Tab](../using_console/managed_settings.md#the-api-clients-tab).
-A client's secret is returned once, at creation, and cannot be fetched
-again; both the `Auth ID` and `Auth Secret` have copy buttons. Replacing
-one is a full swap, not a rotation, so the old credential keeps working
-until the new one is proven:
-
-1. Create the replacement client with `Create API Client`, and copy both
-   values before closing the dialog.
-2. Point whatever uses the credential at the new pair.
-3. Confirm the new pair works.
-4. Only then delete the old client; a deleted client cannot be recovered,
-   only replaced.
+    1. Create the replacement client with `Create API Client`, and
+       copy both values before closing the dialog.
+    2. Point whatever uses the credential at the new pair.
+    3. Confirm the new pair works.
+    4. Only then delete the old client; a deleted client cannot be
+       recovered, only replaced.
