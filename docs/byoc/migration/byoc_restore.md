@@ -24,7 +24,7 @@ SET
 SET
 SET
 SET
- set_config 
+ set_config
 ------------
 (1 row)
 SET

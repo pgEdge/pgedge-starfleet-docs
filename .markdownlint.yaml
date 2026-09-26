@@ -12,6 +12,10 @@ MD013:
   # A heading cannot wrap, and some quote a console message.
   headings: false
 
+# Some writers leave two blank lines before a heading.
+MD012:
+  maximum: 2
+
 # Off because the tree was written this way throughout. Turning one on
 # rewrites every page and changes nothing a reader sees. Only MD030
 # and MD046 reach CodeRabbit; the rest matter to the local run alone.
@@ -20,3 +24,7 @@ MD007: false
 MD030: false
 MD046: false
 MD060: false
+
+# A bold line on its own is a label kept out of the page's contents
+# list on purpose, as troubleshooting entries use it.
+MD036: false
