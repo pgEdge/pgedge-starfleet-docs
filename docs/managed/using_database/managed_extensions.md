@@ -1,12 +1,12 @@
 # Installing Supported Extensions on a pgEdge Starfleet Managed Database
 
 You can add Postgres extensions to a pgEdge Starfleet Managed database
-with psql, connected as one of the database's two built-in roles. Four
-terms recur below:
+with psql, connected as `app` or `admin`, two of the database's built-in
+roles. Four terms recur below:
 
 - `app` owns the database. Your application connects with this role,
   and so do the migrations it runs.
-- `admin` is the second built-in role. It installs the extensions that
+- `admin` is another built-in role. It installs the extensions that
   `app` is not permitted to install. Neither role is a superuser.
 - The tables below name every supported extension. Managed does not
   support an extension they omit.
@@ -78,6 +78,13 @@ belongs to `postgres`, and queries run as `app` still work with it:
 | postgis | Geometry and geography types with spatial functions. |
 | postgis_raster | Raster support for PostGIS. |
 | postgis_sfcgal | Advanced 2D and 3D geometry functions from the SFCGAL library. |
+| postgis_topology | Topology types and functions for PostGIS. |
+| postgis_tiger_geocoder | US address normalization for PostGIS. Install postgis and fuzzystrmatch first. |
+| address_standardizer | Address parsing into its parts. Install address_standardizer_data_us with it. |
+| address_standardizer_data_us | US rules and lexicons for address_standardizer. |
+| pg_cron | Scheduled jobs, run in the database. |
+| pg_tokenizer | Text tokenizers for full-text search. |
+| vchord_bm25 | BM25 ranking and indexes for full-text search. A query needs `bm25_catalog` and `tokenizer_catalog` on the `search_path`. |
 
 Every extension behaves the same way on Postgres 16, 17 and 18.
 

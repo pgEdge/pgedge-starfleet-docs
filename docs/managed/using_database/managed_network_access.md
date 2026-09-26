@@ -61,24 +61,29 @@ on the database's console page. To add a network address range:
    console.
 
 2. In the `ALLOWED IP RANGES` list on the `Connect` pane, select
-   `Add range`.
+   `Edit`.
 
-    If the list has no defined range, the console displays the
-    `Label` and `IP address or CIDR block` fields.
+    If the list has no defined range, select `Add a range` instead.
+    The `Edit allowed IP ranges` dialog opens.
 
     ![The Connect pane with two allowed ranges](../images/managed_allowlist_connect.png)
 
-3. In the `Label` field, enter a name that describes the range.
+3. Under `Add a range`, enter a name that describes the range in the
+   first field.
 
     The label is optional, and is up to 64 characters.
 
-4. In the `IP address or CIDR block` field, enter the address or
-   range.
+4. In the second field, enter the address or range.
 
     The console saves a single address, such as `203.0.113.10`, in
     CIDR format as `203.0.113.10/32`.
 
 5. Select `Add`.
+
+    The range appears in the list, marked `New`. Nothing changes until
+    you save.
+
+6. Select `Save changes`.
 
 While the console applies the change, the database status reads
 `modifying` and you cannot change the list. The banner at the top of
@@ -89,6 +94,10 @@ that are already open stay open until the connected session ends.
 When the allowlist is closed, the `Connect` pane displays `Add my current
 IP` with your current IP address. Select `Add my current IP` to add
 your current address as a range labeled `My laptop`.
+
+The `Edit allowed IP ranges` dialog also offers `Add my current IP` when
+no range in the list admits your address. In the dialog, the range is
+added when you select `Save changes`.
 
 ![The Connect pane with no allowed ranges](../images/managed_allowlist_deny_all.png)
 
@@ -103,13 +112,13 @@ and a summary is on each server's card in the `AI Services` pane. When
 a server allowlist has no range, the card displays two controls:
 
 - `Add my IP`, which adds your current IP address as a range
-  labeled `My IP`.
+  labeled `My laptop`.
 - `Range`, which opens the server's section of the `Services` page
   so you can select `Add a range`.
 
 When the server allowlist has a range, select `Manage access` on the
-card to open the `Services` page, where `Add range` works as it does
-for the database.
+card to open the `Services` page. There, `Edit` opens the same
+`Edit allowed IP ranges` dialog as for the database.
 
 ![The AI Services pane with two servers that allow no ranges](../images/managed_ai_services_allowlist.png)
 
@@ -132,16 +141,20 @@ The console also saves a CIDR block at the start of its range:
 
 ## Editing or Removing a Range
 
-Each row in the `ALLOWED IP RANGES` list has two controls:
+Rows in the `ALLOWED IP RANGES` list are read-only. Select `Edit` to
+open the `Edit allowed IP ranges` dialog, where you can:
 
-- an edit control (a pencil at the right side of the line), which
-  changes the label or the range when you select `Save`.
-- a remove control (a red X at the right side of the line), which
-  deletes the range.
+- change a range's label in the field beside the range.
+- select the X beside a range to mark it `Removing`. Select the undo
+  arrow in its place to keep the range.
 
-The console removes the range without asking for confirmation. When
-you remove the last range, the allowlist is closed and nothing can
-connect to that endpoint.
+The dialog cannot change a range itself. To change a range, remove it
+and add the new range. Select `Save changes` to apply every change at
+once, or `Cancel` to discard them.
+
+When you remove the last range, the dialog warns `Saving an empty list
+blocks every new connection to this database.` After you save, the
+allowlist is closed and nothing can connect to that endpoint.
 
 ## Troubleshooting
 
@@ -183,7 +196,13 @@ range, before it reaches Postgres or the service.
   or replace several single addresses with one CIDR block that covers
   them.
 
-- **`Ranges can only be changed while the database is available`**
-  means the database is busy with another change, and the message
-  names its status at the end. Wait until the status reads
-  `available`, then make the change.
+- **`Ranges can only be changed while the database is available or
+  degraded`** means the database is busy with another change, and the
+  message names its status at the end. Wait until the status reads
+  `available` or `degraded`, then make the change.
+
+- **`This list changed while you were editing`** means someone else
+  saved a change to the allowlist while your dialog was open. The
+  console applies your changes to the new list, and saves nothing when
+  the result would exceed 50 ranges or change whether the list is
+  empty. Follow the instruction at the end of the message.

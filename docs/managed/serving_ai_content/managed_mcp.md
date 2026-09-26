@@ -8,9 +8,9 @@ can use to deploy available services on your database.
 The
 [pgEdge Postgres MCP Server](https://docs.pgedge.com/pgedge-postgres-mcp-server/v1-0-0/)
 acts as a gateway to your Postgres database. The server translates requests
-into operations against your database. The server connects to the database
-as the `app` role, so even a read-only server has read access to every
-table `app` can read.
+into operations against your database. A read-only server connects to the
+database as the `app_read_only` role, which has read access to every table
+`app` can read. With `Allow writes` on, the server connects as `app`.
 
 Select `Enable MCP` to deploy the server. When the service is deployed, use
 the `Details` button to manage the server.
@@ -25,8 +25,8 @@ the `Details` button to manage the server.
 
 To enable an MCP Server, select `Enable MCP` on the `AI Services` pane of
 your database's management page. The button is active only while the database
-status is `Available`; on a database in any other status, hovering over the
-button displays `Database not available`.
+status is `Available` or `Degraded`; on a database in any other status,
+hovering over the button displays `Database not available`.
 
 ![Enabling the MCP Server](../images/managed_enable_mcp.png)
 
@@ -62,15 +62,17 @@ MCP Server.
 ![The deployed MCP service](../images/managed_enable_mcp_deployed.png)
 
 Enabling, configuring, or disabling the service requires the database to
-be `Available`, and appears in the Activity Log as an `update-managed`
-task. Each service change shares that one task name; the Activity Log
-does not discern between the MCP and RAG services.
+be `Available` or `Degraded`, and appears in the Activity Log as an
+`update-managed` task. Each service change shares that one task name; the
+Activity Log does not discern between the MCP and RAG services.
 
 When enabled, the MCP Server pane updates to display:
 
 - A color-coded status badge. A `running` server displays a status of
   `Running`. Every other state displays as the raw value the API sent, in
   lower case, such as `failed` or `pending`.
+- `Endpoint`, the server's address, with a copy icon. The row appears
+  when the server is `Running`.
 - A `Details` button that takes you to the `Services` page, where you
   find information about connecting to MCP clients.
 - A `Disable` button that you can use to stop the MCP Server.
@@ -312,10 +314,11 @@ When using the MCP Server:
 
 !!! hint
 
-    The MCP Server reads the database's `app` password once, at startup.
-    Changing the `app` role's password therefore restarts the database's
-    MCP and RAG servers so they pick up the new password, causing a short
-    gap in service. Your client configuration does not change.
+    The MCP Server reads its role's password once, at startup. Rotating
+    the password of the role it connects as restarts the server, causing
+    a short gap in service. That role is `app_read_only`, or `app` when
+    `Allow writes` is on; on a database with no `app_read_only` role, it
+    is always `app`. Your client configuration does not change.
 
     The updated password authenticates only when the database status
     returns to `Available`; the old password may still work until then.
@@ -346,6 +349,7 @@ branch. See
   refused. This is the fallback text, displayed when the API sends no
   message of its own.
 
-    A service change needs the database in an `Available` state, and each
-    service change writes one `update-managed` task, so the Activity
-    Log records both failed and successful modification attempts.
+    A service change needs the database in an `Available` or `Degraded`
+    state, and each service change writes one `update-managed` task, so
+    the Activity Log records both failed and successful modification
+    attempts.

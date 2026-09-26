@@ -9,7 +9,7 @@ You can manage branches from the database page of the source
 database. Before you create a branch, ensure that the following
 conditions are met:
 
-- The source database's status must be `available`.
+- The source database's status must be `available` or `degraded`.
 - A branch's network access is set once, when you create the branch,
   and cannot be changed afterward.
 
@@ -52,8 +52,8 @@ select `Create branch`. To create a branch:
 
     The `Create branch` dialog opens.
 
-2. Optionally, enter a display name of up to 25 characters in
-   `Display name`.
+2. Optionally, enter a display name of up to 25 bytes in
+   `Display name`. A letter such as `é` counts as two bytes.
 
     The display name appears only there. pgEdge assigns the
     branch's name, which is also its hostname, and the branch's page
@@ -101,14 +101,18 @@ The branch's page displays the branch's connection details when the branch
 is `available`. Select the branch's label in the `Branches` pane to open
 the branch's page.
 
-The `Connect` pane on the branch's page displays the following details:
+The `Connect` pane on the branch's page has an `Admin` tab, an
+`Application` tab and a `Read-only` tab, one for each built-in role. Each
+tab displays the following details:
 
 - `Connection string` and `psql command` connect to the branch's own
   hostname, which is its assigned name.
 - `Domain` displays the branch's hostname.
 - `Database name` and `User` match the source database.
-- `Password` is the branch's own password, which is different from the
-  source database's password.
+- `Password` is the role's own password on the branch, which is different
+  from the source database's password.
+
+The branch's `Connect` pane has no `Rotate credentials` button.
 
 The `ALLOWED IP RANGES` list displays the branch's network access, marked
 `FIXED AT CREATION`. The list is read-only.
@@ -135,6 +139,10 @@ For the configuration each client needs, see
 The RAG server's card displays `API base URL`, the address of the branch's RAG
 server. Select `View pipelines` to display a `curl` command for each pipeline,
 which queries that pipeline on the branch.
+
+The `Metrics` and `Logs` panes display the branch's own metrics and
+Postgres log, never the source database's. Select `Open metrics` or
+`View logs` to open the full page for the branch.
 
 ![The branch page](../images/managed_branch_details.png)
 
@@ -214,17 +222,14 @@ the branch is removed.
 - **A branch `failed` status** means the branch could not be created.
   Delete the branch and create a new one.
 
-- The `Create branch` button's tooltip says **the source database must
-  be available first**, and names its current status, when a branch copies
-  the source as it stands and the source database is not yet
-  `available`. Create the branch when the source database's status
-  returns to `available`.
+- The `Create branch` button's tooltip says **the source database has to
+  be available or degraded first**, and names its current status. Create
+  the branch when the source database's status returns to `available`.
 
-- **The source database remains** after you select `Delete Database`. The
-  dialog says deleting the database also deletes its branches, but the
-  console refuses to delete a database that still has branches,
-  including one whose only branches have `failed` or are still
-  `creating`. Delete each branch first, then delete the database.
+- **The source database remains** after you select `Delete Database`
+  while one of its branches is still `creating`. The console displays
+  `A branch of this database is still being created. Try again once it
+  has finished.` Delete the database when the branch has finished.
 
 - **The branch refuses an MCP client** that works against the source
   database, because the branch's MCP server has its own address and
@@ -244,8 +249,7 @@ the branch is removed.
   while it has branches; each branch keeps the size it was created
   with. Delete the database's branches first, then resize the database.
 
-    A database whose only branches are `failed` displays `Upgrade size`
-    enabled, but the platform refuses the resize until you delete those
-    branches.
+    A `failed` branch counts as well, so delete it before you resize
+    the database.
 
     ![The Actions menu with Upgrade size disabled](../images/managed_branch_resize_blocked.png)

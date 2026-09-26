@@ -8,6 +8,7 @@ pane displays one tab per built-in role:
 
 - an `Admin` tab with credentials for the `admin` user.
 - an `Application` tab with credentials for the `app` user.
+- a `Read-only` tab with credentials for the `app_read_only` user.
 
 Each tab displays a `Connection string`, a ready-to-use `psql command`, and
 a `Rotate credentials` button, built from that tab's `Database name`,
@@ -43,8 +44,8 @@ at the Postgres website. For more information about psql, see the
 [Postgres documentation](https://www.postgresql.org/docs/18/app-psql.html).
 
 If you have already installed a copy of psql, connection is simple. Each tab
-of the `Connect` pane (`Admin` or `Application`) displays a ready-to-use psql
-connection string. For example:
+of the `Connect` pane (`Admin`, `Application` or `Read-only`) displays a
+ready-to-use psql connection string. For example:
 
 ```bash
 PGSSLMODE=require PGPASSWORD=<your-password> psql -U admin -h <your-domain> -p <your-port> -d <your-database>

@@ -7,7 +7,8 @@ database's own storage and slower to restore).
 
 A `hot` backup is taken daily on every database. A `durable` backup is
 taken daily as well, but only on a database whose plan includes durable
-backups.
+backups. Creating a branch also takes a `hot` backup of the source
+database.
 
 Backups are taken on a schedule. The console has no button for taking
 one, and you cannot delete a backup or change how long one is kept. Each
@@ -28,8 +29,8 @@ status in this list rather than the outcome of its task in the Activity
 Log, because a `backup-managed` task can read `succeeded` while the
 backup record it produced is still `pending`.
 
-The database itself must be `available`. A restore is refused against
-a database that is `creating`, `modifying`, `degraded`, or already
+The database itself must be `available` or `degraded`. A restore is
+refused against a database that is `creating`, `modifying`, or already
 busy with an earlier task.
 
 ## Restoring Your Database

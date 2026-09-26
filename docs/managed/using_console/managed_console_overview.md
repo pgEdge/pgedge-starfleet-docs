@@ -23,7 +23,7 @@ The database header displays:
     - a red dot means the database is not available.
 - the CPU size of the database.
 - the memory used by the database.
-- the amount of storage allocated to the database.
+- the storage the database uses, against its writable capacity.
 - the number of connections allocated for the database.
 
 ## The Actions Context Menu
@@ -40,13 +40,14 @@ see [Accessing Management Options with the Actions Menu](managed_actions.md).
 ## The Connect Pane
 
 Below the header, the console displays the `Connect` pane; the pane includes an
-`Admin` tab with credentials for the `admin` user, and an `Application` tab
-with credentials for the `app` user. Each tab displays:
+`Admin` tab with credentials for the `admin` user, an `Application` tab
+with credentials for the `app` user, and a `Read-only` tab with
+credentials for the `app_read_only` user. Each tab displays:
 
 - a ready-to-use `Connection string`.
 - a ready-to-use `psql command`; the command opens a psql session for the
-  selected `User` (`Admin` or `Application`) when invoked on the command line
-  of a host with an installed psql client.
+  selected `User` (`Admin`, `Application` or `Read-only`) when invoked on the
+  command line of a host with an installed psql client.
 - the `Database name` and `Domain` (host name) of the database.
 - the `User` connecting to the database, with a `Rotate credentials` control
   that generates a new password for that user.
@@ -88,6 +89,11 @@ instead:
   [Database Statuses](../using_database/managed_database_details.md#database-statuses)
   for the meaning of each status.
 
+If the console displays `Couldn't load every role's credentials. The
+ones shown are current; try again shortly for the rest.`, it was unable
+to read every role's credentials. The console retries automatically,
+or you can reload the page.
+
 ![Connecting to your database](../images/managed_connecting.png)
 
 See the following resources for more detail:
@@ -106,8 +112,9 @@ database.
 
 The `AI Services` pane displays icons you can use to deploy available services
 on your Postgres database, including an MCP Server and a RAG Server. Select
-`Enable MCP` or `Enable RAG` to add a service; once a service is deployed,
-select its `Details` button to view connection details and manage it.
+`Enable MCP` or `Enable RAG` to add a service. A running service's card
+displays its address, with a copy icon. Select `Details` on the MCP Server
+card, or `Configure` on the RAG Server card, to manage the service.
 
 Each server has its own allowlist, displayed on its card. A new server starts
 with no ranges, and a running server's card reads `Running, but unreachable

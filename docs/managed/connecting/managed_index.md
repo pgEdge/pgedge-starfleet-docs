@@ -12,8 +12,8 @@ pgAdmin client), you should set
 [encmode](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-GSSENCMODE)
 to `disable`.
 
-Every client connects as one of the database's two built-in roles, `admin` or
-`app`. Which one to use depends on the job, and
+Every client connects as one of the database's three built-in roles,
+`admin`, `app` or `app_read_only`. Which one to use depends on the job, and
 [Managing Database Roles](../using_database/managed_roles.md)
 describes the split.
 

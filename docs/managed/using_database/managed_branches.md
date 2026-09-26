@@ -6,7 +6,7 @@ against it, leaving the original unchanged. This feature is called
 *Fast Branching*. The database you copy is the branch's source
 database, which the console refers to as its parent. Each branch is
 assigned a unique name, and can also have a display name of up to 25
-characters; the display name is optional, and the console displays
+bytes; the display name is optional, and the console displays
 it only there. A branch without a display name displays its assigned
 name instead. To create, connect to or delete a branch, see
 [Creating and Managing Branches](../using_console/managed_branches.md).
@@ -47,15 +47,18 @@ database.
 
 A branch has its own connection details. The assigned name is also
 the branch's hostname, so every branch has a different address from
-its source. The branch has its own password, which is unique from the source
-database's password. Select the copy icon beside `Password` on the
-branch's page to copy it.
+its source. Each built-in role has its own password on the branch, which
+is unique from the source database's password. Select the copy icon
+beside `Password` on the branch's page to copy it. A branch's passwords
+cannot be rotated.
 
 If the source runs an MCP server, the branch's MCP server has
 a unique address and MCP token, so ensure that any connecting MCP
 client has the branch's own address and token.
-A RAG server on the branch uses the same API tokens as the source, so an
-existing RAG integration keeps working without new tokens.
+A RAG server on the branch has its own address. Its card reads
+`Same API tokens as the source.`, because the server uses the source's
+model provider keys. Point a RAG integration at the branch's
+`API base URL` to query the branch.
 
 ## Branching Limitations
 
@@ -92,12 +95,11 @@ A source database with branches has three restrictions:
 - The source database cannot be resized while it has branches, because
   each branch keeps the size it was created with. Delete the source's
   branches first, then resize the source database.
-- Delete a database's branches before you delete the database. The
-  `Delete Database` dialog says deleting the database also deletes the
-  branches, but the console refuses to delete a database that still
-  has branches.
+- Deleting the database also deletes its branches. The console refuses
+  the delete while a branch is still `creating`.
 - A branch cannot be created while a payment on the subscription is
-  overdue, or while the source database's status is not `available`.
+  overdue, or while the source database's status is not `available` or
+  `degraded`.
 
 ## Branch Statuses
 

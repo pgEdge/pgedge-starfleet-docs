@@ -1,27 +1,35 @@
 # Managing Database Roles
 
-Every pgEdge Starfleet database comes with two roles you can connect as,
-`admin` and `app`; they divide responsibilities by function rather than by
-privilege level:
+Every pgEdge Starfleet database comes with three roles you can connect as,
+`admin`, `app` and `app_read_only`. They divide responsibilities by
+function:
 
 - `app` owns the database and everything your application builds.
 - `admin` has the server-wide privileges an operator needs.
+- `app_read_only` reads what `app` can read, and never writes.
 
-Neither role is a Postgres superuser. The `Connect` pane on the database page
-displays a tab for each role, displaying the role's associated password. Your
-pgEdge Starfleet database starts as a single database, owned by `app`. The
+No built-in role is a Postgres superuser. The `Connect` pane on the database
+page displays a tab for each role, displaying the role's associated password.
+Your pgEdge Starfleet database starts as a single database, owned by `app`. The
 `admin` role exists to administer Postgres, including creating further roles
 and databases on the same server.
 
-`admin` can create roles beyond `app` and `admin` themselves, for a human
-user, a script, or a separate service. Ownership and permissions for those
-roles follow standard Postgres semantics: if a role such as `alice` creates
-a table meant for the application, a role with the right privileges
-(`alice` or `admin`) can reassign ownership to `app` with
-`ALTER TABLE ... OWNER TO app;`, or grant the needed privileges with
-`GRANT`, so the application can use it. pgEdge Starfleet does not change
-this behavior; it only adds the `admin` and `app` roles every database
-starts with.
+`admin` can create roles beyond the built-in ones, for a human user, a
+script, or a separate service. Create a role manager first, and create
+every other role from it. A role manager is a role with `CREATEROLE`,
+which `admin` creates:
+
+```sql
+CREATE ROLE rolemgr LOGIN CREATEROLE PASSWORD '<password>';
+```
+
+The role manager keeps control of the roles it creates. A credential
+rotation removes `admin`'s ability to grant or drop a role that `admin`
+created directly.
+
+A new role cannot create objects in the `public` schema. To let a new role
+use the application's tables, connect as `app` and grant the role the
+privileges it needs with `GRANT`.
 
 ## The `app` Role
 
@@ -31,9 +39,10 @@ supported extensions, such as `pgcrypto`, and owns each one it installs.
 [Installing Supported Extensions on a pgEdge Starfleet Managed Database](managed_extensions.md)
 lists which role installs each extension.
 
-`app` is the recommended default role to own an application. The MCP and
-RAG Servers also connect as `app`, so those servers can read whatever your
-migrations and data imports add to the database.
+`app` is the recommended default role to own an application. The RAG
+Server connects as `app_read_only`, and so does the MCP Server unless
+`Allow writes` is on, when it connects as `app`. Either way, those servers
+can read whatever your migrations and data imports add to the database.
 
 `app` has no server-wide privilege: it cannot create roles or databases,
 view other sessions, end another session, or install an extension such as
@@ -45,8 +54,8 @@ view other sessions, end another session, or install an extension such as
 - reassign a table's owner away from `app`.
 - restrict `app`'s access to a schema.
 
-Because the MCP and RAG Servers authenticate as `app`, revoking a
-privilege from `app` also revokes it from those servers.
+Because `app_read_only` inherits its access from `app`, revoking a
+privilege from `app` also revokes it from the MCP and RAG Servers.
 
 ## The `admin` Role
 
@@ -58,13 +67,26 @@ runs on. `admin` can:
 - read and change the data in every table, regardless of ownership.
 - create roles and databases.
 - view every session and its running query, and end any session.
-- run `VACUUM`, `ANALYZE`, `REINDEX`, and similar maintenance on any table.
+- run `VACUUM`, `ANALYZE`, `REINDEX`, and similar maintenance on any table
+  on Postgres 17 and 18, and on the tables `app` owns on Postgres 16.
 - create logical replication subscriptions.
 - install the supported extensions `app` cannot install, such as `vector`
   and `postgis`.
 
 `admin` cannot read or write files on the server, run programs on it, or
 become a superuser.
+
+## The `app_read_only` Role
+
+`app_read_only` reads every table `app` can read. The database refuses
+every write from it, even after `SET ROLE app`, with an error such as
+`cannot execute CREATE TABLE in a read-only session`. Connect as
+`app_read_only` for reports, dashboards, or any client that must never
+change data.
+
+If the `Connect` pane shows no `Read-only` tab, the database has no
+`app_read_only` role. On that database, the MCP and RAG Servers connect as
+`app`.
 
 ## Creating Database Objects
 
@@ -80,35 +102,37 @@ application objects remain owned by `app`.
 
 ## Comparing Role Capabilities
 
-The following table compares the two roles:
+The following table compares the three roles:
 
-| Capability | `admin` | `app` |
-|------------|---------|-------|
-| Create tables and schemas | Yes | Yes |
-| Read data in any table | Yes | Tables it owns |
-| Insert, update, and delete in any table | Yes | Tables it owns |
-| Create roles | Yes | No |
-| Create databases | Yes | No |
-| View other sessions and their queries | Yes | No |
-| End another session | Yes | No |
-| Run maintenance on any table | Yes | Tables it owns |
-| Create logical replication subscriptions | Yes | No |
-| Install extensions such as `pgcrypto` | Yes | Yes |
-| Install extensions such as `vector` and `postgis` | Yes | No |
-| Read or write files on the server | No | No |
+| Capability | `admin` | `app` | `app_read_only` |
+|------------|---------|-------|-----------------|
+| Create tables and schemas | Yes | Yes | No |
+| Read data in any table | Yes | Tables it owns | Tables `app` can read |
+| Insert, update, and delete in any table | Yes | Tables it owns | No |
+| Create roles | Yes | No | No |
+| Create databases | Yes | No | No |
+| View other sessions and their queries | Yes | No | No |
+| End another session | Yes | No | No |
+| Run maintenance on any table | Yes, on Postgres 17 and 18; tables `app` owns on 16 | Tables it owns | No |
+| Create logical replication subscriptions | Yes | No | No |
+| Install extensions such as `pgcrypto` | Yes | Yes | No |
+| Install extensions such as `vector` and `postgis` | Yes | No | No |
+| Read or write files on the server | No | No | No |
 
-## Finding the `app` or `admin` Credentials
+## Finding Each Role's Credentials
 
-The `Connect` pane on the database page provides an `Admin` tab and an
-`Application` tab. Each tab displays:
+The `Connect` pane on the database page provides an `Admin` tab, an
+`Application` tab and a `Read-only` tab. Each tab displays:
 
 - a connection string.
 - a ready-to-use psql command.
 - the password for that role.
 - a `Rotate credentials` button.
 
-The MCP and RAG Servers connect to the database as `app`. As a result,
-each server can read and change any database objects owned by `app`.
+The RAG Server connects to the database as `app_read_only`, so it can read
+but never change data. The MCP Server connects as `app_read_only` too,
+unless `Allow writes` is on. With `Allow writes` on, it connects as `app`,
+and can read and change any database objects owned by `app`.
 
 ## Rotating Database Credentials
 
@@ -118,20 +142,19 @@ rotation; for about ten seconds afterward, neither password is reliable.
 Your account's only other credential, the API client secret, is replaced
 rather than rotated, as described further below.
 
-The `Connect` pane on a database's overview page has an `Admin` tab and an
-`Application` tab. Each tab displays the connection string, psql command,
-database name, domain, user, and password, with `Rotate credentials`
-underneath. Rotating from this tab modifies the credentials of the
+The `Connect` pane on a database's overview page has an `Admin` tab, an
+`Application` tab and a `Read-only` tab. Each tab displays the connection
+string, psql command, database name, domain, user, and password, with `Rotate
+credentials` underneath. Rotating from this tab modifies the credentials of the
 Postgres user named on it.
 
 The button is disabled while the database is provisioning; the console
-enables it only for a database that is `available` or `degraded`. The API
-allows a rotation only from databases in an `available` state, so a
-`degraded` database can offer the button and still refuse the write.
+enables it only for a database that is `available` or `degraded`.
 
 The button opens a `Rotate credentials` dialog naming the Postgres user, with
-`Rotate credentials` and `Cancel`. Rotating the `Application` role adds a note
-about the MCP and RAG Servers restarting.
+`Rotate credentials` and `Cancel`. For the `Application` and `Read-only`
+roles, the dialog adds `Any AI services that connect as this role restart
+to pick up the new password.`
 
 Confirming does three things:
 
@@ -158,10 +181,11 @@ rotated role.
 
 !!! hint
 
-    The MCP Server reads the database's `app` password once, at startup.
-    Changing the `app` role's password therefore restarts the database's
-    MCP and RAG servers so they pick up the new password, causing a short
-    gap in service. Your client configuration does not change.
+    The MCP and RAG Servers read their role's password once, at startup.
+    Rotating `app_read_only` restarts the RAG Server, and the MCP Server
+    unless `Allow writes` is on. Rotating `app` restarts the MCP Server
+    when `Allow writes` is on. Each restart causes a short gap in
+    service. Your client configuration does not change.
 
     The updated password authenticates only when the database status
     returns to `available`; the old password may still work until then.
@@ -173,26 +197,23 @@ working string without displaying the secret.
 
 ## Troubleshooting
 
-- **`Could not rotate credentials. Please try again.`** appears, or
-  the API's own message when it sends one, such as `rotating a
-  password requires the database to be available; it is busy with
-  another operation`. Waiting resolves this; a database already
-  `modifying` from an earlier restore or resize refuses rotation for
-  the same reason.
+- **`Could not rotate credentials. Please try again.`** appears when
+  the database is busy with another operation. Waiting resolves this; a
+  database already `modifying` from an earlier restore or resize
+  refuses rotation for the same reason.
 
-- **If no notification arrives**, do not select the button again; a
-  rotation sends the new credential before confirming, so a repeat
-  risks replacing a credential already in place. Instead, check the
-  Activity Log: find the `rotate-password-managed` task and compare
-  its `Updated at` against the current time, not its `Created at`. A
-  rotation completes in seconds, so a task still running with an old
-  `Updated at` has stalled; equal `Created at` and `Updated at` values
-  mean it finished within the API's one-second resolution and is
-  healthy.
+- **If no notification arrives**, do not select the button again. The
+  database refuses a second rotation while the first is running.
+  Instead, check the Activity Log: find the `rotate-password-managed`
+  task and compare its `Updated at` against the current time, not its
+  `Created at`. A rotation completes in seconds, so a task still
+  running with an old `Updated at` has stalled; equal `Created at` and
+  `Updated at` values mean it finished within the API's one-second
+  resolution and is healthy.
 
-- **A failed rotation** leaves the database `degraded`, with the new
-  credential recorded but not applied; a `degraded` database refuses
-  further rotations until recovered.
+- **A failed rotation** leaves the database `degraded`. The `Connect`
+  pane shows the password that currently works. Select
+  `Rotate credentials` again to retry the rotation.
 
     The REST API authenticates with an API client, managed on the
     `API Clients` tab under `Settings`; see

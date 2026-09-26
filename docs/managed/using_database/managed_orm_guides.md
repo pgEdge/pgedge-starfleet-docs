@@ -222,8 +222,9 @@ to `Available`, and the old one may still work in that window, so switch
 the application over when the status displays `Available` rather than
 immediately.
 
-Rotating the `app` password also restarts the database's MCP and RAG
-Servers; each server reads the password once at startup.
+Rotating the `app` password also restarts the database's MCP Server when
+its `Allow writes` setting is on. The server reads the password once at
+startup.
 
 [prisma-pg]: https://www.prisma.io/docs/orm/overview/databases/postgresql
 [drizzle-pg]: https://orm.drizzle.team/docs/get-started-postgresql

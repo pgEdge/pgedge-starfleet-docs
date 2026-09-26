@@ -72,8 +72,8 @@ database. This option is unavailable while deletion protection is enabled; see
 - The console displays **`Could not resize the database.`** when it
   refuses a resize.
 
-    A resize requires the database to be in an `available` state. You
-    can only resize to a larger size.
+    A resize requires the database to be in an `available` or `degraded`
+    state. You can only resize to a larger size.
 
 - The console displays **`Could not delete the database.`** when it
   refuses a delete.
