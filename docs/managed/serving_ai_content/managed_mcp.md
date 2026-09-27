@@ -68,17 +68,17 @@ Activity Log does not discern between the MCP and RAG services.
 
 When enabled, the MCP Server pane updates to display:
 
-- A color-coded status badge. A `running` server displays a status of
-  `Running`. Every other state displays as the raw value the API sent, in
-  lower case, such as `failed` or `pending`.
-- `Endpoint`, the server's address, with a copy icon. The row appears
-  when the server is `Running`.
-- A `Details` button that takes you to the `Services` page, where you
-  find information about connecting to MCP clients.
-- A `Disable` button that you can use to stop the MCP Server.
-- The server's allowlist, under `ALLOWED`. A new MCP Server allows no
-  ranges, and when the server is running, the pane reads `Running, but
-  unreachable — no ranges allowed.`
+- A color-coded status badge indicates the server's state: a `running`
+  server displays `Running`, and every other state displays as the raw
+  API value, in lower case, such as `failed` or `pending`.
+- The server's `Endpoint` appears with a copy icon when the server is
+  `Running`.
+- A `Details` button takes you to the `Services` page, where you find
+  information about connecting to MCP clients.
+- A `Disable` button allows you to stop the MCP Server.
+- The server's allowlist appears under `ALLOWED`. A new MCP Server
+  allows no ranges, and when the server is running, the pane reads
+  `Running, but unreachable — no ranges allowed.`
 
 The MCP Server refuses every client connection until its allowlist has a
 range; the database allowlist does not apply to the MCP Server. Select

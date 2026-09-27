@@ -47,7 +47,7 @@ credentials for the `app_read_only` user. Each tab displays:
 
 - a ready-to-use `Connection string`.
 - a ready-to-use `psql command`; the command opens a psql session for the
-  selected `User` (`Admin`, `Application` or `Read-only`) when invoked on the
+  selected `User` (`Admin`, `Application`, or `Read-only`) when invoked on the
   command line of a host with an installed psql client.
 - the `Database name` and `Domain` (host name) of the database.
 - the `User` connecting to the database, with a `Rotate credentials` control

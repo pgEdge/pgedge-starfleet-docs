@@ -158,17 +158,17 @@ Activity Log cannot tell a RAG change from an MCP change.
 
 When enabled, the RAG Server pane updates to display:
 
-- A status badge. A `running` state reads `Running`. Every other state
-  displays as the raw value the API sent, in lower case, such as `failed`
-  or `pending`.
-- `API base URL`, the server's address, with a copy icon. The row appears
-  when the server is `Running`.
-- A `Configure` button that opens the `Configure RAG Server` dialog, where you
-  can modify the RAG Server deployment.
-- A `Disable` button that you can use to stop the RAG Server.
-- The server's allowlist, under `ALLOWED`. A new RAG Server allows no
-  ranges, and when the server is running, the pane reads `Running, but
-  unreachable — no ranges allowed.`
+- A status badge indicates the server's state: a `running` server
+  displays `Running`, and every other state displays as the raw API
+  value, in lower case, such as `failed` or `pending`.
+- The server's `API base URL` appears with a copy icon when the server
+  is `Running`.
+- A `Configure` button opens the `Configure RAG Server` dialog, where
+  you can modify the RAG Server deployment.
+- A `Disable` button allows you to stop the RAG Server.
+- The server's allowlist appears under `ALLOWED`. A new RAG Server
+  allows no ranges, and when the server is running, the pane reads
+  `Running, but unreachable — no ranges allowed.`
 
 The database allowlist does not apply to the RAG Server; the RAG Server
 will refuse client connections until a range is provided. Select
