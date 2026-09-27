@@ -40,9 +40,10 @@ supported extensions, such as `pgcrypto`, and owns each one it installs.
 lists which role installs each extension.
 
 `app` is the recommended default role to own an application. The RAG
-Server connects as `app_read_only`, and so does the MCP Server unless
-`Allow writes` is on, when it connects as `app`. Either way, those servers
-can read whatever your migrations and data imports add to the database.
+Server connects as `app_read_only`. The MCP Server connects as
+`app_read_only` too, unless `Allow writes` is on, when it connects as
+`app`. Either way, those servers can read whatever your migrations and
+data imports add to the database.
 
 `app` has no server-wide privilege: it cannot create roles or databases,
 view other sessions, end another session, or install an extension such as

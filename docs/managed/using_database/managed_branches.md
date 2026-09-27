@@ -55,10 +55,10 @@ cannot be rotated.
 If the source runs an MCP server, the branch's MCP server has
 a unique address and MCP token, so ensure that any connecting MCP
 client has the branch's own address and token.
-A RAG server on the branch has its own address. Its card reads
-`Same API tokens as the source.`, because the server uses the source's
-model provider keys. Point a RAG integration at the branch's
-`API base URL` to query the branch.
+A RAG server on the branch has its own address. The RAG server
+details display `Same API tokens as the source.`, because the RAG
+server uses the source's provider keys. Point a RAG integration at
+the branch's `API base URL` to query the branch.
 
 ## Branching Limitations
 

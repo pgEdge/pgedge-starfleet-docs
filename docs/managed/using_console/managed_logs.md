@@ -1,9 +1,8 @@
 # Reviewing the Log Files
 
-The `Logs` page displays the Postgres engine log for your database, with the
-newest line at the top; each entry displays the timestamp, log level (for
-example, `LOG`), and message. A branch has its own `Logs` page, which
-displays the branch's own log.
+The `Logs` page displays the Postgres engine log for your database or
+branch, with the newest line at the top; each entry displays the
+timestamp, log level (for example, `LOG`), and message.
 
 The page provides the following controls:
 
