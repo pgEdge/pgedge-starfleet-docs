@@ -9,7 +9,7 @@ This repo contains the docs for pgEdge Starfleet.
 ## Publishing this Documentation
 
 The pgEdge console builds this repo and serves it in-product at `/docs`.
-`scripts/sync-docs.mjs` in `pgEdge/product-ui` clones `main` at deploy
+`scripts/sync-docs.mjs` in `pgEdge/another repo` clones `main` at deploy
 time, installs the pins in `scripts/docs-requirements.txt`, runs `mkdocs
 build`, and copies the result into the console's `docs-site/`. There is
 no committed baseline and no fallback: if this repo does not build, the
@@ -26,7 +26,7 @@ Two consequences worth knowing before you merge anything:
 
   - **Asset extensions.** The console serves `/docs` through a route
     with a fixed content-type map (`src/pages/api/docs/
-    contentTypes.json` in `product-ui`). An extension missing from it
+    contentTypes.json` in `another repo`). An extension missing from it
     either fails the deploy outright, `.pdf` for instance, or ships an
     asset that 404s in-product, which is currently the case for `.svg`.
     Only add image formats already in that map: `.png`, `.jpg`,
@@ -157,7 +157,7 @@ anchors, and its deploy fails if one is missing. The `Console links`
 check lists them in `.github/console-links.txt` and fails a pull request
 that moves or removes one.
 
-`product-ui` holds two mirrors of this repo's layout, and moving a page
+`another repo` holds two mirrors of this repo's layout, and moving a page
 means updating whichever apply, in the same change:
 
 - `src/components/databases/managed/copy/managedDocsPaths.json` — the
@@ -166,6 +166,6 @@ means updating whichever apply, in the same change:
 - `src/components/databases/managed/copy/docsBundleNav.json` — a dated
   snapshot of every page in this repo, which gates `docsLinks.test.ts`.
   Nothing here guards it, so a rename that misses it leaves that test
-  failing in `product-ui` for a reason neither repo explains.
+  failing in `another repo` for a reason neither repo explains.
 
 Update the mirrors first, then `.github/console-links.txt`.
