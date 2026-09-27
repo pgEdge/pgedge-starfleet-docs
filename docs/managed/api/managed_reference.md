@@ -10,7 +10,7 @@ Select `Authorize`, then paste the token into the `AccessToken` field.
 <!-- markdownlint-disable MD013 MD033 -->
 <style>
   /* One known server, described above; the title/version/license
-     block duplicates this page's own prose. Match product-ui's
+     block duplicates this page's own prose. Match the console's
      existing API docs embed, which hides the same three blocks. */
   #swagger-ui .info,
   #swagger-ui .servers-title,
