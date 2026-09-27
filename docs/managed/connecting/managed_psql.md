@@ -44,7 +44,7 @@ at the Postgres website. For more information about psql, see the
 [Postgres documentation](https://www.postgresql.org/docs/18/app-psql.html).
 
 If you have already installed a copy of psql, connection is simple. Each tab
-of the `Connect` pane (`Admin`, `Application` or `Read-only`) displays a
+of the `Connect` pane (`Admin`, `Application`, or `Read-only`) displays a
 ready-to-use psql connection string. For example:
 
 ```bash

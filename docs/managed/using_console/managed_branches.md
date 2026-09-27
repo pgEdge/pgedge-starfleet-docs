@@ -102,7 +102,7 @@ is `available`. Select the branch's label in the `Branches` pane to open
 the branch's page.
 
 The `Connect` pane on the branch's page has an `Admin` tab, an
-`Application` tab and a `Read-only` tab, one for each built-in role. Each
+`Application` tab, and a `Read-only` tab, one for each built-in role. Each
 tab displays the following details:
 
 - `Connection string` and `psql command` connect to the branch's own

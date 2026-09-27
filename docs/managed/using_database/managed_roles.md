@@ -123,7 +123,7 @@ The following table compares the three roles:
 ## Finding Each Role's Credentials
 
 The `Connect` pane on the database page provides an `Admin` tab, an
-`Application` tab and a `Read-only` tab. Each tab displays:
+`Application` tab, and a `Read-only` tab. Each tab displays:
 
 - a connection string.
 - a ready-to-use psql command.
@@ -144,7 +144,7 @@ Your account's only other credential, the API client secret, is replaced
 rather than rotated, as described further below.
 
 The `Connect` pane on a database's overview page has an `Admin` tab, an
-`Application` tab and a `Read-only` tab. Each tab displays the connection
+`Application` tab, and a `Read-only` tab. Each tab displays the connection
 string, psql command, database name, domain, user, and password, with `Rotate
 credentials` underneath. Rotating from this tab modifies the credentials of the
 Postgres user named on it.
