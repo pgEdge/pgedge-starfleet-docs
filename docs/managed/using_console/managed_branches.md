@@ -223,8 +223,10 @@ the branch is removed.
   Delete the branch and create a new one.
 
 - The `Create branch` button's tooltip says **the source database has to
-  be available or degraded first**, and names its current status. Create
-  the branch when the source database's status returns to `available`.
+  be available or
+  [degraded](../using_database/managed_database_details.md#database-statuses)
+  first**, and names its current status. Create the branch when the
+  source database's status returns to `available`.
 
 - **The source database remains** after you select `Delete Database`
   while one of its branches is still `creating`. The console displays

@@ -110,13 +110,10 @@ When performing a task or creating a new database, you should wait for the
 database can reach `failed` or `degraded` without passing through `creating`
 again.
 
-An unfamiliar status is not automatically an error. Treat anything
-that is not `available` or `degraded` as a database that is not ready
-for the five tasks.
-
-Five tasks are allowed only when the database is `available` or
-`degraded`, and never while it is `modifying` because of an earlier
-change:
+Treat anything that is not `available` or `degraded` as a database
+not ready for the five tasks that follow, even when it is only
+`modifying` from an earlier change; an unfamiliar status is not
+automatically an error:
 
 - Restoring from a backup
 - Upgrading the size
