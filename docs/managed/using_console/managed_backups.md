@@ -5,10 +5,9 @@ taken of your database. Each backup is either a `hot` backup (the
 fastest to restore from) or a `durable` backup (kept apart from the
 database's own storage and slower to restore).
 
-A `hot` backup is taken daily on every database. A `durable` backup is
-taken daily as well, but only on a database whose plan includes durable
-backups. Creating a branch also takes a `hot` backup of the source
-database.
+A `hot` backup is taken daily, and whenever you create a branch of the
+source database. A `durable` backup is taken daily as well, but only
+on a database whose plan includes durable backups.
 
 Backups are taken on a schedule. The console has no button for taking
 one, and you cannot delete a backup or change how long one is kept. Each
