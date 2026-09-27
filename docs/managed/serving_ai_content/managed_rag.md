@@ -21,9 +21,9 @@ Select the `AI Services` pane, then select `Enable RAG` to begin.
 ![Enabling the RAG Server](../images/managed_enable_rag_icon.png)
 
 To enable a RAG Server, select the `Enable RAG` icon in the RAG Server pane.
-The button is active only while the database status is `Available`. On a
-database in any other status, hovering over the button displays
-`Database not available`.
+The button is active only while the database status is `Available` or
+`Degraded`. On a database in any other status, hovering over the button
+displays `Database not available`.
 
 ![Provide details about the RAG Server](../images/managed_rag_details.png)
 
@@ -152,15 +152,17 @@ RAG Server.
 ![The deployed service](../images/managed_enable_rag_deployed.png)
 
 Enabling, configuring, or disabling the RAG Server requires the database to
-be `Available`, and appears in the Activity Log as an `update-managed` task.
-Every service change shares that one task name, so the Activity Log cannot
-tell a RAG change from an MCP change.
+be `Available` or `Degraded`, and appears in the Activity Log as an
+`update-managed` task. Every service change shares that one task name, so the
+Activity Log cannot tell a RAG change from an MCP change.
 
 When enabled, the RAG Server pane updates to display:
 
 - A status badge. A `running` state reads `Running`. Every other state
   displays as the raw value the API sent, in lower case, such as `failed`
   or `pending`.
+- `API base URL`, the server's address, with a copy icon. The row appears
+  when the server is `Running`.
 - A `Configure` button that opens the `Configure RAG Server` dialog, where you
   can modify the RAG Server deployment.
 - A `Disable` button that you can use to stop the RAG Server.
@@ -380,6 +382,6 @@ from the documentation you loaded in step 3.
   message of its own.
 
     A service change requires the database to be in an `Available`
-    state, and each service change writes one `update-managed` task,
-    so the Activity Log records both failed and successful
-    modification attempts.
+    or `Degraded` state, and each service change writes one `update-managed`
+    task, so the Activity Log records both failed and successful modification
+    attempts.

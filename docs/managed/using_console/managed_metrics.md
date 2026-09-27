@@ -4,6 +4,9 @@ The `Metrics` pane on your database's management page displays live graphs of
 current database activity, including `Transactions` (transactions per second)
 and `Tuples returned` (rows returned per second).
 
+A branch's page has the same `Metrics` pane, which displays the branch's
+own metrics.
+
 ![The Metrics page](../images/managed_metrics_all.png)
 
 The `Metrics` page displays five headline tiles and nineteen charts, grouped
