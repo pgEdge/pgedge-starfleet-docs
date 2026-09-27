@@ -6,8 +6,8 @@ roles. Four terms recur below:
 
 - `app` owns the database. Your application connects with this role,
   and so do the migrations it runs.
-- `admin` is another built-in role. It installs the extensions that
-  `app` is not permitted to install. Neither role is a superuser.
+- `admin` is another built-in role that installs the extensions `app`
+  is not permitted to install. Neither role is a superuser.
 - The tables below name every supported extension. Managed does not
   support an extension they omit.
 - The `Connect` pane on the database page shows a connection string for
