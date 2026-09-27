@@ -16,8 +16,8 @@ while IFS= read -r page; do
     case "$page" in ''|'#'*) continue ;; esac
     if [ ! -f "docs/$page" ]; then
         echo "::error::docs/$page is missing, but the pgEdge console links" \
-            "to it. Keep the page at this path, or update" \
-            "managedDocsPaths.json in pgEdge/product-ui and $list together."
+            "to it. Keep the page at this path, or update the" \
+            "console's list of linked pages and $list together."
         failed=1
     fi
 done < "$list"

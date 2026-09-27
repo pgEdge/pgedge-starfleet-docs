@@ -1,5 +1,5 @@
-# Must stay identical to scripts/docs-requirements.txt in
-# pgEdge/product-ui, which is what the console actually installs. A
+# Must stay identical to the pgEdge console's own pins, which are
+# what the console actually installs. A
 # version only pinned here is one CI tested and the console never runs.
 # Nothing compares the two files.
 #

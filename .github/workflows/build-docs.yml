@@ -1,5 +1,5 @@
 # The pgEdge console clones this repo at deploy time and builds it with
-# mkdocs; a build failure there fails the console's Vercel deploy. This
+# mkdocs; a build failure there fails the console's deploy. This
 # check moves that failure to the docs PR that caused it.
 #
 # Stricter than the console, which builds without --strict: a mkdocs
@@ -37,7 +37,7 @@ jobs:
       # would test a dependency set the console never builds.
       # mkdocs copies static files with shutil.copyfile, which dereferences:
       # a committed docs/x.html -> /etc/passwd would publish its target as
-      # text/html. product-ui refuses to deploy a tree containing one, so
+      # text/html. The console refuses to deploy a tree containing one, so
       # catch it on the PR instead.
       - name: Reject symlinks
         run: |
