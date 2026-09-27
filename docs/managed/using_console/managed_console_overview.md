@@ -23,7 +23,8 @@ The database header displays:
     - a red dot means the database is not available.
 - the CPU size of the database.
 - the memory used by the database.
-- the storage the database uses, against its writable capacity.
+- the amount of storage in use by the database, against its writable
+  capacity.
 - the number of connections allocated for the database.
 
 ## The Actions Context Menu
