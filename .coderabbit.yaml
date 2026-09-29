@@ -58,8 +58,8 @@ reviews:
       enabled: true
     gitleaks:
       enabled: true
-    # requirements.txt is pinned to match product-ui's
-    # docs-requirements.txt; a CVE-driven bump here diverges them.
+    # requirements.txt is pinned to match the console's own pins; a
+    # CVE-driven bump here diverges them.
     osvScanner:
       enabled: false
     # No application code or IaC here, and gitleaks covers secrets.

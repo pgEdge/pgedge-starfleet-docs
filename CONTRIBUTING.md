@@ -61,8 +61,8 @@ Symlinks are rejected by CI and by the console's deploy.
 ## Moving or Renaming a Page
 
 The console deep-links into six of these pages and mirrors the full
-nav, so moving a page means changing `pgEdge/product-ui` too, in the
-same change. "Linking to the Console" in the README lists the files.
+nav, so moving a page means changing the console too, in the same
+change. "Linking to the Console" in the README explains both.
 
 ## Commits and Pull Requests
 

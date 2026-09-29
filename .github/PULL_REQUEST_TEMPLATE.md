@@ -9,8 +9,8 @@ What changed, and why.
       lowercase
 - [ ] Any new image uses an extension the console serves: `.png`,
       `.jpg`, `.jpeg`, `.gif`, `.webp`, `.avif`, `.ico` — never `.svg`
-- [ ] If a page moved or was renamed, the `pgEdge/product-ui` mirrors
-      and `.github/console-links.txt` are updated in the same change.
+- [ ] If a page moved or was renamed, the console's mirrors and
+      `.github/console-links.txt` are updated in the same change.
       See "Linking to the Console" in the README.
 
 ## Notes

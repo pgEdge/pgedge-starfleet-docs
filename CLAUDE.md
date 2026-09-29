@@ -10,12 +10,17 @@ writing style and the console coupling, and they are the source of
 truth for all four. This file carries only what those two do not:
 the mistakes that build green here and fail somewhere else.
 
-> **A change here can break another product's deploy.** `pgEdge/
-> product-ui` clones `main` at deploy time and builds it in a
-> `prebuild` step. There is no committed baseline and no fallback, so
-> a build this repo cannot complete fails the console's Vercel deploy
-> rather than shipping stale pages. Treat every change as a change to
-> two repos.
+> **A change here can break another product's deploy.** The pgEdge
+> console clones `main` at deploy time and builds it. There is no
+> committed baseline and no fallback, so a build this repo cannot
+> complete fails the console's deploy rather than shipping stale
+> pages. Treat every change as a change to two repos.
+>
+> The console's repo is private, so its name and file paths stay out
+> of this repo. They are in
+> `~/PROJECTS/docs/pgedge-starfleet-docs/CONSOLE-COUPLING-PRIVATE.md`.
+> Never name a private repo, its files or its hosting in a file,
+> commit message or pull request here.
 
 ## Commands
 
@@ -50,8 +55,8 @@ disappears with no warning, because mkdocs does not validate theme
 keys it does not recognise.
 
 **`requirements.txt` is pinned to another repo.** It has to stay
-byte-identical to `scripts/docs-requirements.txt` in `product-ui`,
-and nothing enforces the match. Adding a tool here that the console
+byte-identical to the console's own pins, and nothing enforces the
+match. Adding a tool here that the console
 does not install means CI tests a build the console never runs.
 Install contributor tooling separately.
 
@@ -68,11 +73,11 @@ nav label in its own `mkdocs.yml`, through `slug()` in
 from an imported repo. That one string in the other repo decides the
 path.
 
-**Moving a page is a two-repo change.** `product-ui` holds two
+**Moving a page is a two-repo change.** The console holds two
 mirrors of this layout. `Console links` guards one of them and fails
 the PR; nothing guards the other, so a miss leaves a test failing in
-`product-ui` for a reason neither repo explains. README.md names
-both files.
+the console for a reason neither repo explains. The private note
+names both files.
 
 ## Naming the console
 

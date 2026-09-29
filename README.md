@@ -9,11 +9,10 @@ This repo contains the docs for pgEdge Starfleet.
 ## Publishing this Documentation
 
 The pgEdge console builds this repo and serves it in-product at `/docs`.
-`scripts/sync-docs.mjs` in `pgEdge/another repo` clones `main` at deploy
-time, installs the pins in `scripts/docs-requirements.txt`, runs `mkdocs
-build`, and copies the result into the console's `docs-site/`. There is
-no committed baseline and no fallback: if this repo does not build, the
-console's Vercel deploy fails rather than shipping stale pages.
+It clones `main` at deploy time, installs its pinned dependencies, and
+runs `mkdocs build`. There is no committed baseline and no fallback: if
+this repo does not build, the console's deploy fails rather than shipping
+stale pages.
 
 Two consequences worth knowing before you merge anything:
 
@@ -24,10 +23,9 @@ Two consequences worth knowing before you merge anything:
 - `Build docs` does not cover everything the console checks. Two of its
   gates are not replicated here, so these still fail at deploy time:
 
-  - **Asset extensions.** The console serves `/docs` through a route
-    with a fixed content-type map (`src/pages/api/docs/
-    contentTypes.json` in `another repo`). An extension missing from it
-    either fails the deploy outright, `.pdf` for instance, or ships an
+  - **Asset extensions.** The console serves `/docs` with a fixed map
+    of content types. An extension missing from it either fails the
+    deploy outright, `.pdf` for instance, or ships an
     asset that 404s in-product, which is currently the case for `.svg`.
     Only add image formats already in that map: `.png`, `.jpg`,
     `.jpeg`, `.gif`, `.webp`, `.avif`, `.ico`.
@@ -66,8 +64,8 @@ letting pip resolve them instead would build the docs against a
 dependency set the console never runs.
 
 Then install the commit hooks. `pre-commit` is deliberately not in
-`requirements.txt`, which has to stay byte-identical to the console's
-`docs-requirements.txt`, so install it separately:
+`requirements.txt`, which has to stay identical to the console's own
+pins, so install it separately:
 
 ```bash
 python3 -m pip install pre-commit
@@ -157,15 +155,11 @@ anchors, and its deploy fails if one is missing. The `Console links`
 check lists them in `.github/console-links.txt` and fails a pull request
 that moves or removes one.
 
-`another repo` holds two mirrors of this repo's layout, and moving a page
-means updating whichever apply, in the same change:
+The console keeps two copies of this repo's layout. One lists the pages
+it links into, which `Console links` guards, so a miss fails a pull
+request here. The other lists every page, and nothing here guards it, so
+a miss fails the console's own tests instead.
 
-- `src/components/databases/managed/copy/managedDocsPaths.json` — the
-  six pages the console deep-links into. `Console links` guards these,
-  so a miss fails a PR here.
-- `src/components/databases/managed/copy/docsBundleNav.json` — a dated
-  snapshot of every page in this repo, which gates `docsLinks.test.ts`.
-  Nothing here guards it, so a rename that misses it leaves that test
-  failing in `another repo` for a reason neither repo explains.
-
-Update the mirrors first, then `.github/console-links.txt`.
+Moving or renaming a page therefore needs a matching change in the
+console, which pgEdge maintainers make. Update the console first, then
+`.github/console-links.txt`.
