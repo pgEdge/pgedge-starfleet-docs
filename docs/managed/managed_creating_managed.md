@@ -5,7 +5,9 @@ of wizard steps. When the account has no database yet, the `Databases`
 page displays a welcome headed `Launch your first Postgres database`.
 The welcome lists the Postgres versions you can choose from. When the
 account is eligible for the free trial, the welcome also states the
-trial terms.
+trial terms:
+
+![The welcome on the Databases page](images/managed_databases_welcome.png)
 
 Select `Create your first database` to open the wizard. To create
 another database later, select `New Database` in the navigation pane.
