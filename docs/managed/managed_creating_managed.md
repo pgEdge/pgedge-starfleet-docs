@@ -1,17 +1,22 @@
 # Deploying a Managed Database
 
 The create wizard sets up a pgEdge Starfleet Managed database in a series
-of wizard steps. When the account has no database yet, the console opens
-a welcome dialog:
+of wizard steps. When the account has no database yet, the `Databases`
+page displays a welcome headed `Launch your first Postgres database`.
+The welcome lists the Postgres versions you can choose from. When the
+account is eligible for the free trial, the welcome also states the
+trial terms:
 
-![Welcome to pgEdge Starfleet](images/managed_cloud_welcome.png)
+![The welcome on the Databases page](images/managed_databases_welcome.png)
 
 Select `Create your first database` to open the wizard. To create
 another database later, select `New Database` in the navigation pane.
 
-The wizard lists its steps on the left. The `Account` step is complete
-when the wizard opens, and displays the account the database is
-created in.
+The wizard opens on a page of its own. On a wide screen, the wizard
+lists its steps on the left. On a narrow screen, such as a phone, a
+header above the form names the current wizard step and its position
+instead. The `Account` step is complete when the wizard opens, and
+displays the account the database is created in.
 
 ## Choosing the Name, Region and Version
 
