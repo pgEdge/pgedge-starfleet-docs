@@ -74,10 +74,15 @@ saving it.
 
 Select the `Billing` tab to review your subscription and payment status.
 
+When the account has never created a database, and has no subscription
+or payment method, the tab displays `No billing account yet`. The
+billing account is set up when you create your first database. Select
+`Create a database` to open the create wizard.
+
 ![The Billing tab](../images/managed_settings_billing.png)
 
-The `Billing` tab displays your account-level subscription and payment
-status:
+Otherwise, the `Billing` tab displays your account-level subscription and
+payment status:
 
 - the `Subscription` field displays your current plan (for example,
   `Free trial`).
