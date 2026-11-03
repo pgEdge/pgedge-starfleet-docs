@@ -1,9 +1,9 @@
 # Deploying a Managed Database
 
 The create wizard sets up a pgEdge Starfleet Managed database in a series
-of wizard steps. When the account has no database yet, the `Databases`
+of wizard steps. If the account has no database, the `Databases`
 page displays a welcome headed `Launch your first Postgres database`.
-The welcome lists the Postgres versions you can choose from. When the
+The welcome lists the Postgres versions you can choose from. If the
 account is eligible for the free trial, the welcome also states the
 trial terms:
 
@@ -15,7 +15,7 @@ another database later, select `New Database` in the navigation pane.
 The wizard opens on a page of its own. On a wide screen, the wizard
 lists its steps on the left. On a narrow screen, such as a phone, a
 header above the form names the current wizard step and its position
-instead. The `Account` step is complete when the wizard opens, and
+instead. This step is complete when the wizard opens, and
 displays the account the database is created in.
 
 ## Choosing the Name, Region and Version
@@ -78,7 +78,7 @@ has a range:
 
 1. Select one of the two options:
 
-    - `Allow specific IP ranges` admits only the ranges you add. When
+    - `Allow specific IP ranges` admits only the ranges you add. If
       the console can read the IPv4 address you connect from, it
       selects `Allow my current IP address`, which adds that address,
       labeled `My laptop`.
@@ -93,7 +93,7 @@ has a range:
 
 3. Select `Create database`.
 
-    When the account needs a payment method, the button reads
+    If the account requires a payment method, the button reads
     `Continue to payment`, and a `Payment` wizard step follows.
 
 This wizard step sets the database allowlist only. A new MCP server or
@@ -140,6 +140,6 @@ The wizard displays a message when a step fails:
     The panel also notes that the card may still have been saved, so
     check again in a moment before entering the card a second time.
 
-- **`Couldn't create your database`**, when the create request itself
+- **`Couldn't create your database`**, displays if the create request
   fails. The panel displays the reason, as well as `Try again` and
   `Back` buttons.
