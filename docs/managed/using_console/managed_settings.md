@@ -39,7 +39,7 @@ The `Team` tab displays information about your account:
   you invite other people to join your account.
 
 Select the copy icon next to the `Tenant ID` or `External ID` field to copy
-its value. When you change the `Team Name`, select `Save` to apply the
+its value. If you change the `Team Name`, select `Save` to apply the
 change, or `Reset` to revert it.
 
 For information about inviting and managing team members, see
@@ -74,7 +74,7 @@ saving it.
 
 Select the `Billing` tab to review your subscription and payment status.
 
-When the account has never created a database, and has no subscription
+If the account has never created a database, and has no subscription
 or payment method, the tab displays `No billing account yet`. The
 billing account is set up when you create your first database. Select
 `Create a database` to open the create wizard.
