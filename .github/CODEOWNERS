@@ -1,3 +1,25 @@
-# GitHub requests a review from every owner on a matching line, and never
-# from the pull request's author.
-*   @susan-pgedge @AntTheLimey
+# Code owners under the Code Review and Commit Policy v2.0.
+# pgedge-starfleet-docs is Tier 2. The last matching line wins.
+
+# Workflows, release, packaging and signing: a code owner or build-packaging.
+/.github/workflows/  @gbrowdy @pgEdge/build-packaging
+/.github/actions/  @gbrowdy @pgEdge/build-packaging
+action.yml  @gbrowdy @pgEdge/build-packaging
+action.yaml  @gbrowdy @pgEdge/build-packaging
+.goreleaser*.yml  @gbrowdy @pgEdge/build-packaging
+.goreleaser*.yaml  @gbrowdy @pgEdge/build-packaging
+*.spec  @gbrowdy @pgEdge/build-packaging
+debian/  @gbrowdy @pgEdge/build-packaging
+rpm/  @gbrowdy @pgEdge/build-packaging
+packaging/  @gbrowdy @pgEdge/build-packaging
+release*.sh  @gbrowdy @pgEdge/build-packaging
+sign*.sh  @gbrowdy @pgEdge/build-packaging
+sign*.py  @gbrowdy @pgEdge/build-packaging
+Dockerfile*  @gbrowdy @pgEdge/build-packaging
+
+# Ownership and AI review configuration: code owners only.
+/CODEOWNERS  @gbrowdy
+/.github/CODEOWNERS  @gbrowdy
+/docs/CODEOWNERS  @gbrowdy
+/REVIEW.md  @gbrowdy
+/.coderabbit.yaml  @gbrowdy
